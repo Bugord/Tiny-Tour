@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c714a2634a9548b1bc8d8817e69ab3e5, type: 3}
+  m_Name: road_tile
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 3092888909206665494, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  defaultColliderType: 1
+  connectionDirection: 0
+  roadRules:
+  - connectionDirection: 0
+    sprite: {fileID: 3092888909206665494, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 1
+    sprite: {fileID: 529436410, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 2
+    sprite: {fileID: 921085525, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 3
+    sprite: {fileID: -396985243, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 4
+    sprite: {fileID: -1724143816, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 8
+    sprite: {fileID: 841779226, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 12
+    sprite: {fileID: 152110945, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 6
+    sprite: {fileID: -1892373821, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 10
+    sprite: {fileID: 814281240, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 5
+    sprite: {fileID: 167954941, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 9
+    sprite: {fileID: 373440567, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 7
+    sprite: {fileID: 1448738048, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 11
+    sprite: {fileID: -1275130909, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 13
+    sprite: {fileID: 862565523, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 14
+    sprite: {fileID: 132259521, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
+  - connectionDirection: 15
+    sprite: {fileID: 974962273, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
