@@ -8,6 +8,9 @@ public class TilemapEditor : MonoBehaviour
     private Tilemap roadTilemap;
 
     [SerializeField]
+    private Tilemap terrainTilemap;
+    
+    [SerializeField]
     private RoadTile roadTile;
 
     private Camera mainCamera;
@@ -21,7 +24,7 @@ public class TilemapEditor : MonoBehaviour
     private void Awake()
     {
         mainCamera = Camera.main;
-        roadEditor = new RoadEditor(roadTilemap, roadTile);
+        roadEditor = new RoadEditor(terrainTilemap, roadTilemap, roadTile);
 
         currentEditor = roadEditor;
     }

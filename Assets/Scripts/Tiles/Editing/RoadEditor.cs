@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Tiles.Ground;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
@@ -10,6 +11,7 @@ namespace Tiles
     public class RoadEditor : ITileEditor
     {
         private readonly Tilemap roadTilemap;
+        private readonly Tilemap terrainTilemap;
 
         private readonly Dictionary<Vector3Int, RoadTileInfo> tiles;
         private readonly Dictionary<ConnectionDirection, RoadTile> roadTileObjects;
@@ -17,8 +19,9 @@ namespace Tiles
         private Vector3Int? previousSelectedTile;
         private Vector3Int currentSelectedTile;
 
-        public RoadEditor(Tilemap roadTilemap, RoadTile roadTile)
+        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, RoadTile roadTile)
         {
+            this.terrainTilemap = terrainTilemap;
             this.roadTilemap = roadTilemap;
 
             roadTileObjects = new Dictionary<ConnectionDirection, RoadTile>();
@@ -85,6 +88,15 @@ namespace Tiles
         {
             currentSelectedTile = pos;
 
+            if (previousSelectedTile.HasValue &&
+                Vector3Int.Distance(currentSelectedTile, previousSelectedTile.Value) > 1f) {
+                return;
+            }
+
+            if (!CanPlaceRoad(pos)) {
+                return;
+            }
+
             if (previousSelectedTile.HasValue) {
                 var previousTileDirection = GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
                 var previousTile = tiles[previousSelectedTile.Value];
@@ -108,6 +120,12 @@ namespace Tiles
             }
 
             previousSelectedTile = pos;
+        }
+
+        private bool CanPlaceRoad(Vector3Int pos)
+        {
+            var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
+            return terrainTile && terrainTile.terrainType != TerrainTile.TerrainType.Water;
         }
 
         private ConnectionDirection GetPathDirection(Vector3Int from, Vector3Int to) =>
