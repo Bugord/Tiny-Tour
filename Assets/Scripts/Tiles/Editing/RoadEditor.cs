@@ -28,6 +28,7 @@ namespace Tiles
             tiles = new Dictionary<Vector3Int, RoadTileInfo>();
 
             ConfigureRoadObjects(roadTile);
+            SetInitiallyPlacedRoad();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -71,6 +72,10 @@ namespace Tiles
         public void EraseRoad(Vector3Int pos)
         {
             currentSelectedTile = pos;
+
+            if (!CanEraseRoad(pos)) {
+                return;
+            }
 
             var neighbourTilePositions = GetNeibhourTilePos(pos);
             foreach (var neighbourTilePos in neighbourTilePositions) {
@@ -122,10 +127,46 @@ namespace Tiles
             previousSelectedTile = pos;
         }
 
+        private bool CanEraseRoad(Vector3Int pos)
+        {
+            if (tiles.TryGetValue(pos, out var tileInfo)) {
+                return !tileInfo.WasInitiallyPlaced;
+            }
+
+            return false;
+        }
+
         private bool CanPlaceRoad(Vector3Int pos)
         {
             var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
             return terrainTile && terrainTile.terrainType != TerrainTile.TerrainType.Water;
+        }
+
+        private void SetInitiallyPlacedRoad()
+        {
+            var roadTilesPos = new List<Vector3Int>();
+            foreach (var pos in roadTilemap.cellBounds.allPositionsWithin) {
+                var tile = roadTilemap.GetTile(pos);
+                if (tile) {
+                    roadTilesPos.Add(pos);
+                }
+            }
+
+            foreach (var roadTilePos in roadTilesPos) {
+                var roadTileInfo = new RoadTileInfo {
+                    WasInitiallyPlaced = true
+                };
+
+                var neighbourTilePositions = GetNeibhourTilePos(roadTilePos);
+                foreach (var neighbourTilePos in neighbourTilePositions) {
+                    if (roadTilesPos.Contains(neighbourTilePos)) {
+                        roadTileInfo.TurnOnDirection(GetPathDirection(roadTilePos, neighbourTilePos));
+                    }
+                }
+                
+                tiles.Add(roadTilePos, roadTileInfo);
+                roadTilemap.SetTile(roadTilePos, roadTileObjects[roadTileInfo.ConnectionDirection]);
+            }
         }
 
         private ConnectionDirection GetPathDirection(Vector3Int from, Vector3Int to) =>

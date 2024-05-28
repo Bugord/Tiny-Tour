@@ -3,6 +3,7 @@
     public class RoadTileInfo
     {
         public ConnectionDirection ConnectionDirection { get; private set; }
+        public bool WasInitiallyPlaced;
 
         public void TurnOnDirection(ConnectionDirection direction)
         {
