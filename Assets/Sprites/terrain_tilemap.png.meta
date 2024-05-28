@@ -820,6 +820,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: terrain_tilemap_31
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18e112b2482d4bf4f950bd38cee85e31
+      internalID: 846882062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -857,6 +879,7 @@ TextureImporter:
       terrain_tilemap_29: -1665817371
       terrain_tilemap_3: -1794972916
       terrain_tilemap_30: -1248883660
+      terrain_tilemap_31: 846882062
       terrain_tilemap_4: 922027905
       terrain_tilemap_5: 1560246443
       terrain_tilemap_6: 59806862
