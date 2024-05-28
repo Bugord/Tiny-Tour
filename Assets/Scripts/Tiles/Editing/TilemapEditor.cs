@@ -1,3 +1,4 @@
+using Level;
 using Tiles;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -9,22 +10,23 @@ public class TilemapEditor : MonoBehaviour
 
     [SerializeField]
     private Tilemap terrainTilemap;
-    
+
     [SerializeField]
-    private RoadTile roadTile;
+    private TileLibraryData tileLibraryData;
+        
+    private ITileLibrary tileLibrary;
 
     private Camera mainCamera;
-    
     private RoadEditor roadEditor;
-    
     private ITileEditor currentEditor;
 
     private bool isSelecting;
 
     private void Awake()
     {
+        tileLibrary = tileLibraryData;
         mainCamera = Camera.main;
-        roadEditor = new RoadEditor(terrainTilemap, roadTilemap, roadTile);
+        roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary);
 
         currentEditor = roadEditor;
     }

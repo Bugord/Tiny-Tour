@@ -8,13 +8,6 @@ namespace Tiles.Ground
     {
         public TerrainType terrainType;
 
-        public enum TerrainType
-        {
-            Ground,
-            Water,
-            BridgeBase
-        }
-
         public class Neighbor : RuleTile.TilingRule.Neighbor
         {
             public const int Ground = 4;

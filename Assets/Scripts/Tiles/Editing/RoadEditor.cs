@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core;
+using Level;
 using Tiles.Ground;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -19,7 +21,7 @@ namespace Tiles
         private Vector3Int? previousSelectedTile;
         private Vector3Int currentSelectedTile;
 
-        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, RoadTile roadTile)
+        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, ITileLibrary tileLibrary)
         {
             this.terrainTilemap = terrainTilemap;
             this.roadTilemap = roadTilemap;
@@ -27,7 +29,7 @@ namespace Tiles
             roadTileObjects = new Dictionary<ConnectionDirection, RoadTile>();
             tiles = new Dictionary<Vector3Int, RoadTileInfo>();
 
-            ConfigureRoadObjects(roadTile);
+            ConfigureRoadObjects(tileLibrary.GetRoadTile());
             SetInitiallyPlacedRoad();
         }
 
@@ -139,7 +141,7 @@ namespace Tiles
         private bool CanPlaceRoad(Vector3Int pos)
         {
             var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
-            return terrainTile && terrainTile.terrainType != TerrainTile.TerrainType.Water;
+            return terrainTile && terrainTile.terrainType != TerrainType.Water;
         }
 
         private void SetInitiallyPlacedRoad()

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 340fe28300224795bd58b19aedaba107, type: 3}
+  m_Name: library_tile
+  m_EditorClassIdentifier: 
+  groundTile: {fileID: 11400000, guid: 5141c6f99e034c340bd6aa54bc9e6f07, type: 2}
+  waterTile: {fileID: 11400000, guid: 706748ef5d5c0ed4ca6ca16907a063b9, type: 2}
+  bridgeBaseTile: {fileID: 11400000, guid: 879aa518ef911fb4a8ddd830cf2eb124, type: 2}
+  roadTile: {fileID: 11400000, guid: 2350f9bfa4ea9874ba8b562d0a2a3115, type: 2}
