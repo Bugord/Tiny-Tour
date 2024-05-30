@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Tiles;
 using UnityEngine;
@@ -11,27 +12,41 @@ namespace Level
         private TilemapDataEditor tilemapDataEditor;
 
         [SerializeField]
+        private LevelManagerUI levelManagerUI;
+
+        [SerializeField]
         private LevelLibrary levelLibrary;
         
         private ILevelLoader levelLoader;
         private ILevelSaver levelSaver;
         private ILevelProvider levelProvider;
-
+        
         private void Awake()
         {
             levelLoader = tilemapDataEditor;
             levelSaver = tilemapDataEditor;
             levelProvider = levelLibrary;
+            
+            levelManagerUI.LevelSelected += OnLevelSelected;
+            levelManagerUI.SavePressed += OnSavePressed;
+            levelManagerUI.SaveAsPressed += OnSaveAsPressed;
+        }
+        
+        private void OnDestroy()
+        {
+            levelManagerUI.LevelSelected -= OnLevelSelected;
+            levelManagerUI.SavePressed -= OnSavePressed;
+            levelManagerUI.SaveAsPressed -= OnSaveAsPressed;
         }
 
         private void Start()
         {
             LoadLevels();
 
-            var levels = levelProvider.GetAllLevels();
-            if (levels.Any()) {
-                var levelToLoad = levels[0];
-                LoadLevel(levelToLoad);
+            var levelsData = levelProvider.GetCachedLevels();
+            if (levelsData.Any()) {
+                levelManagerUI.SetData(levelsData);
+                OnLevelSelected(0);
             }
         }
 
@@ -47,9 +62,35 @@ namespace Level
             levelProvider.LoadAllLevels();
         }
 
+        private void OnLevelSelected(int levelId)
+        {
+            var levelToLoad = levelProvider.GetLevelByIndex(levelId);
+            LoadLevel(levelToLoad);
+        }
+
         private void LoadLevel(LevelData levelData)
         {
             levelLoader.LoadLevel(levelData);
+        }
+
+        private void OnSavePressed()
+        {
+            var levelData = levelSaver.SaveLevel();
+            levelProvider.SaveLevel(levelData);
+        }
+
+        private void OnSaveAsPressed(string levelName)
+        {
+            var levelData = levelSaver.SaveLevel();
+            levelData.levelName = levelName;
+            levelProvider.SaveLevel(levelData);
+
+            levelProvider.LoadAllLevels();
+            var levelsData = levelProvider.GetCachedLevels();
+            levelManagerUI.SetData(levelsData);
+            
+            var savedLevel = levelProvider.GetLevelByName(levelName);
+            levelManagerUI.SetSelectedLevel(levelsData.IndexOf(savedLevel));
         }
     }
 }

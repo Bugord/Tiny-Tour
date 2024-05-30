@@ -35,7 +35,7 @@ namespace Level
             }
         }
 
-        public List<LevelData> GetAllLevels()
+        public List<LevelData> GetCachedLevels()
         {
             return levelsData;
         }
@@ -50,6 +50,11 @@ namespace Level
             Directory.CreateDirectory(DirectoryPath);
             var json = JsonUtility.ToJson(levelData, true);
             File.WriteAllText(Path.Combine(DirectoryPath, levelData.levelName + ".json"), json);
+        }
+
+        public LevelData GetLevelByIndex(int index)
+        {
+            return levelsData[index];
         }
     }
 }
