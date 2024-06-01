@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Level;
 using Tiles.Ground;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Utility;
 
 namespace Tiles
 {
@@ -80,10 +82,10 @@ namespace Tiles
                 return;
             }
 
-            var neighbourTilePositions = GetNeibhourTilePos(pos);
+            var neighbourTilePositions = GridHelpers.GetNeighborPos(pos);
             foreach (var neighbourTilePos in neighbourTilePositions) {
                 if (roadTiles.TryGetValue(neighbourTilePos, out var roadTileInfo)) {
-                    roadTileInfo.TurnOffDirection(GetPathDirection(neighbourTilePos, pos));
+                    roadTileInfo.TurnOffDirection(GridHelpers.GetPathDirection(neighbourTilePos, pos));
                     roadTilemap.SetTile(neighbourTilePos, tileLibrary.GetRoadTile(roadTileInfo.ConnectionDirection));
                 }
             }
@@ -106,7 +108,7 @@ namespace Tiles
             }
 
             if (previousSelectedTile.HasValue) {
-                var previousTileDirection = GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
+                var previousTileDirection = GridHelpers.GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
                 var previousTile = roadTiles[previousSelectedTile.Value];
                 previousTile.TurnOnDirection(previousTileDirection);
                 roadTilemap.SetTile(previousSelectedTile.Value,
@@ -115,7 +117,7 @@ namespace Tiles
 
             previousSelectedTile = previousSelectedTile ?? currentSelectedTile;
 
-            var newTileDirection = GetPathDirection(currentSelectedTile, previousSelectedTile.Value);
+            var newTileDirection = GridHelpers.GetPathDirection(currentSelectedTile, previousSelectedTile.Value);
             if (roadTiles.TryGetValue(pos, out var roadTileInfo)) {
                 roadTileInfo.TurnOnDirection(newTileDirection);
                 roadTilemap.SetTile(currentSelectedTile, tileLibrary.GetRoadTile(roadTileInfo.ConnectionDirection));
@@ -157,23 +159,6 @@ namespace Tiles
                 var roadTileInfo = new RoadTileInfo(tile.connectionDirection, true);
                 roadTiles.Add(pos, roadTileInfo);
             }   
-        }
-
-        private ConnectionDirection GetPathDirection(Vector3Int from, Vector3Int to) =>
-            from switch {
-                { } when from.y < to.y => ConnectionDirection.Up,
-                { } when from.y > to.y => ConnectionDirection.Down,
-                { } when from.x < to.x => ConnectionDirection.Right,
-                { } when from.x > to.x => ConnectionDirection.Left,
-                _ => ConnectionDirection.None
-            };
-
-        private IEnumerable<Vector3Int> GetNeibhourTilePos(Vector3Int pos)
-        {
-            yield return pos + Vector3Int.up;
-            yield return pos + Vector3Int.down;
-            yield return pos + Vector3Int.left;
-            yield return pos + Vector3Int.right;
         }
     }
 }
