@@ -2,8 +2,22 @@
 {
     public class RoadTileInfo
     {
-        public ConnectionDirection ConnectionDirection { get; private set; }
+        private readonly ConnectionDirection initialConnectionDirection;
+        
+        public ConnectionDirection ConnectionDirection;
         public bool WasInitiallyPlaced;
+
+        public RoadTileInfo(ConnectionDirection connectionDirection = ConnectionDirection.None, bool wasInitiallyPlaced = false)
+        {
+            initialConnectionDirection = connectionDirection;
+            ConnectionDirection = connectionDirection;
+            WasInitiallyPlaced = wasInitiallyPlaced;
+        }
+
+        public void ResetConnectionDirection()
+        {
+            ConnectionDirection = initialConnectionDirection;
+        }
 
         public void TurnOnDirection(ConnectionDirection direction)
         {

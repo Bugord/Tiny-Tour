@@ -1,15 +1,22 @@
+using System;
+using System.Collections.Generic;
 using Level;
 using Tiles;
+using Tiles.Ground;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
 public class TilemapEditor : MonoBehaviour
 {
     [SerializeField]
-    private Tilemap roadTilemap;
+    private TilemapEditorUI tilemapEditorUI;
 
     [SerializeField]
     private Tilemap terrainTilemap;
+    
+    [SerializeField]
+    private Tilemap roadTilemap;
 
     [SerializeField]
     private TileLibraryData tileLibraryData;
@@ -17,18 +24,40 @@ public class TilemapEditor : MonoBehaviour
     private ITileLibrary tileLibrary;
 
     private Camera mainCamera;
+    
     private RoadEditor roadEditor;
+    private TerrainEditor groundEditor;
+    private TerrainEditor bridgeBaseEditor;
+
+    private List<ITileEditor> tileEditors;
     private ITileEditor currentEditor;
 
     private bool isSelecting;
 
     private void Awake()
     {
+        tileLibraryData.Init();
         tileLibrary = tileLibraryData;
         mainCamera = Camera.main;
         roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary);
+        groundEditor = new TerrainEditor(terrainTilemap, tileLibrary, TerrainType.Ground);
+        bridgeBaseEditor = new TerrainEditor(terrainTilemap, tileLibrary, TerrainType.BridgeBase);
 
-        currentEditor = roadEditor;
+        tileEditors = new List<ITileEditor> {
+            groundEditor,
+            roadEditor,
+            bridgeBaseEditor
+        };
+        
+        tilemapEditorUI.SetData(tileEditors.Count);
+        tilemapEditorUI.SelectedValueChanged += OnSelectedTileEditorChanged;
+        
+        currentEditor = groundEditor;
+    }
+
+    private void OnDestroy()
+    {
+        tilemapEditorUI.SelectedValueChanged -= OnSelectedTileEditorChanged;
     }
 
     private void Update()
@@ -36,6 +65,10 @@ public class TilemapEditor : MonoBehaviour
         var pointerPosition = Input.mousePosition;
         var tilePosition = roadTilemap.WorldToCell(mainCamera.ScreenToWorldPoint(pointerPosition));
 
+        if (EventSystem.current.IsPointerOverGameObject()) {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
             currentEditor.OnTileDown(tilePosition);
         }
@@ -55,5 +88,15 @@ public class TilemapEditor : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse1)) {
             currentEditor.OnTileEraseMove(tilePosition);
         }
+    }
+
+    public void Reload()
+    {
+        roadEditor.Reload();
+    }
+
+    private void OnSelectedTileEditorChanged(int editorIndex)
+    {
+        currentEditor = tileEditors[editorIndex];
     }
 }

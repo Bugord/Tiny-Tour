@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Core;
+﻿using System.Collections.Generic;
 using Level;
 using Tiles.Ground;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Utility;
-using Object = UnityEngine.Object;
 
 namespace Tiles
 {
@@ -14,23 +10,22 @@ namespace Tiles
     {
         private readonly Tilemap roadTilemap;
         private readonly Tilemap terrainTilemap;
+        private readonly ITileLibrary tileLibrary;
 
-        private readonly Dictionary<Vector3Int, RoadTileInfo> tiles;
-        private readonly Dictionary<ConnectionDirection, RoadTile> roadTileObjects;
+        private readonly Dictionary<Vector3Int, RoadTileInfo> roadTiles;
 
         private Vector3Int? previousSelectedTile;
         private Vector3Int currentSelectedTile;
+
+        private bool isEditorMode = true;
 
         public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, ITileLibrary tileLibrary)
         {
             this.terrainTilemap = terrainTilemap;
             this.roadTilemap = roadTilemap;
+            this.tileLibrary = tileLibrary;
 
-            roadTileObjects = new Dictionary<ConnectionDirection, RoadTile>();
-            tiles = new Dictionary<Vector3Int, RoadTileInfo>();
-
-            ConfigureRoadObjects(tileLibrary.GetRoadTile());
-            SetInitiallyPlacedRoad();
+            roadTiles = new Dictionary<Vector3Int, RoadTileInfo>();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -66,28 +61,34 @@ namespace Tiles
             Clear();
         }
 
-        public void Clear()
+        private void Clear()
         {
             previousSelectedTile = null;
+        }
+
+        public void Reload()
+        {
+            roadTiles.Clear();
+            AddInitiallyPlacedRoad();
         }
 
         public void EraseRoad(Vector3Int pos)
         {
             currentSelectedTile = pos;
 
-            if (!CanEraseRoad(pos)) {
+            if (!CanEraseRoad(pos) && !isEditorMode) {
                 return;
             }
 
             var neighbourTilePositions = GetNeibhourTilePos(pos);
             foreach (var neighbourTilePos in neighbourTilePositions) {
-                if (tiles.TryGetValue(neighbourTilePos, out var roadTileInfo)) {
+                if (roadTiles.TryGetValue(neighbourTilePos, out var roadTileInfo)) {
                     roadTileInfo.TurnOffDirection(GetPathDirection(neighbourTilePos, pos));
-                    roadTilemap.SetTile(neighbourTilePos, roadTileObjects[roadTileInfo.ConnectionDirection]);
+                    roadTilemap.SetTile(neighbourTilePos, tileLibrary.GetRoadTile(roadTileInfo.ConnectionDirection));
                 }
             }
 
-            tiles.Remove(pos);
+            roadTiles.Remove(pos);
             roadTilemap.SetTile(pos, null);
         }
 
@@ -106,24 +107,25 @@ namespace Tiles
 
             if (previousSelectedTile.HasValue) {
                 var previousTileDirection = GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
-                var previousTile = tiles[previousSelectedTile.Value];
+                var previousTile = roadTiles[previousSelectedTile.Value];
                 previousTile.TurnOnDirection(previousTileDirection);
-                roadTilemap.SetTile(previousSelectedTile.Value, roadTileObjects[previousTile.ConnectionDirection]);
+                roadTilemap.SetTile(previousSelectedTile.Value,
+                    tileLibrary.GetRoadTile(previousTile.ConnectionDirection));
             }
 
             previousSelectedTile = previousSelectedTile ?? currentSelectedTile;
 
             var newTileDirection = GetPathDirection(currentSelectedTile, previousSelectedTile.Value);
-            if (tiles.TryGetValue(pos, out var roadTileInfo)) {
+            if (roadTiles.TryGetValue(pos, out var roadTileInfo)) {
                 roadTileInfo.TurnOnDirection(newTileDirection);
-                roadTilemap.SetTile(currentSelectedTile, roadTileObjects[roadTileInfo.ConnectionDirection]);
+                roadTilemap.SetTile(currentSelectedTile, tileLibrary.GetRoadTile(roadTileInfo.ConnectionDirection));
             }
             else {
                 var newRoadTile = new RoadTileInfo();
                 newRoadTile.TurnOnDirection(newTileDirection);
 
-                tiles.Add(pos, newRoadTile);
-                roadTilemap.SetTile(currentSelectedTile, roadTileObjects[newRoadTile.ConnectionDirection]);
+                roadTiles.Add(pos, newRoadTile);
+                roadTilemap.SetTile(currentSelectedTile, tileLibrary.GetRoadTile(newRoadTile.ConnectionDirection));
             }
 
             previousSelectedTile = pos;
@@ -131,7 +133,7 @@ namespace Tiles
 
         private bool CanEraseRoad(Vector3Int pos)
         {
-            if (tiles.TryGetValue(pos, out var tileInfo)) {
+            if (roadTiles.TryGetValue(pos, out var tileInfo)) {
                 return !tileInfo.WasInitiallyPlaced;
             }
 
@@ -144,31 +146,17 @@ namespace Tiles
             return terrainTile && terrainTile.terrainType != TerrainType.Water;
         }
 
-        private void SetInitiallyPlacedRoad()
+        private void AddInitiallyPlacedRoad()
         {
-            var roadTilesPos = new List<Vector3Int>();
             foreach (var pos in roadTilemap.cellBounds.allPositionsWithin) {
-                var tile = roadTilemap.GetTile(pos);
-                if (tile) {
-                    roadTilesPos.Add(pos);
+                var tile = roadTilemap.GetTile<RoadTile>(pos);
+                if (!tile) {
+                    continue;
                 }
-            }
 
-            foreach (var roadTilePos in roadTilesPos) {
-                var roadTileInfo = new RoadTileInfo {
-                    WasInitiallyPlaced = true
-                };
-
-                var neighbourTilePositions = GetNeibhourTilePos(roadTilePos);
-                foreach (var neighbourTilePos in neighbourTilePositions) {
-                    if (roadTilesPos.Contains(neighbourTilePos)) {
-                        roadTileInfo.TurnOnDirection(GetPathDirection(roadTilePos, neighbourTilePos));
-                    }
-                }
-                
-                tiles.Add(roadTilePos, roadTileInfo);
-                roadTilemap.SetTile(roadTilePos, roadTileObjects[roadTileInfo.ConnectionDirection]);
-            }
+                var roadTileInfo = new RoadTileInfo(tile.connectionDirection, true);
+                roadTiles.Add(pos, roadTileInfo);
+            }   
         }
 
         private ConnectionDirection GetPathDirection(Vector3Int from, Vector3Int to) =>
@@ -179,16 +167,6 @@ namespace Tiles
                 { } when from.x > to.x => ConnectionDirection.Left,
                 _ => ConnectionDirection.None
             };
-
-        private void ConfigureRoadObjects(RoadTile roadTile)
-        {
-            var connectionDirections = EnumExtensions.GetAllEnums<ConnectionDirection>();
-            foreach (var connectionDirection in connectionDirections) {
-                var roadTileObject = Object.Instantiate(roadTile);
-                roadTileObject.connectionDirection = connectionDirection;
-                roadTileObjects.Add(connectionDirection, roadTileObject);
-            }
-        }
 
         private IEnumerable<Vector3Int> GetNeibhourTilePos(Vector3Int pos)
         {

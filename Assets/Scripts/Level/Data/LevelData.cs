@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Level
 {
@@ -9,5 +8,6 @@ namespace Level
     {
         public string levelName;
         public List<TerrainTileData> terrainTileData;
+        public List<RoadTileData> roadTileData;
     }
 }

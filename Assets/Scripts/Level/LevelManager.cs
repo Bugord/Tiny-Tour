@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Tiles;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level
 {
     public class LevelManager : MonoBehaviour
     {
+        [FormerlySerializedAs("tilemapDataEditor")]
         [SerializeField]
-        private TilemapDataEditor tilemapDataEditor;
+        private TilemapSaveLoader tilemapSaveLoader;
 
         [SerializeField]
         private LevelManagerUI levelManagerUI;
@@ -23,8 +23,8 @@ namespace Level
         
         private void Awake()
         {
-            levelLoader = tilemapDataEditor;
-            levelSaver = tilemapDataEditor;
+            levelLoader = tilemapSaveLoader;
+            levelSaver = tilemapSaveLoader;
             levelProvider = levelLibrary;
             
             levelManagerUI.LevelSelected += OnLevelSelected;
@@ -77,6 +77,13 @@ namespace Level
         {
             var levelData = levelSaver.SaveLevel();
             levelProvider.SaveLevel(levelData);
+            
+            levelProvider.LoadAllLevels();
+            var levelsData = levelProvider.GetCachedLevels();
+            levelManagerUI.SetData(levelsData);
+            
+            var savedLevel = levelProvider.GetLevelByName(levelData.levelName);
+            levelManagerUI.SetSelectedLevel(levelsData.IndexOf(savedLevel));
         }
 
         private void OnSaveAsPressed(string levelName)
