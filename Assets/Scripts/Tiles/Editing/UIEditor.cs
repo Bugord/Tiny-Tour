@@ -1,22 +1,21 @@
 ﻿using System.Collections.Generic;
 using Level;
-using Tiles.Ground;
 using Tiles.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Tiles
 {
-    public class TerrainEditor : ITileEditor
+    public class UIEditor : ITileEditor
     {
-        private readonly Tilemap terrainTilemap;
+        private readonly Tilemap uiTilemap;
         private readonly ITileLibrary tileLibrary;
         
-        private TerrainType terrainType;
+        private UITileType uiTileType;
         
-        public TerrainEditor(Tilemap terrainTilemap, ITileLibrary tileLibrary)
+        public UIEditor(Tilemap uiTilemap, ITileLibrary tileLibrary)
         {
-            this.terrainTilemap = terrainTilemap;
+            this.uiTilemap = uiTilemap;
             this.tileLibrary = tileLibrary;
         }
         
@@ -47,32 +46,32 @@ namespace Tiles
         public List<BaseEditorOption> GetOptions()
         {
             return new List<BaseEditorOption> {
-                new TerrainEditorOption {
-                    TerrainType = TerrainType.Ground,
+                new UIEditorOption {
+                    UITileType = UITileType.Target,
                     TileEditor = this,
-                    Icon = tileLibrary.GetTerrainTileByType(TerrainType.Ground).m_DefaultSprite
+                    Icon = tileLibrary.GetUIType(UITileType.Target).sprite
                 },
-                new TerrainEditorOption {
-                    TerrainType = TerrainType.BridgeBase,
+                new UIEditorOption {
+                    UITileType = UITileType.SpawnPoint,
                     TileEditor = this,
-                    Icon = tileLibrary.GetTerrainTileByType(TerrainType.BridgeBase).m_DefaultSprite
+                    Icon = tileLibrary.GetUIType(UITileType.SpawnPoint).sprite
                 }
             };
         }
 
         public void SetOption(BaseEditorOption option)
         {
-            terrainType = ((TerrainEditorOption)option).TerrainType;
+            uiTileType = ((UIEditorOption)option).UITileType;
         }
 
         private void SetTerrainTile(Vector3Int pos)
         {
-            terrainTilemap.SetTile(pos, tileLibrary.GetTerrainTileByType(terrainType));
+            uiTilemap.SetTile(pos, tileLibrary.GetUIType(uiTileType));
         }
 
         private void EraseTile(Vector3Int pos)
         {
-            terrainTilemap.SetTile(pos, tileLibrary.GetTerrainTileByType(TerrainType.Water));
+            uiTilemap.SetTile(pos, null);
         }
     }
 }

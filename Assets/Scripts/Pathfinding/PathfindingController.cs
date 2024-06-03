@@ -16,10 +16,10 @@ namespace Pathfinding
         private AstarPathfinding astarPathfinding;
 
         [SerializeField]
-        private Vector2Int from;
+        public Vector2Int from;
 
         [SerializeField]
-        private Vector2Int to;
+        public Vector2Int to;
 
         private void Awake()
         {
@@ -33,6 +33,12 @@ namespace Pathfinding
             var path = astarPathfinding.FindPath(from, to);
 
             return path;
+        }
+
+        public Vector3[] FindPathWorld(Vector2Int from, Vector2Int to)
+        {
+            var path = FindPath(from, to);
+            return path.Select(point => roadTilemap.CellToWorld((Vector3Int)point) + Vector3.one * 0.5f).ToArray();
         }
 
         [ContextMenu("PrintConnectionDirections")]

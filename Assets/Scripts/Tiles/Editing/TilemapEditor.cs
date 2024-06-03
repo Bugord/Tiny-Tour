@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Level;
 using Tiles;
 using Tiles.Ground;
+using Tiles.Options;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
@@ -17,7 +19,10 @@ public class TilemapEditor : MonoBehaviour
     
     [SerializeField]
     private Tilemap roadTilemap;
-
+    
+    [SerializeField]
+    private Tilemap uiTilemap;
+    
     [SerializeField]
     private TileLibraryData tileLibraryData;
         
@@ -26,8 +31,8 @@ public class TilemapEditor : MonoBehaviour
     private Camera mainCamera;
     
     private RoadEditor roadEditor;
-    private TerrainEditor groundEditor;
-    private TerrainEditor bridgeBaseEditor;
+    private TerrainEditor terrainEditor;
+    private UIEditor uiEditor;
 
     private List<ITileEditor> tileEditors;
     private ITileEditor currentEditor;
@@ -40,19 +45,19 @@ public class TilemapEditor : MonoBehaviour
         tileLibrary = tileLibraryData;
         mainCamera = Camera.main;
         roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary);
-        groundEditor = new TerrainEditor(terrainTilemap, tileLibrary, TerrainType.Ground);
-        bridgeBaseEditor = new TerrainEditor(terrainTilemap, tileLibrary, TerrainType.BridgeBase);
+        terrainEditor = new TerrainEditor(terrainTilemap, tileLibrary);
+        uiEditor = new UIEditor(uiTilemap, tileLibrary);
 
         tileEditors = new List<ITileEditor> {
-            groundEditor,
+            terrainEditor,
             roadEditor,
-            bridgeBaseEditor
+            uiEditor
         };
         
-        tilemapEditorUI.SetData(tileEditors.Count);
+        tilemapEditorUI.SetData(tileEditors.SelectMany(editor => editor.GetOptions()).ToList());
         tilemapEditorUI.SelectedValueChanged += OnSelectedTileEditorChanged;
         
-        currentEditor = groundEditor;
+        currentEditor = terrainEditor;
     }
 
     private void OnDestroy()
@@ -95,8 +100,9 @@ public class TilemapEditor : MonoBehaviour
         roadEditor.Reload();
     }
 
-    private void OnSelectedTileEditorChanged(int editorIndex)
+    private void OnSelectedTileEditorChanged(BaseEditorOption editorOption)
     {
-        currentEditor = tileEditors[editorIndex];
+        currentEditor = editorOption.TileEditor;
+        currentEditor.SetOption(editorOption);
     }
 }

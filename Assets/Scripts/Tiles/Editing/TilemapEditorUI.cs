@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
+using Tiles.Options;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Tiles
 {
     public class TilemapEditorUI : MonoBehaviour
     {
-        public event Action<int> SelectedValueChanged; 
+        public event Action<BaseEditorOption> SelectedValueChanged;
+
+        private List<BaseEditorOption> options;
 
         [SerializeField]
-        private TMP_Dropdown dropdown;
+        private ToggleGroup toggleGroup;
 
-        private void Awake()
-        {
-            dropdown.onValueChanged.AddListener(OnSelectedValueChanged);
-        }
+        [SerializeField]
+        private TileEditorOption tileEditorOptionPrefab;
 
-        private void OnDestroy()
+        [SerializeField]
+        private Transform optionsRoot;
+        
+        public void SetData(List<BaseEditorOption> editorOptions)
         {
-            dropdown.onValueChanged.RemoveAllListeners();
-        }
-
-        public void SetData(int count)
-        {
-            for (var i = 0; i < count; i++) {
-                dropdown.options.Add(new TMP_Dropdown.OptionData(i.ToString()));
+            options = editorOptions;
+            for (var i = 0; i < editorOptions.Count; i++) {
+                var editorOption = editorOptions[i];
+                var option = Instantiate(tileEditorOptionPrefab, optionsRoot);
+                option.Setup(editorOption.Icon, toggleGroup, i, i == 0, OnToggleOn);
             }
         }
 
-        private void OnSelectedValueChanged(int value)
+        public void OnToggleOn(int index)
         {
-            SelectedValueChanged?.Invoke(value);
+            SelectedValueChanged?.Invoke(options[index]);
         }
     }
 }

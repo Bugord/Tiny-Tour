@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Tiles.Options;
+using UnityEngine;
 
 namespace Tiles
 {
@@ -9,5 +11,7 @@ namespace Tiles
         public void OnTileMove(Vector3Int pos);
         public void OnTileEraseDown(Vector3Int pos);
         public void OnTileEraseMove(Vector3Int pos);
+        public List<BaseEditorOption> GetOptions();
+        public void SetOption(BaseEditorOption option);
     }
 }

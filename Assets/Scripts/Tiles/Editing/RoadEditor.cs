@@ -2,6 +2,7 @@
 using System.Linq;
 using Level;
 using Tiles.Ground;
+using Tiles.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
@@ -58,6 +59,21 @@ namespace Tiles
             EraseRoad(pos);
         }
 
+        public List<BaseEditorOption> GetOptions()
+        {
+            return new List<BaseEditorOption>() {
+                new RoadEditorOption {
+                    TileEditor = this,
+                    Icon = tileLibrary.GetRoadTile(ConnectionDirection.Right).defaultSprite
+                }
+            };
+        }
+
+        public void SetOption(BaseEditorOption baseEditorOption)
+        {
+            
+        }
+
         public void OnTileUp()
         {
             Clear();
@@ -108,7 +124,8 @@ namespace Tiles
             }
 
             if (previousSelectedTile.HasValue) {
-                var previousTileDirection = GridHelpers.GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
+                var previousTileDirection =
+                    GridHelpers.GetPathDirection(previousSelectedTile.Value, currentSelectedTile);
                 var previousTile = roadTiles[previousSelectedTile.Value];
                 previousTile.TurnOnDirection(previousTileDirection);
                 roadTilemap.SetTile(previousSelectedTile.Value,
@@ -158,7 +175,7 @@ namespace Tiles
 
                 var roadTileInfo = new RoadTileInfo(tile.connectionDirection, true);
                 roadTiles.Add(pos, roadTileInfo);
-            }   
+            }
         }
     }
 }

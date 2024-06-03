@@ -82,6 +82,7 @@ namespace Pathfinding
                 path.Add(currentNode);
                 currentNode = currentNode.Parent;
             }
+            path.Add(startNode);
             path.Reverse();
 
             return path;

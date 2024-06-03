@@ -2,6 +2,7 @@
 using Level;
 using Tiles.Ground;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Utility;
 
 namespace Tiles
@@ -21,6 +22,12 @@ namespace Tiles
         [SerializeField]
         private RoadTile roadTile;
 
+        [SerializeField]
+        private UITile spawnPointTile;
+
+        [SerializeField]
+        private UITile targetTile;
+
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
 
         public void Init()
@@ -38,6 +45,13 @@ namespace Tiles
                 TerrainType.Ground => groundTile,
                 TerrainType.Water => waterTile,
                 TerrainType.BridgeBase => bridgeBaseTile,
+                _ => null
+            };
+
+        public UITile GetUIType(UITileType uiTileType) =>
+            uiTileType switch {
+                UITileType.Target => targetTile,
+                UITileType.SpawnPoint => spawnPointTile,
                 _ => null
             };
 

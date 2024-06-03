@@ -1,5 +1,6 @@
 ﻿using Tiles;
 using Tiles.Ground;
+using UnityEngine.Tilemaps;
 
 namespace Level
 {
@@ -7,5 +8,6 @@ namespace Level
     {
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection);
         public TerrainTile GetTerrainTileByType(TerrainType terrainType);
+        public UITile GetUIType(UITileType uiTileType);
     }
 }

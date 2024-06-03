@@ -16,3 +16,5 @@ MonoBehaviour:
   waterTile: {fileID: 11400000, guid: 706748ef5d5c0ed4ca6ca16907a063b9, type: 2}
   bridgeBaseTile: {fileID: 11400000, guid: 879aa518ef911fb4a8ddd830cf2eb124, type: 2}
   roadTile: {fileID: 11400000, guid: 2350f9bfa4ea9874ba8b562d0a2a3115, type: 2}
+  spawnPointTile: {fileID: 11400000, guid: b6b0e254ca2cd524682b53fd1230d172, type: 2}
+  targetTile: {fileID: 11400000, guid: 7d0aba59cc882f748b02342ca4ef92f3, type: 2}

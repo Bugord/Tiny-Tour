@@ -46,7 +46,7 @@ namespace Pathfinding
 
             var nodePosition = new Vector2Int(node.GridX, node.GridY);
             foreach (var neighborPosition in GridHelpers.GetNeighborPos(new Vector2Int(node.GridX, node.GridY))) {
-                if (node.GridX < 0 || node.GridX >= Size.x || node.GridY + 1 < 0 || node.GridY + 1 >= Size.y) {
+                if (neighborPosition.x < 0 || neighborPosition.x >= Size.x || neighborPosition.y < 0 || neighborPosition.y >= Size.y) {
                     continue;
                 }
                 var direction = GridHelpers.GetPathDirection(nodePosition, neighborPosition);
@@ -57,7 +57,6 @@ namespace Pathfinding
 
             return neighbors;
         }
-
 
     }
 }
