@@ -1,6 +1,5 @@
 ﻿using System;
 using Core;
-using Tiles;
 using UnityEngine;
 
 namespace Level.Data
@@ -8,8 +7,8 @@ namespace Level.Data
     [Serializable]
     public class PathData
     {
-        public Vector3Int position;
+        public Vector3Int targetPosition;
+        public Vector3Int spawnPosition;
         public Team team;
-        public LogisticTileType type;
     }
 }

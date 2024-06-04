@@ -44,12 +44,12 @@ namespace Core
         public void Play()
         {
             pathfindingController.Update();
-            
-            var path = pathfindingController.FindPath(
-                (Vector2Int)currentLevelData.pathsData.First(x => x.type == LogisticTileType.SpawnPoint).position,
-                (Vector2Int)currentLevelData.pathsData.First(x => x.type == LogisticTileType.Target).position);
-            
-            cars[0].PlayPath(path.Select(p => inGameTilemapEditor.CellToWorldPos((Vector3Int)p)).ToArray());
+
+            for (var i = 0; i < currentLevelData.pathsData.Length; i++) {
+                var pathData = currentLevelData.pathsData[i];
+                var path = pathfindingController.FindPath(pathData.spawnPosition, pathData.targetPosition);
+                cars[i].PlayPath(path.Select(p => inGameTilemapEditor.CellToWorldPos((Vector3Int)p)).ToArray());
+            }
         }
 
         private void SpawnCars()
@@ -57,11 +57,9 @@ namespace Core
             cars = new List<Car>();
 
             foreach (var pathData in currentLevelData.pathsData) {
-                if (pathData.type == LogisticTileType.SpawnPoint) {
-                    var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(pathData.position);
-                    var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
-                    cars.Add(car);
-                }
+                var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(pathData.spawnPosition);
+                var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
+                cars.Add(car);
             }
         }
     }

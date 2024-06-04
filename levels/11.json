@@ -894,22 +894,17 @@
     ],
     "pathsData": [
         {
-            "position": {
-                "x": -5,
-                "y": 2,
-                "z": 0
-            },
-            "team": 0,
-            "type": 0
-        },
-        {
-            "position": {
+            "targetPosition": {
                 "x": -5,
                 "y": -4,
                 "z": 0
             },
-            "team": 0,
-            "type": 1
+            "spawnPosition": {
+                "x": -5,
+                "y": 2,
+                "z": 0
+            },
+            "team": 0
         }
     ]
 }

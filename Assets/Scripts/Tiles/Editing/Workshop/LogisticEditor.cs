@@ -18,12 +18,13 @@ namespace Tiles.Editing.Workshop
         private LogisticTileType selectedLogisticTileType;
         private Team selectedTeam;
 
-        private List<PathData> pathsData;
+        private readonly List<LogisticTileData> logisticTiles;
 
         public LogisticEditor(Tilemap uiTilemap, ITileLibrary tileLibrary)
         {
             this.uiTilemap = uiTilemap;
             this.tileLibrary = tileLibrary;
+            logisticTiles = new List<LogisticTileData>();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -75,20 +76,47 @@ namespace Tiles.Editing.Workshop
         public void Load(PathData[] pathsData)
         {
             uiTilemap.ClearAllTiles();
-
-            this.pathsData = pathsData.ToList();
+            logisticTiles.Clear();
+            
+            foreach (var pathData in pathsData) {
+                logisticTiles.Add(new LogisticTileData {
+                    Team = pathData.team,
+                    Position = pathData.targetPosition,
+                    Type = LogisticTileType.Target
+                });
+              
+                logisticTiles.Add(new LogisticTileData {
+                    Team = pathData.team,
+                    Position = pathData.spawnPosition,
+                    Type = LogisticTileType.SpawnPoint
+                });
+                
+                uiTilemap.SetTile(pathData.spawnPosition, tileLibrary.GetLogisticTile(LogisticTileType.SpawnPoint, pathData.team));
+                uiTilemap.SetTile(pathData.targetPosition, tileLibrary.GetLogisticTile(LogisticTileType.Target, pathData.team));
+            }
+            
             if (!Validate()) {
                 return;
-            }
-
-            foreach (var pathData in pathsData) {
-                uiTilemap.SetTile(pathData.position, tileLibrary.GetLogisticTile(pathData.type, pathData.team));
             }
         }
 
         public PathData[] Save()
         {
-            return Validate() ? pathsData.ToArray() : Array.Empty<PathData>();
+            var pathsData = new List<PathData>();
+            foreach (var spawnPoint in logisticTiles.Where(tile => tile.Type == LogisticTileType.SpawnPoint)) {
+                var target = logisticTiles.FirstOrDefault(tile =>
+                    tile.Type == LogisticTileType.Target && tile.Team == spawnPoint.Team);
+
+                if (target != null) {
+                    pathsData.Add(new PathData {
+                        team = spawnPoint.Team,
+                        spawnPosition = spawnPoint.Position,
+                        targetPosition = target.Position
+                    });
+                }
+            }
+            
+            return pathsData.ToArray();
         }
 
         private bool Validate()
@@ -104,21 +132,21 @@ namespace Tiles.Editing.Workshop
 
         private void SetPathTile(Vector3Int pos)
         {
-            var path = pathsData.FirstOrDefault(path =>
-                path.team == selectedTeam && path.type == selectedLogisticTileType);
+            var path = logisticTiles.FirstOrDefault(path =>
+                path.Team == selectedTeam && path.Type == selectedLogisticTileType);
 
             if (path != null) {
-                uiTilemap.SetTile(path.position, null);
-                path.position = pos;
+                uiTilemap.SetTile(path.Position, null);
+                path.Position = pos;
                 return;
             }
 
-            path = new PathData {
-                team = selectedTeam,
-                type = selectedLogisticTileType,
-                position = pos
+            path = new LogisticTileData {
+                Team = selectedTeam,
+                Type = selectedLogisticTileType,
+                Position = pos
             };
-            pathsData.Add(path);
+            logisticTiles.Add(path);
         }
 
         private void EraseLogisticTile(Vector3Int pos)
@@ -129,13 +157,13 @@ namespace Tiles.Editing.Workshop
 
         private void ErasePath(Vector3Int pos)
         {
-            var path = pathsData.FirstOrDefault(path => path.position == pos);
+            var path = logisticTiles.FirstOrDefault(path => path.Position == pos);
 
             if (path == null) {
                 return;
             }
 
-            pathsData.Remove(path);
+            logisticTiles.Remove(path);
         }
     }
 }

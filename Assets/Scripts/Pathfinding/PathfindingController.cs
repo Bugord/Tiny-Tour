@@ -38,6 +38,11 @@ namespace Pathfinding
             return astarPathfinding.FindPath(from, to);
         }
 
+        public List<Vector2Int> FindPath(Vector3Int from, Vector3Int to)
+        {
+            return astarPathfinding.FindPath((Vector2Int)from, (Vector2Int)to);
+        }
+        
         public Vector3[] FindPathWorld(Vector2Int from, Vector2Int to)
         {
             var path = FindPath(from, to);
