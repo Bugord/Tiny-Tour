@@ -9,5 +9,7 @@ namespace Level
         public string levelName;
         public List<TerrainTileData> terrainTileData;
         public List<RoadTileData> roadTileData;
+        public List<SpawnPointData> spawnPointsData;
+        public List<TargetData> targetsData;
     }
 }

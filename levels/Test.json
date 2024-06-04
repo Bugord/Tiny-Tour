@@ -801,5 +801,26 @@
             },
             "terrainType": 1
         }
+    ],
+    "roadTileData": [],
+    "spawnPointsData": [
+        {
+            "position": {
+                "x": -3,
+                "y": -2,
+                "z": 0
+            },
+            "team": 0
+        }
+    ],
+    "targetsData": [
+        {
+            "position": {
+                "x": 1,
+                "y": 2,
+                "z": 0
+            },
+            "team": 0
+        }
     ]
 }

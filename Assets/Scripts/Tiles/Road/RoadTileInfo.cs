@@ -1,4 +1,6 @@
-﻿namespace Tiles
+﻿using Core;
+
+namespace Tiles
 {
     public class RoadTileInfo
     {

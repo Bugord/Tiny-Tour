@@ -20,6 +20,9 @@ namespace Tiles
         private Tilemap roadTilemap;
         
         [SerializeField]
+        private Tilemap uiTilemap;
+
+        [SerializeField]
         private TileLibraryData tileLibraryData;
         
         private ITileLibrary tileLibrary;
@@ -33,11 +36,11 @@ namespace Tiles
 
         public LevelData SaveLevel()
         {
-            var terrainTilesData = GetTerrainTilesData();
-            var roadTilesData = GetRoadTilesData();
             var levelData = new LevelData {
-                terrainTileData = terrainTilesData,
-                roadTileData = roadTilesData,
+                terrainTileData = GetTerrainTilesData(),
+                roadTileData = GetRoadTilesData(),
+                spawnPointsData = GetSpawnPointsData(),
+                targetsData = GetTargetsData(),
                 levelName = currentLevelData.levelName
             };
 
@@ -84,10 +87,48 @@ namespace Tiles
             return roadTilesData;
         }
 
+        private List<SpawnPointData> GetSpawnPointsData()
+        {
+            var spawnPointsData = new List<SpawnPointData>();
+            foreach (var pos in uiTilemap.cellBounds.allPositionsWithin) {
+                var roadTile = uiTilemap.GetTile<UITile>(pos);
+                if (!roadTile || roadTile.type != UITileType.SpawnPoint) {
+                    continue;
+                }
+
+                var spawnPointData = new SpawnPointData {
+                    position = pos,
+                    team = roadTile.team
+                };
+
+                spawnPointsData.Add(spawnPointData);
+            }
+
+            return spawnPointsData;
+        }
+        
+        private List<TargetData> GetTargetsData()
+        {
+            var targetsData = new List<TargetData>();
+            foreach (var pos in uiTilemap.cellBounds.allPositionsWithin) {
+                var roadTile = uiTilemap.GetTile<UITile>(pos);
+                if (!roadTile || roadTile.type != UITileType.Target) {
+                    continue;
+                }
+
+                var targetData = new TargetData() {
+                    position = pos,
+                    team = roadTile.team
+                };
+
+                targetsData.Add(targetData);
+            }
+
+            return targetsData;
+        }
+
         private void LoadTerrainTilesData(List<TerrainTileData> terrainTilesData)
         {
-            terrainTilemap.ClearAllTiles();
-            
             foreach (var terrainTileData in terrainTilesData) {
                 terrainTilemap.SetTile(terrainTileData.position, tileLibrary.GetTerrainTileByType(terrainTileData.terrainType));
             }
@@ -95,18 +136,36 @@ namespace Tiles
         
         private void LoadRoadTilesData(List<RoadTileData> roadTilesData)
         {
-            roadTilemap.ClearAllTiles();
-            
             foreach (var roadTileData in roadTilesData) {
                 roadTilemap.SetTile(roadTileData.position, tileLibrary.GetRoadTile(roadTileData.connectionDirection));
+            }
+        }
+
+        private void LoadSpawnPoints(List<SpawnPointData> spawnPointsData)
+        {
+            foreach (var spawnPointData in spawnPointsData) {
+                uiTilemap.SetTile(spawnPointData.position, tileLibrary.GetUIType(UITileType.SpawnPoint));
+            }
+        }
+        
+        private void LoadTargets(List<TargetData> targetsData)
+        {
+            foreach (var targetData in targetsData) {
+                uiTilemap.SetTile(targetData.position, tileLibrary.GetUIType(UITileType.Target));
             }
         }
 
         public void LoadLevel(LevelData levelData)
         {
             currentLevelData = levelData;
+            roadTilemap.ClearAllTiles();
+            terrainTilemap.ClearAllTiles();
+            uiTilemap.ClearAllTiles();
+            
             LoadTerrainTilesData(levelData.terrainTileData);
             LoadRoadTilesData(levelData.roadTileData);
+            LoadSpawnPoints(levelData.spawnPointsData);
+            LoadTargets(levelData.targetsData);
             tilemapEditor.Reload();
         }
     }

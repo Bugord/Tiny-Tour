@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: tile_target
   m_EditorClassIdentifier: 
   sprite: {fileID: 8397989551524518093, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+  type: 1
+  team: 0

@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEditor;
 
-namespace Tiles
+namespace Core
 {
     [Flags]
     public enum ConnectionDirection

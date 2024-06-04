@@ -1,4 +1,5 @@
-﻿using Tiles;
+﻿using Core;
+using Tiles;
 
 namespace Pathfinding
 {

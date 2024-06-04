@@ -963,5 +963,7 @@
             },
             "connectionDirection": 10
         }
-    ]
+    ],
+    "spawnPointsData": [],
+    "targetsData": []
 }
