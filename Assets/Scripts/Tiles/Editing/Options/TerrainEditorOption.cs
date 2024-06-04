@@ -1,6 +1,6 @@
 ﻿using Tiles.Ground;
 
-namespace Tiles.Options
+namespace Tiles.Editing.Options
 {
     public class TerrainEditorOption : BaseEditorOption
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Tiles.Options;
+using Tiles.Editing.Options;
 using UnityEngine;
 
-namespace Tiles
+namespace Tiles.Editing
 {
     public interface ITileEditor
     {

@@ -5,9 +5,9 @@ using Tiles;
 namespace Level
 {
     [Serializable]
-    public class UITileData : BaseTileData
+    public class LogisticTileData : BaseTileData
     {
-        public UITileType tileType;
+        public LogisticTileType tileType;
         public Team team;
     }
 }

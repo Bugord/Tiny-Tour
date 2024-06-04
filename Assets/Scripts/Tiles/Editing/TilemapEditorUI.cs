@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Tiles.Options;
-using TMPro;
+using Tiles.Editing.Options;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Tiles
+namespace Tiles.Editing
 {
     public class TilemapEditorUI : MonoBehaviour
     {

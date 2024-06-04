@@ -1,6 +1,6 @@
 ﻿namespace Tiles
 {
-    public enum UITileType
+    public enum LogisticTileType
     {
         SpawnPoint,
         Target

@@ -27,13 +27,15 @@ namespace Pathfinding
             astarPathfinding = new AstarPathfinding();
         }
 
-        public List<Vector2Int> FindPath(Vector2Int from, Vector2Int to)
+        public void Update()
         {
             var offset = -1 * (Vector2Int)roadTilemap.cellBounds.min;
             astarPathfinding.Update(offset, (Vector2Int)roadTilemap.size, GetConnectionDirections());
-            var path = astarPathfinding.FindPath(from, to);
+        }
 
-            return path;
+        public List<Vector2Int> FindPath(Vector2Int from, Vector2Int to)
+        {
+            return astarPathfinding.FindPath(from, to);
         }
 
         public Vector3[] FindPathWorld(Vector2Int from, Vector2Int to)

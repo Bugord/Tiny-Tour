@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Tiles.Options
+namespace Tiles.Editing.Options
 {
     public abstract class BaseEditorOption
     {

@@ -24,10 +24,10 @@ namespace Tiles
         private RoadTile roadTile;
 
         [SerializeField]
-        private UITile spawnPointTile;
+        private LogisticTile spawnPointTile;
 
         [SerializeField]
-        private UITile targetTile;
+        private LogisticTile targetTile;
 
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
 
@@ -49,10 +49,10 @@ namespace Tiles
                 _ => null
             };
 
-        public UITile GetUIType(UITileType uiTileType) =>
-            uiTileType switch {
-                UITileType.Target => targetTile,
-                UITileType.SpawnPoint => spawnPointTile,
+        public LogisticTile GetLogisticTile(LogisticTileType logisticTileType, Team team) =>
+            logisticTileType switch {
+                LogisticTileType.Target => targetTile,
+                LogisticTileType.SpawnPoint => spawnPointTile,
                 _ => null
             };
 

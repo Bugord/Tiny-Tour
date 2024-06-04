@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Level
+namespace Level.Data
 {
     [Serializable]
     public class LevelData
@@ -8,6 +8,6 @@ namespace Level
         public string levelName;
         public TerrainTileData[] terrainTilesData;
         public RoadTileData[] roadTileData;
-        public UITileData[] uiTilesData;
+        public PathData[] pathsData;
     }
 }

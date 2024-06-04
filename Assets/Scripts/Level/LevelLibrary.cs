@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Level.Data;
 using UnityEngine;
 
 namespace Level
@@ -25,6 +26,7 @@ namespace Level
                     var json = File.ReadAllText(file);
                     var level = JsonUtility.FromJson<LevelData>(json);
                     if (level != null) {
+                        level.pathsData = level.pathsData ?? Array.Empty<PathData>();
                         levelsData.Add(level);
                         Debug.Log($"Loaded {level.levelName}");
                     }

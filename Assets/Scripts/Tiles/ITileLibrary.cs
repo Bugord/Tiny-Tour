@@ -9,6 +9,6 @@ namespace Level
     {
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection);
         public TerrainTile GetTerrainTileByType(TerrainType terrainType);
-        public UITile GetUIType(UITileType uiTileType);
+        public LogisticTile GetLogisticTile(LogisticTileType logisticTileType, Team team);
     }
 }

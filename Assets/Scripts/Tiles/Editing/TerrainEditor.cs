@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using Level;
+using Tiles.Editing.Options;
 using Tiles.Ground;
-using Tiles.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Tiles
+namespace Tiles.Editing
 {
     public class TerrainEditor : ITileEditor
     {

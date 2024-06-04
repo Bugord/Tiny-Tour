@@ -2,32 +2,32 @@
 using System.Linq;
 using Core;
 using Level;
+using Tiles.Editing.Options;
 using Tiles.Ground;
-using Tiles.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
 
-namespace Tiles
+namespace Tiles.Editing
 {
     public class RoadEditor : ITileEditor
     {
         private readonly Tilemap roadTilemap;
         private readonly Tilemap terrainTilemap;
         private readonly ITileLibrary tileLibrary;
+        private readonly bool isEditorMode;
 
         private readonly Dictionary<Vector3Int, RoadTileInfo> roadTiles;
 
         private Vector3Int? previousSelectedTile;
         private Vector3Int currentSelectedTile;
 
-        private bool isEditorMode = true;
-
-        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, ITileLibrary tileLibrary)
+        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, ITileLibrary tileLibrary, bool isEditorMode)
         {
             this.terrainTilemap = terrainTilemap;
             this.roadTilemap = roadTilemap;
             this.tileLibrary = tileLibrary;
+            this.isEditorMode = isEditorMode;
 
             roadTiles = new Dictionary<Vector3Int, RoadTileInfo>();
         }
@@ -88,7 +88,7 @@ namespace Tiles
         {
             roadTiles.Clear();
             roadTilemap.ClearAllTiles();
-            
+
             foreach (var roadTileData in roadTilesData) {
                 roadTilemap.SetTile(roadTileData.position, tileLibrary.GetRoadTile(roadTileData.connectionDirection));
                 var roadTileInfo = new RoadTileInfo(roadTileData.connectionDirection, true);

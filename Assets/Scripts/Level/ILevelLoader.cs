@@ -1,4 +1,6 @@
-﻿namespace Level
+﻿using Level.Data;
+
+namespace Level
 {
     public interface ILevelLoader
     {
