@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
 
-public class TilemapEditor : MonoBehaviour
+public class TilemapEditor : MonoBehaviour, ILevelSaver, ILevelLoader
 {
     [SerializeField]
     private TilemapEditorUI tilemapEditorUI;
@@ -35,10 +35,8 @@ public class TilemapEditor : MonoBehaviour
     private UIEditor uiEditor;
 
     private List<ITileEditor> tileEditors;
-    private ITileEditor currentEditor;
-
-    private bool isSelecting;
-
+    private ITileEditor selectedEditor;
+    
     private void Awake()
     {
         tileLibraryData.Init();
@@ -57,7 +55,7 @@ public class TilemapEditor : MonoBehaviour
         tilemapEditorUI.SetData(tileEditors.SelectMany(editor => editor.GetOptions()).ToList());
         tilemapEditorUI.SelectedValueChanged += OnSelectedTileEditorChanged;
         
-        currentEditor = terrainEditor;
+        selectedEditor = terrainEditor;
     }
 
     private void OnDestroy()
@@ -75,34 +73,45 @@ public class TilemapEditor : MonoBehaviour
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            currentEditor.OnTileDown(tilePosition);
+            selectedEditor.OnTileDown(tilePosition);
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0)) {
-            currentEditor.OnTileUp();
+            selectedEditor.OnTileUp();
         }
 
         if (Input.GetKey(KeyCode.Mouse0)) {
-            currentEditor.OnTileMove(tilePosition);
+            selectedEditor.OnTileMove(tilePosition);
         }
         
         if (Input.GetKeyDown(KeyCode.Mouse1)) {
-            currentEditor.OnTileEraseDown(tilePosition);
+            selectedEditor.OnTileEraseDown(tilePosition);
         }
 
         if (Input.GetKey(KeyCode.Mouse1)) {
-            currentEditor.OnTileEraseMove(tilePosition);
+            selectedEditor.OnTileEraseMove(tilePosition);
         }
-    }
-
-    public void Reload()
-    {
-        roadEditor.Reload();
     }
 
     private void OnSelectedTileEditorChanged(BaseEditorOption editorOption)
     {
-        currentEditor = editorOption.TileEditor;
-        currentEditor.SetOption(editorOption);
+        selectedEditor = editorOption.TileEditor;
+        selectedEditor.SetOption(editorOption);
+    }
+
+    public LevelData SaveLevel()
+    {
+        return new LevelData {
+            roadTileData = roadEditor.Save(),
+            terrainTilesData = terrainEditor.Save(),
+            uiTilesData = uiEditor.Save()
+        };
+    }
+
+    public void LoadLevel(LevelData levelData)
+    {
+        roadEditor.Load(levelData.roadTileData);
+        terrainEditor.Load(levelData.terrainTilesData);
+        uiEditor.Load(levelData.uiTilesData);
     }
 }

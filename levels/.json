@@ -1,6 +1,6 @@
 {
     "levelName": "",
-    "terrainTileData": [
+    "terrainTilesData": [
         {
             "position": {
                 "x": -5,
@@ -806,26 +806,50 @@
         {
             "position": {
                 "x": -2,
-                "y": -1,
+                "y": -2,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 5
         },
         {
             "position": {
                 "x": -1,
-                "y": -1,
+                "y": -2,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 12
         },
         {
             "position": {
                 "x": 0,
+                "y": -2,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -2,
+                "z": 0
+            },
+            "connectionDirection": 9
+        },
+        {
+            "position": {
+                "x": -2,
                 "y": -1,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 3
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 3
         },
         {
             "position": {
@@ -833,7 +857,7 @@
                 "y": 0,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 3
         },
         {
             "position": {
@@ -841,7 +865,7 @@
                 "y": 0,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 4
         },
         {
             "position": {
@@ -849,7 +873,15 @@
                 "y": 0,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 8
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 3
         },
         {
             "position": {
@@ -857,7 +889,7 @@
                 "y": 1,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 3
         },
         {
             "position": {
@@ -877,27 +909,79 @@
         },
         {
             "position": {
+                "x": 1,
+                "y": 1,
+                "z": 0
+            },
+            "connectionDirection": 3
+        },
+        {
+            "position": {
                 "x": -2,
                 "y": 2,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 3
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 2,
+                "z": 0
+            },
+            "connectionDirection": 3
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": 3,
+                "z": 0
+            },
+            "connectionDirection": 6
         },
         {
             "position": {
                 "x": -1,
-                "y": 2,
+                "y": 3,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 12
         },
         {
             "position": {
                 "x": 0,
-                "y": 2,
+                "y": 3,
                 "z": 0
             },
-            "connectionDirection": 0
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 3,
+                "z": 0
+            },
+            "connectionDirection": 10
+        }
+    ],
+    "uiTilesData": [
+        {
+            "position": {
+                "x": -3,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": 0,
+            "team": 0
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 3,
+                "z": 0
+            },
+            "tileType": 1,
+            "team": 0
         }
     ]
 }

@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09672b3e948c492497c51e15e40e0826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemapSaveLoader: {fileID: 1731065827}
+  tilemapEditor: {fileID: 1731065825}
   levelManagerUI: {fileID: 186582335}
   levelLibrary: {fileID: 11400000, guid: ac29faa3fea6ded4e9a09cbe326ae528, type: 2}
 --- !u!4 &306842222
@@ -3242,7 +3242,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1731065826}
   - component: {fileID: 1731065825}
-  - component: {fileID: 1731065827}
   m_Layer: 0
   m_Name: TilemapEditor
   m_TagString: Untagged
@@ -3282,22 +3281,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1731065827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731065824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80ef6a2f90354c47890a1c38c03872f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilemapEditor: {fileID: 1731065825}
-  terrainTilemap: {fileID: 1365550093}
-  roadTilemap: {fileID: 1338574682}
-  tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
 --- !u!1 &1747687965
 GameObject:
   m_ObjectHideFlags: 0

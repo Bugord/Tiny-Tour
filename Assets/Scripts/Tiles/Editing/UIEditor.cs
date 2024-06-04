@@ -64,6 +64,20 @@ namespace Tiles
             uiTileType = ((UIEditorOption)option).UITileType;
         }
 
+        public void Load(UITileData[] tilesData)
+        {
+            uiTilemap.ClearAllTiles();
+
+            foreach (var tileData in tilesData) {
+                uiTilemap.SetTile(tileData.position, tileLibrary.GetUIType(tileData.tileType));
+            }
+        }
+
+        public UITileData[] Save()
+        {
+            return GetUITilesData();
+        }
+
         private void SetTerrainTile(Vector3Int pos)
         {
             uiTilemap.SetTile(pos, tileLibrary.GetUIType(uiTileType));
@@ -72,6 +86,27 @@ namespace Tiles
         private void EraseTile(Vector3Int pos)
         {
             uiTilemap.SetTile(pos, null);
+        }
+        
+        private UITileData[] GetUITilesData()
+        {
+            var uiTilesData = new List<UITileData>();
+            foreach (var pos in uiTilemap.cellBounds.allPositionsWithin) {
+                var uiTile = uiTilemap.GetTile<UITile>(pos);
+                if (!uiTile) {
+                    continue;
+                }
+
+                var terrainTileData = new UITileData() {
+                    position = pos,
+                    tileType = uiTile.type,
+                    team = uiTile.team
+                };
+
+                uiTilesData.Add(terrainTileData);
+            }
+
+            return uiTilesData.ToArray();
         }
     }
 }

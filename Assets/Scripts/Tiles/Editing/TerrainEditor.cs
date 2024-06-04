@@ -65,6 +65,19 @@ namespace Tiles
             terrainType = ((TerrainEditorOption)option).TerrainType;
         }
 
+        public TerrainTileData[] Save()
+        {
+            return GetTerrainTilesData();
+        }
+
+        public void Load(TerrainTileData[] terrainTilesData)
+        {
+            terrainTilemap.ClearAllTiles();
+            foreach (var terrainTileData in terrainTilesData) {
+                terrainTilemap.SetTile(terrainTileData.position, tileLibrary.GetTerrainTileByType(terrainTileData.terrainType));
+            }
+        }
+
         private void SetTerrainTile(Vector3Int pos)
         {
             terrainTilemap.SetTile(pos, tileLibrary.GetTerrainTileByType(terrainType));
@@ -73,6 +86,26 @@ namespace Tiles
         private void EraseTile(Vector3Int pos)
         {
             terrainTilemap.SetTile(pos, tileLibrary.GetTerrainTileByType(TerrainType.Water));
+        }
+        
+        private TerrainTileData[] GetTerrainTilesData()
+        {
+            var terrainTilesData = new List<TerrainTileData>();
+            foreach (var pos in terrainTilemap.cellBounds.allPositionsWithin) {
+                var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
+                if (!terrainTile) {
+                    continue;
+                }
+
+                var terrainTileData = new TerrainTileData {
+                    position = pos,
+                    terrainType = terrainTile.terrainType
+                };
+
+                terrainTilesData.Add(terrainTileData);
+            }
+
+            return terrainTilesData.ToArray();
         }
     }
 }

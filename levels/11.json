@@ -1,6 +1,6 @@
 {
     "levelName": "11",
-    "terrainTileData": [
+    "terrainTilesData": [
         {
             "position": {
                 "x": -5,
@@ -964,6 +964,24 @@
             "connectionDirection": 10
         }
     ],
-    "spawnPointsData": [],
-    "targetsData": []
+    "uiTilesData": [
+        {
+            "position": {
+                "x": -3,
+                "y": -3,
+                "z": 0
+            },
+            "tileType": 0,
+            "team": 0
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 3,
+                "z": 0
+            },
+            "tileType": 1,
+            "team": 0
+        }
+    ]
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Level
 {
@@ -7,9 +6,8 @@ namespace Level
     public class LevelData
     {
         public string levelName;
-        public List<TerrainTileData> terrainTileData;
-        public List<RoadTileData> roadTileData;
-        public List<SpawnPointData> spawnPointsData;
-        public List<TargetData> targetsData;
+        public TerrainTileData[] terrainTilesData;
+        public RoadTileData[] roadTileData;
+        public UITileData[] uiTilesData;
     }
 }

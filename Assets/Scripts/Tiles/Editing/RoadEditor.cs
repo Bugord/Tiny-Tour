@@ -72,7 +72,6 @@ namespace Tiles
 
         public void SetOption(BaseEditorOption baseEditorOption)
         {
-            
         }
 
         public void OnTileUp()
@@ -85,13 +84,27 @@ namespace Tiles
             previousSelectedTile = null;
         }
 
-        public void Reload()
+        public void Load(RoadTileData[] roadTilesData)
         {
             roadTiles.Clear();
-            AddInitiallyPlacedRoad();
+            roadTilemap.ClearAllTiles();
+            
+            foreach (var roadTileData in roadTilesData) {
+                roadTilemap.SetTile(roadTileData.position, tileLibrary.GetRoadTile(roadTileData.connectionDirection));
+                var roadTileInfo = new RoadTileInfo(roadTileData.connectionDirection, true);
+                roadTiles.Add(roadTileData.position, roadTileInfo);
+            }
         }
 
-        public void EraseRoad(Vector3Int pos)
+        public RoadTileData[] Save()
+        {
+            return roadTiles.Select(tile => new RoadTileData {
+                connectionDirection = tile.Value.ConnectionDirection,
+                position = tile.Key
+            }).ToArray();
+        }
+
+        private void EraseRoad(Vector3Int pos)
         {
             currentSelectedTile = pos;
 
@@ -164,19 +177,6 @@ namespace Tiles
         {
             var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
             return terrainTile && terrainTile.terrainType != TerrainType.Water;
-        }
-
-        private void AddInitiallyPlacedRoad()
-        {
-            foreach (var pos in roadTilemap.cellBounds.allPositionsWithin) {
-                var tile = roadTilemap.GetTile<RoadTile>(pos);
-                if (!tile) {
-                    continue;
-                }
-
-                var roadTileInfo = new RoadTileInfo(tile.connectionDirection, true);
-                roadTiles.Add(pos, roadTileInfo);
-            }
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
 using Core;
-using UnityEngine;
+using Tiles;
 
 namespace Level
 {
     [Serializable]
-    public class TargetData
+    public class UITileData : BaseTileData
     {
-        public Vector3Int position;
+        public UITileType tileType;
         public Team team;
     }
 }

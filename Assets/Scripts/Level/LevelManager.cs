@@ -7,9 +7,8 @@ namespace Level
 {
     public class LevelManager : MonoBehaviour
     {
-        [FormerlySerializedAs("tilemapDataEditor")]
         [SerializeField]
-        private TilemapSaveLoader tilemapSaveLoader;
+        private TilemapEditor tilemapEditor;
 
         [SerializeField]
         private LevelManagerUI levelManagerUI;
@@ -23,8 +22,8 @@ namespace Level
         
         private void Awake()
         {
-            levelLoader = tilemapSaveLoader;
-            levelSaver = tilemapSaveLoader;
+            levelLoader = tilemapEditor;
+            levelSaver = tilemapEditor;
             levelProvider = levelLibrary;
             
             levelManagerUI.LevelSelected += OnLevelSelected;
