@@ -7,6 +7,7 @@ using Level.Data;
 using Tiles.Editing.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Utility;
 
 namespace Tiles.Editing.Workshop
 {
@@ -52,18 +53,24 @@ namespace Tiles.Editing.Workshop
 
         public List<BaseEditorOption> GetOptions()
         {
-            return new List<BaseEditorOption> {
-                new LogisticEditorOption {
+            var teams = EnumExtensions.GetAllEnums<Team>();
+            var options = new List<BaseEditorOption>();
+            foreach (var team in teams) {
+                options.Add(new LogisticEditorOption {
                     LogisticTileType = LogisticTileType.Target,
+                    Team = team,
                     TileEditor = this,
-                    Icon = tileLibrary.GetLogisticTile(LogisticTileType.Target, Team.Grey).sprite
-                },
-                new LogisticEditorOption {
+                    Icon = tileLibrary.GetLogisticTile(LogisticTileType.Target, team).Sprite
+                });
+                options.Add(new LogisticEditorOption {
                     LogisticTileType = LogisticTileType.SpawnPoint,
+                    Team = team,
                     TileEditor = this,
-                    Icon = tileLibrary.GetLogisticTile(LogisticTileType.SpawnPoint, Team.Grey).sprite
-                }
-            };
+                    Icon = tileLibrary.GetLogisticTile(LogisticTileType.SpawnPoint, team).Sprite
+                });
+            }
+
+            return options;
         }
 
         public void SetOption(BaseEditorOption option)
@@ -77,24 +84,26 @@ namespace Tiles.Editing.Workshop
         {
             uiTilemap.ClearAllTiles();
             logisticTiles.Clear();
-            
+
             foreach (var pathData in pathsData) {
                 logisticTiles.Add(new LogisticTileData {
                     Team = pathData.team,
                     Position = pathData.targetPosition,
                     Type = LogisticTileType.Target
                 });
-              
+
                 logisticTiles.Add(new LogisticTileData {
                     Team = pathData.team,
                     Position = pathData.spawnPosition,
                     Type = LogisticTileType.SpawnPoint
                 });
-                
-                uiTilemap.SetTile(pathData.spawnPosition, tileLibrary.GetLogisticTile(LogisticTileType.SpawnPoint, pathData.team));
-                uiTilemap.SetTile(pathData.targetPosition, tileLibrary.GetLogisticTile(LogisticTileType.Target, pathData.team));
+
+                uiTilemap.SetTile(pathData.spawnPosition,
+                    tileLibrary.GetLogisticTile(LogisticTileType.SpawnPoint, pathData.team));
+                uiTilemap.SetTile(pathData.targetPosition,
+                    tileLibrary.GetLogisticTile(LogisticTileType.Target, pathData.team));
             }
-            
+
             if (!Validate()) {
                 return;
             }
@@ -115,7 +124,7 @@ namespace Tiles.Editing.Workshop
                     });
                 }
             }
-            
+
             return pathsData.ToArray();
         }
 

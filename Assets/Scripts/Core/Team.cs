@@ -2,10 +2,10 @@
 {
     public enum Team
     {
+        Grey,
         Red,
         Green,
         Blue,
-        Yellow,
-        Grey
+        Orange,
     }
 }

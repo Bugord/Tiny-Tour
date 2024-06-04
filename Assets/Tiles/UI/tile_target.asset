@@ -12,6 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511462f3301c4e0ba049b7d028538990, type: 3}
   m_Name: tile_target
   m_EditorClassIdentifier: 
-  sprite: {fileID: 8397989551524518093, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+  sprites:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 8397989551524518093, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+    - Key: 1
+      Value: {fileID: 1758693318, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+    - Key: 2
+      Value: {fileID: 7176334326959469849, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+    - Key: 3
+      Value: {fileID: -982939429, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+    - Key: 4
+      Value: {fileID: -1364547598, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
   type: 1
   team: 0
