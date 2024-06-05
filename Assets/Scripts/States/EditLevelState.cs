@@ -33,6 +33,7 @@ namespace States
             editLevelScreen = navigationSystem.Push<EditLevelScreen>();
             editLevelScreen.BackPressed += OnBackPressed;
             editLevelScreen.SavePressed += OnSavePressed;
+            editLevelScreen.PlayPressed += OnPlayPressed;
 
             gameStateSystem.StartCoroutine(LoadEditor());
         }
@@ -62,6 +63,7 @@ namespace States
 
             editLevelScreen.BackPressed -= OnBackPressed;
             editLevelScreen.SavePressed -= OnSavePressed;
+            editLevelScreen.PlayPressed -= OnPlayPressed;
             editLevelScreen.Close();
         }
 
@@ -74,6 +76,12 @@ namespace States
         private void OnBackPressed()
         {
             gameStateSystem.ChangeState(gameStateSystem.SelectLevelToEditState);
+        }
+
+        private void OnPlayPressed()
+        {
+            levelManager.SelectLevel(workshopTilemapEditor.SaveLevel());
+            gameStateSystem.ChangeState(gameStateSystem.TestPlayLevelState);
         }
     }
 }

@@ -8,6 +8,7 @@ namespace UI.Screens
     {
         public event Action BackPressed;
         public event Action SavePressed;
+        public event Action PlayPressed;
 
         [SerializeField]
         private TilemapEditorUI tilemapEditorUI;
@@ -22,6 +23,11 @@ namespace UI.Screens
         public void OnSaveButtonPressed()
         {
             SavePressed?.Invoke();
+        }   
+        
+        public void OnPlayButtonPressed()
+        {
+            PlayPressed?.Invoke();
         }
     }
 }

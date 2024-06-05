@@ -11,7 +11,7 @@ namespace Level
 
         private ILevelProvider levelProvider;
 
-        private int selectedLevelIndex;
+        private LevelData selectedLevelData;
 
         private void Awake()
         {
@@ -30,12 +30,17 @@ namespace Level
 
         public void SelectLevel(int levelIndex)
         {
-            selectedLevelIndex = levelIndex;
+            selectedLevelData = levelProvider.GetCachedLevels()[levelIndex];
+        }
+        
+        public void SelectLevel(LevelData levelData)
+        {
+            selectedLevelData = levelData;
         }
 
         public LevelData GetSelectedLevel()
         {
-            return levelProvider.GetLevelByIndex(selectedLevelIndex);
+            return selectedLevelData;
         }
 
         public void SaveLevel(LevelData levelData)
