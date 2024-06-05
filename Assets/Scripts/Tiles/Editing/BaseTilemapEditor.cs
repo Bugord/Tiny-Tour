@@ -60,9 +60,7 @@ namespace Tiles.Editing
         }
 
         protected abstract Vector3Int MouseToTilePosition(Vector3 mousePos);
-
-        public abstract void Setup();
-
+        
         public abstract void LoadLevel(LevelData levelData);
     }
 }

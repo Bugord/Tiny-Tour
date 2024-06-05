@@ -12,18 +12,16 @@ namespace Tiles.Editing
     public class InGameTilemapEditor : BaseTilemapEditor
     {
         [SerializeField]
-        private TilemapEditorUI tilemapEditorUI;
-        
-        [SerializeField]
         private TileLibraryData tileLibraryData;
 
         private RoadEditor roadEditor;
         private TerrainEditor terrainEditor;
         private LogisticEditor logisticEditor;
-        
-        private ITileLibrary tileLibrary;
 
-        public override void Setup()
+        private ITileLibrary tileLibrary;
+        private TilemapEditorUI tilemapEditorUI;
+
+        public void Setup(TilemapEditorUI tilemapEditorUI)
         {
             tileLibraryData.Init();
             
@@ -36,9 +34,10 @@ namespace Tiles.Editing
                 roadEditor
             };
             SelectedEditor = TileEditors.First();
-            
-            tilemapEditorUI.SetData(TileEditors.SelectMany(editor => editor.GetOptions()).ToList());
-            tilemapEditorUI.SelectedValueChanged += OnSelectedValueChanged;
+
+            this.tilemapEditorUI = tilemapEditorUI;
+            this.tilemapEditorUI.SetData(TileEditors.SelectMany(editor => editor.GetOptions()).ToList());
+            this.tilemapEditorUI.SelectedValueChanged += OnSelectedValueChanged;
         }
 
         private void OnDestroy()

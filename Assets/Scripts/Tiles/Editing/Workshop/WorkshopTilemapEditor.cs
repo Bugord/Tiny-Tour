@@ -3,6 +3,7 @@ using System.Linq;
 using Level;
 using Level.Data;
 using Tiles.Editing.Options;
+using UnityEditor.Rendering.Universal;
 using UnityEngine;
 
 namespace Tiles.Editing.Workshop
@@ -23,7 +24,7 @@ namespace Tiles.Editing.Workshop
 
         private string levelName;
 
-        public override void Setup()
+        public void Setup(TilemapEditorUI tilemapEditorUI)
         {
             tileLibraryData.Init();
             tileLibrary = tileLibraryData;
@@ -38,8 +39,9 @@ namespace Tiles.Editing.Workshop
                 logisticEditor
             };
 
-            tilemapEditorUI.SetData(TileEditors.SelectMany(editor => editor.GetOptions()).ToList());
-            tilemapEditorUI.SelectedValueChanged += OnSelectedTileEditorChanged;
+            this.tilemapEditorUI = tilemapEditorUI;
+            this.tilemapEditorUI.SetData(TileEditors.SelectMany(editor => editor.GetOptions()).ToList());
+            this.tilemapEditorUI.SelectedValueChanged += OnSelectedTileEditorChanged;
 
             SelectedEditor = terrainEditor;
         }

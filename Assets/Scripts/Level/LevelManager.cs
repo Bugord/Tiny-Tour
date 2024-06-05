@@ -1,27 +1,18 @@
-﻿using System.Linq;
-using Core;
+﻿using System;
 using Level.Data;
-using Tiles;
-using Tiles.Editing;
-using Tiles.Editing.Workshop;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Level
 {
     public class LevelManager : MonoBehaviour
     {
         [SerializeField]
-        private WorkshopTilemapEditor workshopTilemapEditor;
-
-        [SerializeField]
-        private GameSession gameSession;
-
-        [SerializeField]
         private LevelLibrary levelLibrary;
 
         private ILevelProvider levelProvider;
-        
+
+        private int selectedLevelIndex;
+
         private void Awake()
         {
             levelProvider = levelLibrary;
@@ -31,53 +22,25 @@ namespace Level
         {
             levelProvider.LoadAllLevels();
         }
-
+        
         public LevelData[] GetLevels()
         {
             return levelProvider.GetCachedLevels();
         }
 
-        private void OnLoadInGamePressed(int levelId)
+        public void SelectLevel(int levelIndex)
         {
-            gameSession.gameObject.SetActive(true);
-            gameSession.LoadLevel(levelProvider.GetLevelByIndex(levelId));
+            selectedLevelIndex = levelIndex;
         }
 
-        private void OnLoadWorkshopPressed(int levelId)
+        public LevelData GetSelectedLevel()
         {
-            workshopTilemapEditor.gameObject.SetActive(true);
-            workshopTilemapEditor.Setup();
-            workshopTilemapEditor.LoadLevel(levelProvider.GetLevelByIndex(levelId));
+            return levelProvider.GetLevelByIndex(selectedLevelIndex);
         }
 
-        [ContextMenu("Save")]
-        public void SaveLevel()
+        public void SaveLevel(LevelData levelData)
         {
-            var levelData = workshopTilemapEditor.SaveLevel();
             levelProvider.SaveLevel(levelData);
-        }
-
-        private void OnSavePressed()
-        {
-            var levelData = workshopTilemapEditor.SaveLevel();
-            levelProvider.SaveLevel(levelData);
-
-            levelProvider.LoadAllLevels();
-            var levelsData = levelProvider.GetCachedLevels();
-
-            var savedLevel = levelProvider.GetLevelByName(levelData.levelName);
-        }
-
-        private void OnSaveAsPressed(string levelName)
-        {
-            var levelData = workshopTilemapEditor.SaveLevel();
-            levelData.levelName = levelName;
-            levelProvider.SaveLevel(levelData);
-
-            levelProvider.LoadAllLevels();
-            var levelsData = levelProvider.GetCachedLevels();
-
-            var savedLevel = levelProvider.GetLevelByName(levelName);
         }
     }
 }

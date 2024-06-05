@@ -32,12 +32,15 @@ namespace Core
         {
             currentLevelData = levelData;
 
-            inGameTilemapEditor.gameObject.SetActive(true);
-            inGameTilemapEditor.Setup();
             inGameTilemapEditor.LoadLevel(levelData);
             pathfindingController.Update();
 
             SpawnCars();
+        }
+
+        public void SetupEditor(TilemapEditorUI tilemapEditorUI)
+        {
+            inGameTilemapEditor.Setup(tilemapEditorUI);
         }
 
         [ContextMenu("Play")]

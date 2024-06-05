@@ -8,33 +8,41 @@ namespace States
     {
         private readonly NavigationSystem navigationSystem;
         private readonly GameStateSystem gameStateSystem;
-        private readonly ILevelProvider levelProvider;
+        private readonly LevelManager levelManager;
 
-        private PlayLevelScreen playLevelSelectScreen;
+        private PlayLevelSelectScreen playLevelSelectSelectScreen;
 
         public SelectLevelToPlayState(GameStateSystem gameStateSystem, NavigationSystem navigationSystem,
-            ILevelProvider levelProvider)
+            LevelManager levelManager)
         {
             this.gameStateSystem = gameStateSystem;
             this.navigationSystem = navigationSystem;
-            this.levelProvider = levelProvider;
+            this.levelManager = levelManager;
         }
 
         public override void OnEnter()
         {
-            playLevelSelectScreen = navigationSystem.Push<PlayLevelScreen>();
-            playLevelSelectScreen.BackPressed += OnBackPressed;
+            playLevelSelectSelectScreen = navigationSystem.Push<PlayLevelSelectScreen>();
+            playLevelSelectSelectScreen.BackPressed += OnBackPressed;
+            playLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
 
-            levelProvider.LoadAllLevels();
-            var levels = levelProvider.GetCachedLevels();
+            levelManager.LoadLevels();
+            var levels = levelManager.GetLevels();
 
-            playLevelSelectScreen.SetLevels(levels);
+            playLevelSelectSelectScreen.SetLevels(levels);
         }
 
         public override void OnExit()
         {
-            playLevelSelectScreen.BackPressed -= OnBackPressed;
-            playLevelSelectScreen.Close();
+            playLevelSelectSelectScreen.BackPressed -= OnBackPressed;
+            playLevelSelectSelectScreen.LevelSelected -= OnLevelSelected;
+            playLevelSelectSelectScreen.Close();
+        }
+        
+        private void OnLevelSelected(int levelIndex)
+        {
+            levelManager.SelectLevel(levelIndex);
+            gameStateSystem.ChangeState(gameStateSystem.PlayLevelState);
         }
 
         private void OnBackPressed()

@@ -1154,6 +1154,54 @@
                 "z": 0
             },
             "connectionDirection": 4
+        },
+        {
+            "position": {
+                "x": -1,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 6
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 10
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 9
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": -1,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 5
         }
     ],
     "pathsData": [

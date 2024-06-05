@@ -890,6 +890,30 @@
                 "z": 0
             },
             "connectionDirection": 8
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": 3,
+                "z": 0
+            },
+            "connectionDirection": 4
+        },
+        {
+            "position": {
+                "x": -1,
+                "y": 3,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 3,
+                "z": 0
+            },
+            "connectionDirection": 8
         }
     ],
     "pathsData": [
