@@ -18,50 +18,29 @@ namespace Level
         private GameSession gameSession;
 
         [SerializeField]
-        private LevelManagerUI levelManagerUI;
-
-        [SerializeField]
         private LevelLibrary levelLibrary;
 
         private ILevelProvider levelProvider;
-
-        private GameState currentState;
-
+        
         private void Awake()
         {
-            currentState = GameState.None;
             levelProvider = levelLibrary;
-
-            levelManagerUI.SavePressed += OnSavePressed;
-            levelManagerUI.SaveAsPressed += OnSaveAsPressed;
-            levelManagerUI.LoadWorkshopPressed += OnLoadWorkshopPressed;
-            levelManagerUI.LoadInGamePressed += OnLoadInGamePressed;
         }
 
-        private void OnDestroy()
+        public void LoadLevels()
         {
-            levelManagerUI.SavePressed -= OnSavePressed;
-            levelManagerUI.SaveAsPressed -= OnSaveAsPressed;
-            levelManagerUI.LoadWorkshopPressed -= OnLoadWorkshopPressed;
-            levelManagerUI.LoadInGamePressed -= OnLoadInGamePressed;
+            levelProvider.LoadAllLevels();
         }
 
-        private void Start()
+        public LevelData[] GetLevels()
         {
-            LoadLevels();
-            // workshopTilemapEditor.Setup();
-
-            var levelsData = levelProvider.GetCachedLevels();
-            if (levelsData.Any()) {
-                levelManagerUI.SetData(levelsData);
-            }
+            return levelProvider.GetCachedLevels();
         }
 
         private void OnLoadInGamePressed(int levelId)
         {
             gameSession.gameObject.SetActive(true);
             gameSession.LoadLevel(levelProvider.GetLevelByIndex(levelId));
-            currentState = GameState.InGame;
         }
 
         private void OnLoadWorkshopPressed(int levelId)
@@ -69,7 +48,6 @@ namespace Level
             workshopTilemapEditor.gameObject.SetActive(true);
             workshopTilemapEditor.Setup();
             workshopTilemapEditor.LoadLevel(levelProvider.GetLevelByIndex(levelId));
-            currentState = GameState.Workshop;
         }
 
         [ContextMenu("Save")]
@@ -79,11 +57,6 @@ namespace Level
             levelProvider.SaveLevel(levelData);
         }
 
-        private void LoadLevels()
-        {
-            levelProvider.LoadAllLevels();
-        }
-
         private void OnSavePressed()
         {
             var levelData = workshopTilemapEditor.SaveLevel();
@@ -91,10 +64,8 @@ namespace Level
 
             levelProvider.LoadAllLevels();
             var levelsData = levelProvider.GetCachedLevels();
-            levelManagerUI.SetData(levelsData);
 
             var savedLevel = levelProvider.GetLevelByName(levelData.levelName);
-            levelManagerUI.SetSelectedLevel(levelsData.IndexOf(savedLevel));
         }
 
         private void OnSaveAsPressed(string levelName)
@@ -105,10 +76,8 @@ namespace Level
 
             levelProvider.LoadAllLevels();
             var levelsData = levelProvider.GetCachedLevels();
-            levelManagerUI.SetData(levelsData);
 
             var savedLevel = levelProvider.GetLevelByName(levelName);
-            levelManagerUI.SetSelectedLevel(levelsData.IndexOf(savedLevel));
         }
     }
 }
