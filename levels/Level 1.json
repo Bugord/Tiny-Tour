@@ -55,7 +55,7 @@
                 "y": -6,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -143,7 +143,7 @@
                 "y": -5,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -239,7 +239,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -911,7 +911,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -1007,7 +1007,7 @@
                 "y": 4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -1217,6 +1217,19 @@
                 "z": 0
             },
             "team": 1
+        },
+        {
+            "targetPosition": {
+                "x": -1,
+                "y": -5,
+                "z": 0
+            },
+            "spawnPosition": {
+                "x": -1,
+                "y": 4,
+                "z": 0
+            },
+            "team": 2
         }
     ]
 }

@@ -7,6 +7,7 @@ namespace UI.Screens
     public class PlayLevelScreen : BaseScreen
     {
         public event Action BackPressed;
+        public event Action PlayPressed;
 
         [SerializeField]
         private TilemapEditorUI tilemapEditorUI;
@@ -16,6 +17,11 @@ namespace UI.Screens
         public void OnBackButtonPressed()
         {
             BackPressed?.Invoke();
+        }      
+        
+        public void OnPlayButtonPressed()
+        {
+            PlayPressed?.Invoke();
         }
     }
 }

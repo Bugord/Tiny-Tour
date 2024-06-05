@@ -62,6 +62,7 @@ namespace Core
             foreach (var pathData in currentLevelData.pathsData) {
                 var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(pathData.spawnPosition);
                 var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
+                car.transform.parent = transform;
                 cars.Add(car);
             }
         }

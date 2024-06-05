@@ -32,6 +32,7 @@ namespace States
         {
             playLevelScreen = navigationSystem.Push<PlayLevelScreen>();
             playLevelScreen.BackPressed += OnBackPressed;
+            playLevelScreen.PlayPressed += OnPlayPressed;
 
             gameStateSystem.StartCoroutine(LoadEditor());
         }
@@ -60,7 +61,13 @@ namespace States
             SceneManager.UnloadSceneAsync(PlayLevelScene);
 
             playLevelScreen.BackPressed -= OnBackPressed;
+            playLevelScreen.PlayPressed -= OnPlayPressed;
             playLevelScreen.Close();
+        }
+
+        private void OnPlayPressed()
+        {
+            gameSession.Play();
         }
 
         private void OnBackPressed()
