@@ -72,7 +72,7 @@ namespace States
 
         private void OnBackPressed()
         {
-            gameStateSystem.ChangeState(gameStateSystem.SelectLevelToEditState);
+            gameStateSystem.ChangeState(gameStateSystem.SelectLevelToPlayState);
         }
     }
 }

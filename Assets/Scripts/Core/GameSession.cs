@@ -20,6 +20,9 @@ namespace Core
         private InGameTilemapEditor inGameTilemapEditor;
 
         [SerializeField]
+        private CarLibrary carLibrary;
+
+        [SerializeField]
         private Car carPrefab;
 
         private LevelData currentLevelData;
@@ -62,6 +65,7 @@ namespace Core
             foreach (var pathData in currentLevelData.pathsData) {
                 var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(pathData.spawnPosition);
                 var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
+                car.SetData(carLibrary.GetCarData(CarType.Regular, pathData.team));
                 car.transform.parent = transform;
                 cars.Add(car);
             }

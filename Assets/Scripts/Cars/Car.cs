@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Core;
 using DG.Tweening;
 using DG.Tweening.Plugins.Core.PathCore;
 using UnityEngine;
@@ -12,7 +13,6 @@ namespace Cars
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
-        [SerializeField]
         private CarData carData;
 
         private Tween pathTween;
@@ -30,14 +30,25 @@ namespace Cars
                 .SetEase(Ease.Linear);
         }
 
+        public void SetData(CarData carData)
+        {
+            this.carData = carData;
+            UpdateSprite(Direction.Right);
+        }
+
+        private void UpdateSprite(Direction direction)
+        {
+            spriteRenderer.sprite = carData.directionSprites[direction];
+        }
+
         private void ChangeCarDirection(int waypointIndex)
         {
-            if (waypointIndex >= waypoints.Length) {
+            if (waypointIndex >= waypoints.Length - 1) {
                 return;
             }
             
             var direction = Directions.GetDirection(waypoints[waypointIndex], waypoints[waypointIndex + 1]);
-            spriteRenderer.sprite = carData.directionSprites[direction];
+            UpdateSprite(direction);
         }
     }
 }

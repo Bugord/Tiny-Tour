@@ -143,7 +143,7 @@
                 "y": -5,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -239,7 +239,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -471,7 +471,7 @@
                 "y": -2,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -687,7 +687,7 @@
                 "y": 1,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -695,7 +695,7 @@
                 "y": 1,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -911,7 +911,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -1007,7 +1007,7 @@
                 "y": 4,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -1109,51 +1109,27 @@
     "roadTileData": [
         {
             "position": {
-                "x": 4,
-                "y": -2,
+                "x": 1,
+                "y": 0,
                 "z": 0
             },
-            "connectionDirection": 12
+            "connectionDirection": 3
         },
         {
             "position": {
-                "x": -5,
-                "y": 1,
+                "x": 0,
+                "y": 0,
                 "z": 0
             },
-            "connectionDirection": 12
+            "connectionDirection": 2
         },
         {
             "position": {
-                "x": -4,
-                "y": 1,
+                "x": 1,
+                "y": -1,
                 "z": 0
             },
-            "connectionDirection": 8
-        },
-        {
-            "position": {
-                "x": 5,
-                "y": -2,
-                "z": 0
-            },
-            "connectionDirection": 8
-        },
-        {
-            "position": {
-                "x": -6,
-                "y": 1,
-                "z": 0
-            },
-            "connectionDirection": 4
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": -2,
-                "z": 0
-            },
-            "connectionDirection": 4
+            "connectionDirection": 1
         },
         {
             "position": {
@@ -1161,12 +1137,20 @@
                 "y": 0,
                 "z": 0
             },
+            "connectionDirection": 3
+        },
+        {
+            "position": {
+                "x": -1,
+                "y": 1,
+                "z": 0
+            },
             "connectionDirection": 6
         },
         {
             "position": {
                 "x": 0,
-                "y": 0,
+                "y": 1,
                 "z": 0
             },
             "connectionDirection": 12
@@ -1174,26 +1158,18 @@
         {
             "position": {
                 "x": 1,
-                "y": 0,
+                "y": 1,
                 "z": 0
             },
             "connectionDirection": 10
         },
         {
             "position": {
-                "x": 1,
-                "y": -1,
-                "z": 0
-            },
-            "connectionDirection": 9
-        },
-        {
-            "position": {
                 "x": 0,
                 "y": -1,
                 "z": 0
             },
-            "connectionDirection": 12
+            "connectionDirection": 9
         },
         {
             "position": {
@@ -1202,66 +1178,21 @@
                 "z": 0
             },
             "connectionDirection": 5
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": 4,
-                "z": 0
-            },
-            "connectionDirection": 2
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": 3,
-                "z": 0
-            },
-            "connectionDirection": 1
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": -4,
-                "z": 0
-            },
-            "connectionDirection": 2
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": -5,
-                "z": 0
-            },
-            "connectionDirection": 1
         }
     ],
     "pathsData": [
         {
             "targetPosition": {
-                "x": 4,
-                "y": -2,
+                "x": 1,
+                "y": -1,
                 "z": 0
             },
             "spawnPosition": {
-                "x": -5,
-                "y": 1,
+                "x": 0,
+                "y": 0,
                 "z": 0
             },
             "team": 1
-        },
-        {
-            "targetPosition": {
-                "x": -1,
-                "y": -5,
-                "z": 0
-            },
-            "spawnPosition": {
-                "x": -1,
-                "y": 4,
-                "z": 0
-            },
-            "team": 2
         }
     ]
 }

@@ -8,6 +8,8 @@ namespace Cars
     [CreateAssetMenu]
     public class CarData : ScriptableObject
     {
+        public CarType carType;
+        public Team team;
         public SerializedDictionary<Direction, Sprite> directionSprites;
         public float speed;
     }

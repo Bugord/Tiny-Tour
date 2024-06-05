@@ -306,6 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathfindingController: {fileID: 4417129261237518464}
   inGameTilemapEditor: {fileID: 6032759852374705546}
+  carLibrary: {fileID: 11400000, guid: 55d3115aa6d505441843268e05faca79, type: 2}
   carPrefab: {fileID: 7665134449429098198, guid: b8cc68c0e5fda0c4a8725f459558414e, type: 3}
 --- !u!4 &1740546338
 Transform:
