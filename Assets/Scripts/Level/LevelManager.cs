@@ -47,5 +47,10 @@ namespace Level
         {
             levelProvider.SaveLevel(levelData);
         }
+
+        public LevelData CreateNewLevel(string levelName)
+        {
+            return levelProvider.CreateNewLevel(levelName);
+        }
     }
 }

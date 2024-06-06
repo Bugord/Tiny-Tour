@@ -1,6 +1,7 @@
 ﻿using Level;
 using UI;
 using UI.Screens;
+using UnityEngine;
 
 namespace States
 {
@@ -24,6 +25,7 @@ namespace States
             editLevelSelectSelectScreen = navigationSystem.Push<EditLevelSelectScreen>();
             editLevelSelectSelectScreen.BackPressed += OnBackPressed;
             editLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
+            editLevelSelectSelectScreen.CreateNewPressed += OnCreateNewPressed;
             
             levelManager.LoadLevels();
             var levels = levelManager.GetLevels();
@@ -35,6 +37,7 @@ namespace States
         {
             editLevelSelectSelectScreen.BackPressed -= OnBackPressed;
             editLevelSelectSelectScreen.LevelSelected -= OnLevelSelected;
+            editLevelSelectSelectScreen.CreateNewPressed -= OnCreateNewPressed;
             editLevelSelectSelectScreen.Close();
         }
 
@@ -47,6 +50,14 @@ namespace States
         private void OnBackPressed()
         {
             gameStateSystem.ChangeState(gameStateSystem.MainMenuState);
+        }
+
+        private void OnCreateNewPressed()
+        {
+            var newLevel = levelManager.CreateNewLevel("New Level " + Random.Range(0, 1000));
+            levelManager.SelectLevel(newLevel);
+            
+            gameStateSystem.ChangeState(gameStateSystem.EditLevelState);
         }
     }
 }

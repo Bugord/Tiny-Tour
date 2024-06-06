@@ -55,6 +55,15 @@ namespace Level
             File.WriteAllText(Path.Combine(DirectoryPath, levelData.levelName + ".json"), json);
         }
 
+        public LevelData CreateNewLevel(string levelName)
+        {
+            return new LevelData {
+                levelName = levelName,
+                roadTileData = Array.Empty<RoadTileData>(),
+                terrainTilesData = Array.Empty<TerrainTileData>()
+            };
+        }
+
         public LevelData GetLevelByIndex(int index)
         {
             return levelsData[index];

@@ -8,6 +8,7 @@ namespace UI.Screens
     {
         public event Action<int> LevelSelected;
         public event Action BackPressed; 
+        public event Action CreateNewPressed; 
 
         [SerializeField]
         private LevelsGridView levelsGridView;
@@ -35,6 +36,11 @@ namespace UI.Screens
         public void OnBackButtonPressed()
         {
             BackPressed?.Invoke();
+        }
+        
+        public void OnCreateNewButtonPressed()
+        {
+            CreateNewPressed?.Invoke();
         }
     }
 }
