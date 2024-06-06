@@ -33,8 +33,19 @@ namespace States
             playLevelScreen = navigationSystem.Push<PlayLevelScreen>();
             playLevelScreen.BackPressed += OnBackPressed;
             playLevelScreen.PlayPressed += OnPlayPressed;
+            playLevelScreen.ResetPressed += OnResetPressed;
 
             gameStateSystem.StartCoroutine(LoadEditor());
+        }
+
+        public override void OnExit()
+        {
+            SceneManager.UnloadSceneAsync(PlayLevelScene);
+
+            playLevelScreen.BackPressed -= OnBackPressed;
+            playLevelScreen.PlayPressed -= OnPlayPressed;
+            playLevelScreen.ResetPressed -= OnResetPressed;
+            playLevelScreen.Close();
         }
 
         private IEnumerator LoadEditor()
@@ -56,15 +67,6 @@ namespace States
             gameSession.LoadLevel(selectedLevel);
         }
 
-        public override void OnExit()
-        {
-            SceneManager.UnloadSceneAsync(PlayLevelScene);
-
-            playLevelScreen.BackPressed -= OnBackPressed;
-            playLevelScreen.PlayPressed -= OnPlayPressed;
-            playLevelScreen.Close();
-        }
-
         private void OnPlayPressed()
         {
             gameSession.Play();
@@ -73,6 +75,11 @@ namespace States
         private void OnBackPressed()
         {
             gameStateSystem.ChangeState(gameStateSystem.SelectLevelToPlayState);
+        }
+
+        private void OnResetPressed()
+        {
+            gameSession.ResetCars();
         }
     }
 }

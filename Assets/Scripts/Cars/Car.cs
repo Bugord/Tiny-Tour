@@ -12,9 +12,9 @@ namespace Cars
 {
     public class Car : MonoBehaviour
     {
-        public event Action CarCrashed;
-        public event Action CarFinished;
-        
+        public event Action Crashed;
+        public event Action Finished;
+
         [SerializeField]
         private SpriteRenderer spriteRenderer;
 
@@ -23,21 +23,34 @@ namespace Cars
         private Tween pathTween;
         private Vector3[] waypoints;
 
-        private bool isCrashed;
-        
+        private Direction initialDirection;
+
+        public bool IsCrashed { get; private set; }
+        public bool IsFinished { get; private set; }
+
         public Team Team { get; private set; }
         public Vector3Int SpawnPosition { get; private set; }
 
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
-            CrashCar();
+            if (IsFinished) {
+                return;
+            }
+            
+            if (!collider2D.TryGetComponent<Car>(out var car)) {
+                return;
+            }
+            
+            if (!car.IsFinished) {
+                CrashCar();
+            }
         }
 
         public void PlayPath(Vector3[] waypoints)
         {
             this.waypoints = waypoints;
             transform.position = waypoints[0];
-            
+
             var path = new Path(PathType.Linear, waypoints, 0, Color.red);
             pathTween = transform
                 .DOPath(path, waypoints.Length / carData.speed, PathMode.TopDown2D)
@@ -49,7 +62,8 @@ namespace Cars
         public void SetData(Vector3Int spawnPosition, CarData carData, Team team, Direction direction)
         {
             SpawnPosition = spawnPosition;
-            
+            initialDirection = direction;
+
             Team = team;
             this.carData = carData;
             UpdateSprite(direction);
@@ -57,8 +71,12 @@ namespace Cars
 
         public void Reset()
         {
-            isCrashed = false;
+            IsCrashed = false;
+            IsFinished = false;
             transform.rotation = Quaternion.identity;
+            UpdateSprite(initialDirection);
+
+            pathTween?.Kill();
         }
 
         private void UpdateSprite(Direction direction)
@@ -68,7 +86,8 @@ namespace Cars
 
         private void Finish()
         {
-            CarFinished?.Invoke();
+            IsFinished = true;
+            Finished?.Invoke();
         }
 
         private void ChangeCarDirection(int waypointIndex)
@@ -76,18 +95,18 @@ namespace Cars
             if (waypointIndex >= waypoints.Length - 1) {
                 return;
             }
-            
+
             var direction = Directions.GetDirection(waypoints[waypointIndex], waypoints[waypointIndex + 1]);
             UpdateSprite(direction);
         }
 
         private void CrashCar()
         {
-            isCrashed = true;
-            pathTween.Pause();
+            IsCrashed = true;
+            pathTween.Kill();
             transform.DORotate(new Vector3(0, 0, Random.Range(0f, 360f)), 0.5f);
-            
-            CarCrashed?.Invoke();
+
+            Crashed?.Invoke();
         }
     }
 }

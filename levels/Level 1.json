@@ -151,7 +151,7 @@
                 "y": -5,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -215,7 +215,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -223,7 +223,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -231,7 +231,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -239,7 +239,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -247,7 +247,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 0
         },
         {
             "position": {
@@ -255,7 +255,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -263,7 +263,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -271,7 +271,7 @@
                 "y": -4,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -311,7 +311,7 @@
                 "y": -3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -319,7 +319,7 @@
                 "y": -3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -327,7 +327,7 @@
                 "y": -3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -407,7 +407,7 @@
                 "y": -2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -415,7 +415,7 @@
                 "y": -2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -471,7 +471,7 @@
                 "y": -2,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -503,7 +503,7 @@
                 "y": -1,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -511,7 +511,7 @@
                 "y": -1,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -599,7 +599,7 @@
                 "y": 0,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -655,7 +655,7 @@
                 "y": 0,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -663,7 +663,7 @@
                 "y": 0,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -687,7 +687,7 @@
                 "y": 1,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -695,7 +695,7 @@
                 "y": 1,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 0
         },
         {
             "position": {
@@ -751,7 +751,7 @@
                 "y": 1,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -783,7 +783,7 @@
                 "y": 2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 2
         },
         {
             "position": {
@@ -791,7 +791,7 @@
                 "y": 2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -839,7 +839,7 @@
                 "y": 2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -847,7 +847,7 @@
                 "y": 2,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -887,7 +887,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -895,7 +895,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -903,7 +903,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -911,7 +911,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 0
         },
         {
             "position": {
@@ -919,7 +919,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -927,7 +927,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -935,7 +935,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -943,7 +943,7 @@
                 "y": 3,
                 "z": 0
             },
-            "terrainType": 1
+            "terrainType": 0
         },
         {
             "position": {
@@ -1007,7 +1007,7 @@
                 "y": 4,
                 "z": 0
             },
-            "terrainType": 2
+            "terrainType": 1
         },
         {
             "position": {
@@ -1109,43 +1109,19 @@
     "roadTileData": [
         {
             "position": {
-                "x": 4,
+                "x": 2,
                 "y": -2,
                 "z": 0
             },
-            "connectionDirection": 8
+            "connectionDirection": 9
         },
         {
             "position": {
-                "x": -1,
-                "y": 4,
+                "x": -5,
+                "y": 2,
                 "z": 0
             },
-            "connectionDirection": 2
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": 3,
-                "z": 0
-            },
-            "connectionDirection": 3
-        },
-        {
-            "position": {
-                "x": 0,
-                "y": -4,
-                "z": 0
-            },
-            "connectionDirection": 3
-        },
-        {
-            "position": {
-                "x": 0,
-                "y": -5,
-                "z": 0
-            },
-            "connectionDirection": 1
+            "connectionDirection": 4
         },
         {
             "position": {
@@ -1153,51 +1129,27 @@
                 "y": 1,
                 "z": 0
             },
-            "connectionDirection": 12
+            "connectionDirection": 5
         },
         {
             "position": {
-                "x": -5,
-                "y": 1,
-                "z": 0
-            },
-            "connectionDirection": 4
-        },
-        {
-            "position": {
-                "x": -1,
+                "x": -4,
                 "y": 2,
                 "z": 0
             },
-            "connectionDirection": 3
-        },
-        {
-            "position": {
-                "x": -1,
-                "y": 1,
-                "z": 0
-            },
-            "connectionDirection": 13
+            "connectionDirection": 10
         },
         {
             "position": {
                 "x": -3,
-                "y": 1,
+                "y": -2,
                 "z": 0
             },
-            "connectionDirection": 12
+            "connectionDirection": 5
         },
         {
             "position": {
                 "x": -2,
-                "y": 1,
-                "z": 0
-            },
-            "connectionDirection": 12
-        },
-        {
-            "position": {
-                "x": 0,
                 "y": -3,
                 "z": 0
             },
@@ -1205,35 +1157,19 @@
         },
         {
             "position": {
-                "x": 0,
+                "x": -2,
                 "y": -2,
                 "z": 0
             },
-            "connectionDirection": 7
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": -2,
-                "z": 0
-            },
-            "connectionDirection": 12
+            "connectionDirection": 11
         },
         {
             "position": {
                 "x": 2,
-                "y": -2,
+                "y": -1,
                 "z": 0
             },
-            "connectionDirection": 12
-        },
-        {
-            "position": {
-                "x": 1,
-                "y": -2,
-                "z": 0
-            },
-            "connectionDirection": 12
+            "connectionDirection": 11
         },
         {
             "position": {
@@ -1241,23 +1177,143 @@
                 "y": -1,
                 "z": 0
             },
-            "connectionDirection": 3
+            "connectionDirection": 12
         },
         {
             "position": {
-                "x": 0,
-                "y": 0,
+                "x": -1,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 6
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": -4,
+                "z": 0
+            },
+            "connectionDirection": 1
+        },
+        {
+            "position": {
+                "x": -3,
+                "y": -1,
                 "z": 0
             },
             "connectionDirection": 3
         },
         {
             "position": {
-                "x": 0,
+                "x": -3,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 7
+        },
+        {
+            "position": {
+                "x": -3,
+                "y": 1,
+                "z": 0
+            },
+            "connectionDirection": 14
+        },
+        {
+            "position": {
+                "x": -2,
                 "y": 1,
                 "z": 0
             },
             "connectionDirection": 10
+        },
+        {
+            "position": {
+                "x": -2,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 9
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -2,
+                "z": 0
+            },
+            "connectionDirection": 6
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 6
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -3,
+                "z": 0
+            },
+            "connectionDirection": 3
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -4,
+                "z": 0
+            },
+            "connectionDirection": 5
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": -4,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": -4,
+                "z": 0
+            },
+            "connectionDirection": 8
+        },
+        {
+            "position": {
+                "x": 4,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 8
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": -1,
+                "z": 0
+            },
+            "connectionDirection": 12
         }
     ],
     "logisticData": {
@@ -1265,7 +1321,7 @@
             {
                 "pos": {
                     "x": -5,
-                    "y": 1,
+                    "y": 2,
                     "z": 0
                 },
                 "carType": 0,
@@ -1274,30 +1330,30 @@
             },
             {
                 "pos": {
-                    "x": -1,
-                    "y": 4,
+                    "x": 4,
+                    "y": 0,
                     "z": 0
                 },
                 "carType": 0,
                 "team": 1,
-                "direction": 1
+                "direction": 2
             },
             {
                 "pos": {
-                    "x": 0,
-                    "y": -5,
+                    "x": 2,
+                    "y": -4,
                     "z": 0
                 },
                 "carType": 0,
                 "team": 1,
-                "direction": 0
+                "direction": 2
             }
         ],
         "targetsData": [
             {
                 "pos": {
-                    "x": 4,
-                    "y": -2,
+                    "x": -2,
+                    "y": -4,
                     "z": 0
                 },
                 "team": 1

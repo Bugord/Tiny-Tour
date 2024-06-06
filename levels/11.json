@@ -914,34 +914,64 @@
                 "z": 0
             },
             "connectionDirection": 8
-        }
-    ],
-    "pathsData": [
-        {
-            "targetPosition": {
-                "x": -5,
-                "y": -4,
-                "z": 0
-            },
-            "spawnPosition": {
-                "x": -5,
-                "y": 2,
-                "z": 0
-            },
-            "team": 0
         },
         {
-            "targetPosition": {
-                "x": 4,
-                "y": 1,
-                "z": 0
-            },
-            "spawnPosition": {
+            "position": {
                 "x": 4,
                 "y": -3,
                 "z": 0
             },
-            "team": 1
+            "connectionDirection": 8
+        },
+        {
+            "position": {
+                "x": 3,
+                "y": -3,
+                "z": 0
+            },
+            "connectionDirection": 12
+        },
+        {
+            "position": {
+                "x": 2,
+                "y": -3,
+                "z": 0
+            },
+            "connectionDirection": 4
         }
-    ]
+    ],
+    "logisticData": {
+        "spawnPointsData": [
+            {
+                "pos": {
+                    "x": -5,
+                    "y": 2,
+                    "z": 0
+                },
+                "carType": 0,
+                "team": 4,
+                "direction": 3
+            },
+            {
+                "pos": {
+                    "x": -5,
+                    "y": -4,
+                    "z": 0
+                },
+                "carType": 0,
+                "team": 4,
+                "direction": 3
+            }
+        ],
+        "targetsData": [
+            {
+                "pos": {
+                    "x": 4,
+                    "y": -3,
+                    "z": 0
+                },
+                "team": 4
+            }
+        ]
+    }
 }

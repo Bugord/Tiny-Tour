@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Cars;
 using Level;
@@ -29,6 +30,8 @@ namespace Core
 
         private List<Car> cars;
 
+        private int finishedCarsCount;
+
         public void LoadLevel(LevelData levelData)
         {
             currentLevelData = levelData;
@@ -46,6 +49,7 @@ namespace Core
 
         public void Play()
         {
+            finishedCarsCount = 0;
             pathfindingController.Update();
 
             foreach (var targetData in currentLevelData.logisticData.targetsData) {
@@ -53,8 +57,17 @@ namespace Core
                 foreach (var car in carsToPlay) {
                     var cellPath = pathfindingController.FindPath(car.SpawnPosition, targetData.pos);
                     var worldPath = cellPath.Select(p => inGameTilemapEditor.CellToWorldPos(p)).ToArray();
+                    car.Reset();
                     car.PlayPath(worldPath);
                 }
+            }
+        }
+
+        public void ResetCars()
+        {
+            foreach (var car in cars) {
+                car.transform.position = inGameTilemapEditor.CellToWorldPos(car.SpawnPosition);
+                car.Reset();
             }
         }
 
@@ -66,13 +79,40 @@ namespace Core
                 var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(spawnPointData.pos);
                 var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
 
-                car.SetData(spawnPointData.pos, 
+                car.SetData(spawnPointData.pos,
                     carLibrary.GetCarData(spawnPointData.carType),
                     spawnPointData.team,
                     spawnPointData.direction);
-                
+
                 car.transform.parent = transform;
+
+                car.Finished += OnCarFinished;
+                car.Crashed += OnCrashed;
                 cars.Add(car);
+            }
+        }
+
+        private void OnCrashed()
+        {
+            finishedCarsCount++;
+
+            if (finishedCarsCount == cars.Count) {
+                StartCoroutine(ResetWithDelay());
+            }
+        }
+
+        private IEnumerator ResetWithDelay()
+        {
+            yield return new WaitForSeconds(1);
+            ResetCars();
+        }
+
+        private void OnCarFinished()
+        {
+            finishedCarsCount++;
+
+            if (finishedCarsCount == cars.Count) {
+                StartCoroutine(ResetWithDelay());
             }
         }
     }
