@@ -49,5 +49,12 @@ namespace Utility
 
             return result;
         }
+
+        public static T GetNextValue<T>(this T value) where T : struct
+        {
+            var enumValues = (T[])Enum.GetValues(typeof(T));
+            var nextIndex = Array.IndexOf(enumValues, value) + 1;
+            return enumValues.Length == nextIndex ? enumValues[0] : enumValues[nextIndex];
+        }
     }
 }

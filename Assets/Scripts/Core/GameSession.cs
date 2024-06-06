@@ -29,8 +29,6 @@ namespace Core
 
         private List<Car> cars;
 
-        private PathData carPathData;
-
         public void LoadLevel(LevelData levelData)
         {
             currentLevelData = levelData;
@@ -46,15 +44,17 @@ namespace Core
             inGameTilemapEditor.Setup(tilemapEditorUI);
         }
 
-        [ContextMenu("Play")]
         public void Play()
         {
             pathfindingController.Update();
 
-            for (var i = 0; i < currentLevelData.pathsData.Length; i++) {
-                var pathData = currentLevelData.pathsData[i];
-                var path = pathfindingController.FindPath(pathData.spawnPosition, pathData.targetPosition);
-                cars[i].PlayPath(path.Select(p => inGameTilemapEditor.CellToWorldPos((Vector3Int)p)).ToArray());
+            foreach (var targetData in currentLevelData.logisticData.targetsData) {
+                var carsToPlay = cars.Where(car => car.Team == targetData.team);
+                foreach (var car in carsToPlay) {
+                    var cellPath = pathfindingController.FindPath(car.SpawnPosition, targetData.pos);
+                    var worldPath = cellPath.Select(p => inGameTilemapEditor.CellToWorldPos(p)).ToArray();
+                    car.PlayPath(worldPath);
+                }
             }
         }
 
@@ -62,10 +62,15 @@ namespace Core
         {
             cars = new List<Car>();
 
-            foreach (var pathData in currentLevelData.pathsData) {
-                var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(pathData.spawnPosition);
+            foreach (var spawnPointData in currentLevelData.logisticData.spawnPointsData) {
+                var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(spawnPointData.pos);
                 var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
-                car.SetData(carLibrary.GetCarData(CarType.Regular, pathData.team));
+
+                car.SetData(spawnPointData.pos, 
+                    carLibrary.GetCarData(spawnPointData.carType),
+                    spawnPointData.team,
+                    spawnPointData.direction);
+                
                 car.transform.parent = transform;
                 cars.Add(car);
             }

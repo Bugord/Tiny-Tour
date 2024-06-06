@@ -34,8 +34,20 @@ namespace States
             editLevelScreen.BackPressed += OnBackPressed;
             editLevelScreen.SavePressed += OnSavePressed;
             editLevelScreen.PlayPressed += OnPlayPressed;
+            editLevelScreen.CameraScaleChanged += OnCameraScaleChanged;
 
             gameStateSystem.StartCoroutine(LoadEditor());
+        }
+
+        public override void OnExit()
+        {
+            SceneManager.UnloadSceneAsync(EditLevelScene);
+
+            editLevelScreen.BackPressed -= OnBackPressed;
+            editLevelScreen.SavePressed -= OnSavePressed;
+            editLevelScreen.PlayPressed -= OnPlayPressed;
+            editLevelScreen.CameraScaleChanged -= OnCameraScaleChanged;
+            editLevelScreen.Close();
         }
 
         private IEnumerator LoadEditor()
@@ -57,16 +69,6 @@ namespace States
             workshopTilemapEditor.LoadLevel(selectedLevel);
         }
 
-        public override void OnExit()
-        {
-            SceneManager.UnloadSceneAsync(EditLevelScene);
-
-            editLevelScreen.BackPressed -= OnBackPressed;
-            editLevelScreen.SavePressed -= OnSavePressed;
-            editLevelScreen.PlayPressed -= OnPlayPressed;
-            editLevelScreen.Close();
-        }
-
         private void OnSavePressed()
         {
             var levelData = workshopTilemapEditor.SaveLevel();
@@ -82,6 +84,11 @@ namespace States
         {
             levelManager.SelectLevel(workshopTilemapEditor.SaveLevel());
             gameStateSystem.ChangeState(gameStateSystem.TestPlayLevelState);
+        }
+
+        private void OnCameraScaleChanged(float cameraScale)
+        {
+            workshopTilemapEditor.ChangeCameraScale(cameraScale);
         }
     }
 }

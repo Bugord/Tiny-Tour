@@ -12,7 +12,6 @@ namespace Utility
                 { } when from.y > to.y => Direction.Down,
                 { } when from.x < to.x => Direction.Right,
                 { } when from.x > to.x => Direction.Left,
-                _ => Direction.None
             };
     }
 }

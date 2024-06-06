@@ -10,9 +10,9 @@ namespace Cars
     {
         public List<CarData> cars;
 
-        public CarData GetCarData(CarType carType, Team team)
+        public CarData GetCarData(CarType carType)
         {
-            return cars.FirstOrDefault(car => car.carType == carType && car.team == team);
+            return cars.FirstOrDefault(car => car.carType == carType);
         }
     }
 }

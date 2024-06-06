@@ -1,23 +1,21 @@
 ﻿using AYellowpaper.SerializedCollections;
 using Core;
-using Tiles;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Level
+namespace Tiles.Logistic
 {
     [CreateAssetMenu]
-    public class LogisticTile : TileBase
+    public class TargetTile : LogisticTile
     {
-        public SerializedDictionary<Team, Sprite> sprites;
-        public LogisticTileType type;
         public Team team;
-        
+        public SerializedDictionary<Team, Sprite> sprites;
+
         public Sprite Sprite => sprites[team];
-        
+
         public override void GetTileData(Vector3Int position, ITilemap tilemap, ref TileData tileData)
         {
-            tileData.sprite = Sprite;
+            tileData.sprite = sprites[team];
         }
     }
 }

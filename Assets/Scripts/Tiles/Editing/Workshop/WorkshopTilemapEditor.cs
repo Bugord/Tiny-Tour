@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Cars;
 using Level;
 using Level.Data;
 using Tiles.Editing.Options;
@@ -16,11 +17,19 @@ namespace Tiles.Editing.Workshop
         [SerializeField]
         private TileLibraryData tileLibraryData;
 
+        [SerializeField]
+        private EditorSpawnPointView spawnPointViewPrefab;
+        
+        [SerializeField]
+        private CarLibrary carLibrary;
+
+        private Camera mainCamera;
+
         private ITileLibrary tileLibrary;
         
         private RoadEditor roadEditor;
         private TerrainEditor terrainEditor;
-        private LogisticEditor logisticEditor;
+        private WorkshopLogisticEditor workshopLogisticEditor;
 
         private string levelName;
 
@@ -29,14 +38,16 @@ namespace Tiles.Editing.Workshop
             tileLibraryData.Init();
             tileLibrary = tileLibraryData;
             
+            mainCamera = Camera.main;
+
             roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary, true);
             terrainEditor = new TerrainEditor(terrainTilemap, tileLibrary);
-            logisticEditor = new LogisticEditor(logicTilemap, tileLibrary);
+            workshopLogisticEditor = new WorkshopLogisticEditor(logisticTilemap, tileLibrary, spawnPointViewPrefab, carLibrary, transform);
 
             TileEditors = new List<ITileEditor> {
                 terrainEditor,
                 roadEditor,
-                logisticEditor
+                workshopLogisticEditor
             };
 
             this.tilemapEditorUI = tilemapEditorUI;
@@ -57,7 +68,7 @@ namespace Tiles.Editing.Workshop
                 levelName = levelName,
                 roadTileData = roadEditor.Save(),
                 terrainTilesData = terrainEditor.Save(),
-                pathsData = logisticEditor.Save()
+                logisticData = workshopLogisticEditor.Save()
             };
         }
 
@@ -66,7 +77,12 @@ namespace Tiles.Editing.Workshop
             levelName = levelData.levelName;
             roadEditor.Load(levelData.roadTileData);
             terrainEditor.Load(levelData.terrainTilesData);
-            logisticEditor.Load(levelData.pathsData);
+            workshopLogisticEditor.Load(levelData.logisticData);
+        }
+
+        public void ChangeCameraScale(float scale)
+        {
+            mainCamera.orthographicSize = scale;
         }
         
         private void OnSelectedTileEditorChanged(BaseEditorOption editorOption)
@@ -77,7 +93,7 @@ namespace Tiles.Editing.Workshop
 
         protected override Vector3Int MouseToTilePosition(Vector3 mousePos)
         {
-            return logicTilemap.WorldToCell(mousePos);
+            return logisticTilemap.WorldToCell(mousePos);
         }
     }
 }

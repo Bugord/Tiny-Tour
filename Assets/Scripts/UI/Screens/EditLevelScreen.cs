@@ -1,6 +1,7 @@
 ﻿using System;
 using Tiles.Editing;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.Screens
 {
@@ -9,6 +10,7 @@ namespace UI.Screens
         public event Action BackPressed;
         public event Action SavePressed;
         public event Action PlayPressed;
+        public event Action<float> CameraScaleChanged;
 
         [SerializeField]
         private TilemapEditorUI tilemapEditorUI;
@@ -28,6 +30,11 @@ namespace UI.Screens
         public void OnPlayButtonPressed()
         {
             PlayPressed?.Invoke();
+        }   
+        
+        public void OnCameraScaleSliderValueChanged(Slider slider)
+        {
+            CameraScaleChanged?.Invoke(slider.value);
         }
     }
 }

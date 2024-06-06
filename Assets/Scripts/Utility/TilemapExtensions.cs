@@ -9,5 +9,10 @@ namespace Utility
         {
             return tilemap.CellToWorld(cellPos) + tilemap.cellSize / 2f;
         }
+        
+        public static Vector3 CellToWorldCenter(this Tilemap tilemap, Vector2Int cellPos)
+        {
+            return tilemap.CellToWorld((Vector3Int)cellPos) + tilemap.cellSize / 2f;
+        }
     }
 }

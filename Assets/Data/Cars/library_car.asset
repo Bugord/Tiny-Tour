@@ -14,7 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cars:
   - {fileID: 11400000, guid: 06608fbae39e46448ae62c65a79a02e3, type: 2}
-  - {fileID: 11400000, guid: b24cedc756652de49b4c565eae64c243, type: 2}
-  - {fileID: 11400000, guid: 0493f95969388304e8ee7ae8fd4d4060, type: 2}
-  - {fileID: 11400000, guid: 1b214c016d20a1b43b2091a7d687a499, type: 2}
-  - {fileID: 11400000, guid: 071d49583b27c6448b21ebac2e24022e, type: 2}

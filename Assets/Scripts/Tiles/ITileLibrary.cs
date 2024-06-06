@@ -1,6 +1,7 @@
 ﻿using Core;
 using Tiles;
 using Tiles.Ground;
+using Tiles.Logistic;
 using UnityEngine.Tilemaps;
 
 namespace Level
@@ -9,6 +10,6 @@ namespace Level
     {
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection);
         public TerrainTile GetTerrainTileByType(TerrainType terrainType);
-        public LogisticTile GetLogisticTile(LogisticTileType logisticTileType, Team team);
+        public TargetTile GetTargetTile(Team team);
     }
 }

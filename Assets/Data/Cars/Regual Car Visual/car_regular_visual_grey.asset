@@ -9,18 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5704ce44d88f4396888093030a12bce8, type: 3}
-  m_Name: regular_car_data_grey
+  m_Script: {fileID: 11500000, guid: 7e98f4b68aa647e9866edd37980fe068, type: 3}
+  m_Name: car_regular_visual_grey
   m_EditorClassIdentifier: 
-  team: 0
   directionSprites:
     _serializedList:
-    - Key: 1
+    - Key: 0
       Value: {fileID: -3396711975359685569, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-    - Key: 2
+    - Key: 1
       Value: {fileID: -2113774444412785005, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-    - Key: 3
+    - Key: 2
       Value: {fileID: 4749889579431057859, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-    - Key: 4
+    - Key: 3
       Value: {fileID: -506111486317298069, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-  speed: 3

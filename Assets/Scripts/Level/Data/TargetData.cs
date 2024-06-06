@@ -5,10 +5,9 @@ using UnityEngine;
 namespace Level.Data
 {
     [Serializable]
-    public class PathData
+    public class TargetData
     {
-        public Vector3Int targetPosition;
-        public Vector3Int spawnPosition;
+        public Vector3Int pos;
         public Team team;
     }
 }

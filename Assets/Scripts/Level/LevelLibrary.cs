@@ -26,7 +26,6 @@ namespace Level
                     var json = File.ReadAllText(file);
                     var level = JsonUtility.FromJson<LevelData>(json);
                     if (level != null) {
-                        level.pathsData = level.pathsData ?? Array.Empty<PathData>();
                         levels.Add(level);
                         Debug.Log($"Loaded {level.levelName}");
                     }

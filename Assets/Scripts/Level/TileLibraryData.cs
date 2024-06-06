@@ -3,6 +3,7 @@ using AYellowpaper.SerializedCollections;
 using Core;
 using Level;
 using Tiles.Ground;
+using Tiles.Logistic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
@@ -24,23 +25,19 @@ namespace Tiles
 
         [SerializeField]
         private RoadTile roadTile;
-
-        [SerializeField]
-        private LogisticTile spawnPointTile;
         
         [SerializeField]
-        private LogisticTile targetTile;
+        private TargetTile targetTile;
         
         private Dictionary<Team, LogisticTile> spawnPointTiles;
 
-        private Dictionary<Team, LogisticTile> targetTiles;
+        private Dictionary<Team, TargetTile> targetTiles;
 
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
 
         public void Init()
         {
             ConfigureRoadObjects(roadTile);
-            ConfigureSpawnPointTiles(spawnPointTile);
             ConfigureTargetTiles(targetTile);
         }
 
@@ -57,12 +54,10 @@ namespace Tiles
                 _ => null
             };
 
-        public LogisticTile GetLogisticTile(LogisticTileType logisticTileType, Team team) =>
-            logisticTileType switch {
-                LogisticTileType.Target => targetTiles[team],
-                LogisticTileType.SpawnPoint => spawnPointTiles[team],
-                _ => null
-            };
+        public TargetTile GetTargetTile(Team team)
+        {
+            return targetTiles[team];
+        }
 
         private void ConfigureRoadObjects(RoadTile roadTile)
         {
@@ -76,29 +71,15 @@ namespace Tiles
             }
         }
         
-        private void ConfigureSpawnPointTiles(LogisticTile logisticTile)
+        private void ConfigureTargetTiles(TargetTile targetTile)
         {
-            spawnPointTiles = new Dictionary<Team, LogisticTile>();
+            targetTiles = new Dictionary<Team, TargetTile>();
 
             var teams = EnumExtensions.GetAllEnums<Team>();
             foreach (var team in teams) {
-                var spawnPointTile = Instantiate(logisticTile);
-                spawnPointTile.team = team;
-                spawnPointTile.type = LogisticTileType.SpawnPoint;
-                spawnPointTiles.Add(team, spawnPointTile);
-            }
-        }
-        
-        private void ConfigureTargetTiles(LogisticTile logisticTile)
-        {
-            targetTiles = new Dictionary<Team, LogisticTile>();
-
-            var teams = EnumExtensions.GetAllEnums<Team>();
-            foreach (var team in teams) {
-                var targetTile = Instantiate(logisticTile);
-                targetTile.team = team;
-                targetTile.type = LogisticTileType.Target;
-                targetTiles.Add(team, targetTile);
+                var newTargetTile = Instantiate(targetTile);
+                newTargetTile.team = team;
+                targetTiles.Add(team, newTargetTile);
             }
         }
     }

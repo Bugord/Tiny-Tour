@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5704ce44d88f4396888093030a12bce8, type: 3}
-  m_Name: regular_car_data_orange
+  m_Name: regular_car_data
   m_EditorClassIdentifier: 
   carType: 0
-  team: 4
-  directionSprites:
+  visualsData:
     _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 4046e8b1078abca4ca2b89d66be04418, type: 2}
     - Key: 1
-      Value: {fileID: 2747199493600130671, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value: {fileID: 11400000, guid: 607e8cf1b1203e64cbbd93659196d063, type: 2}
     - Key: 2
-      Value: {fileID: -1147677823, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value: {fileID: 11400000, guid: dc48461c10e004441bc0247283ef1a52, type: 2}
     - Key: 3
-      Value: {fileID: 172163772, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value: {fileID: 11400000, guid: f8ac2eb2b97394e45a98cc395ee13c41, type: 2}
     - Key: 4
-      Value: {fileID: 5466010309098566575, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value: {fileID: 11400000, guid: f934a764d7b573b4aba9313da8ba9829, type: 2}
   speed: 3

@@ -284,6 +284,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2303896304145418456, guid: a56a971f44ab0a545aa99252d49f92a1, type: 3}
+      propertyPath: carLibrary
+      value: 
+      objectReference: {fileID: 11400000, guid: 55d3115aa6d505441843268e05faca79, type: 2}
+    - target: {fileID: 2303896304145418456, guid: a56a971f44ab0a545aa99252d49f92a1, type: 3}
       propertyPath: roadTilemap
       value: 
       objectReference: {fileID: 1319320753}
@@ -295,6 +299,10 @@ PrefabInstance:
       propertyPath: terrainTilemap
       value: 
       objectReference: {fileID: 1319320754}
+    - target: {fileID: 2303896304145418456, guid: a56a971f44ab0a545aa99252d49f92a1, type: 3}
+      propertyPath: spawnPointViewPrefab
+      value: 
+      objectReference: {fileID: 3363804445203571916, guid: 2ed7720fe1955cf43898014dfede4a01, type: 3}
     - target: {fileID: 4351632191066382164, guid: a56a971f44ab0a545aa99252d49f92a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.12568408
