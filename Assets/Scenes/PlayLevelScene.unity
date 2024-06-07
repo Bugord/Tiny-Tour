@@ -275,6 +275,11 @@ Tilemap:
   m_CorrespondingSourceObject: {fileID: 3401170431863569403, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
   m_PrefabInstance: {fileID: 1319320751}
   m_PrefabAsset: {fileID: 0}
+--- !u!1839735485 &1319320755 stripped
+Tilemap:
+  m_CorrespondingSourceObject: {fileID: 3041012261470436711, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
+  m_PrefabInstance: {fileID: 1319320751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1740546336
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +421,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainTilemap: {fileID: 1319320754}
   roadTilemap: {fileID: 1319320753}
-  logicTilemap: {fileID: 1319320752}
+  logisticTilemap: {fileID: 1319320752}
+  obstacleTilemap: {fileID: 1319320755}
   tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -19,7 +19,7 @@ namespace Tiles.Editing.Workshop
 
         [SerializeField]
         private EditorSpawnPointView spawnPointViewPrefab;
-        
+
         [SerializeField]
         private CarLibrary carLibrary;
 
@@ -30,6 +30,7 @@ namespace Tiles.Editing.Workshop
         private RoadEditor roadEditor;
         private TerrainEditor terrainEditor;
         private WorkshopLogisticEditor workshopLogisticEditor;
+        private ObstacleEditor obstacleEditor;
 
         private string levelName;
 
@@ -40,14 +41,16 @@ namespace Tiles.Editing.Workshop
             
             mainCamera = Camera.main;
 
-            roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary, true);
+            roadEditor = new RoadEditor(roadTilemap, terrainTilemap, obstacleTilemap, tileLibrary, true);
             terrainEditor = new TerrainEditor(terrainTilemap, tileLibrary);
             workshopLogisticEditor = new WorkshopLogisticEditor(logisticTilemap, tileLibrary, spawnPointViewPrefab, carLibrary, transform);
-
+            obstacleEditor = new ObstacleEditor(obstacleTilemap, tileLibrary);
+            
             TileEditors = new List<ITileEditor> {
                 terrainEditor,
                 roadEditor,
-                workshopLogisticEditor
+                workshopLogisticEditor,
+                obstacleEditor
             };
 
             this.tilemapEditorUI = tilemapEditorUI;
@@ -68,7 +71,8 @@ namespace Tiles.Editing.Workshop
                 levelName = levelName,
                 roadTileData = roadEditor.Save(),
                 terrainTilesData = terrainEditor.Save(),
-                logisticData = workshopLogisticEditor.Save()
+                logisticData = workshopLogisticEditor.Save(),
+                obstaclesData = obstacleEditor.Save()
             };
         }
 
@@ -78,6 +82,7 @@ namespace Tiles.Editing.Workshop
             roadEditor.Load(levelData.roadTileData);
             terrainEditor.Load(levelData.terrainTilesData);
             workshopLogisticEditor.Load(levelData.logisticData);
+            obstacleEditor.Load(levelData.obstaclesData);
         }
 
         public void ChangeCameraScale(float scale)

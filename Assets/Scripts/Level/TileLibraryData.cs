@@ -7,7 +7,6 @@ using Tiles.Logistic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
-using LogisticTileData = Tiles.Editing.LogisticTileData;
 
 namespace Tiles
 {
@@ -28,7 +27,10 @@ namespace Tiles
         
         [SerializeField]
         private TargetTile targetTile;
-        
+
+        [SerializeField]
+        private List<Tile> obstacleTiles;
+
         private Dictionary<Team, LogisticTile> spawnPointTiles;
 
         private Dictionary<Team, TargetTile> targetTiles;
@@ -81,6 +83,16 @@ namespace Tiles
                 newTargetTile.team = team;
                 targetTiles.Add(team, newTargetTile);
             }
+        }
+
+        public Tile GetObstacleTile(int id)
+        {
+            return obstacleTiles[id];
+        }
+
+        public Tile[] GetObstacleTiles()
+        {
+            return obstacleTiles.ToArray();
         }
     }
 }

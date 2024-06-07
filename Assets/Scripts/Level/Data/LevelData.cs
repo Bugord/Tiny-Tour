@@ -9,5 +9,6 @@ namespace Level.Data
         public TerrainTileData[] terrainTilesData;
         public RoadTileData[] roadTileData;
         public LogisticData logisticData;
+        public ObstacleData[] obstaclesData;
     }
 }

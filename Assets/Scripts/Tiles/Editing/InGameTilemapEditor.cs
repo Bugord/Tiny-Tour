@@ -16,6 +16,7 @@ namespace Tiles.Editing
         private RoadEditor roadEditor;
         private TerrainEditor terrainEditor;
         private InGameLogisticEditor inGameLogisticEditor;
+        private ObstacleEditor obstacleEditor;
 
         private ITileLibrary tileLibrary;
         private TilemapEditorUI tilemapEditorUI;
@@ -25,9 +26,10 @@ namespace Tiles.Editing
             tileLibraryData.Init();
             
             tileLibrary = tileLibraryData;
-            roadEditor = new RoadEditor(terrainTilemap, roadTilemap, tileLibrary, false);
+            roadEditor = new RoadEditor(roadTilemap, terrainTilemap, obstacleTilemap, tileLibrary, false);
             terrainEditor = new TerrainEditor(terrainTilemap, tileLibrary);
             inGameLogisticEditor = new InGameLogisticEditor(logisticTilemap, tileLibrary);
+            obstacleEditor = new ObstacleEditor(obstacleTilemap, tileLibrary);
 
             TileEditors = new List<ITileEditor> {
                 roadEditor
@@ -54,6 +56,7 @@ namespace Tiles.Editing
             terrainEditor.Load(levelData.terrainTilesData);
             roadEditor.Load(levelData.roadTileData);
             inGameLogisticEditor.Load(levelData.logisticData);
+            obstacleEditor.Load(levelData.obstaclesData);
         }
 
         public Vector3 CellToWorldPos(Vector3Int tilePos) => terrainTilemap.CellToWorldCenter(tilePos);

@@ -16,9 +16,11 @@ namespace Tiles.Editing
         [SerializeField]
         protected Tilemap roadTilemap;
 
-        [FormerlySerializedAs("logicTilemap")]
         [SerializeField]
         protected Tilemap logisticTilemap;
+
+        [SerializeField]
+        protected Tilemap obstacleTilemap; 
         
         private Camera mainCamera;
 

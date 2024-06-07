@@ -14,6 +14,7 @@ namespace Tiles.Editing
     {
         private readonly Tilemap roadTilemap;
         private readonly Tilemap terrainTilemap;
+        private readonly Tilemap obstacleTilemap;
         private readonly ITileLibrary tileLibrary;
         private readonly bool isEditorMode;
 
@@ -22,10 +23,11 @@ namespace Tiles.Editing
         private Vector3Int? previousSelectedTile;
         private Vector3Int currentSelectedTile;
 
-        public RoadEditor(Tilemap terrainTilemap, Tilemap roadTilemap, ITileLibrary tileLibrary, bool isEditorMode)
+        public RoadEditor(Tilemap roadTilemap, Tilemap terrainTilemap, Tilemap obstacleTilemap, ITileLibrary tileLibrary, bool isEditorMode)
         {
-            this.terrainTilemap = terrainTilemap;
             this.roadTilemap = roadTilemap;
+            this.terrainTilemap = terrainTilemap;
+            this.obstacleTilemap = obstacleTilemap;
             this.tileLibrary = tileLibrary;
             this.isEditorMode = isEditorMode;
 
@@ -175,6 +177,11 @@ namespace Tiles.Editing
 
         private bool CanPlaceRoad(Vector3Int pos)
         {
+            var obstacleTile = obstacleTilemap.GetTile(pos);
+            if (obstacleTile) {
+                return false;
+            }
+
             var terrainTile = terrainTilemap.GetTile<TerrainTile>(pos);
             return terrainTile && terrainTile.terrainType != TerrainType.Water;
         }
