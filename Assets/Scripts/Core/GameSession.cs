@@ -42,6 +42,12 @@ namespace Core
             SpawnCars();
         }
 
+        public void CloseLevel()
+        {
+            DespawnCars();
+            currentLevelData = null;
+        }
+
         public void SetupEditor(TilemapEditorUI tilemapEditorUI)
         {
             inGameTilemapEditor.Setup(tilemapEditorUI);
@@ -90,6 +96,16 @@ namespace Core
                 car.Crashed += OnCrashed;
                 cars.Add(car);
             }
+        }
+
+        private void DespawnCars()
+        {
+            foreach (var car in cars) {
+                car.Finished -= OnCarFinished;
+                car.Crashed -= OnCrashed;
+                Destroy(car.gameObject);
+            }
+            cars.Clear();
         }
 
         private void OnCrashed()

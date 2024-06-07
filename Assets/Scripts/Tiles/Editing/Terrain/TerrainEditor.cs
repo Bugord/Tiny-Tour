@@ -56,6 +56,11 @@ namespace Tiles.Editing
                     TerrainType = TerrainType.BridgeBase,
                     TileEditor = this,
                     Icon = tileLibrary.GetTerrainTileByType(TerrainType.BridgeBase).m_DefaultSprite
+                },
+                new TerrainEditorOption {
+                    TerrainType = TerrainType.Water,
+                    TileEditor = this,
+                    Icon = tileLibrary.GetTerrainTileByType(TerrainType.Water).m_DefaultSprite
                 }
             };
         }
@@ -73,6 +78,7 @@ namespace Tiles.Editing
         public void Load(TerrainTileData[] terrainTilesData)
         {
             terrainTilemap.ClearAllTiles();
+            
             foreach (var terrainTileData in terrainTilesData) {
                 terrainTilemap.SetTile(terrainTileData.position, tileLibrary.GetTerrainTileByType(terrainTileData.terrainType));
             }

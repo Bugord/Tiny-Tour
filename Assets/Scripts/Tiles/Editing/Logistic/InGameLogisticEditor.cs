@@ -56,6 +56,8 @@ namespace Tiles.Editing
 
         public void Load(LogisticData logisticData)
         {
+            logisticTilemap.ClearAllTiles();
+            
             if (logisticData == null) {
                 return;
             }

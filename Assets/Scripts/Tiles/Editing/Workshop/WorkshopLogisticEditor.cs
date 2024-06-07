@@ -97,6 +97,10 @@ namespace Tiles.Editing.Workshop
 
         public void Load(LogisticData logisticData)
         {
+            spawnPoints.Clear();
+            targets.Clear();
+            logisticTilemap.ClearAllTiles();
+            
             if (logisticData == null) {
                 return;
             }

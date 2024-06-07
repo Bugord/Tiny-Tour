@@ -34,6 +34,8 @@ namespace States
             playLevelScreen.BackPressed += OnBackPressed;
             playLevelScreen.PlayPressed += OnPlayPressed;
             playLevelScreen.ResetPressed += OnResetPressed;
+            playLevelScreen.PreviousLevelPressed += OnPreviousLevelPressed;
+            playLevelScreen.NextLevelPressed += OnNextLevelPressed;
 
             gameStateSystem.StartCoroutine(LoadEditor());
         }
@@ -45,6 +47,8 @@ namespace States
             playLevelScreen.BackPressed -= OnBackPressed;
             playLevelScreen.PlayPressed -= OnPlayPressed;
             playLevelScreen.ResetPressed -= OnResetPressed;
+            playLevelScreen.PreviousLevelPressed -= OnPreviousLevelPressed;
+            playLevelScreen.NextLevelPressed -= OnNextLevelPressed;
             playLevelScreen.Close();
         }
 
@@ -80,6 +84,28 @@ namespace States
         private void OnResetPressed()
         {
             gameSession.ResetCars();
+        }
+
+        private void OnPreviousLevelPressed()
+        {
+            var previousLevel = levelManager.GetPreviousLevel();
+            if (previousLevel == null) {
+                return;
+            }
+            levelManager.SelectLevel(previousLevel);
+            gameSession.CloseLevel();
+            gameSession.LoadLevel(previousLevel);
+        }
+
+        private void OnNextLevelPressed()
+        {
+            var nextLevel = levelManager.GetNextLevel();
+            if (nextLevel == null) {
+                return;
+            }
+            levelManager.SelectLevel(nextLevel);
+            gameSession.CloseLevel();
+            gameSession.LoadLevel(nextLevel);
         }
     }
 }

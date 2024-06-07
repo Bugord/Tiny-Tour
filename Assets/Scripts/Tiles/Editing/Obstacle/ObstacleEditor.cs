@@ -77,6 +77,9 @@ namespace Tiles.Editing
 
         public void Load(ObstacleData[] obstaclesData)
         {
+            this.obstaclesData.Clear();
+            obstacleTilemap.ClearAllTiles();
+            
             if (obstaclesData == null) {
                 return;
             }

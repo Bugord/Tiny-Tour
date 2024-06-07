@@ -9,6 +9,8 @@ namespace UI.Screens
         public event Action BackPressed;
         public event Action PlayPressed;
         public event Action ResetPressed;
+        public event Action PreviousLevelPressed;
+        public event Action NextLevelPressed;
 
         [SerializeField]
         private TilemapEditorUI tilemapEditorUI;
@@ -28,6 +30,16 @@ namespace UI.Screens
         public void OnResetButtonPressed()
         {
             ResetPressed?.Invoke();
+        }
+        
+        public void OnPreviousLevelButtonPressed()
+        {
+            PreviousLevelPressed?.Invoke();
+        }
+        
+        public void OnNextLevelButtonPressed()
+        {
+            NextLevelPressed?.Invoke();
         }
     }
 }
