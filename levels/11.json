@@ -874,6 +874,30 @@
                 "z": 0
             },
             "connectionDirection": 4
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "connectionDirection": 2
+        },
+        {
+            "position": {
+                "x": 0,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 5
+        },
+        {
+            "position": {
+                "x": 1,
+                "y": 0,
+                "z": 0
+            },
+            "connectionDirection": 8
         }
     ],
     "logisticData": {
@@ -905,6 +929,16 @@
                     "x": 4,
                     "y": -3,
                     "z": 0
+                },
+                "team": 4
+            }
+        ],
+        "intermediatePointsData": [
+            {
+                "pos": {
+                    "x": 0,
+                    "y": 1,
+                    "z": 1
                 },
                 "team": 4
             }
@@ -942,6 +976,14 @@
                 "z": 0
             },
             "id": 44
+        },
+        {
+            "pos": {
+                "x": 1,
+                "y": 1,
+                "z": 0
+            },
+            "id": 32
         }
     ]
 }

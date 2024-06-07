@@ -863,7 +863,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7598429494459624125}
         m_TargetAssemblyTypeName: UI.Screens.PlayLevelScreen, Assembly-CSharp
-        m_MethodName: OnPlayButtonPressed
+        m_MethodName: OnResetButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

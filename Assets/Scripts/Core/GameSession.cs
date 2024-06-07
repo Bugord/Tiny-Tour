@@ -61,7 +61,7 @@ namespace Core
             foreach (var targetData in currentLevelData.logisticData.targetsData) {
                 var carsToPlay = cars.Where(car => car.Team == targetData.team);
                 foreach (var car in carsToPlay) {
-                    var cellPath = pathfindingController.FindPath(car.SpawnPosition, targetData.pos);
+                    var cellPath = GetCarPath(car, targetData.pos);
                     var worldPath = cellPath.Select(p => inGameTilemapEditor.CellToWorldPos(p)).ToArray();
                     car.Reset();
                     car.PlayPath(worldPath);
@@ -72,9 +72,27 @@ namespace Core
         public void ResetCars()
         {
             foreach (var car in cars) {
-                car.transform.position = inGameTilemapEditor.CellToWorldPos(car.SpawnPosition);
                 car.Reset();
+                car.transform.position = inGameTilemapEditor.CellToWorldPos(car.SpawnPosition);
             }
+        }
+
+        private List<Vector2Int> GetCarPath(Car car, Vector3Int targetPos)
+        {
+            var intermediatePoint =
+                currentLevelData.logisticData.intermediatePointsData.FirstOrDefault(p => p.team == car.Team);
+
+            if (intermediatePoint != null) {
+                var pathToPoint = pathfindingController.FindPath(car.SpawnPosition, intermediatePoint.pos);
+                var pathFromPoint = pathfindingController.FindPath(intermediatePoint.pos, targetPos);
+
+                var path = new List<Vector2Int>();
+                path.AddRange(pathToPoint);
+                path.AddRange(pathFromPoint);
+                return path;
+            }
+
+            return pathfindingController.FindPath(car.SpawnPosition, targetPos);
         }
 
         private void SpawnCars()

@@ -3,6 +3,7 @@ using System.Linq;
 using Core;
 using Level;
 using Level.Data;
+using Tiles.Editing.Logistic;
 using Tiles.Editing.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -15,6 +16,7 @@ namespace Tiles.Editing
         private readonly ITileLibrary tileLibrary;
 
         private readonly List<EditorTarget> targets;
+        private readonly List<IntermediatePoint> intermediatePoints;
 
         private LogisticEditorOption selectedOption;
 
@@ -23,6 +25,7 @@ namespace Tiles.Editing
             this.logisticTilemap = logisticTilemap;
             this.tileLibrary = tileLibrary;
             targets = new List<EditorTarget>();
+            intermediatePoints = new List<IntermediatePoint>();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -57,13 +60,24 @@ namespace Tiles.Editing
         public void Load(LogisticData logisticData)
         {
             logisticTilemap.ClearAllTiles();
-            
+
+            targets.Clear();
+            intermediatePoints.Clear();
+
             if (logisticData == null) {
                 return;
             }
-            
-            foreach (var targetData in logisticData.targetsData) {
-                SetTargetTile(targetData.team, targetData.pos);
+
+            if (logisticData.targetsData != null) {
+                foreach (var targetData in logisticData.targetsData) {
+                    SetTargetTile(targetData.team, targetData.pos);
+                }
+            }
+
+            if (logisticData.intermediatePointsData != null) {
+                foreach (var intermediatePointData in logisticData.intermediatePointsData) {
+                    SetIntermediatePointTile(intermediatePointData.team, intermediatePointData.pos);
+                }
             }
         }
 
@@ -87,6 +101,39 @@ namespace Tiles.Editing
                 CellPos = pos,
                 Team = team
             });
+        }
+
+        private void SetIntermediatePointTile(Team team, Vector3Int pos)
+        {
+            var intermediatePoint = intermediatePoints.FirstOrDefault(i => i.Pos == pos);
+            if (intermediatePoint != null) {
+                if (intermediatePoint.Team != team) {
+                    intermediatePoints.Remove(intermediatePoint);
+                }
+            }
+
+            var sameTeamPoint = intermediatePoints.FirstOrDefault(i => i.Team == team);
+            if (sameTeamPoint != null) {
+                logisticTilemap.SetTile(sameTeamPoint.Pos, null);
+                intermediatePoints.Remove(sameTeamPoint);
+            }
+
+            logisticTilemap.SetTile(pos, tileLibrary.GetIntermediatePointTile(team));
+            intermediatePoints.Add(new IntermediatePoint {
+                Pos = pos,
+                Team = team
+            });
+        }
+
+        private void EraseIntermediatePointTile(Vector3Int pos)
+        {
+            var intermediatePoint = intermediatePoints.FirstOrDefault(target => target.Pos == pos);
+            if (intermediatePoint == null) {
+                return;
+            }
+
+            logisticTilemap.SetTile(pos, null);
+            intermediatePoints.Remove(intermediatePoint);
         }
     }
 }

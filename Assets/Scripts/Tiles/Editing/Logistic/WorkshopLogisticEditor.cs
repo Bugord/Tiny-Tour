@@ -5,6 +5,7 @@ using Cars;
 using Core;
 using Level;
 using Level.Data;
+using Tiles.Editing.Logistic;
 using Tiles.Editing.Options;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -22,6 +23,7 @@ namespace Tiles.Editing.Workshop
 
         private readonly List<EditorSpawnPoint> spawnPoints;
         private readonly List<EditorTarget> targets;
+        private readonly List<IntermediatePoint> intermediatePoints;
 
         private LogisticEditorOption selectedOption;
         private readonly Transform viewsRoot;
@@ -37,6 +39,7 @@ namespace Tiles.Editing.Workshop
 
             targets = new List<EditorTarget>();
             spawnPoints = new List<EditorSpawnPoint>();
+            intermediatePoints = new List<IntermediatePoint>();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -87,6 +90,14 @@ namespace Tiles.Editing.Workshop
                 });
             }
 
+            foreach (var team in teams) {
+                options.Add(new IntermediatePointOption {
+                    Team = team,
+                    TileEditor = this,
+                    Icon = tileLibrary.GetIntermediatePointTile(team).sprite
+                });
+            }
+
             return options;
         }
 
@@ -99,23 +110,35 @@ namespace Tiles.Editing.Workshop
         {
             spawnPoints.Clear();
             targets.Clear();
+            intermediatePoints.Clear();
             logisticTilemap.ClearAllTiles();
-            
+
             if (logisticData == null) {
                 return;
             }
-            
-            foreach (var spawnPointData in logisticData.spawnPointsData) {
-                SetSpawnPoint(spawnPointData.team, spawnPointData.carType, spawnPointData.pos, spawnPointData.direction);
+
+            if (logisticData.spawnPointsData != null) {
+                foreach (var spawnPointData in logisticData.spawnPointsData) {
+                    SetSpawnPoint(spawnPointData.team, spawnPointData.carType, spawnPointData.pos,
+                        spawnPointData.direction);
+                }
             }
             
-            foreach (var targetData in logisticData.targetsData) {
-                SetTargetTile(targetData.team, targetData.pos);
+            if (logisticData.targetsData != null) {
+                foreach (var targetData in logisticData.targetsData) {
+                    SetTargetTile(targetData.team, targetData.pos);
+                }
+            }
+
+            if (logisticData.intermediatePointsData != null) {
+                foreach (var intermediatePointData in logisticData.intermediatePointsData) {
+                    SetIntermediatePointTile(intermediatePointData.team, intermediatePointData.pos);
+                }
             }
         }
 
         public LogisticData Save()
-        { 
+        {
             var spawnPointsData = new List<SpawnPointData>();
             foreach (var spawnPoint in spawnPoints) {
                 if (targets.All(target => target.Team != spawnPoint.Team)) {
@@ -142,9 +165,22 @@ namespace Tiles.Editing.Workshop
                 });
             }
 
+            var intermediatePointsData = new List<IntermediatePointData>();
+            foreach (var intermediatePoint in intermediatePoints) {
+                if (spawnPointsData.All(spawnPoint => spawnPoint.team != intermediatePoint.Team)) {
+                    continue;
+                }
+
+                intermediatePointsData.Add(new IntermediatePointData {
+                    team = intermediatePoint.Team,
+                    pos = intermediatePoint.Pos
+                });
+            }
+
             var logisticData = new LogisticData {
                 spawnPointsData = spawnPointsData.ToArray(),
-                targetsData = targetsData.ToArray()
+                targetsData = targetsData.ToArray(),
+                intermediatePointsData = intermediatePointsData.ToArray()
             };
 
             return logisticData;
@@ -159,6 +195,9 @@ namespace Tiles.Editing.Workshop
                 case TargetOption targetOption:
                     SetTargetTile(targetOption.Team, pos);
                     break;
+                case IntermediatePointOption intermediatePointOption:
+                    SetIntermediatePointTile(intermediatePointOption.Team, new Vector3Int(pos.x, pos.y, 1));
+                    break;
             }
         }
 
@@ -170,6 +209,9 @@ namespace Tiles.Editing.Workshop
                     break;
                 case TargetOption:
                     EraseTargetTile(pos);
+                    break;
+                case IntermediatePointOption:
+                    EraseIntermediatePointTile(new Vector3Int(pos.x, pos.y, 1));
                     break;
             }
         }
@@ -245,6 +287,39 @@ namespace Tiles.Editing.Workshop
 
             logisticTilemap.SetTile(pos, null);
             targets.Remove(targetToErase);
+        }
+
+        private void SetIntermediatePointTile(Team team, Vector3Int pos)
+        {
+            var intermediatePoint = intermediatePoints.FirstOrDefault(i => i.Pos == pos);
+            if (intermediatePoint != null) {
+                if (intermediatePoint.Team != team) {
+                    intermediatePoints.Remove(intermediatePoint);
+                }
+            }
+
+            var sameTeamPoint = intermediatePoints.FirstOrDefault(i => i.Team == team);
+            if (sameTeamPoint != null) {
+                logisticTilemap.SetTile(sameTeamPoint.Pos, null);
+                intermediatePoints.Remove(sameTeamPoint);
+            }
+
+            logisticTilemap.SetTile(pos, tileLibrary.GetIntermediatePointTile(team));
+            intermediatePoints.Add(new IntermediatePoint {
+                Pos = pos,
+                Team = team
+            });
+        }
+
+        private void EraseIntermediatePointTile(Vector3Int pos)
+        {
+            var intermediatePoint = intermediatePoints.FirstOrDefault(target => target.Pos == pos);
+            if (intermediatePoint == null) {
+                return;
+            }
+
+            logisticTilemap.SetTile(pos, null);
+            intermediatePoints.Remove(intermediatePoint);
         }
     }
 }

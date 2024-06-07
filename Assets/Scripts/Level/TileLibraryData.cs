@@ -31,6 +31,9 @@ namespace Tiles
         [SerializeField]
         private List<Tile> obstacleTiles;
 
+        [SerializeField]
+        private SerializedDictionary<Team, Tile> intermediatePointTiles;
+
         private Dictionary<Team, LogisticTile> spawnPointTiles;
 
         private Dictionary<Team, TargetTile> targetTiles;
@@ -59,6 +62,11 @@ namespace Tiles
         public TargetTile GetTargetTile(Team team)
         {
             return targetTiles[team];
+        }
+
+        public Tile GetIntermediatePointTile(Team team)
+        {
+            return intermediatePointTiles[team];
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)

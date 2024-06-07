@@ -7,5 +7,6 @@ namespace Level.Data
     {
         public SpawnPointData[] spawnPointsData;
         public TargetData[] targetsData;
+        public IntermediatePointData[] intermediatePointsData;
     }
 }

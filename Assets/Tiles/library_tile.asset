@@ -63,3 +63,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bc3c891de0af2274492e903cf5121ada, type: 2}
   - {fileID: 11400000, guid: 6c076377f15f7124f873d323f0a7bcb4, type: 2}
   - {fileID: 11400000, guid: 14567b4334272e7449da934a716f72a3, type: 2}
+  intermediatePointTiles:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 44f4dc1a7a18da84a9c8586c0e7b3ec8, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: 1053dcd00b9ac3746bb90c2cdfaca3db, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: 449713531861d054aa0f9e1b5feae6cd, type: 2}
+    - Key: 3
+      Value: {fileID: 11400000, guid: 4953cc766addc2345ad34363691f56f7, type: 2}
+    - Key: 4
+      Value: {fileID: 11400000, guid: 597d11bf5610cd74d9f4d40c8a9e41aa, type: 2}

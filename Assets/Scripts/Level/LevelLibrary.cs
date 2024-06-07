@@ -60,7 +60,7 @@ namespace Level
             return new LevelData {
                 levelName = levelName,
                 roadTileData = Array.Empty<RoadTileData>(),
-                terrainTilesData = Array.Empty<TerrainTileData>()
+                terrainTilesData = Array.Empty<TerrainTileData>(),
             };
         }
 
