@@ -1511,6 +1511,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1137941495682018410, guid: e9426b1753e9e1b429e5ffd62c0f11ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1137941495682018410, guid: e9426b1753e9e1b429e5ffd62c0f11ad, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}

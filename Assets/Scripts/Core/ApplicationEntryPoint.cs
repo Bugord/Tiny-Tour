@@ -1,17 +1,21 @@
-﻿using States;
-using UnityEngine;
+﻿using Core.GameState;
+using Core.GameState.States;
+using Zenject;
 
 namespace Core
 {
-    public class ApplicationEntryPoint : MonoBehaviour
+    public class ApplicationEntryPoint : IInitializable
     {
-        [SerializeField]
-        private GameStateSystem gameStateSystem;
-        
-        private void Awake()
+        private readonly GameStateMachine gameStateMachine;
+
+        public ApplicationEntryPoint(GameStateMachine gameStateMachine)
         {
-            gameStateSystem.Init();
-            gameStateSystem.ChangeState(gameStateSystem.MainMenuState);
+            this.gameStateMachine = gameStateMachine;
+        }
+
+        public void Initialize()
+        {
+            gameStateMachine.ChangeState<MainMenuState>();
         }
     }
 }

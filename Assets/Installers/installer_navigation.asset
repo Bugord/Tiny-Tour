@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46df2a15df3943dfaa7f48a7a18dca76, type: 3}
+  m_Name: installer_navigation
+  m_EditorClassIdentifier: 
+  uiProviderConfig: {fileID: 11400000, guid: f42f6f165bf4182429cb98611e203da2, type: 2}
+  navigationConfig: {fileID: 11400000, guid: fd0fb1a7f796e6142ba63954927fc630, type: 2}

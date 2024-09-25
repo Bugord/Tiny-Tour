@@ -1,21 +1,16 @@
 ﻿using System;
 using Level.Data;
-using UnityEngine;
 
 namespace Level
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager
     {
-        [SerializeField]
-        private LevelLibrary levelLibrary;
-
-        private ILevelProvider levelProvider;
-
+        private readonly ILevelProvider levelProvider;
         private LevelData selectedLevelData;
 
-        private void Awake()
+        public LevelManager(ILevelProvider levelProvider)
         {
-            levelProvider = levelLibrary;
+            this.levelProvider = levelProvider;
         }
 
         public void LoadLevels()
