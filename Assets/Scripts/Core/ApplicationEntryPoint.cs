@@ -1,5 +1,6 @@
 ﻿using Core.GameState;
 using Core.GameState.States;
+using UnityEngine;
 using Zenject;
 
 namespace Core
@@ -15,6 +16,7 @@ namespace Core
 
         public void Initialize()
         {
+            Application.targetFrameRate = 60;
             gameStateMachine.ChangeState<MainMenuState>();
         }
     }

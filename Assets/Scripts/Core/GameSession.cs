@@ -97,23 +97,23 @@ namespace Core
 
         private void SpawnCars()
         {
-            cars = new List<Car>();
-
-            foreach (var spawnPointData in currentLevelData.logisticData.spawnPointsData) {
-                var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(spawnPointData.pos);
-                var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
-
-                car.SetData(spawnPointData.pos,
-                    carLibrary.GetCarData(spawnPointData.carType),
-                    spawnPointData.team,
-                    spawnPointData.direction);
-
-                car.transform.parent = transform;
-
-                car.Finished += OnCarFinished;
-                car.Crashed += OnCrashed;
-                cars.Add(car);
-            }
+            // cars = new List<Car>();
+            //
+            // foreach (var spawnPointData in currentLevelData.logisticData.carSpawnData) {
+            //     var carSpawnPosition = inGameTilemapEditor.CellToWorldPos(spawnPointData.pos);
+            //     var car = Instantiate(carPrefab, carSpawnPosition, quaternion.identity);
+            //
+            //     car.SetData(spawnPointData.pos,
+            //         carLibrary.GetCarData(spawnPointData.carType),
+            //         spawnPointData.team,
+            //         spawnPointData.direction);
+            //
+            //     car.transform.parent = transform;
+            //
+            //     car.Finished += OnCarFinished;
+            //     car.Crashed += OnCrashed;
+            //     cars.Add(car);
+            // }
         }
 
         private void DespawnCars()

@@ -42,7 +42,7 @@ namespace Tiles.Editing.Workshop
 
             roadEditor = new RoadEditor(roadTilemap, terrainTilemap, obstacleTilemap, tileLibrary, true);
             terrainEditor = new TerrainEditor(terrainTilemap, tileLibrary);
-            workshopLogisticEditor = new WorkshopLogisticEditor(logisticTilemap, tileLibrary, spawnPointViewPrefab, carLibrary, transform);
+            workshopLogisticEditor = new WorkshopLogisticEditor(logisticTilemap, tileLibrary, spawnPointViewPrefab, carLibrary, new RectTransform());
             obstacleEditor = new ObstacleEditor(obstacleTilemap, tileLibrary);
             
             TileEditors = new List<ITileEditor> {
@@ -68,7 +68,7 @@ namespace Tiles.Editing.Workshop
         {
             return new LevelData {
                 levelName = levelName,
-                roadTileData = roadEditor.Save(),
+                //roadTileData = roadEditor.Save(),
                 terrainTilesData = terrainEditor.Save(),
                 logisticData = workshopLogisticEditor.Save(),
                 obstaclesData = obstacleEditor.Save()
@@ -78,7 +78,7 @@ namespace Tiles.Editing.Workshop
         public override void LoadLevel(LevelData levelData)
         {
             levelName = levelData.levelName;
-            roadEditor.Load(levelData.roadTileData);
+            //roadEditor.Load(levelData.roadTileData);
             terrainEditor.Load(levelData.terrainTilesData);
             workshopLogisticEditor.Load(levelData.logisticData);
             obstacleEditor.Load(levelData.obstaclesData);

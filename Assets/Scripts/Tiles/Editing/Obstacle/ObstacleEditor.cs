@@ -12,7 +12,7 @@ namespace Tiles.Editing
     {
         private readonly Tilemap obstacleTilemap;
         private readonly ITileLibrary tileLibrary;
-        private readonly List<ObstacleData> obstaclesData;
+        private readonly List<ObstacleTileData> obstaclesData;
 
         private ObstacleOption selectedOption;
 
@@ -21,7 +21,7 @@ namespace Tiles.Editing
             this.obstacleTilemap = obstacleTilemap;
             this.tileLibrary = tileLibrary;
             
-            obstaclesData = new List<ObstacleData>();
+            obstaclesData = new List<ObstacleTileData>();
         }
 
         public void OnTileDown(Vector3Int pos)
@@ -70,12 +70,12 @@ namespace Tiles.Editing
             selectedOption = (ObstacleOption)option;
         }
 
-        public ObstacleData[] Save()
+        public ObstacleTileData[] Save()
         {
             return obstaclesData.ToArray();
         }
 
-        public void Load(ObstacleData[] obstaclesData)
+        public void Load(ObstacleTileData[] obstaclesData)
         {
             this.obstaclesData.Clear();
             obstacleTilemap.ClearAllTiles();
@@ -85,17 +85,17 @@ namespace Tiles.Editing
             }
 
             foreach (var obstacleData in obstaclesData) {
-                SetObstacleTile(obstacleData.id, obstacleData.pos);
+                SetObstacleTile(obstacleData.id, obstacleData.position);
             }
         }
 
         private void SetObstacleTile(int id, Vector3Int pos)
         {
-            var obstacle = obstaclesData.FirstOrDefault(obstacle => obstacle.pos == pos);
+            var obstacle = obstaclesData.FirstOrDefault(obstacle => obstacle.position == pos);
 
             if (obstacle == null) {
-                obstacle = new ObstacleData {
-                    pos = pos,
+                obstacle = new ObstacleTileData {
+                    position = pos,
                     id = id
                 };
 
@@ -111,7 +111,7 @@ namespace Tiles.Editing
 
         private void EraseObstacleTile(Vector3Int pos)
         {
-            var obstacle = obstaclesData.FirstOrDefault(obstacle => obstacle.pos == pos);
+            var obstacle = obstaclesData.FirstOrDefault(obstacle => obstacle.position == pos);
             if (obstacle == null) {
                 return;
             }

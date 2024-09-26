@@ -117,12 +117,12 @@ namespace Tiles.Editing.Workshop
                 return;
             }
 
-            if (logisticData.spawnPointsData != null) {
-                foreach (var spawnPointData in logisticData.spawnPointsData) {
-                    SetSpawnPoint(spawnPointData.team, spawnPointData.carType, spawnPointData.pos,
-                        spawnPointData.direction);
-                }
-            }
+            // if (logisticData.carSpawnData != null) {
+            //     foreach (var spawnPointData in logisticData.carSpawnData) {
+            //         SetSpawnPoint(spawnPointData.team, spawnPointData.carType, spawnPointData.pos,
+            //             spawnPointData.direction);
+            //     }
+            // }
             
             if (logisticData.targetsData != null) {
                 foreach (var targetData in logisticData.targetsData) {
@@ -139,13 +139,13 @@ namespace Tiles.Editing.Workshop
 
         public LogisticData Save()
         {
-            var spawnPointsData = new List<SpawnPointData>();
+            var spawnPointsData = new List<CarSpawnData>();
             foreach (var spawnPoint in spawnPoints) {
                 if (targets.All(target => target.Team != spawnPoint.Team)) {
                     continue;
                 }
 
-                spawnPointsData.Add(new SpawnPointData {
+                spawnPointsData.Add(new CarSpawnData {
                     carType = spawnPoint.CarType,
                     direction = spawnPoint.Direction,
                     team = spawnPoint.Team,
@@ -178,7 +178,7 @@ namespace Tiles.Editing.Workshop
             }
 
             var logisticData = new LogisticData {
-                spawnPointsData = spawnPointsData.ToArray(),
+                //carSpawnData = spawnPointsData.ToArray(),
                 targetsData = targetsData.ToArray(),
                 intermediatePointsData = intermediatePointsData.ToArray()
             };

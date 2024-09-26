@@ -54,7 +54,7 @@ namespace Tiles.Editing
         public override void LoadLevel(LevelData levelData)
         {
             terrainEditor.Load(levelData.terrainTilesData);
-            roadEditor.Load(levelData.roadTileData);
+            //roadEditor.Load(levelData.roadTileData);
             inGameLogisticEditor.Load(levelData.logisticData);
             obstacleEditor.Load(levelData.obstaclesData);
         }

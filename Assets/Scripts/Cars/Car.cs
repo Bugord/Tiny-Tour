@@ -59,13 +59,14 @@ namespace Cars
                 .SetEase(Ease.Linear);
         }
 
-        public void SetData(Vector3Int spawnPosition, CarData carData, Team team, Direction direction)
+        public void SetData(CarData carData)
         {
-            SpawnPosition = spawnPosition;
-            initialDirection = direction;
-
-            Team = team;
             this.carData = carData;
+            UpdateSprite();
+        }
+
+        public void SetDirection(Direction direction)
+        {
             UpdateSprite(direction);
         }
 
@@ -79,7 +80,7 @@ namespace Cars
             pathTween?.Kill();
         }
 
-        private void UpdateSprite(Direction direction)
+        private void UpdateSprite(Direction direction = Direction.Down)
         {
             spriteRenderer.sprite = carData.visualsData[Team].directionSprites[direction];
         }

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Common;
+using Cysharp.Threading.Tasks;
 using Level.Data;
 using UnityEngine;
+using UnityEngine.Networking;
 
 namespace Level
 {
@@ -12,18 +15,17 @@ namespace Level
     {
         private LevelData[] levelsData;
 
-        private const string DirectoryPath = "./levels";
+        private static string DirectoryPath => "./Assets/Resources/Levels";
 
         public void LoadAllLevels()
         {
             var levels = new List<LevelData>();
 
-            Directory.CreateDirectory(DirectoryPath);
-            var files = Directory.GetFiles(DirectoryPath, "*.json");
-            
-            foreach (var file in files) {
+            var levelFiles = Resources.LoadAll<TextAsset>("Levels");
+
+            foreach (var file in levelFiles) {
                 try {
-                    var json = File.ReadAllText(file);
+                    var json = file.text;
                     var level = JsonUtility.FromJson<LevelData>(json);
                     if (level != null) {
                         levels.Add(level);
@@ -59,8 +61,13 @@ namespace Level
         {
             return new LevelData {
                 levelName = levelName,
-                roadTileData = Array.Empty<RoadTileData>(),
+                obstaclesData = Array.Empty<ObstacleTileData>(),
                 terrainTilesData = Array.Empty<TerrainTileData>(),
+                logisticData = new LogisticData {
+                    roadTileData = Array.Empty<RoadTileData>(),
+                    targetsData = Array.Empty<TargetData>(),
+                    intermediatePointsData = Array.Empty<IntermediatePointData>()
+                }
             };
         }
 

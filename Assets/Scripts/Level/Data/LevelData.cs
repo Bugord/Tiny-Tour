@@ -7,8 +7,8 @@ namespace Level.Data
     {
         public string levelName;
         public TerrainTileData[] terrainTilesData;
-        public RoadTileData[] roadTileData;
         public LogisticData logisticData;
-        public ObstacleData[] obstaclesData;
+        public ObstacleTileData[] obstaclesData;
+        public CarSpawnData[] carSpawnData;
     }
 }

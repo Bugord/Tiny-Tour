@@ -5,19 +5,19 @@ namespace Core.Logging
 {
     public class Logger<T> : ILogger<T>
     {
-        public void Log(string message)
+        public void Log(object message)
         {
-            Debug.Log(FormatedMessage(message));
+            Debug.Log(FormatedMessage(message.ToString()));
         }
 
-        public void LogWarning(string message)
+        public void LogWarning(object message)
         {
-            Debug.LogWarning(FormatedMessage(message));
+            Debug.LogWarning(FormatedMessage(message.ToString()));
         }
         
-        public void LogError(string message)
+        public void LogError(object message)
         {
-            Debug.LogError(FormatedMessage(message));
+            Debug.LogError(FormatedMessage(message.ToString()));
         }
 
         public void LogError(Exception exception)

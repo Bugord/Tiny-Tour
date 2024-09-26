@@ -24,7 +24,7 @@ namespace Tiles
 
         [SerializeField]
         private RoadTile roadTile;
-        
+
         [SerializeField]
         private TargetTile targetTile;
 
@@ -42,12 +42,15 @@ namespace Tiles
 
         public void Init()
         {
-            ConfigureRoadObjects(roadTile);
             ConfigureTargetTiles(targetTile);
         }
 
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection)
         {
+            if (roadTiles == null) {
+                ConfigureRoadObjects(roadTile);
+            }
+
             return roadTiles[connectionDirection];
         }
 
@@ -80,7 +83,7 @@ namespace Tiles
                 roadTiles.Add(connectionDirection, roadTileObject);
             }
         }
-        
+
         private void ConfigureTargetTiles(TargetTile targetTile)
         {
             targetTiles = new Dictionary<Team, TargetTile>();

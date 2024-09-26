@@ -57,18 +57,18 @@ namespace Core.GameState.States
         private async UniTask LoadEditor()
         {
             await SceneManager.LoadSceneAsync(PlayLevelScene, LoadSceneMode.Additive);
-            gameSession = GameObject.FindGameObjectWithTag(GameSessionTag)
-                ?.GetComponent<GameSession>();
-
-            if (gameSession == null) {
-                SceneManager.UnloadSceneAsync(PlayLevelScene);
-                Debug.LogError($"Could not find {nameof(GameSession)}");
-                gameStateSystem.ChangeState<SelectLevelToPlayState>();
-            }
-            
-            var selectedLevel = levelManager.GetSelectedLevel();
-            gameSession.SetupEditor(playLevelScreen.TilemapEditorUI);
-            gameSession.LoadLevel(selectedLevel);
+            // gameSession = GameObject.FindGameObjectWithTag(GameSessionTag)
+            //     ?.GetComponent<GameSession>();
+            //
+            // if (gameSession == null) {
+            //     SceneManager.UnloadSceneAsync(PlayLevelScene);
+            //     Debug.LogError($"Could not find {nameof(GameSession)}");
+            //     gameStateSystem.ChangeState<SelectLevelToPlayState>();
+            // }
+            //
+            // var selectedLevel = levelManager.GetSelectedLevel();
+            // gameSession.SetupEditor(playLevelScreen.TilemapEditorUI);
+            // gameSession.LoadLevel(selectedLevel);
         }
 
         private void OnPlayPressed()

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -119,6 +118,104 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &357410628
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357410630}
+  - component: {fileID: 357410629}
+  - component: {fileID: 357410631}
+  - component: {fileID: 357410632}
+  m_Layer: 0
+  m_Name: SceneContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &357410629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357410628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 9886ccfc0b5b2e440a0eb0482bc6dfac, type: 2}
+  - {fileID: 11400000, guid: 8c5c85a8091d16b4f85f2c9ae001b149, type: 2}
+  _monoInstallers:
+  - {fileID: 357410631}
+  - {fileID: 357410632}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &357410630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357410628}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12568408, y: 1.9550351, z: 0.031767007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &357410631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357410628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cd81b2df764e02893e08252dfa209d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapsProvider: {fileID: 1319320756}
+  tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
+--- !u!114 &357410632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357410628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49d1b7442ab24c94a0805bc5cd857569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carsRoot: {fileID: 1221994219}
+  carPrefab: {fileID: 7665134449429098198, guid: b8cc68c0e5fda0c4a8725f459558414e, type: 3}
+  carLibrary: {fileID: 11400000, guid: 55d3115aa6d505441843268e05faca79, type: 2}
 --- !u!1 &834913747
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,6 +300,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1221994218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221994219}
+  m_Layer: 0
+  m_Name: Cars
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1221994219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221994218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 389.1356, y: 1547.21, z: -0.30378336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1319320751
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -260,26 +388,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
---- !u!1839735485 &1319320752 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 5799154582318838118, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1839735485 &1319320753 stripped
 Tilemap:
   m_CorrespondingSourceObject: {fileID: 8225015136120092467, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
   m_PrefabInstance: {fileID: 1319320751}
   m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &1319320754 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 3401170431863569403, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
+--- !u!114 &1319320756 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1772934068148960659, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
   m_PrefabInstance: {fileID: 1319320751}
   m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &1319320755 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 3041012261470436711, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44de40c969db48b58bbf6ed0be14f873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1740546336
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathfindingController: {fileID: 4417129261237518464}
-  inGameTilemapEditor: {fileID: 6032759852374705546}
   carLibrary: {fileID: 11400000, guid: 55d3115aa6d505441843268e05faca79, type: 2}
   carPrefab: {fileID: 7665134449429098198, guid: b8cc68c0e5fda0c4a8725f459558414e, type: 3}
 --- !u!4 &1740546338
@@ -345,38 +468,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1114953882385630465
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3610541443885311979}
-  - component: {fileID: 6032759852374705546}
-  m_Layer: 0
-  m_Name: InGameTilemapEditor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3610541443885311979
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114953882385630465}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12568408, y: 1.9550351, z: 0.031767007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4417129261237518464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,29 +498,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6032759852374705546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114953882385630465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ceadc2c3f54447b955e1b9fb935c84d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrainTilemap: {fileID: 1319320754}
-  roadTilemap: {fileID: 1319320753}
-  logisticTilemap: {fileID: 1319320752}
-  obstacleTilemap: {fileID: 1319320755}
-  tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 357410630}
   - {fileID: 834913749}
   - {fileID: 1319320751}
   - {fileID: 5088479162022230405}
   - {fileID: 1740546338}
-  - {fileID: 3610541443885311979}
+  - {fileID: 1221994219}
