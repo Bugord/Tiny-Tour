@@ -1,0 +1,115 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Common.Tilemaps;
+using Core;
+using Core.Logging;
+using Level;
+using UnityEngine;
+using UnityEngine.Tilemaps;
+using Utility;
+
+namespace Gameplay.Editing.Editors
+{
+    public class RoadEditor : IRoadEditor
+    {
+        private readonly ILogger<RoadEditor> logger;
+        private readonly ITileLibrary tileLibrary;
+        private readonly Tilemap roadTilemap;
+
+        private readonly List<RoadTileData> initialRoadsData;
+        private readonly List<RoadTileData> roadsData;
+
+        public RoadEditor(ILogger<RoadEditor> logger, ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
+        {
+            this.logger = logger;
+            this.tileLibrary = tileLibrary;
+            roadTilemap = tilemapsProvider.RoadTilemap;
+
+            initialRoadsData = new List<RoadTileData>();
+            roadsData = new List<RoadTileData>();
+        }
+
+        public void SetRoadTile(Vector3Int position)
+        {
+            var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
+            if (existingRoadData != null) {
+                logger.LogWarning($"Road at {position} already exists");
+                return;
+            }
+
+            var roadData = new RoadTileData {
+                position = position,
+                connectionDirection = ConnectionDirection.None
+            };
+            roadsData.Add(roadData);
+            
+            var tile = tileLibrary.GetRoadTile(roadData.connectionDirection);
+            roadTilemap.SetTile(position, tile);
+            
+            logger.Log($"Added road at {position}");
+        }
+
+        public bool HasRoad(Vector3Int position)
+        {
+            return roadsData.Any(data => data.position == position);
+        }
+
+        public ConnectionDirection GetRoadConnectionDirections(Vector3Int position)
+        {
+            var road = roadsData.FirstOrDefault(data => data.position == position);
+            if (road == null) {
+                throw new ArgumentException($"Trying to get connection direction but road is null on pos {position}");
+            }
+
+            return road.connectionDirection;
+        }
+
+        public void ConnectRoads(Vector3Int positionFrom, Vector3Int positionTo)
+        {
+            var roadFrom = roadsData.FirstOrDefault(data => data.position == positionFrom);
+            if (roadFrom == null) {
+                throw new ArgumentException($"Cannot build road, from {positionFrom} road is null");
+            }
+
+            var roadTo = roadsData.FirstOrDefault(data => data.position == positionTo);
+            if (roadTo == null) {
+                throw new ArgumentException($"Cannot build road, to {positionFrom} road is null");
+            }
+            
+            roadFrom.TurnOnDirection(GridHelpers.GetPathDirection(positionFrom, positionTo));
+            roadTo.TurnOnDirection(GridHelpers.GetPathDirection(positionTo, positionFrom));
+
+            var tileFrom = tileLibrary.GetRoadTile(roadFrom.connectionDirection);
+            roadTilemap.SetTile(positionFrom, tileFrom);
+
+            var tileTo = tileLibrary.GetRoadTile(roadTo.connectionDirection);
+            roadTilemap.SetTile(positionTo, tileTo);
+        }
+
+        public void SetInitialRoadTile(Vector3Int position, ConnectionDirection connectionDirection)
+        {
+            var initialRoadTileData = new RoadTileData {
+                position = position,
+                connectionDirection = connectionDirection
+            };
+            initialRoadsData.Add(initialRoadTileData);
+
+            var roadTileData = new RoadTileData {
+                position = position,
+                connectionDirection = connectionDirection
+            };
+            roadsData.Add(roadTileData);
+
+            var tile = tileLibrary.GetRoadTile(connectionDirection);
+            roadTilemap.SetTile(position, tile);
+        }
+
+        public void Clear()
+        {
+            initialRoadsData.Clear();
+            roadsData.Clear();
+            roadTilemap.ClearAllTiles();
+        }
+    }
+}

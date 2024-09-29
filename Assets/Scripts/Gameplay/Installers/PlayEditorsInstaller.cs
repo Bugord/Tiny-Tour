@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Editors;
 using UnityEngine;
 using Zenject;
 
@@ -9,9 +10,9 @@ namespace Gameplay
     {
         public override void InstallBindings()
         {
-            Container.Bind<ITerrainEditor>().To<TerrainEditor>().AsSingle();
+            Container.Bind<ITerrainLoader>().To<TerrainLoader>().AsSingle();
             Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
-            Container.Bind<ILogisticEditor>().To<LogisticEditor>().AsSingle();
+            Container.Bind<ILogisticLoader>().To<LogisticLoader>().AsSingle();
         }
     }
 }

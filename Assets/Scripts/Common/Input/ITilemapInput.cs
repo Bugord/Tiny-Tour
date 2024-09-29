@@ -7,6 +7,6 @@ namespace Common
     {
         event Action<Vector3Int> TilePressDown;
         event Action<Vector3Int> TilePressUp;
-        event Action<Vector3Int> TileHovered;
+        event Action<Vector3Int> TileDragged;
     }
 }

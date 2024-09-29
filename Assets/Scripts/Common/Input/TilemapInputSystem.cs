@@ -11,7 +11,7 @@ namespace Common
     {
         public event Action<Vector3Int> TilePressDown;
         public event Action<Vector3Int> TilePressUp;
-        public event Action<Vector3Int> TileHovered;
+        public event Action<Vector3Int> TileDragged;
 
         private readonly ITilemapPositionConverter tilemapPositionConverter;
         private readonly InputActions inputActions;
@@ -56,6 +56,8 @@ namespace Common
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
 
+            lastTilePos = tilePosition;
+            
             TilePressDown?.Invoke(tilePosition);
         }
 
@@ -70,8 +72,8 @@ namespace Common
             }
             
             lastTilePos = tilePosition;
-
-            TileHovered?.Invoke(tilePosition);
+            
+            TileDragged?.Invoke(tilePosition);
         }
 
         private void OnPressCanceled(InputAction.CallbackContext ctx)

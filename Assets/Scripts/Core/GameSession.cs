@@ -5,9 +5,6 @@ using Cars;
 using Level;
 using Level.Data;
 using Pathfinding;
-using Tiles;
-using Tiles.Editing;
-using Unity.Mathematics;
 using UnityEngine;
 
 namespace Core
@@ -16,9 +13,6 @@ namespace Core
     {
         [SerializeField]
         private PathfindingController pathfindingController;
-
-        [SerializeField]
-        private InGameTilemapEditor inGameTilemapEditor;
 
         [SerializeField]
         private CarLibrary carLibrary;
@@ -36,7 +30,6 @@ namespace Core
         {
             currentLevelData = levelData;
 
-            inGameTilemapEditor.LoadLevel(levelData);
             pathfindingController.Update();
 
             SpawnCars();
@@ -48,10 +41,6 @@ namespace Core
             currentLevelData = null;
         }
 
-        public void SetupEditor(TilemapEditorUI tilemapEditorUI)
-        {
-            inGameTilemapEditor.Setup(tilemapEditorUI);
-        }
 
         public void Play()
         {
@@ -62,9 +51,6 @@ namespace Core
                 var carsToPlay = cars.Where(car => car.Team == targetData.team);
                 foreach (var car in carsToPlay) {
                     var cellPath = GetCarPath(car, targetData.pos);
-                    var worldPath = cellPath.Select(p => inGameTilemapEditor.CellToWorldPos(p)).ToArray();
-                    car.Reset();
-                    car.PlayPath(worldPath);
                 }
             }
         }
@@ -73,7 +59,6 @@ namespace Core
         {
             foreach (var car in cars) {
                 car.Reset();
-                car.transform.position = inGameTilemapEditor.CellToWorldPos(car.SpawnPosition);
             }
         }
 

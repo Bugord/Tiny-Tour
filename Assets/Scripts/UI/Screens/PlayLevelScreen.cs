@@ -1,6 +1,4 @@
 ﻿using System;
-using Tiles.Editing;
-using UnityEngine;
 
 namespace UI.Screens
 {
@@ -12,11 +10,6 @@ namespace UI.Screens
         public event Action PreviousLevelPressed;
         public event Action NextLevelPressed;
 
-        [SerializeField]
-        private TilemapEditorUI tilemapEditorUI;
-
-        public TilemapEditorUI TilemapEditorUI => tilemapEditorUI;
-        
         public void OnBackButtonPressed()
         {
             BackPressed?.Invoke();

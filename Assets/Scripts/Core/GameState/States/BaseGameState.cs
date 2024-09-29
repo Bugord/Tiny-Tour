@@ -2,7 +2,12 @@
 {
     public abstract class BaseGameState
     {
-        public abstract void OnEnter();
-        public abstract void OnExit();
+        public virtual void OnEnter()
+        {
+        }
+
+        public virtual void OnExit()
+        {
+        }
     }
 }

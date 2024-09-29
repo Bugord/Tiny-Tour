@@ -1,6 +1,4 @@
 ﻿using System;
-using Tiles.Editing;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Screens
@@ -12,11 +10,6 @@ namespace UI.Screens
         public event Action PlayPressed;
         public event Action<float> CameraScaleChanged;
 
-        [SerializeField]
-        private TilemapEditorUI tilemapEditorUI;
-
-        public TilemapEditorUI TilemapEditorUI => tilemapEditorUI;
-        
         public void OnBackButtonPressed()
         {
             BackPressed?.Invoke();

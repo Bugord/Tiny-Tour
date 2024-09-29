@@ -52,7 +52,6 @@ namespace Core.GameState.States
             }
             
             var selectedLevel = levelManager.GetSelectedLevel();
-            gameSession.SetupEditor(playLevelScreen.TilemapEditorUI);
             gameSession.LoadLevel(selectedLevel);
         }
 
