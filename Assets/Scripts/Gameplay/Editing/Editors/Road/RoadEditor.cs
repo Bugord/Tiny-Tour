@@ -55,6 +55,27 @@ namespace Gameplay.Editing.Editors
             return roadsData.Any(data => data.position == position);
         }
 
+        public void EraseRoad(Vector3Int position)
+        {
+            var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
+            if (existingRoadData == null) {
+                logger.LogWarning($"Cant erase road at {position} because it is null");
+                return;
+            }
+
+            var neighbourPositions = GridHelpers.GetNeighborPos(position);
+            var neighbourRoadsData = roadsData.Where(data => neighbourPositions.Contains(data.position));
+            foreach (var neighbourRoadData in neighbourRoadsData) {
+                var neighbourConnection = GridHelpers.GetPathDirection(neighbourRoadData.position, position);
+                neighbourRoadData.TurnOffDirection(neighbourConnection);
+                var tile = tileLibrary.GetRoadTile(neighbourRoadData.connectionDirection);
+                roadTilemap.SetTile(neighbourRoadData.position, tile);
+            }
+
+            roadsData.Remove(existingRoadData);
+            roadTilemap.SetTile(position, null);
+        }
+
         public ConnectionDirection GetRoadConnectionDirections(Vector3Int position)
         {
             var road = roadsData.FirstOrDefault(data => data.position == position);
@@ -69,12 +90,12 @@ namespace Gameplay.Editing.Editors
         {
             var roadFrom = roadsData.FirstOrDefault(data => data.position == positionFrom);
             if (roadFrom == null) {
-                throw new ArgumentException($"Cannot build road, from {positionFrom} road is null");
+                throw new ArgumentException($"Cannot connect roads, road from ({positionFrom}) is null");
             }
 
             var roadTo = roadsData.FirstOrDefault(data => data.position == positionTo);
             if (roadTo == null) {
-                throw new ArgumentException($"Cannot build road, to {positionFrom} road is null");
+                throw new ArgumentException($"Cannot connect road, road to ({positionFrom}) is null");
             }
             
             roadFrom.TurnOnDirection(GridHelpers.GetPathDirection(positionFrom, positionTo));

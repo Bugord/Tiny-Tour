@@ -11,5 +11,6 @@ namespace Gameplay.Editing.Editors
         bool HasRoad(Vector3Int position);
         ConnectionDirection GetRoadConnectionDirections(Vector3Int position);
         void ConnectRoads(Vector3Int positionFrom, Vector3Int positionTo);
+        void EraseRoad(Vector3Int position);
     }
 }

@@ -39,9 +39,9 @@ namespace Gameplay.Editing.Editors.Terrain
             terrainTilemap.SetTile(position, tile);
         }
 
-        public bool HasTileOfType(Vector3Int position, TerrainType terrainType)
+        public bool HasSolidTile(Vector3Int position)
         {
-            return terrainTilesData.Any(data => data.position == position && data.terrainType == terrainType);
+            return terrainTilesData.Any(data => data.position == position && data.terrainType != TerrainType.Water);
         }
 
         public void Clear()

@@ -7,6 +7,6 @@ namespace Gameplay.Editing.Editors.Terrain
     {
         void SetTerrainTile(Vector3Int position, TerrainType terrainType);
         void Clear();
-        bool HasTileOfType(Vector3Int position, TerrainType terrainType);
+        bool HasSolidTile(Vector3Int position);
     }
 }

@@ -31,6 +31,20 @@ namespace Gameplay.Editing.Options
         {
             AddRoadPath(position);
         }
+        
+        public override void OnAltTileDown(Vector3Int position)
+        {
+            if (roadEditor.HasRoad(position)) {
+                roadEditor.EraseRoad(position);
+            }
+        }
+
+        public override void OnAltTileDrag(Vector3Int position)
+        {
+            if (roadEditor.HasRoad(position)) {
+                roadEditor.EraseRoad(position);
+            }
+        }
 
         public override void OnTileUp(Vector3Int position)
         {
@@ -61,7 +75,7 @@ namespace Gameplay.Editing.Options
 
         private bool CanBePlaced(Vector3Int position)
         {
-            var canBePlaced = terrainEditor.HasTileOfType(position, TerrainType.Ground);
+            var canBePlaced = terrainEditor.HasSolidTile(position);
             return canBePlaced;
         }
     }
