@@ -18,5 +18,10 @@ namespace Level
         {
             connectionDirection &= ~direction;
         }
+
+        public bool HasDirection(ConnectionDirection direction)
+        {
+            return connectionDirection.HasFlag(direction);
+        }
     }
 }

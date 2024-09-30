@@ -62,18 +62,37 @@ namespace Gameplay.Editing.Editors
                 logger.LogWarning($"Cant erase road at {position} because it is null");
                 return;
             }
+            var initialRoadData = initialRoadsData.FirstOrDefault(data => data.position == position);
 
             var neighbourPositions = GridHelpers.GetNeighborPos(position);
             var neighbourRoadsData = roadsData.Where(data => neighbourPositions.Contains(data.position));
             foreach (var neighbourRoadData in neighbourRoadsData) {
+                var neighbourInitialRoadData = initialRoadsData.FirstOrDefault(data => data.position == neighbourRoadData.position);
                 var neighbourConnection = GridHelpers.GetPathDirection(neighbourRoadData.position, position);
+                if (neighbourInitialRoadData != null && neighbourInitialRoadData.HasDirection(neighbourConnection)) {
+                    continue;
+                }
+
+                if (initialRoadData != null) {
+                    var directionToNeighbour = GridHelpers.GetPathDirection(position, neighbourRoadData.position);
+                    if (!initialRoadData.HasDirection(directionToNeighbour)) {
+                        existingRoadData.TurnOffDirection(directionToNeighbour);
+                    }
+                }
+                
                 neighbourRoadData.TurnOffDirection(neighbourConnection);
                 var tile = tileLibrary.GetRoadTile(neighbourRoadData.connectionDirection);
                 roadTilemap.SetTile(neighbourRoadData.position, tile);
             }
 
-            roadsData.Remove(existingRoadData);
-            roadTilemap.SetTile(position, null);
+            if (initialRoadData == null) {
+                roadsData.Remove(existingRoadData);
+                roadTilemap.SetTile(position, null);
+            }
+            else {
+                var tile = tileLibrary.GetRoadTile(existingRoadData.connectionDirection);
+                roadTilemap.SetTile(position, tile);
+            }
         }
 
         public ConnectionDirection GetRoadConnectionDirections(Vector3Int position)
