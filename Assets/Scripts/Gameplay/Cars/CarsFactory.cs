@@ -21,11 +21,12 @@ namespace Gameplay.Cars
             this.diContainer = diContainer;
         }
 
-        public Car Create(Vector3 position, Direction direction, CarType carType)
+        public Car Create(Vector3 position, Direction direction, CarType carType, TeamColor teamColor)
         {
             var carData = carLibrary.GetCarData(carType);
             var car = diContainer.InstantiatePrefabForComponent<Car>(carPrefab, position, quaternion.identity, carsRoot);
             car.SetData(carData);
+            car.SetColor(teamColor);
             car.SetDirection(direction);
 
             return car;

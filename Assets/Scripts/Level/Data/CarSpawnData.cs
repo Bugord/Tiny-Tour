@@ -10,7 +10,7 @@ namespace Level.Data
     {
         public Vector3Int pos;
         public CarType carType;
-        public Team team;
+        public TeamColor teamColor;
         public Direction direction;
     }
 }

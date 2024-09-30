@@ -1,6 +1,7 @@
 ﻿using System;
 using Core;
 using Tiles;
+using UnityEngine.Serialization;
 
 namespace Level
 {
@@ -8,6 +9,8 @@ namespace Level
     public class LogisticTileData : BaseTileData
     {
         public LogisticTileType tileType;
-        public Team team;
+        [FormerlySerializedAs("carColor")]
+        [FormerlySerializedAs("team")]
+        public TeamColor teamColor;
     }
 }

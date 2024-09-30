@@ -32,11 +32,11 @@ namespace Tiles
         private List<Tile> obstacleTiles;
 
         [SerializeField]
-        private SerializedDictionary<Team, Tile> intermediatePointTiles;
+        private SerializedDictionary<TeamColor, Tile> intermediatePointTiles;
 
-        private Dictionary<Team, LogisticTile> spawnPointTiles;
+        private Dictionary<TeamColor, LogisticTile> spawnPointTiles;
 
-        private Dictionary<Team, TargetTile> targetTiles;
+        private Dictionary<TeamColor, TargetTile> targetTiles;
 
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
 
@@ -62,14 +62,14 @@ namespace Tiles
                 _ => null
             };
 
-        public TargetTile GetTargetTile(Team team)
+        public TargetTile GetTargetTile(TeamColor teamColor)
         {
-            return targetTiles[team];
+            return targetTiles[teamColor];
         }
 
-        public Tile GetIntermediatePointTile(Team team)
+        public Tile GetIntermediatePointTile(TeamColor teamColor)
         {
-            return intermediatePointTiles[team];
+            return intermediatePointTiles[teamColor];
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)
@@ -86,12 +86,12 @@ namespace Tiles
 
         private void ConfigureTargetTiles(TargetTile targetTile)
         {
-            targetTiles = new Dictionary<Team, TargetTile>();
+            targetTiles = new Dictionary<TeamColor, TargetTile>();
 
-            var teams = EnumExtensions.GetAllEnums<Team>();
+            var teams = EnumExtensions.GetAllEnums<TeamColor>();
             foreach (var team in teams) {
                 var newTargetTile = Instantiate(targetTile);
-                newTargetTile.team = team;
+                newTargetTile.teamColor = team;
                 targetTiles.Add(team, newTargetTile);
             }
         }

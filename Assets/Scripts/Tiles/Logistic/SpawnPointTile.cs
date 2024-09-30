@@ -9,11 +9,11 @@ namespace Tiles.Logistic
     public class SpawnPointVisualData : ScriptableObject
     {
         public CarType carType;
-        public SerializedDictionary<Team, CarVisualData> carVisualsData;
+        public SerializedDictionary<TeamColor, CarVisualData> carVisualsData;
 
-        public Sprite GetSprite(Team team, Direction direction)
+        public Sprite GetSprite(TeamColor teamColor, Direction direction)
         {
-            return carVisualsData[team].directionSprites[direction];
+            return carVisualsData[teamColor].directionSprites[direction];
         }
     }
 }

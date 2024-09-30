@@ -22,14 +22,11 @@ namespace Cars
 
         private Tween pathTween;
         private Vector3[] waypoints;
-
-        private Direction initialDirection;
-
+        
         public bool IsCrashed { get; private set; }
         public bool IsFinished { get; private set; }
 
-        public Team Team { get; private set; }
-        public Vector3Int SpawnPosition { get; private set; }
+        public TeamColor TeamColor { get; private set; }
 
         private void OnTriggerEnter2D(Collider2D collider2D)
         {
@@ -70,19 +67,23 @@ namespace Cars
             UpdateSprite(direction);
         }
 
+        public void SetColor(TeamColor teamColor)
+        {
+            TeamColor = teamColor;
+        }
+
         public void Reset()
         {
             IsCrashed = false;
             IsFinished = false;
             transform.rotation = Quaternion.identity;
-            UpdateSprite(initialDirection);
 
             pathTween?.Kill();
         }
 
         private void UpdateSprite(Direction direction = Direction.Down)
         {
-            spriteRenderer.sprite = carData.visualsData[Team].directionSprites[direction];
+            spriteRenderer.sprite = carData.visualsData[TeamColor].directionSprites[direction];
         }
 
         private void Finish()

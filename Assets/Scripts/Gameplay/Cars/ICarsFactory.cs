@@ -6,6 +6,6 @@ namespace Gameplay.Cars
 {
     public interface ICarsFactory
     {
-        Car Create(Vector3 position, Direction direction, CarType carType);
+        Car Create(Vector3 position, Direction direction, CarType carType, TeamColor teamColor);
     }
 }

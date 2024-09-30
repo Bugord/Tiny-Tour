@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Cars;
 using Common.Tilemaps;
+using Core;
 using Core.Logging;
 using Level.Data;
 
@@ -33,7 +34,7 @@ namespace Gameplay.Cars
             
             foreach (var spawnPointData in carsSpawnData) {
                 var carSpawnPosition = tilemapPositionConverter.CellToWorld(spawnPointData.pos);
-                var car = carsFactory.Create(carSpawnPosition, spawnPointData.direction, spawnPointData.carType);
+                var car = carsFactory.Create(carSpawnPosition, spawnPointData.direction, spawnPointData.carType, spawnPointData.teamColor);
 
                 cars.Add(car);
             }

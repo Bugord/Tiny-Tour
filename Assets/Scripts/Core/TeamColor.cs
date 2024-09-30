@@ -1,6 +1,6 @@
 ﻿namespace Core
 {
-    public enum Team
+    public enum TeamColor
     {
         Grey,
         Red,

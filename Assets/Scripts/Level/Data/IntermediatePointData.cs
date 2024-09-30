@@ -1,6 +1,7 @@
 ﻿using System;
 using Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Level.Data
 {
@@ -8,6 +9,8 @@ namespace Level.Data
     public class IntermediatePointData
     {
         public Vector3Int pos;
-        public Team team;
+        [FormerlySerializedAs("carColor")]
+        [FormerlySerializedAs("team")]
+        public TeamColor teamColor;
     }
 }

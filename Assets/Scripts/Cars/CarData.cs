@@ -8,7 +8,7 @@ namespace Cars
     public class CarData : ScriptableObject
     {
         public CarType carType;
-        public SerializedDictionary<Team, CarVisualData> visualsData;
+        public SerializedDictionary<TeamColor, CarVisualData> visualsData;
         public float speed;
     }
 }

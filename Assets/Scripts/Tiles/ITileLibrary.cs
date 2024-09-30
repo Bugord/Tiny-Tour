@@ -10,8 +10,8 @@ namespace Level
     {
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection);
         public TerrainTile GetTerrainTileByType(TerrainType terrainType);
-        public TargetTile GetTargetTile(Team team);
-        public Tile GetIntermediatePointTile(Team team);
+        public TargetTile GetTargetTile(TeamColor teamColor);
+        public Tile GetIntermediatePointTile(TeamColor teamColor);
         Tile[] GetObstacleTiles();
         Tile GetObstacleTile(int id);
     }

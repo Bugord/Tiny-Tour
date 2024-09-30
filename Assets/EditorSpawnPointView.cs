@@ -10,8 +10,8 @@ public class EditorSpawnPointView : MonoBehaviour
     [SerializeField]
     private CarLibrary carLibrary;
     
-    public void SetVisual(CarType carType, Team team, Direction direction)
+    public void SetVisual(CarType carType, TeamColor teamColor, Direction direction)
     {
-        spriteRenderer.sprite = carLibrary.GetCarData(carType).visualsData[team].directionSprites[direction];
+        spriteRenderer.sprite = carLibrary.GetCarData(carType).visualsData[teamColor].directionSprites[direction];
     }
 }
