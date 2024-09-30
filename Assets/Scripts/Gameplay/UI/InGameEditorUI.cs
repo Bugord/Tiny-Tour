@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace UI
+namespace Gameplay.UI
 {
     public class InGameEditorUI : MonoBehaviour
     {
@@ -37,6 +37,8 @@ namespace UI
                 editorOptionUI.ToggledOn += OnEditorOptionToggledOn;
                 tileEditorOptions.Add(editorOptionUI);
             }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)transform);
         }
 
         public void SelectOption(string id)
