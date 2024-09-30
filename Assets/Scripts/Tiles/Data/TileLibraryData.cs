@@ -39,12 +39,7 @@ namespace Tiles
         private Dictionary<TeamColor, TargetTile> targetTiles;
 
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
-
-        public void Init()
-        {
-            ConfigureTargetTiles(targetTile);
-        }
-
+        
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection)
         {
             if (roadTiles == null) {
@@ -64,6 +59,10 @@ namespace Tiles
 
         public TargetTile GetTargetTile(TeamColor teamColor)
         {
+            if (targetTiles == null) {
+                ConfigureTargetTiles(targetTile);
+            }
+            
             return targetTiles[teamColor];
         }
 

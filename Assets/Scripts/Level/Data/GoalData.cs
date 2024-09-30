@@ -6,11 +6,9 @@ using UnityEngine.Serialization;
 namespace Level.Data
 {
     [Serializable]
-    public class TargetData
+    public class GoalData
     {
         public Vector3Int pos;
-        [FormerlySerializedAs("carColor")]
-        [FormerlySerializedAs("team")]
         public TeamColor teamColor;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine.Serialization;
 
 namespace Level.Data
 {
@@ -6,7 +7,7 @@ namespace Level.Data
     public class LogisticData
     {
         public RoadTileData[] roadTileData;
-        public TargetData[] targetsData;
+        public GoalData[] goalsData;
         public IntermediatePointData[] intermediatePointsData;
     }
 }

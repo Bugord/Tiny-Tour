@@ -65,7 +65,7 @@ namespace Level
                 terrainTilesData = Array.Empty<TerrainTileData>(),
                 logisticData = new LogisticData {
                     roadTileData = Array.Empty<RoadTileData>(),
-                    targetsData = Array.Empty<TargetData>(),
+                    goalsData = Array.Empty<GoalData>(),
                     intermediatePointsData = Array.Empty<IntermediatePointData>()
                 }
             };
