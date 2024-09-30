@@ -1,6 +1,7 @@
 ﻿using Common;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Editors.Terrain;
+using Gameplay.Editing.Options.Data;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,9 @@ namespace Gameplay
     [CreateAssetMenu(fileName = "installer_playing", menuName = "Installers/Playing")]
     public class PlayingInstaller : ScriptableObjectInstaller
     {
+        [SerializeField]
+        private EditorOptionDataLibrary editorOptionDataLibrary;
+        
         public override void InstallBindings()
         {
             // Container.Bind<InGameTilemapEditor>().AsSingle();
@@ -20,6 +24,8 @@ namespace Gameplay
             
             Container.Bind<IEditorOptionFactory>().To<EditorOptionOptionFactory>().AsTransient();
             Container.BindInterfacesAndSelfTo<InGameEditor>().AsSingle();
+
+            Container.Bind<EditorOptionDataLibrary>().FromInstance(editorOptionDataLibrary);
         }
     }
 }

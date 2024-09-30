@@ -2,6 +2,7 @@
 using Common.Tilemaps;
 using Core.Logging;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using Zenject;
 
@@ -66,6 +67,10 @@ namespace Common
 
         private void OnPressStarted(InputAction.CallbackContext ctx)
         {
+            if (EventSystem.current.currentSelectedGameObject != null) {
+                return;
+            }
+            
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -77,6 +82,10 @@ namespace Common
 
         private void OnPressPerformed(InputAction.CallbackContext ctx)
         {
+            if (EventSystem.current.currentSelectedGameObject != null) {
+                return;
+            }
+            
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -97,6 +106,10 @@ namespace Common
 
         private void OnAltPressStarted(InputAction.CallbackContext ctx)
         {
+            if (EventSystem.current.currentSelectedGameObject != null) {
+                return;
+            }
+            
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -108,6 +121,10 @@ namespace Common
 
         private void OnAltPressPerformed(InputAction.CallbackContext ctx)
         {
+            if (EventSystem.current.currentSelectedGameObject != null) {
+                return;
+            }
+            
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);

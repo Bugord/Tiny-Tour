@@ -10,15 +10,13 @@ namespace States
     public class SelectLevelToPlayState : BaseGameState
     {
         private readonly INavigationService navigationService;
-        private readonly GameStateMachine gameStateSystem;
         private readonly LevelManager levelManager;
 
         private PlayLevelSelectScreen playLevelSelectSelectScreen;
 
-        public SelectLevelToPlayState(GameStateMachine gameStateSystem, INavigationService navigationService,
-            LevelManager levelManager)
+        public SelectLevelToPlayState(GameStateMachine gameStateMachine, INavigationService navigationService,
+            LevelManager levelManager) : base(gameStateMachine)
         {
-            this.gameStateSystem = gameStateSystem;
             this.navigationService = navigationService;
             this.levelManager = levelManager;
         }
@@ -45,12 +43,12 @@ namespace States
         private void OnLevelSelected(int levelIndex)
         {
             levelManager.SelectLevel(levelIndex);
-            gameStateSystem.ChangeState<PlayLevelState>();
+            GameStateMachine.ChangeState<PlayLevelState>();
         }
 
         private void OnBackPressed()
         {
-            gameStateSystem.ChangeState<MainMenuState>();
+            GameStateMachine.ChangeState<MainMenuState>();
         }
     }
 }

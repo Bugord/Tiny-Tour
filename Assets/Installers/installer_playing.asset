@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: affd213bed88406a97b5c2c06c90944b, type: 3}
   m_Name: installer_playing
   m_EditorClassIdentifier: 
+  editorOptionDataLibrary: {fileID: 11400000, guid: 3de73eaae0014bf409c7b5dc593d7df0, type: 2}

@@ -1,6 +1,7 @@
 ﻿using Core;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Editors.Terrain;
+using Gameplay.Editing.Options.Data;
 using Tiles.Ground;
 using UnityEngine;
 
@@ -13,10 +14,11 @@ namespace Gameplay.Editing.Options
 
         private Vector3Int? previousRoadPosition;
 
-        public RoadEditorOption(IRoadEditor roadEditor, ITerrainEditor terrainEditor)
+        public RoadEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor, ITerrainEditor terrainEditor)
         {
             this.roadEditor = roadEditor;
             this.terrainEditor = terrainEditor;
+            EditorOptionData = editorOptionDataLibrary.RoadEditorOptionData;
         }
 
         public override void OnTileDown(Vector3Int position)

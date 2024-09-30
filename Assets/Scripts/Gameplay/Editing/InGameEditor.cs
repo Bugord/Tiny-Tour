@@ -1,5 +1,11 @@
-﻿using Gameplay.Editing.Editors;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Core.Navigation;
+using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options;
+using UI;
+using UI.Screens;
 using UnityEngine;
 using Zenject;
 
@@ -9,18 +15,45 @@ namespace Common
     {
         private readonly ITilemapInput tilemapInput;
         private readonly IEditorOptionFactory editorOptionFactory;
+        private readonly Dictionary<string, BaseEditorOption> editorOptions;
+        private readonly InGameEditorUI inGameEditorUI;
 
         private BaseEditorOption selectedEditorOption;
 
-        public InGameEditor(ITilemapInput tilemapInput, IEditorOptionFactory editorOptionFactory)
+        public InGameEditor(ITilemapInput tilemapInput, IEditorOptionFactory editorOptionFactory, INavigationService navigationService)
         {
             this.tilemapInput = tilemapInput;
             this.editorOptionFactory = editorOptionFactory;
+            inGameEditorUI = navigationService.GetScreen<PlayLevelScreen>().InGameEditorUI;
+
+            editorOptions = new Dictionary<string, BaseEditorOption>();
         }
 
         public void Initialize()
         {
-            selectedEditorOption = editorOptionFactory.Create<RoadEditorOption>();
+            AddEditorOption<RoadEditorOption>();
+            AddEditorOption<ErasingEditorOption>();
+
+            selectedEditorOption = editorOptions.First().Value;
+            
+            inGameEditorUI.Init(editorOptions.Values.Select(option => option.EditorOptionData));
+            inGameEditorUI.EditorOptionSelected += OnOptionSelected;
+            
+            var defaultOptionId = editorOptions.First().Key;
+            inGameEditorUI.SelectOption(defaultOptionId);
+        }
+
+        private void AddEditorOption<T>() where T : BaseEditorOption
+        {
+            var editorOption = editorOptionFactory.Create<T>();
+            var id = editorOption.EditorOptionData.Id;
+            
+            editorOptions.Add(id, editorOption);
+        }
+
+        private void OnOptionSelected(string id)
+        {
+            selectedEditorOption = editorOptions[id];
         }
 
         public void Enable()

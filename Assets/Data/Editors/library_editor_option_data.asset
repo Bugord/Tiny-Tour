@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac2f33845274874b0d4c3a01e086fd3, type: 3}
+  m_Name: library_editor_option_data
+  m_EditorClassIdentifier: 
+  <RoadEditorOptionData>k__BackingField: {fileID: 11400000, guid: 592aee5ad0c82914c90fc8ea679b4dcb, type: 2}
+  <EraseEditorOptionData>k__BackingField: {fileID: 11400000, guid: 853118eb53f39524dbd2e73f38054a55, type: 2}

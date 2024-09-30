@@ -1,6 +1,6 @@
 ﻿namespace Common
 {
-    public class EditorService
+    public class EditorService 
     {
         
     }

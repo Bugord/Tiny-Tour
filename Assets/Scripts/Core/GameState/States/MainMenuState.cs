@@ -8,13 +8,11 @@ namespace Core.GameState.States
     public class MainMenuState : BaseGameState
     {
         private readonly INavigationService navigationService;
-        private readonly GameStateMachine gameStateSystem;
         
         private MainMenuScreen mainMenuScreen;
         
-        public MainMenuState(GameStateMachine gameStateSystem, INavigationService navigationService)
+        public MainMenuState(GameStateMachine gameStateMachine, INavigationService navigationService) : base(gameStateMachine)
         {
-            this.gameStateSystem = gameStateSystem;
             this.navigationService = navigationService;
         }
         
@@ -34,12 +32,12 @@ namespace Core.GameState.States
 
         private void OnPlayLevelsPressed()
         {
-            gameStateSystem.ChangeState<SelectLevelToPlayState>();
+            GameStateMachine.ChangeState<SelectLevelToPlayState>();
         }
 
         private void OnEditLevelsPressed()
         {
-            gameStateSystem.ChangeState<SelectLevelToEditState>();
+            GameStateMachine.ChangeState<SelectLevelToEditState>();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Core.Installers
 
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<NavigationService>().AsTransient();
+            Container.BindInterfacesTo<NavigationService>().AsSingle();
             Container.BindInterfacesTo<ScreenFactory>().AsTransient();
             Container.Bind<UIProvider>().AsSingle();
             Container.Bind<UIProviderConfig>().FromInstance(uiProviderConfig);

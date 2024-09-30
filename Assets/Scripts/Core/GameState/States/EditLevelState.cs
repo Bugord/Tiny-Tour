@@ -5,13 +5,10 @@ namespace Core.GameState.States
 {
     public class EditLevelState : BaseGameState
     {
-        private readonly GameStateMachine gameStateSystem;
-
         private EditLevelScreen editLevelScreen;
 
-        public EditLevelState(GameStateMachine gameStateSystem)
+        public EditLevelState(GameStateMachine gameStateSystem) : base(gameStateSystem)
         {
-            this.gameStateSystem = gameStateSystem;
         }
     }
 }

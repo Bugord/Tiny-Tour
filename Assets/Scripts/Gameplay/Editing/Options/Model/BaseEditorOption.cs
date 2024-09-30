@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Gameplay.Editing.Options.Data;
+using UnityEngine;
 
 namespace Gameplay.Editing.Editors
 {
     public class BaseEditorOption
     {
-        public string ID;
+        public EditorOptionData EditorOptionData;
 
         public virtual void OnTileDown(Vector3Int position)
         {

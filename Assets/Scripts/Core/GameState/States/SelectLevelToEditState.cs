@@ -10,14 +10,12 @@ namespace Core.GameState.States
     public class SelectLevelToEditState : BaseGameState
     {
         private readonly INavigationService navigationService;
-        private readonly GameStateMachine gameStateSystem;
         private readonly LevelManager levelManager;
 
         private EditLevelSelectScreen editLevelSelectSelectScreen;
         
-        public SelectLevelToEditState(GameStateMachine gameStateSystem, INavigationService navigationService, LevelManager levelManager)
+        public SelectLevelToEditState(GameStateMachine gameStateMachine, INavigationService navigationService, LevelManager levelManager) : base(gameStateMachine)
         {
-            this.gameStateSystem = gameStateSystem;
             this.navigationService = navigationService;
             this.levelManager = levelManager;
         }
@@ -46,12 +44,12 @@ namespace Core.GameState.States
         private void OnLevelSelected(int levelIndex)
         {
             levelManager.SelectLevel(levelIndex);
-            gameStateSystem.ChangeState<EditLevelState>();
+            GameStateMachine.ChangeState<EditLevelState>();
         }
 
         private void OnBackPressed()
         {
-            gameStateSystem.ChangeState<MainMenuState>();
+            GameStateMachine.ChangeState<MainMenuState>();
         }
 
         private void OnCreateNewPressed()
@@ -59,7 +57,7 @@ namespace Core.GameState.States
             var newLevel = levelManager.CreateNewLevel("New Level " + Random.Range(0, 1000));
             levelManager.SelectLevel(newLevel);
             
-            gameStateSystem.ChangeState<EditLevelState>();
+            GameStateMachine.ChangeState<EditLevelState>();
         }
     }
 }
