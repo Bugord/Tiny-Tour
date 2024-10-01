@@ -8,7 +8,7 @@ namespace Level.Data
     [Serializable]
     public class GoalData
     {
-        public Vector3Int pos;
+        public Vector2Int pos;
         public TeamColor teamColor;
     }
 }

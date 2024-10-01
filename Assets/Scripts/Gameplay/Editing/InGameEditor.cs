@@ -57,7 +57,7 @@ namespace Common
             selectedEditorOption = editorOptions[id];
         }
 
-        public void Enable()
+        public void EnableEditing()
         {
             tilemapInput.TileDragged += OnTileDragged;
             tilemapInput.TilePressDown += OnTileDown;
@@ -68,11 +68,11 @@ namespace Common
             tilemapInput.TileAltPressUp += OnTileAltUp;
         }
 
-        public void Disable()
+        public void DisableEditing()
         {
-            tilemapInput.TileDragged += OnTileDragged;
-            tilemapInput.TilePressDown += OnTileDown;
-            tilemapInput.TilePressUp += OnTileUp;
+            tilemapInput.TileDragged -= OnTileDragged;
+            tilemapInput.TilePressDown -= OnTileDown;
+            tilemapInput.TilePressUp -= OnTileUp;
 
             tilemapInput.TileAltDragged -= OnTileAltDragged;
             tilemapInput.TileAltPressDown -= OnTileAltDown;

@@ -20,6 +20,8 @@ namespace Gameplay.Editing.Editors
         private readonly List<RoadTileData> initialRoadsData;
         private readonly List<RoadTileData> roadsData;
 
+        public IReadOnlyCollection<RoadTileData> RoadsData => roadsData;
+        public Vector2Int RoadMapSize => (Vector2Int)roadTilemap.size;
         public RoadEditor(ILogger<RoadEditor> logger, ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
         {
             this.logger = logger;

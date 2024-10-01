@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Core;
 using Tiles;
@@ -9,21 +10,17 @@ namespace Pathfinding
     public class AstarPathfinding
     {
         private Grid2D grid;
-        private Vector2Int offset;
 
-        public void Update(Vector2Int offset, Vector2Int size,
-            Dictionary<Vector2Int, ConnectionDirection> connectionDirections)
+        public void Update(Vector2Int size, Dictionary<Vector2Int, ConnectionDirection> connectionDirections)
         {
-            this.offset = offset;
-            var connectionDirectionsWithOffset = connectionDirections.ToDictionary(x => x.Key + offset, x => x.Value);
-            grid = new Grid2D(size, connectionDirectionsWithOffset);
+            grid = new Grid2D(size, connectionDirections);
         }
 
-        public List<Vector2Int> FindPath(Vector2Int startPos, Vector2Int targetPos)
+        public Vector2Int[] FindPath(Vector2Int startPos, Vector2Int targetPos)
         {
             //get player and target position in grid coords
-            var seekerNode = grid.GetNodeByPos(startPos + offset);
-            var targetNode = grid.GetNodeByPos(targetPos + offset);
+            var seekerNode = grid.GetNodeByPos(startPos);
+            var targetNode = grid.GetNodeByPos(targetPos);
 
             var openSet = new List<Node2D>();
             var closedSet = new HashSet<Node2D>();
@@ -47,7 +44,7 @@ namespace Pathfinding
                 //If target found, retrace path
                 if (node == targetNode) {
                     var nodePath = RetracePath(seekerNode, targetNode);
-                    return nodePath.Select(node2D => new Vector2Int(node2D.GridX, node2D.GridY) - offset).ToList();
+                    return nodePath.Select(node2D => new Vector2Int(node2D.GridX, node2D.GridY)).ToArray();
                 }
 
                 //adds neighbor nodes to openSet
@@ -71,7 +68,7 @@ namespace Pathfinding
                 }
             }
 
-            return null;
+            return Array.Empty<Vector2Int>();
         }
 
         private List<Node2D> RetracePath(Node2D startNode, Node2D endNode)

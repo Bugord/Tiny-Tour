@@ -25,6 +25,9 @@ namespace Common.Tilemaps
         public Vector3Int WorldToCell(Vector3 pos)
         {
             return TerrainTilemap.WorldToCell(pos);
-        }    
+        }
+
+        public Vector2 CellToWorld(Vector2Int cellPos) => CellToWorld((Vector3Int)cellPos);
+        public Vector2Int WorldToCell(Vector2 pos) => (Vector2Int)WorldToCell((Vector3)pos);
     }
 }

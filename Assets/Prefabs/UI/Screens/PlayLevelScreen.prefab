@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InGameEditorUI>k__BackingField: {fileID: 3511988130577298724}
+  <PlayControllerUI>k__BackingField: {fileID: 5613750720203766506}
 --- !u!114 &6196803748471908754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +340,14 @@ PrefabInstance:
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 389406568489050770}
+    - target: {fileID: 3875751859791011930, guid: 82e9bc6f21b86474c9b79b2e33b525b3, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3875751859791011930, guid: 82e9bc6f21b86474c9b79b2e33b525b3, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayToggle
+      objectReference: {fileID: 0}
     - target: {fileID: 7447001688892141877, guid: 82e9bc6f21b86474c9b79b2e33b525b3, type: 3}
       propertyPath: m_Name
       value: PlayControllsContainer
@@ -418,6 +427,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5613750720203766506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3506295238374116274, guid: 82e9bc6f21b86474c9b79b2e33b525b3, type: 3}
+  m_PrefabInstance: {fileID: 9025442868402614616}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85982a3a1014c389f7bccd1c8d1f04e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8453322025716164912 stripped

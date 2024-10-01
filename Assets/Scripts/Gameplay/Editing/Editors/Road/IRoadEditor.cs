@@ -1,4 +1,6 @@
-﻿using Core;
+﻿using System.Collections.Generic;
+using Core;
+using Level;
 using UnityEngine;
 
 namespace Gameplay.Editing.Editors
@@ -12,5 +14,7 @@ namespace Gameplay.Editing.Editors
         ConnectionDirection GetRoadConnectionDirections(Vector3Int position);
         void ConnectRoads(Vector3Int positionFrom, Vector3Int positionTo);
         void EraseRoad(Vector3Int position);
+        IReadOnlyCollection<RoadTileData> RoadsData { get; }
+        Vector2Int RoadMapSize { get; }
     }
 }

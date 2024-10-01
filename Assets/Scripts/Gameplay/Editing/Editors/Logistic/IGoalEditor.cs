@@ -5,6 +5,6 @@ namespace Common.Editors.Logistic
 {
     public interface IGoalEditor
     {
-        void SetGoalTile(Vector3Int position, TeamColor teamColor);
+        void SetGoalTile(Vector2Int position, TeamColor teamColor);
     }
 }

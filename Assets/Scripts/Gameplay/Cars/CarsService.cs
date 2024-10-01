@@ -15,6 +15,9 @@ namespace Gameplay.Cars
         private readonly ICarsFactory carsFactory;
 
         private readonly List<Car> cars;
+        private readonly Dictionary<Car, CarSpawnData> carsSpawnData;
+
+        public IReadOnlyCollection<Car> Cars => cars;
 
         public CarsService(ILogger<CarsService> logger, ITilemapPositionConverter tilemapPositionConverter, ICarsFactory carsFactory)
         {
@@ -23,6 +26,7 @@ namespace Gameplay.Cars
             this.carsFactory = carsFactory;
 
             cars = new List<Car>();
+            carsSpawnData = new Dictionary<Car, CarSpawnData>();
         }
 
         public void SpawnCars(CarSpawnData[] carsSpawnData)
@@ -37,6 +41,17 @@ namespace Gameplay.Cars
                 var car = carsFactory.Create(carSpawnPosition, spawnPointData.direction, spawnPointData.carType, spawnPointData.teamColor);
 
                 cars.Add(car);
+                this.carsSpawnData.Add(car, spawnPointData);
+            }
+        }
+
+        public void ResetCars()
+        {
+            foreach (var car in cars) {
+                var carSpawnData = carsSpawnData[car];
+                car.Reset();
+                car.SetPosition(tilemapPositionConverter.CellToWorld(carSpawnData.pos));
+                car.SetDirection(carSpawnData.direction);
             }
         }
     }

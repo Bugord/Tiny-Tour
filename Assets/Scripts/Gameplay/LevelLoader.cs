@@ -27,5 +27,10 @@ namespace Gameplay
             logisticLoader.LoadLogistic(levelData.logisticData);
             carsService.SpawnCars(levelData.carSpawnData);
         }
+
+        private void CalculateOffset()
+        {
+            
+        }
     }
 }

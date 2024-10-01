@@ -21,8 +21,10 @@ namespace Cars
         private CarData carData;
 
         private Tween pathTween;
-        private Vector3[] waypoints;
-        
+        private Tween crashAnimationTween;
+        private Vector3[] worldWaypoints;
+
+        public Vector2 Position => transform.position;
         public bool IsCrashed { get; private set; }
         public bool IsFinished { get; private set; }
 
@@ -33,27 +35,32 @@ namespace Cars
             if (IsFinished) {
                 return;
             }
-            
+
             if (!collider2D.TryGetComponent<Car>(out var car)) {
                 return;
             }
-            
+
             if (!car.IsFinished) {
                 CrashCar();
             }
         }
 
-        public void PlayPath(Vector3[] waypoints)
+        public void PlayPath(IEnumerable<Vector2> waypoints)
         {
-            this.waypoints = waypoints;
-            transform.position = waypoints[0];
+            worldWaypoints = waypoints.Select(waypoint => (Vector3)waypoint).ToArray();
+            transform.position = worldWaypoints[0];
 
-            var path = new Path(PathType.Linear, waypoints, 0, Color.red);
+            var path = new Path(PathType.Linear, worldWaypoints, 0, Color.red);
             pathTween = transform
-                .DOPath(path, waypoints.Length / carData.speed, PathMode.TopDown2D)
+                .DOPath(path, worldWaypoints.Length / carData.speed, PathMode.TopDown2D)
                 .OnWaypointChange(ChangeCarDirection)
                 .OnComplete(Finish)
                 .SetEase(Ease.Linear);
+        }
+
+        public void SetPosition(Vector3 position)
+        {
+            transform.position = position;
         }
 
         public void SetData(CarData carData)
@@ -79,6 +86,7 @@ namespace Cars
             transform.rotation = Quaternion.identity;
 
             pathTween?.Kill();
+            crashAnimationTween?.Kill();
         }
 
         private void UpdateSprite(Direction direction = Direction.Down)
@@ -94,11 +102,11 @@ namespace Cars
 
         private void ChangeCarDirection(int waypointIndex)
         {
-            if (waypointIndex >= waypoints.Length - 1) {
+            if (waypointIndex >= worldWaypoints.Length - 1) {
                 return;
             }
 
-            var direction = Directions.GetDirection(waypoints[waypointIndex], waypoints[waypointIndex + 1]);
+            var direction = Directions.GetDirection(worldWaypoints[waypointIndex], worldWaypoints[waypointIndex + 1]);
             UpdateSprite(direction);
         }
 
@@ -106,7 +114,7 @@ namespace Cars
         {
             IsCrashed = true;
             pathTween.Kill();
-            transform.DORotate(new Vector3(0, 0, Random.Range(0f, 360f)), 0.5f);
+            crashAnimationTween = transform.DORotate(new Vector3(0, 0, Random.Range(0f, 360f)), 0.5f);
 
             Crashed?.Invoke();
         }

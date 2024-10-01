@@ -1,6 +1,6 @@
-﻿using Common.Editors.Logistic;
-using Core.Logging;
+﻿using Core.Logging;
 using Gameplay.Editing.Editors;
+using Gameplay.Logistic;
 using Level.Data;
 
 namespace Common.Editors
@@ -9,13 +9,13 @@ namespace Common.Editors
     {
         private readonly ILogger<LogisticLoader> logger;
         private readonly IRoadEditor roadEditor;
-        private readonly IGoalEditor goalEditor;
+        private readonly ILogisticService logisticService;
 
-        public LogisticLoader(ILogger<LogisticLoader> logger, IRoadEditor roadEditor, IGoalEditor goalEditor)
+        public LogisticLoader(ILogger<LogisticLoader> logger, IRoadEditor roadEditor, ILogisticService logisticService)
         {
             this.logger = logger;
             this.roadEditor = roadEditor;
-            this.goalEditor = goalEditor;
+            this.logisticService = logisticService;
         }
 
         public void LoadLogistic(LogisticData logisticData)
@@ -37,7 +37,7 @@ namespace Common.Editors
             }
 
             foreach (var targetData in logisticData.goalsData) {
-                goalEditor.SetGoalTile(targetData.pos, targetData.teamColor);
+                logisticService.AddGoal(targetData.pos, targetData.teamColor);
             }
         }
     }
