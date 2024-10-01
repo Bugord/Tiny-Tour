@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Id>k__BackingField: editor_erase
   <Icon>k__BackingField: {fileID: 0}
-  <CustomInactiveBackground>k__BackingField: {fileID: 8200694317455299869, guid: 8a2e74b0db314ec439e43e306fc7c8f9, type: 3}
-  <CustomActiveBackground>k__BackingField: {fileID: -1713467619580683021, guid: 8a2e74b0db314ec439e43e306fc7c8f9, type: 3}
+  <CustomInactiveBackground>k__BackingField: {fileID: -4656476390833605959, guid: 4365cacd50253874982c8264b898516a, type: 3}
+  <CustomActiveBackground>k__BackingField: {fileID: 2058487054210382521, guid: 4365cacd50253874982c8264b898516a, type: 3}
