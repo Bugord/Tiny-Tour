@@ -10,15 +10,17 @@ namespace Gameplay
     public class LevelService : ILevelService
     {
         private readonly ITerrainLoader terrainLoader;
+        private readonly IRoadService roadService;
         private readonly IObstaclesEditor obstaclesEditor;
         private readonly ILogisticService logisticService;
         private readonly ICarsService carsService;
 
         private LevelData currentLevelData;
         
-        public LevelService(ITerrainLoader terrainLoader, IObstaclesEditor obstaclesEditor, ILogisticService logisticService, ICarsService carsService)
+        public LevelService(ITerrainLoader terrainLoader, IRoadService roadService, IObstaclesEditor obstaclesEditor, ILogisticService logisticService, ICarsService carsService)
         {
             this.terrainLoader = terrainLoader;
+            this.roadService = roadService;
             this.obstaclesEditor = obstaclesEditor;
             this.logisticService = logisticService;
             this.carsService = carsService;
@@ -29,6 +31,7 @@ namespace Gameplay
             currentLevelData = levelData;
             
             terrainLoader.LoadTerrain(levelData.terrainTilesData);
+            roadService.LoadRoad(levelData.logisticData.roadTileData);
             obstaclesEditor.LoadObstacles(levelData.obstaclesData);
             logisticService.LoadLogistic(levelData.logisticData);
             carsService.SpawnCars(levelData.carSpawnData);
@@ -36,7 +39,7 @@ namespace Gameplay
 
         public void ResetLevel()
         {
-            logisticService.Reset();
+            roadService.Reset();
         }
     }
 }

@@ -191,7 +191,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 171
+        y: 152
         width: 22
         height: 19
       alignment: 0
@@ -213,7 +213,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 171
+        y: 152
         width: 22
         height: 19
       alignment: 0
@@ -234,7 +234,7 @@ TextureImporter:
       name: buttons_interface_2
       rect:
         serializedVersion: 2
-        x: 0
+        x: 44
         y: 152
         width: 22
         height: 19
@@ -256,7 +256,7 @@ TextureImporter:
       name: buttons_interface_3
       rect:
         serializedVersion: 2
-        x: 22
+        x: 66
         y: 152
         width: 22
         height: 19
@@ -322,8 +322,8 @@ TextureImporter:
       name: buttons_interface_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 114
+        x: 44
+        y: 133
         width: 22
         height: 19
       alignment: 0
@@ -344,8 +344,8 @@ TextureImporter:
       name: buttons_interface_7
       rect:
         serializedVersion: 2
-        x: 22
-        y: 114
+        x: 66
+        y: 133
         width: 22
         height: 19
       alignment: 0
@@ -367,7 +367,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 95
+        y: 114
         width: 22
         height: 19
       alignment: 0
@@ -389,7 +389,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 95
+        y: 114
         width: 22
         height: 19
       alignment: 0
@@ -410,8 +410,8 @@ TextureImporter:
       name: buttons_interface_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 76
+        x: 44
+        y: 114
         width: 22
         height: 19
       alignment: 0
@@ -432,8 +432,8 @@ TextureImporter:
       name: buttons_interface_11
       rect:
         serializedVersion: 2
-        x: 22
-        y: 76
+        x: 66
+        y: 114
         width: 22
         height: 19
       alignment: 0
@@ -455,7 +455,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 57
+        y: 95
         width: 22
         height: 19
       alignment: 0
@@ -477,7 +477,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 57
+        y: 95
         width: 22
         height: 19
       alignment: 0
@@ -498,8 +498,8 @@ TextureImporter:
       name: buttons_interface_14
       rect:
         serializedVersion: 2
-        x: 0
-        y: 38
+        x: 44
+        y: 95
         width: 22
         height: 19
       alignment: 0
@@ -520,8 +520,8 @@ TextureImporter:
       name: buttons_interface_15
       rect:
         serializedVersion: 2
-        x: 22
-        y: 38
+        x: 66
+        y: 95
         width: 22
         height: 19
       alignment: 0
@@ -543,7 +543,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 19
+        y: 76
         width: 22
         height: 19
       alignment: 0
@@ -565,7 +565,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 19
+        y: 76
         width: 22
         height: 19
       alignment: 0
@@ -586,8 +586,8 @@ TextureImporter:
       name: buttons_interface_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 44
+        y: 76
         width: 22
         height: 19
       alignment: 0
@@ -608,8 +608,8 @@ TextureImporter:
       name: buttons_interface_19
       rect:
         serializedVersion: 2
-        x: 22
-        y: 0
+        x: 66
+        y: 76
         width: 22
         height: 19
       alignment: 0
@@ -631,7 +631,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 190
+        y: 57
         width: 22
         height: 19
       alignment: 0
@@ -653,7 +653,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 22
-        y: 190
+        y: 57
         width: 22
         height: 19
       alignment: 0
@@ -666,6 +666,50 @@ TextureImporter:
       bones: []
       spriteID: 379e647632c79974ab9301f5dc71f3ff
       internalID: -2118125813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_interface_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd47539822f44ef47a08425336a273b0
+      internalID: -1513656015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: buttons_interface_23
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 38
+        width: 22
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2b6465f02440b4c86d1b699dd1071a
+      internalID: 2079676301
       vertices: []
       indices: 
       edges: []
@@ -699,6 +743,8 @@ TextureImporter:
       buttons_interface_2: -1336883743500509905
       buttons_interface_20: 947040701
       buttons_interface_21: -2118125813
+      buttons_interface_22: -1513656015
+      buttons_interface_23: 2079676301
       buttons_interface_3: 6097288189313721912
       buttons_interface_4: -3386232327621482250
       buttons_interface_5: -411498194845463197

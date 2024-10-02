@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.UI;
 using Gameplay.UI;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ namespace UI.Screens
         public event Action BackPressed;
         
         [field: SerializeField]
-        public InGameEditorUI InGameEditorUI { get; private set; }
+        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }
 
         [field: SerializeField]
         public PlayControllerUI PlayControllerUI { get; private set; }

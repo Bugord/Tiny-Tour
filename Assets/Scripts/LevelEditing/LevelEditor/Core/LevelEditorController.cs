@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Common;
 using Common.Editors.Options.Core;
 using Common.UI;
 using Core.Navigation;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options;
-using Gameplay.UI;
-using UI;
 using UI.Screens;
 using UnityEngine;
 using Zenject;
 
-namespace Common
+namespace LevelEditing.Editing.Core
 {
-    public class InGameEditor : IInitializable
+    public class LevelEditorController : IInitializable
     {
         private readonly ITilemapInput tilemapInput;
         private readonly IEditorOptionFactory editorOptionFactory;
@@ -23,11 +21,11 @@ namespace Common
 
         private BaseEditorOption selectedEditorOption;
 
-        public InGameEditor(ITilemapInput tilemapInput, IEditorOptionFactory editorOptionFactory, INavigationService navigationService)
+        public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService, IEditorOptionFactory editorOptionFactory)
         {
             this.tilemapInput = tilemapInput;
             this.editorOptionFactory = editorOptionFactory;
-            editorOptionsControllerUI = navigationService.GetScreen<PlayLevelScreen>().EditorOptionsControllerUI;
+            editorOptionsControllerUI = navigationService.GetScreen<EditLevelScreen>().EditorOptionsControllerUI;
 
             editorOptions = new Dictionary<string, BaseEditorOption>();
         }
@@ -38,10 +36,10 @@ namespace Common
             AddEditorOption<ErasingEditorOption>();
 
             selectedEditorOption = editorOptions.First().Value;
-            
+
             editorOptionsControllerUI.Init(editorOptions.Values.Select(option => option.EditorOptionData));
             editorOptionsControllerUI.EditorOptionSelected += OnOptionSelected;
-            
+
             var defaultOptionId = editorOptions.First().Key;
             editorOptionsControllerUI.SelectOption(defaultOptionId);
         }
@@ -50,7 +48,7 @@ namespace Common
         {
             var editorOption = editorOptionFactory.Create<T>();
             var id = editorOption.EditorOptionData.Id;
-            
+
             editorOptions.Add(id, editorOption);
         }
 

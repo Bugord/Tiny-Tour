@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Editors;
 using Common.Editors.Logistic;
 using Common.Editors.Road;
 using Common.Tilemaps;
 using Core;
 using Core.Logging;
-using Gameplay.Editing.Editors;
 using Level.Data;
 using Pathfinding;
 using UnityEngine;
@@ -22,11 +20,10 @@ namespace Gameplay.Logistic
         private readonly ITilemapPositionConverter tilemapPositionConverter;
         private readonly Dictionary<TeamColor, Vector2Int> goals;
 
-        public LogisticService(ILogger<LogisticService> logger, IGoalEditor goalEditor, IRoadEditor roadEditor, IPathfindingService pathfindingService, ITilemapPositionConverter tilemapPositionConverter)
+        public LogisticService(ILogger<LogisticService> logger, IGoalEditor goalEditor, IPathfindingService pathfindingService, ITilemapPositionConverter tilemapPositionConverter)
         {
             this.logger = logger;
             this.goalEditor = goalEditor;
-            this.roadEditor = roadEditor;
             this.pathfindingService = pathfindingService;
             this.tilemapPositionConverter = tilemapPositionConverter;
             goals = new Dictionary<TeamColor, Vector2Int>();
@@ -34,8 +31,6 @@ namespace Gameplay.Logistic
 
         public void LoadLogistic(LogisticData logisticData)
         {
-            roadEditor.Clear();
-
             if (logisticData == null) {
                 logger.LogError("Logistic data is null");
                 return;
@@ -44,10 +39,6 @@ namespace Gameplay.Logistic
             if (logisticData.roadTileData == null) {
                 logger.LogError("Road tiles are null");
                 return;
-            }
-
-            foreach (var roadTileData in logisticData.roadTileData) {
-                roadEditor.SetInitialRoadTile(roadTileData.position, roadTileData.connectionDirection);
             }
 
             foreach (var targetData in logisticData.goalsData) {
@@ -80,11 +71,6 @@ namespace Gameplay.Logistic
             var worldPath = path.Select(point => tilemapPositionConverter.CellToWorld(point)).ToArray();
             
             return worldPath;
-        }
-
-        public void Reset()
-        {
-            roadEditor.Reset();
         }
     }
 }

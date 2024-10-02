@@ -1,4 +1,7 @@
 ﻿using System;
+using Common.UI;
+using LevelEditing.UI;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI.Screens
@@ -10,6 +13,12 @@ namespace UI.Screens
         public event Action PlayPressed;
         public event Action<float> CameraScaleChanged;
 
+        [field: SerializeField]
+        public EditorControllerUI EditorControllerUI { get; private set; }
+        
+        [field: SerializeField]
+        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }
+
         public void OnBackButtonPressed()
         {
             BackPressed?.Invoke();
@@ -18,13 +27,13 @@ namespace UI.Screens
         public void OnSaveButtonPressed()
         {
             SavePressed?.Invoke();
-        }   
-        
+        }
+
         public void OnPlayButtonPressed()
         {
             PlayPressed?.Invoke();
-        }   
-        
+        }
+
         public void OnCameraScaleSliderValueChanged(Slider slider)
         {
             CameraScaleChanged?.Invoke(slider.value);

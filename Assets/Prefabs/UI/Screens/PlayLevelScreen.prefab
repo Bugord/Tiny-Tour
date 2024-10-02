@@ -167,7 +167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1320250012, guid: 69995128e4e68e94d957901b77e61ac7, type: 3}
+  m_Sprite: {fileID: -3036247007728617800, guid: 69995128e4e68e94d957901b77e61ac7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 694130796, guid: 69995128e4e68e94d957901b77e61ac7, type: 3}
+    m_PressedSprite: {fileID: 1037455084626495959, guid: 69995128e4e68e94d957901b77e61ac7, type: 3}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ed6e2993714607951a11d405f1f31e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InGameEditorUI>k__BackingField: {fileID: 3511988130577298724}
+  <EditorOptionsControllerUI>k__BackingField: {fileID: 3511988130577298724}
   <PlayControllerUI>k__BackingField: {fileID: 5613750720203766506}
 --- !u!1001 &458988167224218835
 PrefabInstance:
