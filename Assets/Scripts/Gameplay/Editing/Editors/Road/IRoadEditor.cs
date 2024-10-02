@@ -16,5 +16,6 @@ namespace Gameplay.Editing.Editors
         void EraseRoad(Vector3Int position);
         IReadOnlyCollection<RoadTileData> RoadsData { get; }
         Vector2Int RoadMapSize { get; }
+        void Reset();
     }
 }

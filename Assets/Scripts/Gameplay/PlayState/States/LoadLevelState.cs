@@ -1,4 +1,5 @@
-﻿using Gameplay.PlayState.Core;
+﻿using Common.Level.Core;
+using Gameplay.PlayState.Core;
 using Level;
 
 namespace Gameplay.PlayState.States
@@ -6,13 +7,13 @@ namespace Gameplay.PlayState.States
     public class LoadLevelState : BasePlayState
     {
         private readonly LevelManager levelManager;
-        private readonly ILevelLoader levelLoader;
+        private readonly ILevelService levelService;
 
-        public LoadLevelState(PlayStateMachine playStateMachine, LevelManager levelManager, ILevelLoader levelLoader)
+        public LoadLevelState(PlayStateMachine playStateMachine, LevelManager levelManager, ILevelService levelService)
             : base(playStateMachine)
         {
             this.levelManager = levelManager;
-            this.levelLoader = levelLoader;
+            this.levelService = levelService;
         }
 
         public override void OnEnter()
@@ -24,7 +25,7 @@ namespace Gameplay.PlayState.States
         private void LoadLevel()
         {
             var level = levelManager.GetSelectedLevel();
-            levelLoader.LoadLevel(level);
+            levelService.LoadLevel(level);
         }
     }
 }

@@ -12,7 +12,6 @@ namespace Gameplay
         {
             Container.Bind<ITerrainLoader>().To<TerrainLoader>().AsSingle();
             Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
-            Container.Bind<ILogisticLoader>().To<LogisticLoader>().AsSingle();
         }
     }
 }

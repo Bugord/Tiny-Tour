@@ -22,6 +22,7 @@ namespace Gameplay.Editing.Editors
 
         public IReadOnlyCollection<RoadTileData> RoadsData => roadsData;
         public Vector2Int RoadMapSize => (Vector2Int)roadTilemap.size;
+
         public RoadEditor(ILogger<RoadEditor> logger, ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
         {
             this.logger = logger;
@@ -30,6 +31,23 @@ namespace Gameplay.Editing.Editors
 
             initialRoadsData = new List<RoadTileData>();
             roadsData = new List<RoadTileData>();
+        }
+
+        public void Reset()
+        {
+            foreach (var roadTileData in roadsData) {
+                roadTilemap.SetTile(roadTileData.position, null);
+            }
+            roadsData.Clear();
+
+            foreach (var initialRoadData in initialRoadsData) {
+                roadsData.Add(new RoadTileData {
+                    position = initialRoadData.position,
+                    connectionDirection = initialRoadData.connectionDirection
+                });
+                var tile = tileLibrary.GetRoadTile(initialRoadData.connectionDirection);
+                roadTilemap.SetTile(initialRoadData.position, tile);
+            }
         }
 
         public void SetRoadTile(Vector3Int position)
@@ -45,11 +63,9 @@ namespace Gameplay.Editing.Editors
                 connectionDirection = ConnectionDirection.None
             };
             roadsData.Add(roadData);
-            
+
             var tile = tileLibrary.GetRoadTile(roadData.connectionDirection);
             roadTilemap.SetTile(position, tile);
-            
-            logger.Log($"Added road at {position}");
         }
 
         public bool HasRoad(Vector3Int position)
@@ -69,7 +85,8 @@ namespace Gameplay.Editing.Editors
             var neighbourPositions = GridHelpers.GetNeighborPos(position);
             var neighbourRoadsData = roadsData.Where(data => neighbourPositions.Contains(data.position));
             foreach (var neighbourRoadData in neighbourRoadsData) {
-                var neighbourInitialRoadData = initialRoadsData.FirstOrDefault(data => data.position == neighbourRoadData.position);
+                var neighbourInitialRoadData =
+                    initialRoadsData.FirstOrDefault(data => data.position == neighbourRoadData.position);
                 var neighbourConnection = GridHelpers.GetPathDirection(neighbourRoadData.position, position);
                 if (neighbourInitialRoadData != null && neighbourInitialRoadData.HasDirection(neighbourConnection)) {
                     continue;
@@ -81,7 +98,7 @@ namespace Gameplay.Editing.Editors
                         existingRoadData.TurnOffDirection(directionToNeighbour);
                     }
                 }
-                
+
                 neighbourRoadData.TurnOffDirection(neighbourConnection);
                 var tile = tileLibrary.GetRoadTile(neighbourRoadData.connectionDirection);
                 roadTilemap.SetTile(neighbourRoadData.position, tile);
@@ -118,7 +135,7 @@ namespace Gameplay.Editing.Editors
             if (roadTo == null) {
                 throw new ArgumentException($"Cannot connect road, road to ({positionFrom}) is null");
             }
-            
+
             roadFrom.TurnOnDirection(GridHelpers.GetPathDirection(positionFrom, positionTo));
             roadTo.TurnOnDirection(GridHelpers.GetPathDirection(positionTo, positionFrom));
 

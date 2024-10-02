@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Editors.Logistic;
+using Common.Level.Core;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Editors.Terrain;
 using Gameplay.Editing.Options.Data;
@@ -28,7 +29,7 @@ namespace Gameplay
             
             Container.Bind<PlayStateMachine>().AsSingle();
             Container.BindInterfacesTo<PlayStateFactory>().AsTransient();
-            Container.Bind<ILevelLoader>().To<LevelLoader>().AsSingle();
+            Container.Bind<ILevelService>().To<LevelService>().AsSingle();
 
             Container.Bind<IRoadEditor>().To<RoadEditor>().AsSingle();
             Container.Bind<ITerrainEditor>().To<TerrainEditor>().AsSingle();

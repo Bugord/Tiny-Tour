@@ -47,8 +47,8 @@ namespace Gameplay.Playing
         public void ResetPlay()
         {
             foreach (var car in carsService.Cars) {
-                car.Crashed += OnCarCrashed;
-                car.Finished += OnCarFinished;
+                car.Crashed -= OnCarCrashed;
+                car.Finished -= OnCarFinished;
             }
 
             carsService.ResetCars();

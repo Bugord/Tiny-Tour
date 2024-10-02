@@ -18,7 +18,7 @@
         "z": 0
       },
       "carType": 0,
-      "teamColor": 4,
+      "teamColor": 3,
       "direction": 3
     }
   ],
@@ -931,6 +931,14 @@
           "z": 0
         },
         "teamColor": 4
+      },
+      {
+        "pos": {
+          "x": 4,
+          "y": 1,
+          "z": 0
+        },
+        "teamColor": 3
       }
     ],
     "intermediatePointsData": [
@@ -943,47 +951,5 @@
         "teamColor": 4
       }
     ]
-  },
-  "obstaclesData": [
-    {
-      "pos": {
-        "x": -2,
-        "y": -1,
-        "z": 0
-      },
-      "id": 40
-    },
-    {
-      "pos": {
-        "x": 2,
-        "y": 3,
-        "z": 0
-      },
-      "id": 40
-    },
-    {
-      "pos": {
-        "x": -1,
-        "y": 2,
-        "z": 0
-      },
-      "id": 42
-    },
-    {
-      "pos": {
-        "x": 0,
-        "y": -3,
-        "z": 0
-      },
-      "id": 44
-    },
-    {
-      "pos": {
-        "x": 1,
-        "y": 1,
-        "z": 0
-      },
-      "id": 32
-    }
-  ]
+  }
 }

@@ -8,6 +8,7 @@ namespace Gameplay.UI
     {
         public event Action PlayToggledOn;
         public event Action PlayToggledOff;
+        public event Action ResetPressed;
 
         [SerializeField]
         private SwitchableToggle playToggle;
@@ -27,7 +28,12 @@ namespace Gameplay.UI
             playToggle.SetIsOnWithoutNotify(isOn);
         }
 
-        public void OnPlayToggle(bool inOn)
+        public void OnResetPressed()
+        {
+            ResetPressed?.Invoke();
+        }
+
+        private void OnPlayToggle(bool inOn)
         {
             if (inOn) {
                 PlayToggledOn?.Invoke();
