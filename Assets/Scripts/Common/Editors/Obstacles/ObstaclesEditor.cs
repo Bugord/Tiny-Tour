@@ -1,4 +1,5 @@
-﻿using Common.Tilemaps;
+﻿using Common.Editors.Obstacles;
+using Common.Tilemaps;
 using Core.Logging;
 using Level;
 using Level.Data;

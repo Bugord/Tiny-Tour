@@ -1,4 +1,5 @@
 ﻿using Common.Editors;
+using Common.Editors.Obstacles;
 using Common.Level.Core;
 using Gameplay.Cars;
 using Gameplay.Logistic;

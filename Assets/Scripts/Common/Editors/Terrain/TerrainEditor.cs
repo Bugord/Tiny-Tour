@@ -6,7 +6,7 @@ using Tiles.Ground;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Gameplay.Editing.Editors.Terrain
+namespace Common.Editors.Terrain
 {
     public class TerrainEditor : ITerrainEditor
     {

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,62 +259,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
---- !u!1839735485 &1319320752 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 5799154582318838118, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &1319320753 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 8225015136120092467, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &1319320754 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 3401170431863569403, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
---- !u!1839735485 &1319320755 stripped
-Tilemap:
-  m_CorrespondingSourceObject: {fileID: 3041012261470436711, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
-  m_PrefabInstance: {fileID: 1319320751}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2303896303207680309
+--- !u!114 &1319320752 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1772934068148960659, guid: b526723d8b53a9b49905aa77ac28b607, type: 3}
+  m_PrefabInstance: {fileID: 1319320751}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905779809270729346}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92823b90430d47feb4a67821f08db749, type: 3}
+  m_Script: {fileID: 11500000, guid: 44de40c969db48b58bbf6ed0be14f873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrainTilemap: {fileID: 1319320754}
-  roadTilemap: {fileID: 1319320753}
-  logisticTilemap: {fileID: 1319320752}
-  obstacleTilemap: {fileID: 1319320755}
-  tilemapEditorUI: {fileID: 0}
-  tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
-  spawnPointViewPrefab: {fileID: 3363804445203571916, guid: 2ed7720fe1955cf43898014dfede4a01, type: 3}
-  carLibrary: {fileID: 11400000, guid: 55d3115aa6d505441843268e05faca79, type: 2}
---- !u!4 &4351632189666975417
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4905779809270729346}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.12568408, y: 1.9550351, z: 0.031767007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4905779809270729346
+--- !u!1 &1660000831
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -323,19 +278,84 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4351632189666975417}
-  - component: {fileID: 2303896303207680309}
+  - component: {fileID: 1660000833}
+  - component: {fileID: 1660000832}
+  - component: {fileID: 1660000834}
   m_Layer: 0
-  m_Name: WorkshopTilemapEditor
-  m_TagString: WorkshopTilemapEditor
+  m_Name: SceneContext
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1660000832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660000831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 3fc34356a60911d40a2b4ffea4a3d8d3, type: 2}
+  - {fileID: 11400000, guid: c71bb4dd4096abe45b68ca673b0b74ae, type: 2}
+  - {fileID: 11400000, guid: cf021e6a1f0d2204bbc705b4ab3a3e90, type: 2}
+  _monoInstallers:
+  - {fileID: 1660000834}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &1660000833
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660000831}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 389.1356, y: 1547.21, z: -0.30378336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1660000834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660000831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cd81b2df764e02893e08252dfa209d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tilemapsProvider: {fileID: 1319320752}
+  tileLibraryData: {fileID: 11400000, guid: c3891f5834521984989a13e84563c732, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1660000833}
   - {fileID: 834913749}
   - {fileID: 1319320751}
-  - {fileID: 4351632189666975417}

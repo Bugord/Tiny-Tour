@@ -1,5 +1,6 @@
 ﻿using Common;
 using Common.Editors;
+using Common.Editors.Obstacles;
 using UnityEngine;
 using Zenject;
 

@@ -1,7 +1,7 @@
 ﻿using Tiles.Ground;
 using UnityEngine;
 
-namespace Gameplay.Editing.Editors.Terrain
+namespace Common.Editors.Terrain
 {
     public interface ITerrainEditor
     {

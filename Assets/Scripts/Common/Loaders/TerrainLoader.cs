@@ -1,5 +1,5 @@
-﻿using Core.Logging;
-using Gameplay.Editing.Editors.Terrain;
+﻿using Common.Editors.Terrain;
+using Core.Logging;
 using Level;
 
 namespace Common.Editors

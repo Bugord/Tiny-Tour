@@ -1,6 +1,6 @@
 ﻿using Level.Data;
 
-namespace Common.Editors
+namespace Common.Editors.Obstacles
 {
     public interface IObstaclesEditor
     {

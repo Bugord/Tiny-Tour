@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
 
-namespace Gameplay.Editing.Editors
+namespace Common.Editors.Road
 {
     public class RoadEditor : IRoadEditor
     {

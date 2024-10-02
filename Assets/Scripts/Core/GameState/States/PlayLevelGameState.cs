@@ -13,7 +13,6 @@ namespace Core.GameState.States
     public class PlayLevelState : BaseGameState
     {
         private readonly INavigationService navigationService;
-        private const string PlayLevelScene = "PlayLevelScene";
 
         private PlayLevelScreen playLevelScreen;
 
@@ -26,18 +25,25 @@ namespace Core.GameState.States
         public override void OnEnter()
         {
             playLevelScreen = navigationService.Push<PlayLevelScreen>();
+            playLevelScreen.BackPressed += ReturnToMainMenu;
             LoadEditor().Forget();
         }
 
         public override void OnExit()
         {
+            playLevelScreen.BackPressed -= ReturnToMainMenu;
             navigationService.PopScreen(playLevelScreen);
-            SceneManager.UnloadSceneAsync(PlayLevelScene);
+            SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
         }
 
         private async UniTask LoadEditor()
         {
-            await SceneManager.LoadSceneAsync(PlayLevelScene, LoadSceneMode.Additive);
+            await SceneManager.LoadSceneAsync(SceneNames.PlaySceneName, LoadSceneMode.Additive);
+        }
+
+        private void ReturnToMainMenu()
+        {
+            GameStateMachine.ChangeState<SelectLevelToPlayState>();
         }
     }
 }

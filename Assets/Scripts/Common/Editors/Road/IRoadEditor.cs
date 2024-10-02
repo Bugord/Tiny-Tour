@@ -3,7 +3,7 @@ using Core;
 using Level;
 using UnityEngine;
 
-namespace Gameplay.Editing.Editors
+namespace Common.Editors.Road
 {
     public interface IRoadEditor
     {
