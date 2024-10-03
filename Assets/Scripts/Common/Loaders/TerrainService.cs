@@ -1,15 +1,16 @@
-﻿using Common.Editors.Terrain;
+﻿using System.Linq;
+using Common.Editors.Terrain;
 using Core.Logging;
 using Level;
 
 namespace Common.Editors
 {
-    public class TerrainLoader : ITerrainLoader
+    public class TerrainService : ITerrainService
     {
-        private readonly ILogger<TerrainLoader> logger;
+        private readonly ILogger<TerrainService> logger;
         private readonly ITerrainEditor terrainEditor;
 
-        public TerrainLoader(ILogger<TerrainLoader> logger, ITerrainEditor terrainEditor)
+        public TerrainService(ILogger<TerrainService> logger, ITerrainEditor terrainEditor)
         {
             this.logger = logger;
             this.terrainEditor = terrainEditor;
@@ -17,8 +18,6 @@ namespace Common.Editors
 
         public void LoadTerrain(TerrainTileData[] terrainTilesData)
         {
-            terrainEditor.Clear();
-            
             if (terrainTilesData == null) {
                 logger.LogError("Terrain tiles are null");
                 return;
@@ -27,6 +26,11 @@ namespace Common.Editors
             foreach (var terrainTileData in terrainTilesData) {
                 terrainEditor.SetTerrainTile(terrainTileData.position, terrainTileData.terrainType);
             }
+        }
+
+        public TerrainTileData[] SaveTerrain()
+        {
+            return terrainEditor.TerrainTilesData.ToArray();
         }
 
         //todo for editor:

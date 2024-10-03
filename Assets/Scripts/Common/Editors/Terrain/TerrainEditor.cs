@@ -15,6 +15,8 @@ namespace Common.Editors.Terrain
 
         private readonly List<TerrainTileData> terrainTilesData;
 
+        public IReadOnlyCollection<TerrainTileData> TerrainTilesData => terrainTilesData;
+
         public TerrainEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
         {
             this.tileLibrary = tileLibrary;

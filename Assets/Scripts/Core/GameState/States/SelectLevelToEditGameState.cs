@@ -27,9 +27,7 @@ namespace Core.GameState.States
             editLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
             editLevelSelectSelectScreen.CreateNewPressed += OnCreateNewPressed;
             
-            levelManager.LoadLevels();
             var levels = levelManager.GetLevels();
-            
             editLevelSelectSelectScreen.SetLevels(levels);
         }
 

@@ -4,12 +4,13 @@ using Common.Level.Core;
 using Gameplay.Cars;
 using Gameplay.Logistic;
 using Level.Data;
+using UnityEngine;
 
 namespace Gameplay
 {
     public class LevelService : ILevelService
     {
-        private readonly ITerrainLoader terrainLoader;
+        private readonly ITerrainService terrainService;
         private readonly IRoadService roadService;
         private readonly IObstaclesEditor obstaclesEditor;
         private readonly ILogisticService logisticService;
@@ -17,9 +18,9 @@ namespace Gameplay
 
         private LevelData currentLevelData;
         
-        public LevelService(ITerrainLoader terrainLoader, IRoadService roadService, IObstaclesEditor obstaclesEditor, ILogisticService logisticService, ICarsService carsService)
+        public LevelService(ITerrainService terrainService, IRoadService roadService, IObstaclesEditor obstaclesEditor, ILogisticService logisticService, ICarsService carsService)
         {
-            this.terrainLoader = terrainLoader;
+            this.terrainService = terrainService;
             this.roadService = roadService;
             this.obstaclesEditor = obstaclesEditor;
             this.logisticService = logisticService;
@@ -30,7 +31,9 @@ namespace Gameplay
         {
             currentLevelData = levelData;
             
-            terrainLoader.LoadTerrain(levelData.terrainTilesData);
+            Debug.Log(levelData.logisticData.roadTileData.Length);
+
+            terrainService.LoadTerrain(levelData.terrainTilesData);
             roadService.LoadRoad(levelData.logisticData.roadTileData);
             obstaclesEditor.LoadObstacles(levelData.obstaclesData);
             logisticService.LoadLogistic(levelData.logisticData);

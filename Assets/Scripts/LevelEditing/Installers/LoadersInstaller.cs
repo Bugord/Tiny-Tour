@@ -10,7 +10,7 @@ namespace LevelEditor.Installers
     {
         public override void InstallBindings()
         {
-            Container.Bind<ITerrainLoader>().To<TerrainLoader>().AsSingle();
+            Container.Bind<ITerrainService>().To<TerrainService>().AsSingle();
             Container.Bind<ILogisticLoader>().To<LogisticService>().AsSingle();
         }
     }

@@ -17,5 +17,6 @@ namespace Common.Editors.Road
         IReadOnlyCollection<RoadTileData> RoadsData { get; }
         Vector2Int RoadMapSize { get; }
         void Reset();
+        RoadTileData[] GetRoadTiles();
     }
 }

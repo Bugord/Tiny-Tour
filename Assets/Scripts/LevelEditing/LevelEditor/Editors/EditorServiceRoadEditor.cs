@@ -12,7 +12,7 @@ using Utility;
 
 namespace LevelEditing.Editing.Editors
 {
-    public class EditorRoadEditor : IRoadEditor
+    public class EditorServiceRoadEditor : IRoadEditor
     {
         private readonly ILogger<RoadEditor> logger;
         private readonly ITileLibrary tileLibrary;
@@ -24,7 +24,7 @@ namespace LevelEditing.Editing.Editors
         public IReadOnlyCollection<RoadTileData> RoadsData => roadsData;
         public Vector2Int RoadMapSize => (Vector2Int)roadTilemap.size;
 
-        public EditorRoadEditor(ILogger<RoadEditor> logger, ITilemapsProvider tilemapsProvider,
+        public EditorServiceRoadEditor(ILogger<RoadEditor> logger, ITilemapsProvider tilemapsProvider,
             ITileLibrary tileLibrary)
         {
             this.logger = logger;
@@ -50,6 +50,11 @@ namespace LevelEditing.Editing.Editors
                 var tile = tileLibrary.GetRoadTile(initialRoadData.connectionDirection);
                 roadTilemap.SetTile(initialRoadData.position, tile);
             }
+        }
+
+        public RoadTileData[] SaveRoad()
+        {
+            throw new NotImplementedException();
         }
 
         public void SetRoadTile(Vector3Int position)
@@ -153,6 +158,11 @@ namespace LevelEditing.Editing.Editors
             initialRoadsData.Clear();
             roadsData.Clear();
             roadTilemap.ClearAllTiles();
+        }
+
+        public RoadTileData[] GetRoadTiles()
+        {
+            return roadsData.ToArray();
         }
     }
 }

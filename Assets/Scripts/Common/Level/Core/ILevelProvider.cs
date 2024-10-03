@@ -6,11 +6,12 @@ namespace Level
 {
     public interface ILevelProvider
     {
-        public void LoadAllLevels();
-        public LevelData[] GetCachedLevels();
+        public LevelData[] GetLevels();
         public LevelData GetLevelByName(string name);
         public LevelData GetLevelByIndex(int index);
-        public void SaveLevel(LevelData levelData);
         public LevelData CreateNewLevel(string levelName);
+        void UpdateLevel(LevelData levelData);
+        void SaveNewLevel(LevelData levelData);
+        void SaveLevel(LevelData levelData);
     }
 }

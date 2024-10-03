@@ -14,19 +14,14 @@ namespace Level
             this.levelProvider = levelProvider;
         }
 
-        public void LoadLevels()
-        {
-            levelProvider.LoadAllLevels();
-        }
-
         public LevelData[] GetLevels()
         {
-            return levelProvider.GetCachedLevels();
+            return levelProvider.GetLevels();
         }
 
         public void SelectLevel(int levelIndex)
         {
-            selectedLevelData = levelProvider.GetCachedLevels()[levelIndex];
+            selectedLevelData = levelProvider.GetLevels()[levelIndex];
         }
 
         public void SelectLevel(LevelData levelData)
@@ -51,7 +46,7 @@ namespace Level
 
         public LevelData GetNextLevel()
         {
-            var levels = levelProvider.GetCachedLevels();
+            var levels = levelProvider.GetLevels();
             var currentIndex = Array.IndexOf(levels, selectedLevelData);
             if (currentIndex == -1) {
                 return null;
@@ -66,7 +61,7 @@ namespace Level
 
         public LevelData GetPreviousLevel()
         {
-            var levels = levelProvider.GetCachedLevels();
+            var levels = levelProvider.GetLevels();
             var currentIndex = Array.IndexOf(levels, selectedLevelData);
             if (currentIndex == -1) {
                 return null;

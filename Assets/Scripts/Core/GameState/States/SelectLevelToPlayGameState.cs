@@ -27,9 +27,7 @@ namespace States
             playLevelSelectSelectScreen.BackPressed += OnBackPressed;
             playLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
 
-            levelManager.LoadLevels();
             var levels = levelManager.GetLevels();
-
             playLevelSelectSelectScreen.SetLevels(levels);
         }
 

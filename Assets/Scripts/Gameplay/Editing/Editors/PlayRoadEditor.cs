@@ -50,6 +50,11 @@ namespace Common.Editors.Road
             }
         }
 
+        public RoadTileData[] GetRoadTiles()
+        {
+            return roadsData.ToArray();
+        }
+
         public void SetRoadTile(Vector3Int position)
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);

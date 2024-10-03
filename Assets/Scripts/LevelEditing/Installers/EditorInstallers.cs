@@ -11,7 +11,7 @@ namespace LevelEditing.Installers
     {
         public override void InstallBindings()
         {
-            Container.Bind<IRoadEditor>().To<EditorRoadEditor>().AsSingle();
+            Container.BindInterfacesTo<EditorServiceRoadEditor>().AsSingle();
             Container.Bind<ITerrainEditor>().To<TerrainEditor>().AsSingle();
         }
     }

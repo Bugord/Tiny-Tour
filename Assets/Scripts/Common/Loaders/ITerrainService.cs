@@ -2,8 +2,9 @@
 
 namespace Common.Editors
 {
-    public interface ITerrainLoader
+    public interface ITerrainService
     {
         void LoadTerrain(TerrainTileData[] terrainTilesData);
+        TerrainTileData[] SaveTerrain();
     }
 }

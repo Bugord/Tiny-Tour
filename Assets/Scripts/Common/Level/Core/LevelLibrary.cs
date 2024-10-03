@@ -5,6 +5,7 @@ using System.Linq;
 using Common;
 using Cysharp.Threading.Tasks;
 using Level.Data;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -13,10 +14,12 @@ namespace Level
     [CreateAssetMenu]
     public class LevelLibrary : ScriptableObject, ILevelProvider
     {
-        private LevelData[] levelsData;
+        [SerializeField]
+        private List<LevelData> levelsData;
 
-        private static string DirectoryPath => "./Assets/Resources/Levels";
+        private const string ResouceDirectoryPath = "./Assets/Resource/Levels";
 
+        [ContextMenu("Load from resources")]
         public void LoadAllLevels()
         {
             var levels = new List<LevelData>();
@@ -29,7 +32,7 @@ namespace Level
                     var level = JsonUtility.FromJson<LevelData>(json);
                     if (level != null) {
                         levels.Add(level);
-                        Debug.Log($"Loaded {level.levelName}");
+                        Debug.Log($"Loaded {level.logisticData.roadTileData.Length}");
                     }
                 }
                 catch (Exception ex) {
@@ -37,12 +40,22 @@ namespace Level
                 }
             }
 
-            levelsData = levels.ToArray();
+            levelsData = levels;
         }
 
-        public LevelData[] GetCachedLevels()
+        [ContextMenu("Save to Resources")]
+        public void SaveToResources()
         {
-            return levelsData;
+            Directory.CreateDirectory(ResouceDirectoryPath);
+            foreach (var levelData in levelsData) {
+                var json = JsonUtility.ToJson(levelData, true);
+                File.WriteAllText(Path.Combine(ResouceDirectoryPath, levelData.levelName + ".json"), json);
+            }
+        }
+
+        public LevelData[] GetLevels()
+        {
+            return levelsData.Select(data => data.Copy()).ToArray();
         }
 
         public LevelData GetLevelByName(string name)
@@ -50,25 +63,42 @@ namespace Level
             return levelsData.FirstOrDefault(level => level.levelName == name);
         }
 
+        public void UpdateLevel(LevelData levelData)
+        {
+            var levelToUpdate = levelsData.FirstOrDefault(data => data.levelName == levelData.levelName);
+            if (levelToUpdate == null) {
+                Debug.LogWarning($"Level with name {levelData.levelName} is not added");
+                return;
+            }
+
+            levelToUpdate.SetData(levelData);
+        }
+
+        public void SaveNewLevel(LevelData levelData)
+        {
+            var existingLevel = levelsData.FirstOrDefault(data => data.levelName == levelData.levelName);
+            if (existingLevel == null) {
+                Debug.LogWarning($"Level with name {levelData.levelName} already exists");
+                return;
+            }
+
+            levelsData.Add(levelData);
+        }
+        
         public void SaveLevel(LevelData levelData)
         {
-            Directory.CreateDirectory(DirectoryPath);
-            var json = JsonUtility.ToJson(levelData, true);
-            File.WriteAllText(Path.Combine(DirectoryPath, levelData.levelName + ".json"), json);
+            var existingLevel = levelsData.FirstOrDefault(data => data.levelName == levelData.levelName);
+            if (existingLevel != null) {
+                UpdateLevel(levelData);
+            }
+            else {
+                SaveNewLevel(levelData);
+            }
         }
 
         public LevelData CreateNewLevel(string levelName)
         {
-            return new LevelData {
-                levelName = levelName,
-                obstaclesData = Array.Empty<ObstacleTileData>(),
-                terrainTilesData = Array.Empty<TerrainTileData>(),
-                logisticData = new LogisticData {
-                    roadTileData = Array.Empty<RoadTileData>(),
-                    goalsData = Array.Empty<GoalData>(),
-                    intermediatePointsData = Array.Empty<IntermediatePointData>()
-                }
-            };
+            return new LevelData(levelName);
         }
 
         public LevelData GetLevelByIndex(int index)

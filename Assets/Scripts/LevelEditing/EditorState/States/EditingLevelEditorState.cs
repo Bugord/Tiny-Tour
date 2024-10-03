@@ -13,29 +13,38 @@ namespace LevelEditing.EditorState.States
         private readonly LevelEditorController levelEditorController;
         private readonly ILevelEditorService levelEditorService;
         private readonly EditorControllerUI editorControllerUI;
+        private readonly EditLevelScreen editLevelScreen;
 
         public EditingLevelEditorState(EditorStateMachine editorStateMachine, LevelEditorController levelEditorController, INavigationService navigationService, ILevelEditorService levelEditorService) : base(editorStateMachine)
         {
             this.levelEditorController = levelEditorController;
             this.levelEditorService = levelEditorService;
-            editorControllerUI = navigationService.GetScreen<EditLevelScreen>().EditorControllerUI;
+            editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
+            editorControllerUI = editLevelScreen.EditorControllerUI;
         }
 
         public override void OnEnter()
         {
             editorControllerUI.ResetPressed += OnResetPressed;
+            editLevelScreen.SavePressed += OnSavePressed;
             levelEditorController.EnableEditing();
         }
 
         public override void OnExit()
         {
             editorControllerUI.ResetPressed -= OnResetPressed;
+            editLevelScreen.SavePressed -= OnSavePressed;
             levelEditorController.DisableEditing();
         }
 
         private void OnResetPressed()
         {
             levelEditorService.ResetLevel();
+        }
+
+        private void OnSavePressed()
+        {
+            levelEditorService.SaveLevel();
         }
     }
 }
