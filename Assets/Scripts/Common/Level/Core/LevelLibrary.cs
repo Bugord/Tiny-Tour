@@ -77,7 +77,7 @@ namespace Level
         public void SaveNewLevel(LevelData levelData)
         {
             var existingLevel = levelsData.FirstOrDefault(data => data.levelName == levelData.levelName);
-            if (existingLevel == null) {
+            if (existingLevel != null) {
                 Debug.LogWarning($"Level with name {levelData.levelName} already exists");
                 return;
             }
