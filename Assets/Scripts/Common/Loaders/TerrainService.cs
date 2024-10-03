@@ -23,14 +23,21 @@ namespace Common.Editors
                 return;
             }
 
+            terrainEditor.Clear();
+
             foreach (var terrainTileData in terrainTilesData) {
-                terrainEditor.SetTerrainTile(terrainTileData.position, terrainTileData.terrainType);
+                terrainEditor.SetInitialTile(terrainTileData.position, terrainTileData.terrainType);
             }
         }
 
         public TerrainTileData[] SaveTerrain()
         {
             return terrainEditor.TerrainTilesData.ToArray();
+        }
+
+        public void Reset()
+        {
+            terrainEditor.Reset();
         }
 
         //todo for editor:

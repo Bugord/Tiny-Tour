@@ -21,6 +21,9 @@ namespace LevelEditing.Editing.Core
         private readonly EditorOptionsControllerUI editorOptionsControllerUI;
 
         private BaseEditorOption selectedEditorOption;
+        private BaseEditorOption cachedEditorOption;
+
+        private EditorErasingEditorOption erasingEditorOption;
 
         public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService, IEditorOptionFactory editorOptionFactory)
         {
@@ -37,7 +40,9 @@ namespace LevelEditing.Editing.Core
             AddEditorOption<WaterTerrainEditorOption>();
             AddEditorOption<BridgeTerrainEditorOption>();
             AddEditorOption<RoadEditorOption>();
-            AddEditorOption<ErasingEditorOption>();
+            
+            erasingEditorOption = editorOptionFactory.Create<EditorErasingEditorOption>();
+            editorOptions.Add(erasingEditorOption.EditorOptionData.Id, erasingEditorOption);
 
             selectedEditorOption = editorOptions.First().Value;
 
@@ -54,6 +59,12 @@ namespace LevelEditing.Editing.Core
             var id = editorOption.EditorOptionData.Id;
 
             editorOptions.Add(id, editorOption);
+        }
+
+        private void SelectOption(string id)
+        {
+            editorOptionsControllerUI.SelectOption(id);
+            selectedEditorOption = editorOptions[id];
         }
 
         private void OnOptionSelected(string id)
@@ -83,19 +94,23 @@ namespace LevelEditing.Editing.Core
             tilemapInput.TileAltPressUp -= OnTileAltUp;
         }
 
-        private void OnTileAltUp(Vector3Int tilePos)
-        {
-            selectedEditorOption.OnAltTileUp(tilePos);
-        }
-
         private void OnTileAltDown(Vector3Int tilePos)
         {
+            cachedEditorOption = selectedEditorOption;
+            SelectOption(erasingEditorOption.EditorOptionData.Id);
+            
             selectedEditorOption.OnAltTileDown(tilePos);
         }
 
         private void OnTileAltDragged(Vector3Int tilePos)
         {
             selectedEditorOption.OnAltTileDrag(tilePos);
+        }
+
+        private void OnTileAltUp(Vector3Int tilePos)
+        {
+            SelectOption(cachedEditorOption.EditorOptionData.Id);
+            selectedEditorOption.OnAltTileUp(tilePos);
         }
 
         private void OnTileUp(Vector3Int tilePos)

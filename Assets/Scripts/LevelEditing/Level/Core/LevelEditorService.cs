@@ -1,4 +1,5 @@
 ﻿using Common.Editors;
+using Common.Editors.Terrain;
 using Level;
 using Level.Data;
 using UnityEngine;
@@ -49,6 +50,7 @@ namespace LevelEditor.Level.Core
         public void ResetLevel()
         {
             roadService.Reset();
+            terrainService.Reset();
         }
     }
 }

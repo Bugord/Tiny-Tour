@@ -13,6 +13,7 @@ namespace Common.Editors.Terrain
         private readonly ITileLibrary tileLibrary;
         private readonly Tilemap terrainTilemap;
 
+        private readonly List<TerrainTileData> initialTerrainTilesData;
         private readonly List<TerrainTileData> terrainTilesData;
 
         public IReadOnlyCollection<TerrainTileData> TerrainTilesData => terrainTilesData;
@@ -22,7 +23,23 @@ namespace Common.Editors.Terrain
             this.tileLibrary = tileLibrary;
             terrainTilemap = tilemapsProvider.TerrainTilemap;
 
+            initialTerrainTilesData = new List<TerrainTileData>();
             terrainTilesData = new List<TerrainTileData>();
+        }
+
+        public void SetInitialTile(Vector3Int position, TerrainType terrainType)
+        {
+            initialTerrainTilesData.Add(new TerrainTileData {
+                position = position,
+                terrainType = terrainType
+            });
+            
+            SetTerrainTile(position, terrainType);
+        }
+
+        public bool HasTile(Vector3Int position)
+        {
+            return terrainTilesData.Any(data => data.position == position);
         }
 
         public void SetTerrainTile(Vector3Int position, TerrainType terrainType)
@@ -52,6 +69,18 @@ namespace Common.Editors.Terrain
             terrainTilemap.SetTile(position, null);
         }
 
+        public void Reset()
+        {
+            foreach (var terrainTileData in terrainTilesData) {
+                terrainTilemap.SetTile(terrainTileData.position, null);
+            }
+            terrainTilesData.Clear();
+
+            foreach (var terrainTileData in initialTerrainTilesData) {
+                SetTerrainTile(terrainTileData.position, terrainTileData.terrainType);
+            }
+        }
+
         public bool HasSolidTile(Vector3Int position)
         {
             return terrainTilesData.Any(data => data.position == position && data.terrainType != TerrainType.Water);
@@ -60,6 +89,7 @@ namespace Common.Editors.Terrain
         public void Clear()
         {
             terrainTilesData.Clear();
+            initialTerrainTilesData.Clear();
             terrainTilemap.ClearAllTiles();
         } 
     }

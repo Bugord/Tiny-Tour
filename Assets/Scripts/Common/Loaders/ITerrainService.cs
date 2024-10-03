@@ -6,5 +6,6 @@ namespace Common.Editors
     {
         void LoadTerrain(TerrainTileData[] terrainTilesData);
         TerrainTileData[] SaveTerrain();
+        void Reset();
     }
 }

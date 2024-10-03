@@ -84,7 +84,6 @@ namespace LevelEditing.Editing.Editors
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
             if (existingRoadData == null) {
-                logger.LogWarning($"Cant erase road at {position} because it is null");
                 return;
             }
 

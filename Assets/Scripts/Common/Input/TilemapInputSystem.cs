@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Common
 {
-    public class TilemapInput : ITilemapInput, IInitializable, IDisposable
+    public class TilemapInput : ITilemapInput, IInitializable, IDisposable, ITickable
     {
         public event Action<Vector3Int> TilePressDown;
         public event Action<Vector3Int> TilePressUp;
@@ -56,7 +56,7 @@ namespace Common
 
             playerActions.MainInteraction.Disable();
             playerActions.AlternativeInteraction.Disable();
-            
+
             playerActions.MainInteraction.started -= OnPressStarted;
             playerActions.MainInteraction.performed -= OnPressPerformed;
             playerActions.MainInteraction.canceled -= OnPressCanceled;
@@ -66,14 +66,15 @@ namespace Common
             playerActions.AlternativeInteraction.canceled -= OnAltPressCanceled;
         }
 
+        public void Tick()
+        {
+            DoNotClickUIAndGameAtSameTime();
+        }
+
         private void OnPressStarted(InputAction.CallbackContext ctx)
         {
-            if (IsPointerOverUI()) {
-                return;
-            }
-
             clickedOnTile = true;
-            
+
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -88,7 +89,7 @@ namespace Common
             if (!clickedOnTile) {
                 return;
             }
-            
+
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -107,7 +108,7 @@ namespace Common
             if (!clickedOnTile) {
                 return;
             }
-            
+
             TilePressUp?.Invoke(lastTilePos);
 
             clickedOnTile = false;
@@ -115,10 +116,6 @@ namespace Common
 
         private void OnAltPressStarted(InputAction.CallbackContext ctx)
         {
-            if (IsPointerOverUI()) {
-                return;
-            }
-            
             clickedOnTile = true;
 
             var pressPosition = ctx.ReadValue<Vector2>();
@@ -135,7 +132,7 @@ namespace Common
             if (!clickedOnTile) {
                 return;
             }
-            
+
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -154,15 +151,20 @@ namespace Common
             if (!clickedOnTile) {
                 return;
             }
-            
+
             TileAltPressUp?.Invoke(lastTilePos);
-            
+
             clickedOnTile = false;
         }
-        
-        private bool IsPointerOverUI()
+
+        private void DoNotClickUIAndGameAtSameTime()
         {
-            return EventSystem.current.IsPointerOverGameObject();
+            if (EventSystem.current.IsPointerOverGameObject()) {
+                inputActions.Player.Disable();
+            }
+            else {
+                inputActions.Player.Enable();
+            }
         }
     }
 }
