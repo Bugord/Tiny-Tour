@@ -1,6 +1,5 @@
 ﻿using System;
 using Common.Tilemaps;
-using Core.Logging;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -81,7 +80,6 @@ namespace Common
 
             lastTilePos = tilePosition;
 
-            Debug.Log($"Started {tilePosition}");
             TilePressDown?.Invoke(tilePosition);
         }
 
@@ -101,7 +99,6 @@ namespace Common
 
             lastTilePos = tilePosition;
 
-            Debug.Log($"Performed {tilePosition}");
             TileDragged?.Invoke(tilePosition);
         }
 
@@ -111,7 +108,6 @@ namespace Common
                 return;
             }
             
-            Debug.Log($"Canceled {lastTilePos}");
             TilePressUp?.Invoke(lastTilePos);
 
             clickedOnTile = false;
