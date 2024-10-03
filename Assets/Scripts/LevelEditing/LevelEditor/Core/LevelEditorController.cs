@@ -6,6 +6,7 @@ using Common.UI;
 using Core.Navigation;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options;
+using LevelEditing.LevelEditor.Options;
 using UI.Screens;
 using UnityEngine;
 using Zenject;
@@ -32,6 +33,9 @@ namespace LevelEditing.Editing.Core
 
         public void Initialize()
         {
+            AddEditorOption<GroundTerrainEditorOption>();
+            AddEditorOption<WaterTerrainEditorOption>();
+            AddEditorOption<BridgeTerrainEditorOption>();
             AddEditorOption<RoadEditorOption>();
             AddEditorOption<ErasingEditorOption>();
 

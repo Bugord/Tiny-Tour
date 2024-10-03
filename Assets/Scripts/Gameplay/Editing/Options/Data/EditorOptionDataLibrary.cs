@@ -9,6 +9,15 @@ namespace Gameplay.Editing.Options.Data
         public EditorOptionData RoadEditorOptionData { get; private set; }
         
         [field: SerializeField]
-        public EditorOptionData EraseEditorOptionData { get; private set; }
+        public EditorOptionData EraseEditorOptionData { get; private set; }        
+        
+        [field: SerializeField]
+        public EditorOptionData GroundEditorOptionData { get; private set; }
+        
+        [field: SerializeField]
+        public EditorOptionData WaterEditorOptionData { get; private set; }
+        
+        [field: SerializeField]
+        public EditorOptionData BridgeEditorOptionData { get; private set; }
     }
 }

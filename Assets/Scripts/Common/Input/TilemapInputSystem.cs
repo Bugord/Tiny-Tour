@@ -24,6 +24,8 @@ namespace Common
         private Vector2 lastPos;
         private Vector3Int lastTilePos;
 
+        private bool clickedOnTile;
+
         public bool IsMainPressed => inputActions.Player.MainInteraction.IsPressed();
 
         public TilemapInput(ITilemapPositionConverter tilemapPositionConverter)
@@ -67,9 +69,11 @@ namespace Common
 
         private void OnPressStarted(InputAction.CallbackContext ctx)
         {
-            if (EventSystem.current.currentSelectedGameObject != null) {
+            if (IsPointerOverUI()) {
                 return;
             }
+
+            clickedOnTile = true;
             
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
@@ -77,12 +81,13 @@ namespace Common
 
             lastTilePos = tilePosition;
 
+            Debug.Log($"Started {tilePosition}");
             TilePressDown?.Invoke(tilePosition);
         }
 
         private void OnPressPerformed(InputAction.CallbackContext ctx)
         {
-            if (EventSystem.current.currentSelectedGameObject != null) {
+            if (!clickedOnTile) {
                 return;
             }
             
@@ -96,20 +101,30 @@ namespace Common
 
             lastTilePos = tilePosition;
 
+            Debug.Log($"Performed {tilePosition}");
             TileDragged?.Invoke(tilePosition);
         }
 
         private void OnPressCanceled(InputAction.CallbackContext ctx)
         {
+            if (!clickedOnTile) {
+                return;
+            }
+            
+            Debug.Log($"Canceled {lastTilePos}");
             TilePressUp?.Invoke(lastTilePos);
+
+            clickedOnTile = false;
         }
 
         private void OnAltPressStarted(InputAction.CallbackContext ctx)
         {
-            if (EventSystem.current.currentSelectedGameObject != null) {
+            if (IsPointerOverUI()) {
                 return;
             }
             
+            clickedOnTile = true;
+
             var pressPosition = ctx.ReadValue<Vector2>();
             var worldPressPosition = Camera.main.ScreenToWorldPoint(pressPosition);
             var tilePosition = tilemapPositionConverter.WorldToCell(worldPressPosition);
@@ -121,7 +136,7 @@ namespace Common
 
         private void OnAltPressPerformed(InputAction.CallbackContext ctx)
         {
-            if (EventSystem.current.currentSelectedGameObject != null) {
+            if (!clickedOnTile) {
                 return;
             }
             
@@ -140,7 +155,18 @@ namespace Common
 
         private void OnAltPressCanceled(InputAction.CallbackContext ctx)
         {
+            if (!clickedOnTile) {
+                return;
+            }
+            
             TileAltPressUp?.Invoke(lastTilePos);
+            
+            clickedOnTile = false;
+        }
+        
+        private bool IsPointerOverUI()
+        {
+            return EventSystem.current.IsPointerOverGameObject();
         }
     }
 }

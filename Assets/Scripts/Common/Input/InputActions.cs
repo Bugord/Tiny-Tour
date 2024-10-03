@@ -59,7 +59,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""modifier"",
+                    ""name"": ""Binding"",
                     ""id"": ""2f071f3e-3e45-40e0-a184-579f4a4b99d1"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",

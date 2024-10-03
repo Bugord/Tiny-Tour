@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42bf9587a084f17857c8f52551b90f6, type: 3}
+  m_Name: data_editor_water
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: editor_water
+  <Icon>k__BackingField: {fileID: -1248883660, guid: 32a15a2120e4ca646b47d3c472c949e2, type: 3}
+  <CustomInactiveBackground>k__BackingField: {fileID: 0}
+  <CustomActiveBackground>k__BackingField: {fileID: 0}

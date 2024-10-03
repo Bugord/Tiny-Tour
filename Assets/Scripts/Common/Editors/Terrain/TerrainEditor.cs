@@ -41,6 +41,17 @@ namespace Common.Editors.Terrain
             terrainTilemap.SetTile(position, tile);
         }
 
+        public void EraseTile(Vector3Int position)
+        {
+            var tileToRemove = terrainTilesData.FirstOrDefault(data => data.position == position);
+            if (tileToRemove == null) {
+                return;
+            }
+            
+            terrainTilesData.Remove(tileToRemove);
+            terrainTilemap.SetTile(position, null);
+        }
+
         public bool HasSolidTile(Vector3Int position)
         {
             return terrainTilesData.Any(data => data.position == position && data.terrainType != TerrainType.Water);

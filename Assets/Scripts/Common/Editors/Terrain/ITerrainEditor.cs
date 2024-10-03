@@ -10,5 +10,6 @@ namespace Common.Editors.Terrain
         IReadOnlyCollection<TerrainTileData> TerrainTilesData { get; }
         void SetTerrainTile(Vector3Int position, TerrainType terrainType);
         bool HasSolidTile(Vector3Int position);
+        void EraseTile(Vector3Int position);
     }
 }
