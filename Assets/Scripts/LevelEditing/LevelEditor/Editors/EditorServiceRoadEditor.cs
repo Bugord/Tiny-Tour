@@ -52,16 +52,10 @@ namespace LevelEditing.Editing.Editors
             }
         }
 
-        public RoadTileData[] SaveRoad()
-        {
-            throw new NotImplementedException();
-        }
-
         public void SetRoadTile(Vector2Int position)
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
             if (existingRoadData != null) {
-                logger.LogWarning($"Road at {position} already exists");
                 return;
             }
 

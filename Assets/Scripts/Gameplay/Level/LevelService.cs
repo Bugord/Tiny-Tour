@@ -31,8 +31,6 @@ namespace Gameplay
         {
             currentLevelData = levelData;
             
-            Debug.Log(levelData.logisticData.roadTileData.Length);
-
             terrainService.LoadTerrain(levelData.terrainTilesData);
             roadService.LoadRoad(levelData.logisticData.roadTileData);
             obstaclesEditor.LoadObstacles(levelData.obstaclesData);
