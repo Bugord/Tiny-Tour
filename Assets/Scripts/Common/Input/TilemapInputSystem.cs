@@ -9,19 +9,19 @@ namespace Common
 {
     public class TilemapInput : ITilemapInput, IInitializable, IDisposable, ITickable
     {
-        public event Action<Vector3Int> TilePressDown;
-        public event Action<Vector3Int> TilePressUp;
-        public event Action<Vector3Int> TileDragged;
+        public event Action<Vector2Int> TilePressDown;
+        public event Action<Vector2Int> TilePressUp;
+        public event Action<Vector2Int> TileDragged;
 
-        public event Action<Vector3Int> TileAltPressDown;
-        public event Action<Vector3Int> TileAltPressUp;
-        public event Action<Vector3Int> TileAltDragged;
+        public event Action<Vector2Int> TileAltPressDown;
+        public event Action<Vector2Int> TileAltPressUp;
+        public event Action<Vector2Int> TileAltDragged;
 
         private readonly ITilemapPositionConverter tilemapPositionConverter;
         private readonly InputActions inputActions;
 
         private Vector2 lastPos;
-        private Vector3Int lastTilePos;
+        private Vector2Int lastTilePos;
 
         private bool clickedOnTile;
 

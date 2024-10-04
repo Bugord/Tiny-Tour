@@ -15,17 +15,17 @@ namespace Gameplay.Editing.Options
             EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
         }
 
-        public override void OnTileDown(Vector3Int position)
+        public override void OnTileDown(Vector2Int position)
         {
-            if (roadEditor.HasRoad(position)) {
-                roadEditor.EraseRoad(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
-        public override void OnTileDrag(Vector3Int position)
+        public override void OnTileDrag(Vector2Int position)
         {
-            if (roadEditor.HasRoad(position)) {
-                roadEditor.EraseRoad(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
     }

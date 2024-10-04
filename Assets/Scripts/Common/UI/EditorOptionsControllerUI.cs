@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using Core.Logging;
+using Core.Navigation;
 using Gameplay.Editing.Options.Data;
+using LevelEditing.UI;
+using UI.Screens;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -21,13 +25,14 @@ namespace Common.UI
 
         private List<TileEditorOptionUI> tileEditorOptions;
         private ILogger<EditorOptionsControllerUI> logger;
+        private ColorButton colorButton;
 
         [Inject]
         private void Construct(ILogger<EditorOptionsControllerUI> logger)
         {
             this.logger = logger;
         }
-        
+
         public void Init(IEnumerable<EditorOptionData> editorOptionsData)
         {
             tileEditorOptions = new List<TileEditorOptionUI>();
@@ -48,8 +53,15 @@ namespace Common.UI
                 logger.LogError($"Couldn't select option {id}, it does not exist");
                 return;
             }
-            
+
             editorOption.Toggle();
+        }
+
+        public void SetColor(TeamColor color)
+        {
+            foreach (var tileEditorOption in tileEditorOptions) {
+                tileEditorOption.UpdateColor(color);
+            }
         }
 
         private void OnDestroy()

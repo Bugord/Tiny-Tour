@@ -5,11 +5,11 @@ namespace Common
 {
     public interface ITilemapInput
     {
-        event Action<Vector3Int> TilePressDown;
-        event Action<Vector3Int> TilePressUp;
-        event Action<Vector3Int> TileDragged;
-        event Action<Vector3Int> TileAltPressDown;
-        event Action<Vector3Int> TileAltPressUp;
-        event Action<Vector3Int> TileAltDragged;
+        event Action<Vector2Int> TilePressDown;
+        event Action<Vector2Int> TilePressUp;
+        event Action<Vector2Int> TileDragged;
+        event Action<Vector2Int> TileAltPressDown;
+        event Action<Vector2Int> TileAltPressUp;
+        event Action<Vector2Int> TileAltDragged;
     }
 }

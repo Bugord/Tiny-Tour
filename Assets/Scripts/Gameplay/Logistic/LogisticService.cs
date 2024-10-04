@@ -42,7 +42,7 @@ namespace Gameplay.Logistic
             }
 
             foreach (var targetData in logisticData.goalsData) {
-                AddGoal(targetData.pos, targetData.teamColor);
+                AddGoal(targetData.position, targetData.teamColor);
             }
         }
 

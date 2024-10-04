@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ef41dd98dc401c832634417df319c2, type: 3}
+  m_Name: data_editor_goal
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: editor_goal
+  <Icon>k__BackingField: {fileID: 8397989551524518093, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+  <CustomInactiveBackground>k__BackingField: {fileID: 0}
+  <CustomActiveBackground>k__BackingField: {fileID: 0}
+  ColoredIcons:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: -5137620863328370848, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
+    - Key: 1
+      Value: {fileID: 431246330, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
+    - Key: 2
+      Value: {fileID: -8281884291386934870, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
+    - Key: 3
+      Value: {fileID: -2044934323489027274, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
+    - Key: 4
+      Value: {fileID: -828061789, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}

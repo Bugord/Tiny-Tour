@@ -3,6 +3,7 @@ using Common.Road;
 using LevelEditing.Editing.Core;
 using LevelEditing.EditorState.Core;
 using LevelEditor;
+using LevelEditor.ColorVariants;
 using LevelEditor.Level.Core;
 using UnityEngine;
 using Zenject;
@@ -21,6 +22,8 @@ namespace LevelEditing.Installers
 
             Container.BindInterfacesTo<LevelEditorService>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelEditorController>().AsSingle();
+
+            Container.BindInterfacesTo<ColorButtonProvider>().AsSingle();
 
             //todo: move to common installer
             Container.BindInterfacesTo<RoadService>().AsSingle();

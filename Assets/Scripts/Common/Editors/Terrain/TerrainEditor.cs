@@ -27,7 +27,7 @@ namespace Common.Editors.Terrain
             terrainTilesData = new List<TerrainTileData>();
         }
 
-        public void SetInitialTile(Vector3Int position, TerrainType terrainType)
+        public void SetInitialTile(Vector2Int position, TerrainType terrainType)
         {
             initialTerrainTilesData.Add(new TerrainTileData {
                 position = position,
@@ -37,12 +37,12 @@ namespace Common.Editors.Terrain
             SetTerrainTile(position, terrainType);
         }
 
-        public bool HasTile(Vector3Int position)
+        public bool HasTile(Vector2Int position)
         {
             return terrainTilesData.Any(data => data.position == position);
         }
 
-        public void SetTerrainTile(Vector3Int position, TerrainType terrainType)
+        public void SetTerrainTile(Vector2Int position, TerrainType terrainType)
         {
             var existingTerrainTile = terrainTilesData.FirstOrDefault(data => data.position == position);
             if (existingTerrainTile != null) {
@@ -55,10 +55,10 @@ namespace Common.Editors.Terrain
             });
             
             var tile = tileLibrary.GetTerrainTileByType(terrainType);
-            terrainTilemap.SetTile(position, tile);
+            terrainTilemap.SetTile((Vector3Int)position, tile);
         }
 
-        public void EraseTile(Vector3Int position)
+        public void EraseTile(Vector2Int position)
         {
             var tileToRemove = terrainTilesData.FirstOrDefault(data => data.position == position);
             if (tileToRemove == null) {
@@ -66,13 +66,13 @@ namespace Common.Editors.Terrain
             }
             
             terrainTilesData.Remove(tileToRemove);
-            terrainTilemap.SetTile(position, null);
+            terrainTilemap.SetTile((Vector3Int)position, null);
         }
 
         public void Reset()
         {
             foreach (var terrainTileData in terrainTilesData) {
-                terrainTilemap.SetTile(terrainTileData.position, null);
+                terrainTilemap.SetTile((Vector3Int)terrainTileData.position, null);
             }
             terrainTilesData.Clear();
 
@@ -81,7 +81,7 @@ namespace Common.Editors.Terrain
             }
         }
 
-        public bool HasSolidTile(Vector3Int position)
+        public bool HasSolidTile(Vector2Int position)
         {
             return terrainTilesData.Any(data => data.position == position && data.terrainType != TerrainType.Water);
         }

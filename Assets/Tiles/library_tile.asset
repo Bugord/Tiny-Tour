@@ -75,3 +75,15 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 4953cc766addc2345ad34363691f56f7, type: 2}
     - Key: 4
       Value: {fileID: 11400000, guid: 597d11bf5610cd74d9f4d40c8a9e41aa, type: 2}
+  carSpawnPointTile:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 4d1ba3b6a1abe024ea72b9605bf9fdeb, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: e3ff7dadb53ff314fa60d514d9954f39, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: 2ae885e839029cc4ab96a454e8145a83, type: 2}
+    - Key: 3
+      Value: {fileID: 11400000, guid: d98e45b0fe40cfe4f9a3e79fdc31adaf, type: 2}
+    - Key: 4
+      Value: {fileID: 11400000, guid: 5732f77b13634684ba2e951a4c5ef28f, type: 2}

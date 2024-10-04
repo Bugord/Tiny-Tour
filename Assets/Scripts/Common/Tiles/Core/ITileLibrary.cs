@@ -1,4 +1,5 @@
-﻿using Core;
+﻿using Cars;
+using Core;
 using Tiles;
 using Tiles.Ground;
 using Tiles.Logistic;
@@ -12,6 +13,7 @@ namespace Level
         public TerrainTile GetTerrainTileByType(TerrainType terrainType);
         public TargetTile GetTargetTile(TeamColor teamColor);
         public Tile GetIntermediatePointTile(TeamColor teamColor);
+        public Tile GetSpawnPointTile(CarType carType, TeamColor teamColor, Direction direction);
         Tile[] GetObstacleTiles();
         Tile GetObstacleTile(int id);
     }

@@ -8,11 +8,11 @@ namespace Common.Editors.Terrain
     public interface ITerrainEditor
     {
         IReadOnlyCollection<TerrainTileData> TerrainTilesData { get; }
-        void SetInitialTile(Vector3Int position, TerrainType terrainType);
-        void SetTerrainTile(Vector3Int position, TerrainType terrainType);
-        bool HasTile(Vector3Int position);
-        bool HasSolidTile(Vector3Int position);
-        void EraseTile(Vector3Int position);
+        void SetInitialTile(Vector2Int position, TerrainType terrainType);
+        void SetTerrainTile(Vector2Int position, TerrainType terrainType);
+        bool HasTile(Vector2Int position);
+        bool HasSolidTile(Vector2Int position);
+        void EraseTile(Vector2Int position);
         void Reset();
         void Clear();
     }

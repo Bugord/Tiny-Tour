@@ -37,7 +37,7 @@ namespace Gameplay.Cars
             }
             
             foreach (var spawnPointData in carsSpawnData) {
-                var carSpawnPosition = tilemapPositionConverter.CellToWorld(spawnPointData.pos);
+                var carSpawnPosition = tilemapPositionConverter.CellToWorld(spawnPointData.position);
                 var car = carsFactory.Create(carSpawnPosition, spawnPointData.direction, spawnPointData.carType, spawnPointData.teamColor);
 
                 cars.Add(car);
@@ -50,7 +50,7 @@ namespace Gameplay.Cars
             foreach (var car in cars) {
                 var carSpawnData = carsSpawnData[car];
                 car.Reset();
-                car.SetPosition(tilemapPositionConverter.CellToWorld(carSpawnData.pos));
+                car.SetPosition(tilemapPositionConverter.CellToWorld(carSpawnData.position));
                 car.SetDirection(carSpawnData.direction);
             }
         }

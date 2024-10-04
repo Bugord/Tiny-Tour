@@ -1,35 +1,42 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common;
 using Common.Editors.Options.Core;
 using Common.UI;
+using Core;
 using Core.Navigation;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options;
 using LevelEditing.LevelEditor.Options;
+using LevelEditing.UI;
 using UI.Screens;
 using UnityEngine;
 using Zenject;
 
 namespace LevelEditing.Editing.Core
 {
-    public class LevelEditorController : IInitializable
+    public class LevelEditorController : IInitializable, IDisposable
     {
         private readonly ITilemapInput tilemapInput;
         private readonly IEditorOptionFactory editorOptionFactory;
         private readonly Dictionary<string, BaseEditorOption> editorOptions;
         private readonly EditorOptionsControllerUI editorOptionsControllerUI;
+        private readonly ColorButton colorButton;
 
         private BaseEditorOption selectedEditorOption;
         private BaseEditorOption cachedEditorOption;
 
         private EditorErasingEditorOption erasingEditorOption;
 
-        public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService, IEditorOptionFactory editorOptionFactory)
+        public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService,
+            IEditorOptionFactory editorOptionFactory)
         {
             this.tilemapInput = tilemapInput;
             this.editorOptionFactory = editorOptionFactory;
-            editorOptionsControllerUI = navigationService.GetScreen<EditLevelScreen>().EditorOptionsControllerUI;
+            var editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
+            editorOptionsControllerUI = editLevelScreen.EditorOptionsControllerUI;
+            colorButton = editLevelScreen.ColorButton;
 
             editorOptions = new Dictionary<string, BaseEditorOption>();
         }
@@ -39,8 +46,10 @@ namespace LevelEditing.Editing.Core
             AddEditorOption<GroundTerrainEditorOption>();
             AddEditorOption<WaterTerrainEditorOption>();
             AddEditorOption<BridgeTerrainEditorOption>();
+            AddEditorOption<CarSpawnPointEditorOption>();
+            AddEditorOption<GoalSpawnPointEditorOption>();
             AddEditorOption<RoadEditorOption>();
-            
+
             erasingEditorOption = editorOptionFactory.Create<EditorErasingEditorOption>();
             editorOptions.Add(erasingEditorOption.EditorOptionData.Id, erasingEditorOption);
 
@@ -48,9 +57,22 @@ namespace LevelEditing.Editing.Core
 
             editorOptionsControllerUI.Init(editorOptions.Values.Select(option => option.EditorOptionData));
             editorOptionsControllerUI.EditorOptionSelected += OnOptionSelected;
+            
+            colorButton.ColorChanged += OnColorChanged;
 
             var defaultOptionId = editorOptions.First().Key;
             editorOptionsControllerUI.SelectOption(defaultOptionId);
+        }
+
+        public void Dispose()
+        {
+            editorOptionsControllerUI.EditorOptionSelected -= OnOptionSelected;
+            colorButton.ColorChanged -= OnColorChanged;
+        }
+
+        private void OnColorChanged(TeamColor color)
+        {
+            editorOptionsControllerUI.SetColor(color);
         }
 
         private void AddEditorOption<T>() where T : BaseEditorOption
@@ -94,36 +116,36 @@ namespace LevelEditing.Editing.Core
             tilemapInput.TileAltPressUp -= OnTileAltUp;
         }
 
-        private void OnTileAltDown(Vector3Int tilePos)
+        private void OnTileAltDown(Vector2Int tilePos)
         {
             cachedEditorOption = selectedEditorOption;
             SelectOption(erasingEditorOption.EditorOptionData.Id);
-            
+
             selectedEditorOption.OnAltTileDown(tilePos);
         }
 
-        private void OnTileAltDragged(Vector3Int tilePos)
+        private void OnTileAltDragged(Vector2Int tilePos)
         {
             selectedEditorOption.OnAltTileDrag(tilePos);
         }
 
-        private void OnTileAltUp(Vector3Int tilePos)
+        private void OnTileAltUp(Vector2Int tilePos)
         {
             SelectOption(cachedEditorOption.EditorOptionData.Id);
             selectedEditorOption.OnAltTileUp(tilePos);
         }
 
-        private void OnTileUp(Vector3Int tilePos)
+        private void OnTileUp(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileUp(tilePos);
         }
 
-        private void OnTileDown(Vector3Int tilePos)
+        private void OnTileDown(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileDown(tilePos);
         }
 
-        private void OnTileDragged(Vector3Int tilePos)
+        private void OnTileDragged(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileDrag(tilePos);
         }

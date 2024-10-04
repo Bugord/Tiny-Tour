@@ -17,3 +17,5 @@ MonoBehaviour:
   <GroundEditorOptionData>k__BackingField: {fileID: 11400000, guid: ce7c1705047ba8e4f9f0d3cffdd980eb, type: 2}
   <WaterEditorOptionData>k__BackingField: {fileID: 11400000, guid: d1dcefd53ac46e64cab74339668fc102, type: 2}
   <BridgeEditorOptionData>k__BackingField: {fileID: 11400000, guid: b9b7b2c87fa2d344fb079f81e2f7b898, type: 2}
+  <CarSpawnPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: 1ec34e07eda82e94cbd5fe53b7aa2046, type: 2}
+  <GoalPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: 4c7a0e0e861f67949aebb2cdaa0e7ad3, type: 2}

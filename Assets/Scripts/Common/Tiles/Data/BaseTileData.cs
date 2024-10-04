@@ -7,6 +7,6 @@ namespace Level
     [Serializable]
     public class BaseTileData
     {
-        public Vector3Int position;
+        public Vector2Int position;
     }
 }

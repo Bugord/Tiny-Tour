@@ -13,7 +13,7 @@ namespace Gameplay.Editing.Options
         private readonly IRoadEditor roadEditor;
         private readonly ITerrainEditor terrainEditor;
 
-        private Vector3Int? previousRoadPosition;
+        private Vector2Int? previousRoadPosition;
 
         public RoadEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor, ITerrainEditor terrainEditor)
         {
@@ -22,7 +22,7 @@ namespace Gameplay.Editing.Options
             EditorOptionData = editorOptionDataLibrary.RoadEditorOptionData;
         }
 
-        public override void OnTileDown(Vector3Int position)
+        public override void OnTileDown(Vector2Int position)
         {
             if (CanBePlaced(position)) {
                 roadEditor.SetRoadTile(position);
@@ -30,42 +30,42 @@ namespace Gameplay.Editing.Options
             }
         }
 
-        public override void OnTileDrag(Vector3Int position)
+        public override void OnTileDrag(Vector2Int position)
         {
             AddRoadPath(position);
         }
         
-        public override void OnAltTileDown(Vector3Int position)
+        public override void OnAltTileDown(Vector2Int position)
         {
-            if (roadEditor.HasRoad(position)) {
-                roadEditor.EraseRoad(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
-        public override void OnAltTileDrag(Vector3Int position)
+        public override void OnAltTileDrag(Vector2Int position)
         {
-            if (roadEditor.HasRoad(position)) {
-                roadEditor.EraseRoad(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
-        public override void OnTileUp(Vector3Int position)
+        public override void OnTileUp(Vector2Int position)
         {
             previousRoadPosition = null;
         }
 
-        private void AddRoadPath(Vector3Int selectedPosition)
+        private void AddRoadPath(Vector2Int selectedPosition)
         {
             if (!CanBePlaced(selectedPosition)) {
                 return;
             }
 
             if (previousRoadPosition.HasValue &&
-                Vector3Int.Distance(selectedPosition, previousRoadPosition.Value) > 1f) {
+                Vector2Int.Distance(selectedPosition, previousRoadPosition.Value) > 1f) {
                 return;
             }
 
-            if (!roadEditor.HasRoad(selectedPosition)) {
+            if (!roadEditor.HasTile(selectedPosition)) {
                 roadEditor.SetRoadTile(selectedPosition);
             }
 
@@ -76,7 +76,7 @@ namespace Gameplay.Editing.Options
             previousRoadPosition = selectedPosition;
         }
 
-        private bool CanBePlaced(Vector3Int position)
+        private bool CanBePlaced(Vector2Int position)
         {
             var canBePlaced = terrainEditor.HasSolidTile(position);
             return canBePlaced;

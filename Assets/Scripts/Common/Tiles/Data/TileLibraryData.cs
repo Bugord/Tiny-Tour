@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
+using Cars;
 using Core;
 using Level;
 using Tiles.Ground;
@@ -33,6 +34,9 @@ namespace Tiles
 
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> intermediatePointTiles;
+
+        [SerializeField]
+        private SerializedDictionary<TeamColor, Tile> carSpawnPointTile;
 
         private Dictionary<TeamColor, BaseLogisticTile> spawnPointTiles;
 
@@ -69,6 +73,11 @@ namespace Tiles
         public Tile GetIntermediatePointTile(TeamColor teamColor)
         {
             return intermediatePointTiles[teamColor];
+        }
+
+        public Tile GetSpawnPointTile(CarType carType, TeamColor teamColor, Direction direction)
+        {
+            return carSpawnPointTile[teamColor];
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)

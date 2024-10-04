@@ -847,14 +847,14 @@
         ],
         "goalsData": [
             {
-                "pos": {
+                "position": {
                     "x": 4,
                     "y": -3
                 },
                 "teamColor": 4
             },
             {
-                "pos": {
+                "position": {
                     "x": 4,
                     "y": 1
                 },
@@ -863,7 +863,7 @@
         ],
         "intermediatePointsData": [
             {
-                "pos": {
+                "position": {
                     "x": 0,
                     "y": 1,
                     "z": 1
@@ -875,7 +875,7 @@
     "obstaclesData": [],
     "carSpawnData": [
         {
-            "pos": {
+            "position": {
                 "x": -5,
                 "y": 2,
                 "z": 0
@@ -885,7 +885,7 @@
             "direction": 3
         },
         {
-            "pos": {
+            "position": {
                 "x": -5,
                 "y": -4,
                 "z": 0

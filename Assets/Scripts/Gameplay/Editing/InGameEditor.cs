@@ -81,32 +81,32 @@ namespace Common
             tilemapInput.TileAltPressUp -= OnTileAltUp;
         }
 
-        private void OnTileAltUp(Vector3Int tilePos)
+        private void OnTileAltUp(Vector2Int tilePos)
         {
             selectedEditorOption.OnAltTileUp(tilePos);
         }
 
-        private void OnTileAltDown(Vector3Int tilePos)
+        private void OnTileAltDown(Vector2Int tilePos)
         {
             selectedEditorOption.OnAltTileDown(tilePos);
         }
 
-        private void OnTileAltDragged(Vector3Int tilePos)
+        private void OnTileAltDragged(Vector2Int tilePos)
         {
             selectedEditorOption.OnAltTileDrag(tilePos);
         }
 
-        private void OnTileUp(Vector3Int tilePos)
+        private void OnTileUp(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileUp(tilePos);
         }
 
-        private void OnTileDown(Vector3Int tilePos)
+        private void OnTileDown(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileDown(tilePos);
         }
 
-        private void OnTileDragged(Vector3Int tilePos)
+        private void OnTileDragged(Vector2Int tilePos)
         {
             selectedEditorOption.OnTileDrag(tilePos);
         }

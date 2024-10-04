@@ -1,4 +1,5 @@
 using System;
+using Core;
 using Gameplay.Editing.Options.Data;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +22,11 @@ public class TileEditorOptionUI : MonoBehaviour
 
     public string Id { get; private set; }
 
+    private EditorOptionData editorOptionData;
+
     public void Setup(ToggleGroup toggleGroup, EditorOptionData editorOptionData)
     {
+        this.editorOptionData = editorOptionData;
         toggle.group = toggleGroup;
         Id = editorOptionData.Id;
 
@@ -39,6 +43,20 @@ public class TileEditorOptionUI : MonoBehaviour
 
         if (editorOptionData.CustomActiveBackground) {
             activeBackground.sprite = editorOptionData.CustomActiveBackground;
+        }
+    }
+
+    public void UpdateColor(TeamColor teamColor)
+    {
+        if (editorOptionData is not ColoredEditorOptionData coloredEditorOptionData) {
+            return;
+        }
+        
+        if (coloredEditorOptionData.ColoredIcons.TryGetValue(teamColor, out var iconSprite)) {
+            icon.sprite = iconSprite;
+        }
+        else {
+            Debug.LogWarning($"Color {teamColor} is not configured for editor option {Id}");
         }
     }
 

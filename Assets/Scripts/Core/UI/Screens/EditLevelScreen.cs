@@ -17,7 +17,10 @@ namespace UI.Screens
         public EditorControllerUI EditorControllerUI { get; private set; }
         
         [field: SerializeField]
-        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }
+        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }        
+        
+        [field: SerializeField]
+        public ColorButton ColorButton { get; private set; }
 
         public void OnBackButtonPressed()
         {

@@ -22,9 +22,9 @@ namespace Common.Tilemaps
             return TerrainTilemap.GetCellCenterWorld(cellPos);
         }
 
-        public Vector3Int WorldToCell(Vector3 pos)
+        public Vector2Int WorldToCell(Vector3 pos)
         {
-            return TerrainTilemap.WorldToCell(pos);
+            return (Vector2Int)TerrainTilemap.WorldToCell(pos);
         }
 
         public Vector2 CellToWorld(Vector2Int cellPos) => CellToWorld((Vector3Int)cellPos);

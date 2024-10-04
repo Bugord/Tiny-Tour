@@ -15,22 +15,22 @@ namespace LevelEditor.LevelEditor.Options
             this.terrainEditor = terrainEditor;
         }
 
-        public override void OnTileDown(Vector3Int position)
+        public override void OnTileDown(Vector2Int position)
         {
             terrainEditor.SetTerrainTile(position, TerrainType);
         }
 
-        public override void OnTileDrag(Vector3Int position)
+        public override void OnTileDrag(Vector2Int position)
         {
             terrainEditor.SetTerrainTile(position, TerrainType);
         }
 
-        public override void OnAltTileDown(Vector3Int position)
+        public override void OnAltTileDown(Vector2Int position)
         {
             terrainEditor.EraseTile(position);
         }
 
-        public override void OnAltTileDrag(Vector3Int position)
+        public override void OnAltTileDrag(Vector2Int position)
         {
             terrainEditor.EraseTile(position);
         }

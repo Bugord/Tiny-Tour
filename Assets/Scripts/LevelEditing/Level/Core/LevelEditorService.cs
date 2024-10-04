@@ -2,6 +2,7 @@
 using Common.Editors.Terrain;
 using Level;
 using Level.Data;
+using LevelEditing.Editing.Editors;
 using UnityEngine;
 
 namespace LevelEditor.Level.Core
@@ -10,14 +11,16 @@ namespace LevelEditor.Level.Core
     {
         private readonly ITerrainService terrainService;
         private readonly IRoadService roadService;
+        private readonly ISpawnPointEditor spawnPointEditor;
         private readonly LevelManager levelManager;
 
         private LevelData currentLevelData;
 
-        public LevelEditorService(ITerrainService terrainService, IRoadService roadService, LevelManager levelManager)
+        public LevelEditorService(ITerrainService terrainService, IRoadService roadService, ISpawnPointEditor spawnPointEditor, LevelManager levelManager)
         {
             this.terrainService = terrainService;
             this.roadService = roadService;
+            this.spawnPointEditor = spawnPointEditor;
             this.levelManager = levelManager;
         }
 
@@ -33,15 +36,15 @@ namespace LevelEditor.Level.Core
             
             terrainService.LoadTerrain(levelData.terrainTilesData);
             roadService.LoadRoad(levelData.logisticData.roadTileData);
+            spawnPointEditor.Load(levelData.carSpawnData);
         }
 
         public void SaveLevel()
         {
             currentLevelData.terrainTilesData = terrainService.SaveTerrain();
             currentLevelData.logisticData.roadTileData = roadService.SaveRoad();
+            currentLevelData.carSpawnData = spawnPointEditor.GetCarsSpawnData();
             
-            Debug.Log(currentLevelData.logisticData.roadTileData.Length);
-
             levelManager.SaveLevel(currentLevelData);
             
             LoadLevel(currentLevelData);
@@ -51,6 +54,7 @@ namespace LevelEditor.Level.Core
         {
             roadService.Reset();
             terrainService.Reset();
+            spawnPointEditor.Reset();
         }
     }
 }

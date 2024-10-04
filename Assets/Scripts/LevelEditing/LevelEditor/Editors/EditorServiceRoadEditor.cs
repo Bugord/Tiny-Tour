@@ -38,7 +38,7 @@ namespace LevelEditing.Editing.Editors
         public void Reset()
         {
             foreach (var roadTileData in roadsData) {
-                roadTilemap.SetTile(roadTileData.position, null);
+                roadTilemap.SetTile((Vector3Int)roadTileData.position, null);
             }
             roadsData.Clear();
 
@@ -48,7 +48,7 @@ namespace LevelEditing.Editing.Editors
                     connectionDirection = initialRoadData.connectionDirection
                 });
                 var tile = tileLibrary.GetRoadTile(initialRoadData.connectionDirection);
-                roadTilemap.SetTile(initialRoadData.position, tile);
+                roadTilemap.SetTile((Vector3Int)initialRoadData.position, tile);
             }
         }
 
@@ -57,7 +57,7 @@ namespace LevelEditing.Editing.Editors
             throw new NotImplementedException();
         }
 
-        public void SetRoadTile(Vector3Int position)
+        public void SetRoadTile(Vector2Int position)
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
             if (existingRoadData != null) {
@@ -72,15 +72,15 @@ namespace LevelEditing.Editing.Editors
             roadsData.Add(roadData);
 
             var tile = tileLibrary.GetRoadTile(roadData.connectionDirection);
-            roadTilemap.SetTile(position, tile);
+            roadTilemap.SetTile((Vector3Int)position, tile);
         }
 
-        public bool HasRoad(Vector3Int position)
+        public bool HasTile(Vector2Int position)
         {
             return roadsData.Any(data => data.position == position);
         }
 
-        public void EraseRoad(Vector3Int position)
+        public void EraseTile(Vector2Int position)
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
             if (existingRoadData == null) {
@@ -95,14 +95,14 @@ namespace LevelEditing.Editing.Editors
                 neighbourRoadData.TurnOffDirection(neighbourConnection);
 
                 var tile = tileLibrary.GetRoadTile(neighbourRoadData.connectionDirection);
-                roadTilemap.SetTile(neighbourRoadData.position, tile);
+                roadTilemap.SetTile((Vector3Int)neighbourRoadData.position, tile);
             }
 
             roadsData.Remove(existingRoadData);
-            roadTilemap.SetTile(position, null);
+            roadTilemap.SetTile((Vector3Int)position, null);
         }
 
-        public ConnectionDirection GetRoadConnectionDirections(Vector3Int position)
+        public ConnectionDirection GetRoadConnectionDirections(Vector2Int position)
         {
             var road = roadsData.FirstOrDefault(data => data.position == position);
             if (road == null) {
@@ -112,7 +112,7 @@ namespace LevelEditing.Editing.Editors
             return road.connectionDirection;
         }
 
-        public void ConnectRoads(Vector3Int positionFrom, Vector3Int positionTo)
+        public void ConnectRoads(Vector2Int positionFrom, Vector2Int positionTo)
         {
             var roadFrom = roadsData.FirstOrDefault(data => data.position == positionFrom);
             if (roadFrom == null) {
@@ -128,13 +128,13 @@ namespace LevelEditing.Editing.Editors
             roadTo.TurnOnDirection(GridHelpers.GetPathDirection(positionTo, positionFrom));
 
             var tileFrom = tileLibrary.GetRoadTile(roadFrom.connectionDirection);
-            roadTilemap.SetTile(positionFrom, tileFrom);
+            roadTilemap.SetTile((Vector3Int)positionFrom, tileFrom);
 
             var tileTo = tileLibrary.GetRoadTile(roadTo.connectionDirection);
-            roadTilemap.SetTile(positionTo, tileTo);
+            roadTilemap.SetTile((Vector3Int)positionTo, tileTo);
         }
 
-        public void SetInitialRoadTile(Vector3Int position, ConnectionDirection connectionDirection)
+        public void SetInitialRoadTile(Vector2Int position, ConnectionDirection connectionDirection)
         {
             var initialRoadTileData = new RoadTileData {
                 position = position,
@@ -149,7 +149,7 @@ namespace LevelEditing.Editing.Editors
             roadsData.Add(roadTileData);
 
             var tile = tileLibrary.GetRoadTile(connectionDirection);
-            roadTilemap.SetTile(position, tile);
+            roadTilemap.SetTile((Vector3Int)position, tile);
         }
 
         public void Clear()
