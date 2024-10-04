@@ -38,12 +38,13 @@ namespace Tiles
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> carSpawnPointTile;
 
+        [SerializeField]
+        private SerializedDictionary<TeamColor, Tile> goalTiles;
+
         private Dictionary<TeamColor, BaseLogisticTile> spawnPointTiles;
 
-        private Dictionary<TeamColor, TargetTile> targetTiles;
-
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
-        
+
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection)
         {
             if (roadTiles == null) {
@@ -60,15 +61,6 @@ namespace Tiles
                 TerrainType.BridgeBase => bridgeBaseTile,
                 _ => null
             };
-
-        public TargetTile GetTargetTile(TeamColor teamColor)
-        {
-            if (targetTiles == null) {
-                ConfigureTargetTiles(targetTile);
-            }
-            
-            return targetTiles[teamColor];
-        }
 
         public Tile GetIntermediatePointTile(TeamColor teamColor)
         {
@@ -92,21 +84,14 @@ namespace Tiles
             }
         }
 
-        private void ConfigureTargetTiles(TargetTile targetTile)
-        {
-            targetTiles = new Dictionary<TeamColor, TargetTile>();
-
-            var teams = EnumExtensions.GetAllEnums<TeamColor>();
-            foreach (var team in teams) {
-                var newTargetTile = Instantiate(targetTile);
-                newTargetTile.teamColor = team;
-                targetTiles.Add(team, newTargetTile);
-            }
-        }
-
         public Tile GetObstacleTile(int id)
         {
             return obstacleTiles[id];
+        }
+
+        public TileBase GetGoalTile(TeamColor teamColor)
+        {
+            return goalTiles[teamColor];
         }
 
         public Tile[] GetObstacleTiles()

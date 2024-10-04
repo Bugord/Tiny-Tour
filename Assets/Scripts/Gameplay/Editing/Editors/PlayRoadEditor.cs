@@ -59,7 +59,6 @@ namespace Common.Editors.Road
         {
             var existingRoadData = roadsData.FirstOrDefault(data => data.position == position);
             if (existingRoadData != null) {
-                logger.LogWarning($"Road at {position} already exists");
                 return;
             }
 
