@@ -8,6 +8,7 @@ using Level;
 using Level.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Utility;
 
 namespace LevelEditing.Editing.Editors
 {
@@ -36,6 +37,10 @@ namespace LevelEditing.Editing.Editors
         {
             Clear();
 
+            if (carsSpawnData == null) {
+                return;
+            }
+                
             foreach (var carSpawnData in carsSpawnData) {
                 if (initialCarSpawnPoints.ContainsKey(carSpawnData.position)) {
                     logger.LogWarning(
@@ -58,6 +63,27 @@ namespace LevelEditing.Editing.Editors
             var carSpawnData = new CarSpawnData(position, carType, teamColor, direction);
             carSpawnPoints.Add(carSpawnData.position, carSpawnData);
             SetTile(carSpawnData);
+        }
+
+        public bool HasSpawnPointWithColor(Vector2Int position, TeamColor color)
+        {
+            if (carSpawnPoints.TryGetValue(position, out var carSpawnData)) {
+                return carSpawnData.teamColor == color;
+            }
+
+            return false;
+        }
+
+        public void RotateSpawnPoint(Vector2Int position)
+        {
+            if (carSpawnPoints.TryGetValue(position, out var carSpawnData)) {
+                carSpawnData.direction = carSpawnData.direction.GetNextValue();
+                carSpawnPoints[position] = carSpawnData;
+                SetTile(carSpawnData);
+            }
+            else {
+                logger.LogWarning("Trying to rotate spawn point that is not exist");
+            }
         }
 
         public void EraseTile(Vector2Int position)

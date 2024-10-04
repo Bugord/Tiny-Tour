@@ -27,7 +27,10 @@ namespace LevelEditing.LevelEditor.Options
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (roadEditor.HasTile(position)) {
+            if (spawnPointEditor.HasSpawnPointWithColor(position, colorButton.Color)) {
+                spawnPointEditor.RotateSpawnPoint(position);
+            }
+            else if (roadEditor.HasTile(position)) {
                 spawnPointEditor.SetCarSpawnPoint(position, CarType.Regular, colorButton.Color, Direction.Right);
             }
         }

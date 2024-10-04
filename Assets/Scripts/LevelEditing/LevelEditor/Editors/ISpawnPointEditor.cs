@@ -14,5 +14,7 @@ namespace LevelEditing.Editing.Editors
         void Clear();
         CarSpawnData[] GetCarsSpawnData();
         bool HasTile(Vector2Int position);
+        bool HasSpawnPointWithColor(Vector2Int position, TeamColor color);
+        void RotateSpawnPoint(Vector2Int position);
     }
 }

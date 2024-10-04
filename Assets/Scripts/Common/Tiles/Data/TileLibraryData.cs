@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Cars;
 using Core;
@@ -6,6 +7,7 @@ using Level;
 using Tiles.Ground;
 using Tiles.Logistic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 using Utility;
 
@@ -36,7 +38,7 @@ namespace Tiles
         private SerializedDictionary<TeamColor, Tile> intermediatePointTiles;
 
         [SerializeField]
-        private SerializedDictionary<TeamColor, Tile> carSpawnPointTile;
+        private SerializedDictionary<TeamColor, CarDirectionTiles> carSpawnPointTile;
 
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> goalTiles;
@@ -69,7 +71,7 @@ namespace Tiles
 
         public Tile GetSpawnPointTile(CarType carType, TeamColor teamColor, Direction direction)
         {
-            return carSpawnPointTile[teamColor];
+            return carSpawnPointTile[teamColor].directionTiles[direction];
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)
@@ -97,6 +99,13 @@ namespace Tiles
         public Tile[] GetObstacleTiles()
         {
             return obstacleTiles.ToArray();
+        }
+        
+        [Serializable]
+        public class CarDirectionTiles
+        {
+            [SerializedDictionary]
+            public SerializedDictionary<Direction, Tile> directionTiles;
         }
     }
 }
