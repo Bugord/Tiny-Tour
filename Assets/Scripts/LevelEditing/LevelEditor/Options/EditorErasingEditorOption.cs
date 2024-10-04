@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Editors.Logistic;
 using Common.Editors.Road;
 using Common.Editors.Terrain;
 using Gameplay.Editing.Editors;
@@ -11,16 +12,18 @@ namespace LevelEditing.LevelEditor.Options
     public class EditorErasingEditorOption : BaseEditorOption
     {
         private readonly ITerrainEditor terrainEditor;
+        private readonly IGoalEditor goalEditor;
         private readonly ISpawnPointEditor spawnPointEditor;
         private readonly IRoadEditor roadEditor;
 
         private EraseType eraseType;
 
         public EditorErasingEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor,
-            ITerrainEditor terrainEditor, ISpawnPointEditor spawnPointEditor)
+            ITerrainEditor terrainEditor, IGoalEditor goalEditor, ISpawnPointEditor spawnPointEditor)
         {
             this.roadEditor = roadEditor;
             this.terrainEditor = terrainEditor;
+            this.goalEditor = goalEditor;
             this.spawnPointEditor = spawnPointEditor;
             EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
         }
@@ -51,6 +54,11 @@ namespace LevelEditing.LevelEditor.Options
         {
             eraseType = EraseType.None;
 
+            if (goalEditor.HasTile(position)) {
+                eraseType = EraseType.Goal;
+                return;
+            }
+            
             if (spawnPointEditor.HasTile(position)) {
                 eraseType = EraseType.SpawnPoint;
                 return;
@@ -69,6 +77,9 @@ namespace LevelEditing.LevelEditor.Options
         private void EraseTile(Vector2Int position)
         {
             switch (eraseType) {
+                case EraseType.Goal:
+                    goalEditor.EraseTile(position);
+                    break;      
                 case EraseType.SpawnPoint:
                     spawnPointEditor.EraseTile(position);
                     break;        
@@ -77,6 +88,7 @@ namespace LevelEditing.LevelEditor.Options
                     spawnPointEditor.EraseTile(position);
                     break;
                 case EraseType.Terrain:
+                    goalEditor.EraseTile(position);
                     terrainEditor.EraseTile(position);
                     roadEditor.EraseTile(position);
                     spawnPointEditor.EraseTile(position);
@@ -93,7 +105,8 @@ namespace LevelEditing.LevelEditor.Options
             None,
             Terrain,
             Road,
-            SpawnPoint
+            SpawnPoint,
+            Goal
         }
     }
 }
