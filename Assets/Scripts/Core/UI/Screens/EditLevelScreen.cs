@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.UI;
+using Core.Navigation.Core;
 using LevelEditing.UI;
 using UnityEngine;
 using UnityEngine.UI;

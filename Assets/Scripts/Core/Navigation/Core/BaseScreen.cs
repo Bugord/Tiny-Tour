@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI.Screens
+namespace Core.Navigation.Core
 {
     public abstract class BaseScreen : MonoBehaviour
     {

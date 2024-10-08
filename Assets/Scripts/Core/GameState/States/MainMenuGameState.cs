@@ -18,7 +18,7 @@ namespace Core.GameState.States
         
         public override void OnEnter()
         { 
-            mainMenuScreen = navigationService.Push<MainMenuScreen>();
+            mainMenuScreen = navigationService.PushScreen<MainMenuScreen>();
             mainMenuScreen.PlayLevelsPressed += OnPlayLevelsPressed;
             mainMenuScreen.EditLevelsPressed += OnEditLevelsPressed;
         }

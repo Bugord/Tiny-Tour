@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Navigation.Core;
 using Level.Data;
 using UnityEngine;
 

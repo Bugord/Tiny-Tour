@@ -20,7 +20,7 @@ namespace Core.GameState.States
 
         public override void OnEnter()
         {
-            editLevelScreen = navigationService.Push<EditLevelScreen>();
+            editLevelScreen = navigationService.PushScreen<EditLevelScreen>();
             editLevelScreen.BackPressed += ReturnToMainMenu;
             LoadEditor().Forget();
         }

@@ -23,7 +23,7 @@ namespace States
 
         public override void OnEnter()
         {
-            playLevelSelectSelectScreen = navigationService.Push<PlayLevelSelectScreen>();
+            playLevelSelectSelectScreen = navigationService.PushScreen<PlayLevelSelectScreen>();
             playLevelSelectSelectScreen.BackPressed += OnBackPressed;
             playLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
 

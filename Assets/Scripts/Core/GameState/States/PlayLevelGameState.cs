@@ -24,7 +24,7 @@ namespace Core.GameState.States
 
         public override void OnEnter()
         {
-            playLevelScreen = navigationService.Push<PlayLevelScreen>();
+            playLevelScreen = navigationService.PushScreen<PlayLevelScreen>();
             playLevelScreen.BackPressed += ReturnToMainMenu;
             LoadEditor().Forget();
         }

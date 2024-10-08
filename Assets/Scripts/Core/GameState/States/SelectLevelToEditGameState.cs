@@ -22,7 +22,7 @@ namespace Core.GameState.States
 
         public override void OnEnter()
         {
-            editLevelSelectSelectScreen = navigationService.Push<EditLevelSelectScreen>();
+            editLevelSelectSelectScreen = navigationService.PushScreen<EditLevelSelectScreen>();
             editLevelSelectSelectScreen.BackPressed += OnBackPressed;
             editLevelSelectSelectScreen.LevelSelected += OnLevelSelected;
             editLevelSelectSelectScreen.CreateNewPressed += OnCreateNewPressed;

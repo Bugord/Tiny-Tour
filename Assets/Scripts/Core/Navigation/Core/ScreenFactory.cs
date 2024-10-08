@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Logging;
+using Core.Navigation.Core;
 using UI.Screens;
 using UnityEngine;
 using Zenject;

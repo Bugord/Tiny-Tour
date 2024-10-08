@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Core.Navigation
 {
-    public interface IScreenFactory
+    public interface IPopupFactory
     {
-        T Create<T>(Transform parentTransform) where T : BaseScreen;
+        T Create<T>(Transform parentTransform) where T : BasePopup;
     }
 }
