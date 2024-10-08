@@ -133,8 +133,6 @@ MonoBehaviour:
       terrainType: 0
     - position: {x: 2, y: 0}
       terrainType: 0
-    - position: {x: 3, y: 0}
-      terrainType: 0
     - position: {x: 4, y: 0}
       terrainType: 1
     - position: {x: -5, y: 1}
@@ -152,8 +150,6 @@ MonoBehaviour:
     - position: {x: 1, y: 1}
       terrainType: 0
     - position: {x: 2, y: 1}
-      terrainType: 0
-    - position: {x: 3, y: 1}
       terrainType: 0
     - position: {x: 4, y: 1}
       terrainType: 2
@@ -174,8 +170,6 @@ MonoBehaviour:
     - position: {x: 1, y: 2}
       terrainType: 0
     - position: {x: 2, y: 2}
-      terrainType: 0
-    - position: {x: 3, y: 2}
       terrainType: 0
     - position: {x: 4, y: 2}
       terrainType: 1
@@ -219,6 +213,12 @@ MonoBehaviour:
       terrainType: 1
     - position: {x: 4, y: 4}
       terrainType: 1
+    - position: {x: 3, y: 2}
+      terrainType: 0
+    - position: {x: 3, y: 1}
+      terrainType: 0
+    - position: {x: 3, y: 0}
+      terrainType: 0
     logisticData:
       roadTileData:
       - position: {x: -6, y: -4}
@@ -234,13 +234,17 @@ MonoBehaviour:
       - position: {x: -4, y: 2}
         connectionDirection: 8
       - position: {x: 4, y: 1}
-        connectionDirection: 0
+        connectionDirection: 8
       - position: {x: 4, y: -3}
         connectionDirection: 8
       - position: {x: 3, y: -3}
         connectionDirection: 12
       - position: {x: 2, y: -3}
         connectionDirection: 4
+      - position: {x: 3, y: 1}
+        connectionDirection: 6
+      - position: {x: 3, y: 0}
+        connectionDirection: 1
       goalsData:
       - position: {x: 4, y: -3}
         teamColor: 4
