@@ -13,220 +13,234 @@ MonoBehaviour:
   m_Name: library_level
   m_EditorClassIdentifier: 
   levelsData:
-  - levelName: 11
+  - levelName: Level 1
     terrainTilesData:
-    - position: {x: -5, y: -5, z: 0}
+    - position: {x: -5, y: -5}
       terrainType: 1
-    - position: {x: -4, y: -5, z: 0}
+    - position: {x: -4, y: -5}
       terrainType: 1
-    - position: {x: -3, y: -5, z: 0}
+    - position: {x: -3, y: -5}
       terrainType: 1
-    - position: {x: -2, y: -5, z: 0}
+    - position: {x: -2, y: -5}
       terrainType: 1
-    - position: {x: -1, y: -5, z: 0}
+    - position: {x: -1, y: -5}
       terrainType: 1
-    - position: {x: 0, y: -5, z: 0}
+    - position: {x: 0, y: -5}
       terrainType: 1
-    - position: {x: 1, y: -5, z: 0}
+    - position: {x: 1, y: -5}
       terrainType: 1
-    - position: {x: 2, y: -5, z: 0}
+    - position: {x: 2, y: -5}
       terrainType: 1
-    - position: {x: 3, y: -5, z: 0}
+    - position: {x: 3, y: -5}
       terrainType: 1
-    - position: {x: 4, y: -5, z: 0}
+    - position: {x: 4, y: -5}
       terrainType: 1
-    - position: {x: -6, y: -4, z: 0}
+    - position: {x: -6, y: -4}
       terrainType: 2
-    - position: {x: -5, y: -4, z: 0}
+    - position: {x: -5, y: -4}
       terrainType: 2
-    - position: {x: -4, y: -4, z: 0}
+    - position: {x: -4, y: -4}
       terrainType: 2
-    - position: {x: -3, y: -4, z: 0}
+    - position: {x: -3, y: -4}
       terrainType: 0
-    - position: {x: -2, y: -4, z: 0}
+    - position: {x: -2, y: -4}
       terrainType: 1
-    - position: {x: -1, y: -4, z: 0}
+    - position: {x: -1, y: -4}
       terrainType: 1
-    - position: {x: 0, y: -4, z: 0}
+    - position: {x: 0, y: -4}
       terrainType: 1
-    - position: {x: 1, y: -4, z: 0}
+    - position: {x: 1, y: -4}
       terrainType: 1
-    - position: {x: 2, y: -4, z: 0}
+    - position: {x: 2, y: -4}
       terrainType: 1
-    - position: {x: 3, y: -4, z: 0}
+    - position: {x: 3, y: -4}
       terrainType: 1
-    - position: {x: 4, y: -4, z: 0}
+    - position: {x: 4, y: -4}
       terrainType: 1
-    - position: {x: -5, y: -3, z: 0}
+    - position: {x: -5, y: -3}
       terrainType: 1
-    - position: {x: -4, y: -3, z: 0}
+    - position: {x: -4, y: -3}
       terrainType: 1
-    - position: {x: -3, y: -3, z: 0}
+    - position: {x: -3, y: -3}
       terrainType: 0
-    - position: {x: -2, y: -3, z: 0}
+    - position: {x: -2, y: -3}
       terrainType: 0
-    - position: {x: -1, y: -3, z: 0}
+    - position: {x: -1, y: -3}
       terrainType: 0
-    - position: {x: 0, y: -3, z: 0}
+    - position: {x: 0, y: -3}
       terrainType: 0
-    - position: {x: 1, y: -3, z: 0}
+    - position: {x: 1, y: -3}
       terrainType: 0
-    - position: {x: 2, y: -3, z: 0}
+    - position: {x: 2, y: -3}
       terrainType: 2
-    - position: {x: 3, y: -3, z: 0}
+    - position: {x: 3, y: -3}
       terrainType: 2
-    - position: {x: 4, y: -3, z: 0}
+    - position: {x: 4, y: -3}
       terrainType: 2
-    - position: {x: -5, y: -2, z: 0}
+    - position: {x: -5, y: -2}
       terrainType: 1
-    - position: {x: -4, y: -2, z: 0}
+    - position: {x: -4, y: -2}
       terrainType: 1
-    - position: {x: -3, y: -2, z: 0}
+    - position: {x: -3, y: -2}
       terrainType: 0
-    - position: {x: -2, y: -2, z: 0}
+    - position: {x: -2, y: -2}
       terrainType: 0
-    - position: {x: -1, y: -2, z: 0}
+    - position: {x: -1, y: -2}
       terrainType: 0
-    - position: {x: 0, y: -2, z: 0}
+    - position: {x: 0, y: -2}
       terrainType: 0
-    - position: {x: 1, y: -2, z: 0}
+    - position: {x: 1, y: -2}
       terrainType: 0
-    - position: {x: 2, y: -2, z: 0}
+    - position: {x: 2, y: -2}
       terrainType: 1
-    - position: {x: 3, y: -2, z: 0}
+    - position: {x: 3, y: -2}
       terrainType: 1
-    - position: {x: 4, y: -2, z: 0}
+    - position: {x: 4, y: -2}
       terrainType: 1
-    - position: {x: -5, y: -1, z: 0}
+    - position: {x: -5, y: -1}
       terrainType: 1
-    - position: {x: -4, y: -1, z: 0}
+    - position: {x: -4, y: -1}
       terrainType: 1
-    - position: {x: -3, y: -1, z: 0}
+    - position: {x: -3, y: -1}
       terrainType: 0
-    - position: {x: -2, y: -1, z: 0}
+    - position: {x: -2, y: -1}
       terrainType: 0
-    - position: {x: -1, y: -1, z: 0}
+    - position: {x: -1, y: -1}
       terrainType: 0
-    - position: {x: 0, y: -1, z: 0}
+    - position: {x: 0, y: -1}
       terrainType: 0
-    - position: {x: 1, y: -1, z: 0}
+    - position: {x: 1, y: -1}
       terrainType: 0
-    - position: {x: 2, y: -1, z: 0}
+    - position: {x: 2, y: -1}
       terrainType: 1
-    - position: {x: 3, y: -1, z: 0}
+    - position: {x: 3, y: -1}
       terrainType: 1
-    - position: {x: 4, y: -1, z: 0}
+    - position: {x: 4, y: -1}
       terrainType: 1
-    - position: {x: -5, y: 0, z: 0}
+    - position: {x: -5, y: 0}
       terrainType: 1
-    - position: {x: -4, y: 0, z: 0}
+    - position: {x: -4, y: 0}
       terrainType: 1
-    - position: {x: -3, y: 0, z: 0}
+    - position: {x: -3, y: 0}
       terrainType: 1
-    - position: {x: -2, y: 0, z: 0}
+    - position: {x: -2, y: 0}
       terrainType: 0
-    - position: {x: -1, y: 0, z: 0}
+    - position: {x: -1, y: 0}
       terrainType: 0
-    - position: {x: 0, y: 0, z: 0}
+    - position: {x: 0, y: 0}
       terrainType: 0
-    - position: {x: 1, y: 0, z: 0}
+    - position: {x: 1, y: 0}
       terrainType: 0
-    - position: {x: 2, y: 0, z: 0}
+    - position: {x: 2, y: 0}
       terrainType: 0
-    - position: {x: 3, y: 0, z: 0}
+    - position: {x: 3, y: 0}
       terrainType: 0
-    - position: {x: 4, y: 0, z: 0}
+    - position: {x: 4, y: 0}
       terrainType: 1
-    - position: {x: -5, y: 1, z: 0}
+    - position: {x: -5, y: 1}
       terrainType: 1
-    - position: {x: -4, y: 1, z: 0}
+    - position: {x: -4, y: 1}
       terrainType: 1
-    - position: {x: -3, y: 1, z: 0}
+    - position: {x: -3, y: 1}
       terrainType: 1
-    - position: {x: -2, y: 1, z: 0}
+    - position: {x: -2, y: 1}
       terrainType: 0
-    - position: {x: -1, y: 1, z: 0}
+    - position: {x: -1, y: 1}
       terrainType: 0
-    - position: {x: 0, y: 1, z: 0}
+    - position: {x: 0, y: 1}
       terrainType: 0
-    - position: {x: 1, y: 1, z: 0}
+    - position: {x: 1, y: 1}
       terrainType: 0
-    - position: {x: 2, y: 1, z: 0}
+    - position: {x: 2, y: 1}
       terrainType: 0
-    - position: {x: 3, y: 1, z: 0}
+    - position: {x: 3, y: 1}
       terrainType: 0
-    - position: {x: 4, y: 1, z: 0}
+    - position: {x: 4, y: 1}
       terrainType: 2
-    - position: {x: -6, y: 2, z: 0}
+    - position: {x: -6, y: 2}
       terrainType: 2
-    - position: {x: -5, y: 2, z: 0}
+    - position: {x: -5, y: 2}
       terrainType: 2
-    - position: {x: -4, y: 2, z: 0}
+    - position: {x: -4, y: 2}
       terrainType: 2
-    - position: {x: -3, y: 2, z: 0}
+    - position: {x: -3, y: 2}
       terrainType: 0
-    - position: {x: -2, y: 2, z: 0}
+    - position: {x: -2, y: 2}
       terrainType: 0
-    - position: {x: -1, y: 2, z: 0}
+    - position: {x: -1, y: 2}
       terrainType: 0
-    - position: {x: 0, y: 2, z: 0}
+    - position: {x: 0, y: 2}
       terrainType: 0
-    - position: {x: 1, y: 2, z: 0}
+    - position: {x: 1, y: 2}
       terrainType: 0
-    - position: {x: 2, y: 2, z: 0}
+    - position: {x: 2, y: 2}
       terrainType: 0
-    - position: {x: 3, y: 2, z: 0}
+    - position: {x: 3, y: 2}
       terrainType: 0
-    - position: {x: 4, y: 2, z: 0}
+    - position: {x: 4, y: 2}
       terrainType: 1
-    - position: {x: -5, y: 3, z: 0}
+    - position: {x: -5, y: 3}
       terrainType: 1
-    - position: {x: -4, y: 3, z: 0}
+    - position: {x: -4, y: 3}
       terrainType: 1
-    - position: {x: -3, y: 3, z: 0}
+    - position: {x: -3, y: 3}
       terrainType: 0
-    - position: {x: -2, y: 3, z: 0}
+    - position: {x: -2, y: 3}
       terrainType: 0
-    - position: {x: -1, y: 3, z: 0}
+    - position: {x: -1, y: 3}
       terrainType: 0
-    - position: {x: 0, y: 3, z: 0}
+    - position: {x: 0, y: 3}
       terrainType: 0
-    - position: {x: 1, y: 3, z: 0}
+    - position: {x: 1, y: 3}
       terrainType: 0
-    - position: {x: 2, y: 3, z: 0}
+    - position: {x: 2, y: 3}
       terrainType: 0
-    - position: {x: 3, y: 3, z: 0}
+    - position: {x: 3, y: 3}
       terrainType: 1
-    - position: {x: 4, y: 3, z: 0}
+    - position: {x: 4, y: 3}
       terrainType: 1
-    - position: {x: -5, y: 4, z: 0}
+    - position: {x: -5, y: 4}
       terrainType: 1
-    - position: {x: -4, y: 4, z: 0}
+    - position: {x: -4, y: 4}
       terrainType: 1
-    - position: {x: -3, y: 4, z: 0}
+    - position: {x: -3, y: 4}
       terrainType: 1
-    - position: {x: -2, y: 4, z: 0}
+    - position: {x: -2, y: 4}
       terrainType: 1
-    - position: {x: -1, y: 4, z: 0}
+    - position: {x: -1, y: 4}
       terrainType: 1
-    - position: {x: 0, y: 4, z: 0}
+    - position: {x: 0, y: 4}
       terrainType: 1
-    - position: {x: 1, y: 4, z: 0}
+    - position: {x: 1, y: 4}
       terrainType: 1
-    - position: {x: 2, y: 4, z: 0}
+    - position: {x: 2, y: 4}
       terrainType: 1
-    - position: {x: 3, y: 4, z: 0}
+    - position: {x: 3, y: 4}
       terrainType: 1
-    - position: {x: 4, y: 4, z: 0}
+    - position: {x: 4, y: 4}
       terrainType: 1
     logisticData:
       roadTileData:
-      - position: {x: -6, y: -4, z: 0}
+      - position: {x: -6, y: -4}
         connectionDirection: 4
-      - position: {x: -5, y: -4, z: 0}
+      - position: {x: -5, y: -4}
         connectionDirection: 12
-      - position: {x: -4, y: -4, z: 0}
+      - position: {x: -4, y: -4}
         connectionDirection: 8
+      - position: {x: -6, y: 2}
+        connectionDirection: 4
+      - position: {x: -5, y: 2}
+        connectionDirection: 12
+      - position: {x: -4, y: 2}
+        connectionDirection: 8
+      - position: {x: 4, y: 1}
+        connectionDirection: 0
+      - position: {x: 4, y: -3}
+        connectionDirection: 8
+      - position: {x: 3, y: -3}
+        connectionDirection: 12
+      - position: {x: 2, y: -3}
+        connectionDirection: 4
       goalsData:
       - position: {x: 4, y: -3}
         teamColor: 4

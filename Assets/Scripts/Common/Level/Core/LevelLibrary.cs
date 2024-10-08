@@ -94,6 +94,8 @@ namespace Level
             else {
                 SaveNewLevel(levelData);
             }
+
+            AssetDatabase.ForceReserializeAssets();
         }
 
         public LevelData CreateNewLevel(string levelName)
