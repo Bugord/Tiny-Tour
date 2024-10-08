@@ -226,13 +226,13 @@ MonoBehaviour:
       - position: {x: -5, y: -4}
         connectionDirection: 12
       - position: {x: -4, y: -4}
-        connectionDirection: 8
+        connectionDirection: 12
       - position: {x: -6, y: 2}
         connectionDirection: 4
       - position: {x: -5, y: 2}
         connectionDirection: 12
       - position: {x: -4, y: 2}
-        connectionDirection: 8
+        connectionDirection: 12
       - position: {x: 4, y: 1}
         connectionDirection: 8
       - position: {x: 4, y: -3}
@@ -240,11 +240,45 @@ MonoBehaviour:
       - position: {x: 3, y: -3}
         connectionDirection: 12
       - position: {x: 2, y: -3}
-        connectionDirection: 4
+        connectionDirection: 12
       - position: {x: 3, y: 1}
-        connectionDirection: 6
+        connectionDirection: 14
       - position: {x: 3, y: 0}
         connectionDirection: 1
+      - position: {x: -3, y: 2}
+        connectionDirection: 12
+      - position: {x: -2, y: 2}
+        connectionDirection: 12
+      - position: {x: -1, y: 2}
+        connectionDirection: 10
+      - position: {x: -1, y: 1}
+        connectionDirection: 7
+      - position: {x: -1, y: 0}
+        connectionDirection: 3
+      - position: {x: -1, y: -1}
+        connectionDirection: 3
+      - position: {x: -1, y: -2}
+        connectionDirection: 13
+      - position: {x: -2, y: -2}
+        connectionDirection: 6
+      - position: {x: -2, y: -3}
+        connectionDirection: 9
+      - position: {x: -3, y: -3}
+        connectionDirection: 6
+      - position: {x: -3, y: -4}
+        connectionDirection: 9
+      - position: {x: 0, y: -2}
+        connectionDirection: 10
+      - position: {x: 0, y: -3}
+        connectionDirection: 5
+      - position: {x: 1, y: -3}
+        connectionDirection: 12
+      - position: {x: 0, y: 1}
+        connectionDirection: 12
+      - position: {x: 1, y: 1}
+        connectionDirection: 12
+      - position: {x: 2, y: 1}
+        connectionDirection: 12
       goalsData:
       - position: {x: 4, y: -3}
         teamColor: 4
@@ -263,3 +297,7 @@ MonoBehaviour:
       carType: 0
       teamColor: 3
       direction: 3
+    - position: {x: -4, y: 2}
+      carType: 0
+      teamColor: 2
+      direction: 0

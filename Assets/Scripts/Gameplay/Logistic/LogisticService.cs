@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common.Editors.Logistic;
 using Common.Editors.Road;
@@ -61,7 +62,7 @@ namespace Gameplay.Logistic
         {
             if (!goals.ContainsKey(carTeamColor)) {
                 logger.LogWarning($"Goal for car {carTeamColor} is not setted");
-                return null;
+                return Array.Empty<Vector2>();
             }
 
             var goalPosition = goals[carTeamColor];
