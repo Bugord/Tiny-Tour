@@ -1,62 +1,48 @@
 ﻿using System;
 using AYellowpaper.SerializedCollections;
 using Core;
+using Core.UI.Button;
 using UnityEngine;
-using UnityEngine.UI;
 using Utility;
 
-namespace LevelEditing.UI
+namespace Game.Workshop.UI
 {
-    [RequireComponent(typeof(Button))]
-    public class ColorButton : MonoBehaviour
+    public class ColorButton : Button
     {
         public event Action<TeamColor> ColorChanged;
-        
+
         [SerializedDictionary]
         public SerializedDictionary<TeamColor, ButtonSprites> coloredSpritesVariant;
 
-        private Button button;
-        private TeamColor currentColor;
+        public TeamColor Color { get; private set; }
 
-        public TeamColor Color => currentColor;
-        
         private void Awake()
         {
-            button = GetComponent<Button>();
-            button.onClick.AddListener(OnButtonClick);
-
             UpdateSprites();
         }
 
-        private void OnDestroy()
+        protected override void OnLeftMouseClicked()
         {
-            button.onClick.RemoveAllListeners();
+            Color = Color.GetNextValue();
+            UpdateSprites();
+            ColorChanged?.Invoke(Color);
         }
 
-        private void OnButtonClick()
+        protected override void OnRightMouseClicked()
         {
-            currentColor = currentColor.GetNextValue();
+            Color = Color.GetPreviousValue();
             UpdateSprites();
-            
-            ColorChanged?.Invoke(currentColor);
+            ColorChanged?.Invoke(Color);
         }
 
         private void UpdateSprites()
         {
-            if (coloredSpritesVariant.TryGetValue(currentColor, out var buttonSprites)) {
-                button.image.sprite = buttonSprites.defaultButtonSprite;
-                button.spriteState = buttonSprites.spriteState;
+            if (coloredSpritesVariant.TryGetValue(Color, out var buttonSprites)) {
+                ButtonSprites = buttonSprites;
             }
             else {
-                Debug.LogWarning($"Button has no configuration for color {currentColor}");
+                Debug.LogWarning($"Button has no configuration for color {Color}");
             }
-        }
-
-        [Serializable]
-        public class ButtonSprites
-        {
-            public Sprite defaultButtonSprite;
-            public SpriteState spriteState;
         }
     }
 }

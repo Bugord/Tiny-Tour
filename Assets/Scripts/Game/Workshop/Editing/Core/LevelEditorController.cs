@@ -6,6 +6,7 @@ using Common.Editors.Options.Core;
 using Common.UI;
 using Core;
 using Core.Navigation;
+using Game.Workshop.UI;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options;
 using LevelEditing.LevelEditor.Options;

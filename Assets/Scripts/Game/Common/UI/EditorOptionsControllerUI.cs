@@ -4,6 +4,7 @@ using System.Linq;
 using Core;
 using Core.Logging;
 using Core.Navigation;
+using Game.Workshop.UI;
 using Gameplay.Editing.Options.Data;
 using LevelEditing.UI;
 using UI.Screens;

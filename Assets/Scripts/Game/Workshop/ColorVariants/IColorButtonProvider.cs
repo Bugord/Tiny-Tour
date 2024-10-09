@@ -1,4 +1,5 @@
-﻿using LevelEditing.UI;
+﻿using Game.Workshop.UI;
+using LevelEditing.UI;
 
 namespace LevelEditor.ColorVariants
 {

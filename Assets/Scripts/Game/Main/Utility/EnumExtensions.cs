@@ -54,7 +54,17 @@ namespace Utility
         {
             var enumValues = (T[])Enum.GetValues(typeof(T));
             var nextIndex = Array.IndexOf(enumValues, value) + 1;
-            return enumValues.Length == nextIndex ? enumValues[0] : enumValues[nextIndex];
+            return nextIndex == enumValues.Length ? enumValues[0] : enumValues[nextIndex];
+        }
+        
+        public static T GetPreviousValue<T>(this T value) where T : struct
+        {
+            var enumValues = (T[])Enum.GetValues(typeof(T));
+            var prevIndex = Array.IndexOf(enumValues, value) - 1;
+            if (prevIndex <= 0) {
+                prevIndex = enumValues.Length - 1;
+            }
+            return enumValues[prevIndex];
         }
     }
 }
