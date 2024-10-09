@@ -219,6 +219,70 @@ MonoBehaviour:
       terrainType: 0
     - position: {x: 3, y: 0}
       terrainType: 0
+    - position: {x: -6, y: 1}
+      terrainType: 0
+    - position: {x: -6, y: 0}
+      terrainType: 0
+    - position: {x: -6, y: -1}
+      terrainType: 0
+    - position: {x: -6, y: -2}
+      terrainType: 0
+    - position: {x: -6, y: -3}
+      terrainType: 0
+    - position: {x: -6, y: 3}
+      terrainType: 0
+    - position: {x: -6, y: 4}
+      terrainType: 1
+    - position: {x: -6, y: -5}
+      terrainType: 0
+    - position: {x: -6, y: -6}
+      terrainType: 1
+    - position: {x: -5, y: -6}
+      terrainType: 1
+    - position: {x: -7, y: -6}
+      terrainType: 1
+    - position: {x: -8, y: -6}
+      terrainType: 1
+    - position: {x: -8, y: -5}
+      terrainType: 1
+    - position: {x: -8, y: -4}
+      terrainType: 1
+    - position: {x: -8, y: -3}
+      terrainType: 1
+    - position: {x: -8, y: -2}
+      terrainType: 1
+    - position: {x: -8, y: -1}
+      terrainType: 1
+    - position: {x: -8, y: 0}
+      terrainType: 1
+    - position: {x: -8, y: 1}
+      terrainType: 1
+    - position: {x: -8, y: 2}
+      terrainType: 1
+    - position: {x: -8, y: 3}
+      terrainType: 1
+    - position: {x: -8, y: 4}
+      terrainType: 1
+    - position: {x: -7, y: 4}
+      terrainType: 1
+    - position: {x: -7, y: 3}
+      terrainType: 0
+    - position: {x: -7, y: 2}
+      terrainType: 0
+    - position: {x: -7, y: 1}
+      terrainType: 0
+    - position: {x: -7, y: 0}
+      terrainType: 0
+    - position: {x: -7, y: -1}
+      terrainType: 0
+    - position: {x: -7, y: -2}
+      terrainType: 0
+    - position: {x: -7, y: -3}
+      terrainType: 0
+    - position: {x: -7, y: -4}
+      terrainType: 0
+    - position: {x: -7, y: -5}
+      terrainType: 0
     logisticData:
       roadTileData:
       - position: {x: -6, y: -4}
