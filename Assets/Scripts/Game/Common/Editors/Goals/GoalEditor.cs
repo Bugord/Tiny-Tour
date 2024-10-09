@@ -5,7 +5,6 @@ using Core;
 using Core.Logging;
 using Level;
 using Level.Data;
-using LevelEditing.Editing.Editors;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

@@ -1,9 +1,9 @@
 ﻿using Common.Editors;
 using Common.Editors.Logistic;
 using Common.Editors.Terrain;
+using Game.Workshop.LevelEditor.Editors;
 using Level;
 using Level.Data;
-using LevelEditing.Editing.Editors;
 using UnityEngine;
 
 namespace LevelEditor.Level.Core

@@ -3,7 +3,6 @@ using Common.Editors.Logistic;
 using Common.Editors.Road;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
-using LevelEditing.Editing.Editors;
 using LevelEditing.UI;
 using LevelEditor.ColorVariants;
 using UnityEngine;

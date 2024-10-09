@@ -25,14 +25,12 @@ namespace Common.Road
                 return;
             }
             
-            foreach (var roadTileData in roadTilesData) {
-                roadEditor.SetInitialRoadTile(roadTileData.position, roadTileData.connectionDirection);
-            }
+            roadEditor.Load(roadTilesData);
         }
 
         public RoadTileData[] SaveRoad()
         {
-            return roadEditor.GetRoadTiles();
+            return roadEditor.GetTilesData();
         }
 
         public void Reset()

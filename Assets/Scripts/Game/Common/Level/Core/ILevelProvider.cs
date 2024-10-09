@@ -13,5 +13,6 @@ namespace Level
         void UpdateLevel(LevelData levelData);
         void SaveNewLevel(LevelData levelData);
         void SaveLevel(LevelData levelData);
+        void LoadLevels();
     }
 }

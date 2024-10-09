@@ -1,13 +1,19 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Level.Data;
+using Zenject;
 
 namespace Level
 {
-    public class LevelManager
+    public class LevelManager : IInitializable
     {
         private readonly ILevelProvider levelProvider;
         private LevelData selectedLevelData;
+
+        public void Initialize()
+        {
+            levelProvider.LoadLevels();
+        }
 
         public LevelManager(ILevelProvider levelProvider)
         {

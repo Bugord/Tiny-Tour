@@ -9,6 +9,7 @@ namespace Core.Installers
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<ApplicationEntryPoint>().AsSingle();
+            Container.BindInitializableExecutionOrder<ApplicationEntryPoint>(20);
         }
     }
 }

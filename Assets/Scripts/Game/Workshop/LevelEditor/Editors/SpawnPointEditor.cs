@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
 
-namespace LevelEditing.Editing.Editors
+namespace Game.Workshop.LevelEditor.Editors
 {
     public class SpawnPointEditor : ISpawnPointEditor
     {

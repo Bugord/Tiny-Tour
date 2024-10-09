@@ -2,9 +2,9 @@
 using Common.Editors.Logistic;
 using Common.Editors.Road;
 using Common.Editors.Terrain;
+using Game.Workshop.LevelEditor.Editors;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
-using LevelEditing.Editing.Editors;
 using UnityEngine;
 
 namespace LevelEditing.LevelEditor.Options

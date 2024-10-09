@@ -3,7 +3,7 @@ using Core;
 using Level.Data;
 using UnityEngine;
 
-namespace LevelEditing.Editing.Editors
+namespace Game.Workshop.LevelEditor.Editors
 {
     public interface ISpawnPointEditor
     {

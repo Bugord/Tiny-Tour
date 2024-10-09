@@ -35,7 +35,7 @@ namespace Gameplay.Pathfinding
 
         private void UpdateGrid()
         {
-            var connectionDirectionsMap = roadEditor.RoadsData
+            var connectionDirectionsMap = roadEditor.GetTilesData()
                 .ToDictionary(data => roadTilemapGridConverter.TilemapToGrid((Vector2Int)data.position),
                     data => data.connectionDirection);
 

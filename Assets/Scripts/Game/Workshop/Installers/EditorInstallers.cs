@@ -1,6 +1,6 @@
 ﻿using Common.Editors.Logistic;
 using Common.Editors.Terrain;
-using LevelEditing.Editing.Editors;
+using Game.Workshop.LevelEditor.Editors;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +11,7 @@ namespace LevelEditing.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<EditorServiceRoadEditor>().AsSingle();
+            Container.BindInterfacesTo<WorkshopRoadLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
             Container.Bind<ISpawnPointEditor>().To<SpawnPointEditor>().AsSingle();
             Container.Bind<IGoalEditor>().To<GoalEditor>().AsSingle();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Common;
+using Core;
 using Cysharp.Threading.Tasks;
 using Level.Data;
 using UnityEditor;
@@ -15,7 +16,9 @@ namespace Level
     public class LevelLibrary : ScriptableObject, ILevelProvider
     {
         [SerializeField]
-        private List<LevelData> levelsData;
+        public List<LevelData> levelsData;
+
+        private LevelData[] cachedLevelData;
 
         private const string ResouceDirectoryPath = "./Assets/Resource/Levels";
 
@@ -53,14 +56,20 @@ namespace Level
             }
         }
 
+        public void LoadLevels()
+        {
+            var json = JsonHelper.ToJson(levelsData.ToArray());
+            cachedLevelData = JsonHelper.FromJson<LevelData>(json);
+        }
+
         public LevelData[] GetLevels()
         {
-            return levelsData.Select(data => data.Copy()).ToArray();
+            return cachedLevelData.Select(data => data.Copy()).ToArray();
         }
 
         public LevelData GetLevelByName(string name)
         {
-            return levelsData.FirstOrDefault(level => level.levelName == name);
+            return cachedLevelData.FirstOrDefault(level => level.levelName == name);
         }
 
         public void UpdateLevel(LevelData levelData)
@@ -106,7 +115,7 @@ namespace Level
 
         public LevelData GetLevelByIndex(int index)
         {
-            return levelsData[index];
+            return cachedLevelData[index];
         }
     }
 }

@@ -4,6 +4,7 @@ using Common.Editors.Logistic;
 using Common.Editors.Obstacles;
 using Common.Editors.Road;
 using Common.Editors.Terrain;
+using Game.Gameplay.Editing.Editors;
 using UnityEngine;
 using Zenject;
 
@@ -17,7 +18,7 @@ namespace Gameplay
             Container.Bind<ITerrainService>().To<TerrainService>().AsSingle();
             Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
             
-            Container.Bind<IRoadEditor>().To<RoadEditor>().AsSingle();
+            Container.Bind<IRoadEditor>().To<PlayRoadLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
             Container.Bind<IGoalEditor>().To<GoalEditor>().AsSingle();
         }
