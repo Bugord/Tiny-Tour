@@ -11,14 +11,14 @@ namespace LevelEditing.EditorState.States
     public class EditingLevelEditorState : BaseEditorState
     {
         private readonly LevelEditorController levelEditorController;
-        private readonly ILevelEditorService levelEditorService;
+        private readonly IWorkshopService workshopService;
         private readonly EditorControllerUI editorControllerUI;
         private readonly EditLevelScreen editLevelScreen;
 
-        public EditingLevelEditorState(EditorStateMachine editorStateMachine, LevelEditorController levelEditorController, INavigationService navigationService, ILevelEditorService levelEditorService) : base(editorStateMachine)
+        public EditingLevelEditorState(EditorStateMachine editorStateMachine, LevelEditorController levelEditorController, INavigationService navigationService, IWorkshopService workshopService) : base(editorStateMachine)
         {
             this.levelEditorController = levelEditorController;
-            this.levelEditorService = levelEditorService;
+            this.workshopService = workshopService;
             editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
             editorControllerUI = editLevelScreen.EditorControllerUI;
         }
@@ -39,12 +39,12 @@ namespace LevelEditing.EditorState.States
 
         private void OnResetPressed()
         {
-            levelEditorService.ResetLevel();
+            workshopService.ResetLevel();
         }
 
         private void OnSavePressed()
         {
-            levelEditorService.SaveLevel();
+            workshopService.SaveLevel();
         }
     }
 }

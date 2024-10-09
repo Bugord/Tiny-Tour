@@ -8,34 +8,34 @@ namespace Common.Road
     public class RoadService : IRoadService
     {
         private readonly ILogger<RoadService> logger;
-        private readonly IRoadEditor roadEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
 
-        public RoadService(ILogger<RoadService> logger, IRoadEditor roadEditor)
+        public RoadService(ILogger<RoadService> logger, IRoadLevelEditor roadLevelEditor)
         {
             this.logger = logger;
-            this.roadEditor = roadEditor;
+            this.roadLevelEditor = roadLevelEditor;
         }
         
         public void LoadRoad(RoadTileData[] roadTilesData)
         {
-            roadEditor.Clear();
+            roadLevelEditor.Clear();
             
             if (roadTilesData == null) {
                 logger.LogError("Road tiles are null");
                 return;
             }
             
-            roadEditor.Load(roadTilesData);
+            roadLevelEditor.Load(roadTilesData);
         }
 
         public RoadTileData[] SaveRoad()
         {
-            return roadEditor.GetTilesData();
+            return roadLevelEditor.GetTilesData();
         }
 
         public void Reset()
         {
-            roadEditor.Reset();
+            roadLevelEditor.Reset();
         }
     }
 }

@@ -18,9 +18,9 @@ namespace Gameplay
             Container.Bind<ITerrainService>().To<TerrainService>().AsSingle();
             Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
             
-            Container.Bind<IRoadEditor>().To<PlayRoadLevelEditor>().AsSingle();
+            Container.Bind<IRoadLevelEditor>().To<PlayRoadLevelLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
-            Container.Bind<IGoalEditor>().To<GoalEditor>().AsSingle();
+            Container.Bind<IGoalLevelEditor>().To<GoalLevelEditor>().AsSingle();
         }
     }
 }

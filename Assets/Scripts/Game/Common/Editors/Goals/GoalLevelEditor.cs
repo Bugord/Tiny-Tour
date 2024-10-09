@@ -9,7 +9,7 @@ using UnityEngine.Tilemaps;
 
 namespace Game.Common.Editors.Goals
 {
-    public class GoalEditor : IGoalEditor
+    public class GoalLevelEditor : IGoalLevelEditor
     {
         private readonly Tilemap logisticTilemap;
         private readonly ITileLibrary tileLibrary;
@@ -19,7 +19,7 @@ namespace Game.Common.Editors.Goals
 
         private const int GoalLayer = 2;
 
-        public GoalEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
+        public GoalLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
         {
             this.tileLibrary = tileLibrary;
             logisticTilemap = tilemapsProvider.LogisticTilemap;

@@ -2,7 +2,7 @@
 
 namespace LevelEditor.Level.Core
 {
-    public interface ILevelEditorService : ILevelLoader
+    public interface IWorkshopService : ILevelLoader
     {
         void ResetLevel();
         void LoadCurrentLevel();

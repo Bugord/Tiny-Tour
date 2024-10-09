@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cars;
+using Game.Common.Level.Data;
 using Level.Data;
 
 namespace Gameplay.Cars

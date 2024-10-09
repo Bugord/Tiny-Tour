@@ -1,4 +1,5 @@
 ﻿using Common.Road;
+using Game.Workshop.Level.Core;
 using LevelEditing.Editing.Core;
 using LevelEditing.EditorState.Core;
 using LevelEditor;
@@ -19,7 +20,7 @@ namespace Game.Workshop.Installers
             Container.Bind<EditorStateMachine>().AsSingle();
             Container.BindInterfacesTo<EditorStateFactory>().AsTransient();
 
-            Container.BindInterfacesTo<LevelEditorService>().AsSingle();
+            Container.BindInterfacesTo<WorkshopService>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelEditorController>().AsSingle();
 
             Container.BindInterfacesTo<ColorButtonProvider>().AsSingle();

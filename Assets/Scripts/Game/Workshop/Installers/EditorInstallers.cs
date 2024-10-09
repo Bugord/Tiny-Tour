@@ -12,10 +12,10 @@ namespace Game.Workshop.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<WorkshopRoadLevelEditor>().AsSingle();
+            Container.BindInterfacesTo<WorkshopRoadLevelLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
-            Container.Bind<ISpawnPointEditor>().To<SpawnPointEditor>().AsSingle();
-            Container.Bind<IGoalEditor>().To<GoalEditor>().AsSingle();
+            Container.Bind<ISpawnPointLevelEditor>().To<SpawnPointLevelEditor>().AsSingle();
+            Container.Bind<IGoalLevelEditor>().To<GoalLevelEditor>().AsSingle();
         }
     }
 }

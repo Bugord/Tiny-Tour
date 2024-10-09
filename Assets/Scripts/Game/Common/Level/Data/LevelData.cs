@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Common.Level.Data;
 
 namespace Level.Data
 {

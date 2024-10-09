@@ -7,16 +7,16 @@ namespace LevelEditing.EditorState.States
 {
     public class LoadEditorState : BaseEditorState
     {
-        private readonly ILevelEditorService levelEditorService;
+        private readonly IWorkshopService workshopService;
 
-        public LoadEditorState(EditorStateMachine editorStateMachine, ILevelEditorService levelEditorService) : base(editorStateMachine)
+        public LoadEditorState(EditorStateMachine editorStateMachine, IWorkshopService workshopService) : base(editorStateMachine)
         {
-            this.levelEditorService = levelEditorService;
+            this.workshopService = workshopService;
         }
 
         public override void OnEnter()
         {
-            levelEditorService.LoadCurrentLevel();
+            workshopService.LoadCurrentLevel();
             EditorStateMachine.ChangeState<EditingLevelEditorState>();
         }
     }

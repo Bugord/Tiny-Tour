@@ -3,6 +3,7 @@ using Cars;
 using Common.Tilemaps;
 using Core;
 using Core.Logging;
+using Game.Common.Level.Data;
 using Level.Data;
 
 namespace Gameplay.Cars

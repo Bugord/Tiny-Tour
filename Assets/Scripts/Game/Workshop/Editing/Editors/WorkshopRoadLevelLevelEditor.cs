@@ -7,9 +7,9 @@ using Utility;
 
 namespace Game.Workshop.Editing.Editors
 {
-    public class WorkshopRoadLevelEditor : BaseRoadLevelEditor
+    public class WorkshopRoadLevelLevelEditor : BaseRoadLevelLevelEditor
     {
-        public WorkshopRoadLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
+        public WorkshopRoadLevelLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
             : base(tilemapsProvider, tileLibrary)
         {
         }

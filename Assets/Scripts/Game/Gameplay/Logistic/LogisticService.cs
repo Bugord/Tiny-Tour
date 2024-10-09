@@ -15,16 +15,16 @@ namespace Gameplay.Logistic
     public class LogisticService : ILogisticService
     {
         private readonly ILogger<LogisticService> logger;
-        private readonly IGoalEditor goalEditor;
-        private readonly IRoadEditor roadEditor;
+        private readonly IGoalLevelEditor goalLevelEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
         private readonly IPathfindingService pathfindingService;
         private readonly ITilemapPositionConverter tilemapPositionConverter;
         private readonly Dictionary<TeamColor, Vector2Int> goals;
 
-        public LogisticService(ILogger<LogisticService> logger, IGoalEditor goalEditor, IPathfindingService pathfindingService, ITilemapPositionConverter tilemapPositionConverter)
+        public LogisticService(ILogger<LogisticService> logger, IGoalLevelEditor goalLevelEditor, IPathfindingService pathfindingService, ITilemapPositionConverter tilemapPositionConverter)
         {
             this.logger = logger;
-            this.goalEditor = goalEditor;
+            this.goalLevelEditor = goalLevelEditor;
             this.pathfindingService = pathfindingService;
             this.tilemapPositionConverter = tilemapPositionConverter;
             goals = new Dictionary<TeamColor, Vector2Int>();
@@ -55,7 +55,7 @@ namespace Gameplay.Logistic
             }          
             
             goals.Add(teamColor, position);
-            goalEditor.SetTile(position, teamColor);
+            goalLevelEditor.SetTile(position, teamColor);
         }
 
         public Vector2[] GetPathForCar(Vector2 carPos, TeamColor carTeamColor)

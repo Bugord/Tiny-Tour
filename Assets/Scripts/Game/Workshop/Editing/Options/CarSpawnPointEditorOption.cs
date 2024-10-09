@@ -1,6 +1,7 @@
 ﻿using Cars;
 using Core;
 using Game.Common.Editors.Road;
+using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
@@ -12,26 +13,26 @@ namespace LevelEditing.LevelEditor.Options
 {
     public class CarSpawnPointEditorOption : BaseEditorOption
     {
-        private readonly ISpawnPointEditor spawnPointEditor;
-        private readonly IRoadEditor roadEditor;
+        private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
         private readonly ColorButton colorButton;
 
         public CarSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            ISpawnPointEditor spawnPointEditor, IRoadEditor roadEditor, IColorButtonProvider colorButtonProvider)
+            ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor, IColorButtonProvider colorButtonProvider)
         {
-            this.spawnPointEditor = spawnPointEditor;
-            this.roadEditor = roadEditor;
+            this.spawnPointLevelEditor = spawnPointLevelEditor;
+            this.roadLevelEditor = roadLevelEditor;
             colorButton = colorButtonProvider.ColorButton;
             EditorOptionData = editorOptionDataLibrary.CarSpawnPointEditorOptionData;
         }
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (spawnPointEditor.HasSpawnPointWithColor(position, colorButton.Color)) {
-                spawnPointEditor.RotateSpawnPoint(position);
+            if (spawnPointLevelEditor.HasSpawnPointWithColor(position, colorButton.Color)) {
+                spawnPointLevelEditor.RotateSpawnPoint(position);
             }
-            else if (roadEditor.HasTile(position)) {
-                spawnPointEditor.SetCarSpawnPoint(position, CarType.Regular, colorButton.Color, Direction.Right);
+            else if (roadLevelEditor.HasTile(position)) {
+                spawnPointLevelEditor.SetCarSpawnPoint(position, CarType.Regular, colorButton.Color, Direction.Right);
             }
         }
     }

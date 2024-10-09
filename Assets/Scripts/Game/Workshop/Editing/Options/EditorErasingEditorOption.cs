@@ -2,6 +2,7 @@
 using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
+using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
@@ -12,19 +13,19 @@ namespace LevelEditing.LevelEditor.Options
     public class EditorErasingEditorOption : BaseEditorOption
     {
         private readonly ITerrainLevelEditor terrainLevelEditor;
-        private readonly IGoalEditor goalEditor;
-        private readonly ISpawnPointEditor spawnPointEditor;
-        private readonly IRoadEditor roadEditor;
+        private readonly IGoalLevelEditor goalLevelEditor;
+        private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
 
         private EraseType eraseType;
 
-        public EditorErasingEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor,
-            ITerrainLevelEditor terrainLevelEditor, IGoalEditor goalEditor, ISpawnPointEditor spawnPointEditor)
+        public EditorErasingEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
+            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor, ISpawnPointLevelEditor spawnPointLevelEditor)
         {
-            this.roadEditor = roadEditor;
+            this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
-            this.goalEditor = goalEditor;
-            this.spawnPointEditor = spawnPointEditor;
+            this.goalLevelEditor = goalLevelEditor;
+            this.spawnPointLevelEditor = spawnPointLevelEditor;
             EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
         }
 
@@ -54,17 +55,17 @@ namespace LevelEditing.LevelEditor.Options
         {
             eraseType = EraseType.None;
 
-            if (goalEditor.HasTile(position)) {
+            if (goalLevelEditor.HasTile(position)) {
                 eraseType = EraseType.Goal;
                 return;
             }
             
-            if (spawnPointEditor.HasTile(position)) {
+            if (spawnPointLevelEditor.HasTile(position)) {
                 eraseType = EraseType.SpawnPoint;
                 return;
             }
 
-            if (roadEditor.HasTile(position)) {
+            if (roadLevelEditor.HasTile(position)) {
                 eraseType = EraseType.Road;
                 return;
             }
@@ -78,20 +79,20 @@ namespace LevelEditing.LevelEditor.Options
         {
             switch (eraseType) {
                 case EraseType.Goal:
-                    goalEditor.EraseTile(position);
+                    goalLevelEditor.EraseTile(position);
                     break;      
                 case EraseType.SpawnPoint:
-                    spawnPointEditor.EraseTile(position);
+                    spawnPointLevelEditor.EraseTile(position);
                     break;        
                 case EraseType.Road:
-                    roadEditor.EraseTile(position);
-                    spawnPointEditor.EraseTile(position);
+                    roadLevelEditor.EraseTile(position);
+                    spawnPointLevelEditor.EraseTile(position);
                     break;
                 case EraseType.Terrain:
-                    goalEditor.EraseTile(position);
+                    goalLevelEditor.EraseTile(position);
                     terrainLevelEditor.EraseTile(position);
-                    roadEditor.EraseTile(position);
-                    spawnPointEditor.EraseTile(position);
+                    roadLevelEditor.EraseTile(position);
+                    spawnPointLevelEditor.EraseTile(position);
                     break;
                 case EraseType.None:
                     break;

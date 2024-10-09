@@ -10,14 +10,14 @@ namespace Gameplay.Editing.Options
 {
     public class RoadEditorOption : BaseEditorOption
     {
-        private readonly IRoadEditor roadEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
         private readonly ITerrainLevelEditor terrainLevelEditor;
 
         private Vector2Int? previousRoadPosition;
 
-        public RoadEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor, ITerrainLevelEditor terrainLevelEditor)
+        public RoadEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor, ITerrainLevelEditor terrainLevelEditor)
         {
-            this.roadEditor = roadEditor;
+            this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
             EditorOptionData = editorOptionDataLibrary.RoadEditorOptionData;
         }
@@ -25,7 +25,7 @@ namespace Gameplay.Editing.Options
         public override void OnTileDown(Vector2Int position)
         {
             if (CanBePlaced(position)) {
-                roadEditor.SetRoadTile(position);
+                roadLevelEditor.SetRoadTile(position);
                 previousRoadPosition = position;
             }
         }
@@ -37,15 +37,15 @@ namespace Gameplay.Editing.Options
         
         public override void OnAltTileDown(Vector2Int position)
         {
-            if (roadEditor.HasTile(position)) {
-                roadEditor.EraseTile(position);
+            if (roadLevelEditor.HasTile(position)) {
+                roadLevelEditor.EraseTile(position);
             }
         }
 
         public override void OnAltTileDrag(Vector2Int position)
         {
-            if (roadEditor.HasTile(position)) {
-                roadEditor.EraseTile(position);
+            if (roadLevelEditor.HasTile(position)) {
+                roadLevelEditor.EraseTile(position);
             }
         }
 
@@ -65,12 +65,12 @@ namespace Gameplay.Editing.Options
                 return;
             }
 
-            if (!roadEditor.HasTile(selectedPosition)) {
-                roadEditor.SetRoadTile(selectedPosition);
+            if (!roadLevelEditor.HasTile(selectedPosition)) {
+                roadLevelEditor.SetRoadTile(selectedPosition);
             }
 
             if (previousRoadPosition.HasValue) {
-                roadEditor.ConnectRoads(previousRoadPosition.Value, selectedPosition);
+                roadLevelEditor.ConnectRoads(previousRoadPosition.Value, selectedPosition);
             }
 
             previousRoadPosition = selectedPosition;

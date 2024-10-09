@@ -9,13 +9,13 @@ namespace Gameplay.Pathfinding
 {
     public class PathfindingService : IPathfindingService
     {
-        private readonly IRoadEditor roadEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
         private readonly IRoadTilemapGridConverter roadTilemapGridConverter;
         private readonly AstarPathfinding astarPathfinding;
 
-        public PathfindingService(IRoadEditor roadEditor, IRoadTilemapGridConverter roadTilemapGridConverter)
+        public PathfindingService(IRoadLevelEditor roadLevelEditor, IRoadTilemapGridConverter roadTilemapGridConverter)
         {
-            this.roadEditor = roadEditor;
+            this.roadLevelEditor = roadLevelEditor;
             this.roadTilemapGridConverter = roadTilemapGridConverter;
             astarPathfinding = new AstarPathfinding();
         }
@@ -35,11 +35,11 @@ namespace Gameplay.Pathfinding
 
         private void UpdateGrid()
         {
-            var connectionDirectionsMap = roadEditor.GetTilesData()
+            var connectionDirectionsMap = roadLevelEditor.GetTilesData()
                 .ToDictionary(data => roadTilemapGridConverter.TilemapToGrid((Vector2Int)data.position),
                     data => data.connectionDirection);
 
-            astarPathfinding.Update(roadEditor.RoadMapSize, connectionDirectionsMap);
+            astarPathfinding.Update(roadLevelEditor.RoadMapSize, connectionDirectionsMap);
         }
     }
 }

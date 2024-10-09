@@ -11,23 +11,23 @@ namespace LevelEditing.LevelEditor.Options
 {
     public class GoalSpawnPointEditorOption : BaseEditorOption
     {
-        private readonly IGoalEditor goalEditor;
-        private readonly IRoadEditor roadEditor;
+        private readonly IGoalLevelEditor goalLevelEditor;
+        private readonly IRoadLevelEditor roadLevelEditor;
         private readonly ColorButton colorButton;
 
         public GoalSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            IGoalEditor goalEditor, IRoadEditor roadEditor, IColorButtonProvider colorButtonProvider)
+            IGoalLevelEditor goalLevelEditor, IRoadLevelEditor roadLevelEditor, IColorButtonProvider colorButtonProvider)
         {
-            this.goalEditor = goalEditor;
-            this.roadEditor = roadEditor;
+            this.goalLevelEditor = goalLevelEditor;
+            this.roadLevelEditor = roadLevelEditor;
             colorButton = colorButtonProvider.ColorButton;
             EditorOptionData = editorOptionDataLibrary.GoalPointEditorOptionData;
         }
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (roadEditor.HasTile(position)) {
-                goalEditor.SetTile(position, colorButton.Color);
+            if (roadLevelEditor.HasTile(position)) {
+                goalLevelEditor.SetTile(position, colorButton.Color);
             }
         }
     }

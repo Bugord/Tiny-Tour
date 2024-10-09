@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Common.Editors.Goals
 {
-    public interface IGoalEditor : ILevelEditor<GoalData>
+    public interface IGoalLevelEditor : ILevelEditor<GoalData>
     {
         void SetTile(Vector2Int position, TeamColor teamColor);
     }
