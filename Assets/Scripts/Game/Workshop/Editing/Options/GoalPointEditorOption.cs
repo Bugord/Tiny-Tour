@@ -1,6 +1,6 @@
 ﻿using Cars;
-using Common.Editors.Logistic;
-using Common.Editors.Road;
+using Game.Common.Editors.Goals;
+using Game.Common.Editors.Road;
 using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
 using LevelEditing.UI;

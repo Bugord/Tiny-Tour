@@ -1,6 +1,6 @@
 ﻿using Common.Editors;
-using Common.Editors.Logistic;
 using Common.Editors.Terrain;
+using Game.Common.Editors.Goals;
 using Game.Workshop.LevelEditor.Editors;
 using Level;
 using Level.Data;
@@ -48,7 +48,7 @@ namespace LevelEditor.Level.Core
             currentLevelData.terrainTilesData = terrainService.SaveTerrain();
             currentLevelData.logisticData.roadTileData = roadService.SaveRoad();
             currentLevelData.carSpawnData = spawnPointEditor.GetCarsSpawnData();
-            currentLevelData.logisticData.goalsData = goalEditor.GetTiles();
+            currentLevelData.logisticData.goalsData = goalEditor.GetTilesData();
             
             levelManager.SaveLevel(currentLevelData);
             

@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Core;
-using Core.LevelEditing;
+﻿using Core.LevelEditing;
 using Level;
 using UnityEngine;
 
-namespace Common.Editors.Road
+namespace Game.Common.Editors.Road
 {
     public interface IRoadEditor : ILevelEditor<RoadTileData>
     {

@@ -1,5 +1,5 @@
-﻿using Common.Editors.Logistic;
-using Common.Editors.Terrain;
+﻿using Common.Editors.Terrain;
+using Game.Common.Editors.Goals;
 using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
 using UnityEngine;

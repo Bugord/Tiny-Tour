@@ -3,15 +3,10 @@ using Core.LevelEditing;
 using Level.Data;
 using UnityEngine;
 
-namespace Common.Editors.Logistic
+namespace Game.Common.Editors.Goals
 {
-    public interface IGoalEditor
+    public interface IGoalEditor : ILevelEditor<GoalData>
     {
         void SetTile(Vector2Int position, TeamColor teamColor);
-        bool HasTile(Vector2Int position);
-        void EraseTile(Vector2Int position);
-        void Reset();
-        void Load(GoalData[] goalsData);
-        GoalData[] GetTiles();
     }
 }

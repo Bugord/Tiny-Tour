@@ -1,9 +1,9 @@
 ﻿using Common;
 using Common.Editors;
-using Common.Editors.Logistic;
 using Common.Editors.Obstacles;
-using Common.Editors.Road;
 using Common.Editors.Terrain;
+using Game.Common.Editors.Goals;
+using Game.Common.Editors.Road;
 using Game.Gameplay.Editing.Editors;
 using UnityEngine;
 using Zenject;

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common.Editors.Logistic;
-using Common.Editors.Road;
 using Common.Tilemaps;
 using Core;
 using Core.Logging;
+using Game.Common.Editors.Goals;
+using Game.Common.Editors.Road;
 using Level.Data;
 using Pathfinding;
 using UnityEngine;
