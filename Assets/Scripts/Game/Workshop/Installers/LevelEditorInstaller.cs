@@ -1,5 +1,4 @@
-﻿using Common.Editors.Options.Core;
-using Common.Road;
+﻿using Common.Road;
 using LevelEditing.Editing.Core;
 using LevelEditing.EditorState.Core;
 using LevelEditor;
@@ -8,7 +7,7 @@ using LevelEditor.Level.Core;
 using UnityEngine;
 using Zenject;
 
-namespace LevelEditing.Installers
+namespace Game.Workshop.Installers
 {
     [CreateAssetMenu(fileName = "installer_level_editor", menuName = "Installers/Level Editor/Level Editor Installer")]
     public class LevelEditorInstaller : ScriptableObjectInstaller

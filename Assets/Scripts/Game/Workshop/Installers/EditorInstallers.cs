@@ -1,10 +1,11 @@
 ﻿using Common.Editors.Logistic;
 using Common.Editors.Terrain;
+using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
 using UnityEngine;
 using Zenject;
 
-namespace LevelEditing.Installers
+namespace Game.Workshop.Installers
 {
     [CreateAssetMenu(fileName = "installer_level_editor_editors", menuName = "Installers/Level Editor/Editors")]
     public class EditorInstallers : ScriptableObjectInstaller

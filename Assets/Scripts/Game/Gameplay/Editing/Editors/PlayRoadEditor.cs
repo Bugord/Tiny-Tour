@@ -44,35 +44,6 @@ namespace Game.Gameplay.Editing.Editors
             if (initialRoadData != null) {
                 SetTile(initialRoadData);
             }
-            
-            
-            
-            
-            // var neighbourRoadsData = RoadTilesData.Values.Where(data => neighbourPositions.Contains(data.position));
-            //
-            // foreach (var neighbourRoadData in neighbourRoadsData) {
-            //     var neighbourInitialRoadData = CachedRoadTilesData.FirstOrDefault(data => data.position == neighbourRoadData.position);
-            //     var neighbourConnection = GridHelpers.GetPathDirection(neighbourRoadData.position, position);
-            //     if (neighbourInitialRoadData != null && neighbourInitialRoadData.HasDirection(neighbourConnection)) {
-            //         continue;
-            //     }
-            //
-            //     if (initialRoadData != null) {
-            //         var directionToNeighbour = GridHelpers.GetPathDirection(position, neighbourRoadData.position);
-            //         if (!initialRoadData.HasDirection(directionToNeighbour)) {
-            //             existingRoadData.TurnOffDirection(directionToNeighbour);
-            //         }
-            //     }
-            //
-            //     neighbourRoadData.TurnOffDirection(neighbourConnection);
-            //     SetTilemapTile(neighbourRoadData);
-            // }
-            //
-            // if (initialRoadData == null) {
-            // }
-            // else {
-            //     SetTilemapTile(existingRoadData);
-            // }
         }
     }
 }

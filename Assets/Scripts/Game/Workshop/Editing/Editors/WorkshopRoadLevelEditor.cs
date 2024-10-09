@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Common.Editors.Road;
+﻿using System.Linq;
 using Common.Tilemaps;
-using Core;
 using Game.Common.Editors.Road;
 using Level;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Utility;
 
-namespace Game.Workshop.LevelEditor.Editors
+namespace Game.Workshop.Editing.Editors
 {
     public class WorkshopRoadLevelEditor : BaseRoadLevelEditor
     {
+        public WorkshopRoadLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
+            : base(tilemapsProvider, tileLibrary)
+        {
+        }
+
         public override void EraseTile(Vector2Int position)
         {
             if (!HasTile(position)) {
@@ -31,11 +32,6 @@ namespace Game.Workshop.LevelEditor.Editors
 
                 SetTilemapTile(neighbourRoadData);
             }
-        }
-
-        public WorkshopRoadLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary) : base(
-            tilemapsProvider, tileLibrary)
-        {
         }
     }
 }
