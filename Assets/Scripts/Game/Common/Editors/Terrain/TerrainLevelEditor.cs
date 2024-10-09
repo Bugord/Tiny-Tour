@@ -47,7 +47,7 @@ namespace Common.Editors.Terrain
 
         public void EraseTile(Vector2Int position)
         {
-            terrainTilesData[position] = null;
+            terrainTilesData.Remove(position);
             EraseTilemapTile(position);
         }
 

@@ -43,6 +43,7 @@ namespace Level
         public void SaveLevel(LevelData levelData)
         {
             levelProvider.SaveLevel(levelData);
+            levelProvider.LoadLevels();
         }
 
         public LevelData CreateNewLevel(string levelName)
