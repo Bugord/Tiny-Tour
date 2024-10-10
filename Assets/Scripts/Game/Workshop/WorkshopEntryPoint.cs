@@ -4,11 +4,11 @@ using Zenject;
 
 namespace LevelEditor
 {
-    public class LevelEditorEntryPoint : IInitializable
+    public class WorkshopEntryPoint : IInitializable
     {
         private readonly EditorStateMachine editorStateMachine;
 
-        public LevelEditorEntryPoint(EditorStateMachine editorStateMachine)
+        public WorkshopEntryPoint(EditorStateMachine editorStateMachine)
         {
             this.editorStateMachine = editorStateMachine;
         }

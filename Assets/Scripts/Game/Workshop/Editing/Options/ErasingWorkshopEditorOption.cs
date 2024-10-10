@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LevelEditing.LevelEditor.Options
 {
-    public class EditorErasingEditorOption : BaseEditorOption
+    public class ErasingWorkshopEditorOption : BaseEditorOption
     {
         private readonly ITerrainLevelEditor terrainLevelEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
@@ -19,7 +19,7 @@ namespace LevelEditing.LevelEditor.Options
 
         private EraseType eraseType;
 
-        public EditorErasingEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
+        public ErasingWorkshopEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
             ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor, ISpawnPointLevelEditor spawnPointLevelEditor)
         {
             this.roadLevelEditor = roadLevelEditor;
@@ -95,6 +95,7 @@ namespace LevelEditing.LevelEditor.Options
                     spawnPointLevelEditor.EraseTile(position);
                     break;
                 case EraseType.None:
+                    terrainLevelEditor.EraseTile(position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

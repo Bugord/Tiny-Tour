@@ -28,7 +28,7 @@ namespace LevelEditing.Editing.Core
         private BaseEditorOption selectedEditorOption;
         private BaseEditorOption cachedEditorOption;
 
-        private EditorErasingEditorOption erasingEditorOption;
+        private ErasingWorkshopEditorOption option;
 
         public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService,
             IEditorOptionFactory editorOptionFactory)
@@ -45,14 +45,13 @@ namespace LevelEditing.Editing.Core
         public void Initialize()
         {
             AddEditorOption<GroundTerrainEditorOption>();
-            AddEditorOption<WaterTerrainEditorOption>();
             AddEditorOption<BridgeTerrainEditorOption>();
             AddEditorOption<CarSpawnPointEditorOption>();
             AddEditorOption<GoalSpawnPointEditorOption>();
             AddEditorOption<RoadEditorOption>();
 
-            erasingEditorOption = editorOptionFactory.Create<EditorErasingEditorOption>();
-            editorOptions.Add(erasingEditorOption.EditorOptionData.Id, erasingEditorOption);
+            option = editorOptionFactory.Create<ErasingWorkshopEditorOption>();
+            editorOptions.Add(option.EditorOptionData.Id, option);
 
             selectedEditorOption = editorOptions.First().Value;
 
@@ -120,7 +119,7 @@ namespace LevelEditing.Editing.Core
         private void OnTileAltDown(Vector2Int tilePos)
         {
             cachedEditorOption = selectedEditorOption;
-            SelectOption(erasingEditorOption.EditorOptionData.Id);
+            SelectOption(option.EditorOptionData.Id);
 
             selectedEditorOption.OnAltTileDown(tilePos);
         }

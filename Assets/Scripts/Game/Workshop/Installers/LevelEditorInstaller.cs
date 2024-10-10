@@ -15,7 +15,7 @@ namespace Game.Workshop.Installers
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<LevelEditorEntryPoint>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<WorkshopEntryPoint>().AsSingle().NonLazy();
             
             Container.Bind<EditorStateMachine>().AsSingle();
             Container.BindInterfacesTo<EditorStateFactory>().AsTransient();
