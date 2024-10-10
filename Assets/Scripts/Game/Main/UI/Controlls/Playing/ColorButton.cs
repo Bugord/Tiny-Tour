@@ -1,15 +1,17 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Core.UI
+namespace Core.UI.Controlls.Playing
 {
-    public class SelectorViewOption : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class ColorButton : MonoBehaviour
     {
-        public event Action<int> OptionPressed;
+        public event Action<TeamColor> Clicked;
+        
+        [field: SerializeField]
+        public TeamColor Color { get; private set; }
 
         private Button button;
-
-        public int Id { get; set; }
 
         private void Awake()
         {
@@ -28,7 +30,7 @@ namespace Core.UI
 
         private void OnClickedLeft()
         {
-            OptionPressed?.Invoke(Id);
+            Clicked?.Invoke(Color);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Core.UI.Button
+﻿namespace Core.UI
 {
     public enum ButtonState
     {

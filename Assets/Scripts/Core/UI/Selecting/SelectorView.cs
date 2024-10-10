@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Core.UI.Selecting
+namespace Core.UI
 {
     public class SelectorView : MonoBehaviour, IDeselectHandler
     {
@@ -30,7 +30,7 @@ namespace Core.UI.Selecting
         {
             var buttonOptionGO = new GameObject("Option");
             var image = buttonOptionGO.AddComponent<Image>();
-            buttonOptionGO.AddComponent<Button.Button>();
+            buttonOptionGO.AddComponent<Button>();
             var selectorViewOption = buttonOptionGO.AddComponent<SelectorViewOption>();
                 
             buttonOptionGO.transform.SetParent(transform);

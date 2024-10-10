@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Core.UI.Selecting
+namespace Core.UI
 {
-    public class ButtonSelector : Button.Button
+    public class ButtonSelector : Button
     {
         public event Action<int> Selected; 
         

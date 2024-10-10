@@ -21,9 +21,9 @@ namespace Gameplay.Editing.Options.Data
         public EditorOptionData BridgeEditorOptionData { get; private set; }        
         
         [field: SerializeField]
-        public ColoredEditorOptionData CarSpawnPointEditorOptionData { get; private set; }        
+        public EditorOptionData CarSpawnPointEditorOptionData { get; private set; }        
         
         [field: SerializeField]
-        public ColoredEditorOptionData GoalPointEditorOptionData { get; private set; }
+        public EditorOptionData GoalPointEditorOptionData { get; private set; }
     }
 }

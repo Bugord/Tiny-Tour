@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Core.UI.Button
+namespace Core.UI
 {
     [AddComponentMenu("Custom UI/Button", 30)]
     [RequireComponent(typeof(Image))]
@@ -28,7 +28,7 @@ namespace Core.UI.Button
             }
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             image = GetComponent<Image>();
         }
@@ -83,13 +83,13 @@ namespace Core.UI.Button
         {
             switch (state) {
                 case ButtonState.Released:
-                    image.sprite = buttonSprites.releasedSprite;
+                    image.sprite = buttonSprites.releasedSprite ?? image.sprite;
                     break;
                 case ButtonState.Pressed:
-                    image.sprite = buttonSprites.pressedSprite;
+                    image.sprite = buttonSprites.pressedSprite ?? image.sprite;
                     break;
                 case ButtonState.Disabled:
-                    image.sprite = buttonSprites.disabledSprite;
+                    image.sprite = buttonSprites.disabledSprite ?? image.sprite;
                     break;
             }
         }

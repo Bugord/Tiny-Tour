@@ -1,7 +1,7 @@
 ﻿using System;
 using AYellowpaper.SerializedCollections;
 using Core;
-using Core.UI.Button;
+using Core.UI;
 using UnityEngine;
 using Utility;
 
@@ -16,8 +16,9 @@ namespace Game.Workshop.UI
 
         public TeamColor Color { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             UpdateSprites();
         }
 

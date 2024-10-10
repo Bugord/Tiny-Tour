@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Core.UI.Button
+namespace Core.UI
 {
     [Serializable]
     public struct ButtonSprites

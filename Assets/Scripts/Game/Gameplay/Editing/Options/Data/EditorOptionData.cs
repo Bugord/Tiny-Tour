@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using AYellowpaper.SerializedCollections;
+using Core;
+using UnityEngine;
 
 namespace Gameplay.Editing.Options.Data
 {
@@ -16,5 +18,11 @@ namespace Gameplay.Editing.Options.Data
         
         [field: SerializeField]
         public Sprite CustomActiveBackground { get; private set; }
+        
+        [field: SerializeField]
+        public SerializedDictionary<TeamColor, Sprite> ColoredIcons { get; private set; }
+        
+        [field: SerializeField]
+        public AlternativeOption[] AlternativeOptions { get; private set; }
     }
 }

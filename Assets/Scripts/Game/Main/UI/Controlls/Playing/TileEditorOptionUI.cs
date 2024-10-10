@@ -1,15 +1,20 @@
 using System;
 using Core;
+using Core.UI.Controlls.Playing;
 using Gameplay.Editing.Options.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TileEditorOptionUI : MonoBehaviour
+public class TileEditorOptionUI : MonoBehaviour, IPointerClickHandler
 {
     public event Action<string> ToggledOn;
 
     [SerializeField]
     private Toggle toggle;
+
+    [SerializeField]
+    private EditorOptionSettingsUI optionSettingsUI;
 
     [SerializeField]
     private Image icon;
@@ -48,16 +53,11 @@ public class TileEditorOptionUI : MonoBehaviour
 
     public void UpdateColor(TeamColor teamColor)
     {
-        if (editorOptionData is not ColoredEditorOptionData coloredEditorOptionData) {
+        if (!editorOptionData.ColoredIcons.TryGetValue(teamColor, out var iconSprite)) {
             return;
         }
-        
-        if (coloredEditorOptionData.ColoredIcons.TryGetValue(teamColor, out var iconSprite)) {
-            icon.sprite = iconSprite;
-        }
-        else {
-            Debug.LogWarning($"Color {teamColor} is not configured for editor option {Id}");
-        }
+
+        icon.sprite = iconSprite;
     }
 
     public void Toggle()
@@ -69,6 +69,20 @@ public class TileEditorOptionUI : MonoBehaviour
     {
         if (toggle.isOn) {
             ToggledOn?.Invoke(Id);
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right) {
+            ToggleOptionSettingsUI();
+        }
+    }
+
+    private void ToggleOptionSettingsUI()
+    {
+        if (editorOptionData.AlternativeOptions.Length > 0) {
+            optionSettingsUI.gameObject.SetActive(!optionSettingsUI.gameObject.activeSelf);
         }
     }
 }
