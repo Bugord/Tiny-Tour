@@ -4,7 +4,7 @@ using System.Linq;
 using Common.Editors.Options.Core;
 using Common.UI;
 using Core.Navigation;
-using Gameplay.Editing.Editors;
+using Game.Gameplay.Editing.Options.Model;
 using Gameplay.Editing.Options;
 using Gameplay.UI;
 using UI;

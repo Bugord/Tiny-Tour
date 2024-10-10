@@ -1,7 +1,7 @@
 ﻿using Gameplay.Editing.Options.Data;
 using UnityEngine;
 
-namespace Gameplay.Editing.Editors
+namespace Game.Gameplay.Editing.Options.Model
 {
     public class BaseEditorOption
     {

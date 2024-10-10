@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 namespace Core.UI.Button
 {
     [AddComponentMenu("Custom UI/Button", 30)]
+    [RequireComponent(typeof(Image))]
     public class Button : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
     {
         public event UnityAction ClickedLeft;
@@ -13,10 +15,8 @@ namespace Core.UI.Button
         public event UnityAction ClickedMiddle;
 
         [SerializeField]
-        private Image image;
-
-        [SerializeField]
         private ButtonSprites buttonSprites;
+        private Image image;
 
         private ButtonState state;
 
@@ -26,6 +26,11 @@ namespace Core.UI.Button
                 buttonSprites = value;
                 UpdateSprites();
             }
+        }
+
+        private void Awake()
+        {
+            image = GetComponent<Image>();
         }
 
         public void OnPointerClick(PointerEventData eventData)

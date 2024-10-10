@@ -1,9 +1,8 @@
 ﻿using Game.Common.Editors.Road;
-using Gameplay.Editing.Editors;
 using Gameplay.Editing.Options.Data;
 using UnityEngine;
 
-namespace Gameplay.Editing.Options
+namespace Game.Gameplay.Editing.Options.Model
 {
     public class ErasingEditorOption : BaseEditorOption
     {

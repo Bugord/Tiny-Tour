@@ -1,4 +1,4 @@
-﻿using Gameplay.Editing.Editors;
+﻿using Game.Gameplay.Editing.Options.Model;
 using Zenject;
 
 namespace Common.Editors.Options.Core

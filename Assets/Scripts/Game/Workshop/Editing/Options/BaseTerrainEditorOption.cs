@@ -1,5 +1,5 @@
 ﻿using Common.Editors.Terrain;
-using Gameplay.Editing.Editors;
+using Game.Gameplay.Editing.Options.Model;
 using Tiles.Ground;
 using UnityEngine;
 

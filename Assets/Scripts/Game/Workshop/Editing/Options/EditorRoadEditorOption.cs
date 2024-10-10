@@ -1,6 +1,6 @@
 ﻿using Common.Editors.Terrain;
 using Game.Common.Editors.Road;
-using Gameplay.Editing.Editors;
+using Game.Gameplay.Editing.Options.Model;
 using Gameplay.Editing.Options.Data;
 using UnityEngine;
 

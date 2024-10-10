@@ -1,4 +1,4 @@
-﻿using Gameplay.Editing.Editors;
+﻿using Game.Gameplay.Editing.Options.Model;
 
 namespace Common.Editors.Options.Core
 {
