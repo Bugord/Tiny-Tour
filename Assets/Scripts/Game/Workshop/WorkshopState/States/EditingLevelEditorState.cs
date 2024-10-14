@@ -1,6 +1,6 @@
 ﻿using Core.Navigation;
+using Game.Workshop.Editing.Core;
 using Gameplay.UI;
-using LevelEditing.Editing.Core;
 using LevelEditing.EditorState.Core;
 using LevelEditing.UI;
 using LevelEditor.Level.Core;

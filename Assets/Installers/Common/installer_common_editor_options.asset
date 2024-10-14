@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: installer_common_editor_options
   m_EditorClassIdentifier: 
   editorOptionDataLibrary: {fileID: 11400000, guid: 3de73eaae0014bf409c7b5dc593d7df0, type: 2}
+  editorOptionUIPrefab: {fileID: 5772213282512500010, guid: 7d2a2d6cc12e7b24ea640bc59bc399a2, type: 3}

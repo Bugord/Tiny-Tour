@@ -1,9 +1,8 @@
 ﻿using Common;
-using Common.Editors.Options.Core;
 using Common.Editors.Terrain;
 using Common.Level.Core;
 using Common.Road;
-using Gameplay.Editing.Options.Data;
+using Game.Gameplay.Editing;
 using Gameplay.Logistic;
 using Gameplay.Pathfinding;
 using Gameplay.Playing;

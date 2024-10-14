@@ -2,63 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 using Common;
-using Common.Editors.Options.Core;
 using Common.UI;
-using Core;
 using Core.Navigation;
+using Game.Common.Editors.Options.Core;
+using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Model;
-using Game.Workshop.UI;
-using Gameplay.Editing.Options;
+using Game.Main.UI.Controls.Playing;
 using LevelEditing.LevelEditor.Options;
-using LevelEditing.UI;
+using LevelEditor.LevelEditor.Options;
 using UI.Screens;
 using UnityEngine;
 using Zenject;
 
-namespace LevelEditing.Editing.Core
+namespace Game.Workshop.Editing.Core
 {
-    public class LevelEditorController : IInitializable, IDisposable
+    public class LevelEditorController : IInitializable, IDisposable, ILevelEditorController
     {
         private readonly ITilemapInput tilemapInput;
         private readonly IEditorOptionFactory editorOptionFactory;
-        private readonly Dictionary<string, BaseEditorOption> editorOptions;
+        private readonly IEditorOptionUIFactory editorOptionUIFactory;
         private readonly EditorOptionsControllerUI editorOptionsControllerUI;
-        private readonly ColorButton colorButton;
 
+        private readonly Dictionary<string, BaseEditorOption> editorOptions;
+        
         private BaseEditorOption selectedEditorOption;
         private BaseEditorOption cachedEditorOption;
 
-        private ErasingWorkshopEditorOption option;
+        private ErasingWorkshopEditorOption erasingOption;
 
         public LevelEditorController(ITilemapInput tilemapInput, INavigationService navigationService,
-            IEditorOptionFactory editorOptionFactory)
+            IEditorOptionFactory editorOptionFactory, IEditorOptionUIFactory editorOptionUIFactory)
         {
             this.tilemapInput = tilemapInput;
             this.editorOptionFactory = editorOptionFactory;
+            this.editorOptionUIFactory = editorOptionUIFactory;
             var editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
             editorOptionsControllerUI = editLevelScreen.EditorOptionsControllerUI;
-            colorButton = editLevelScreen.ColorButton;
 
             editorOptions = new Dictionary<string, BaseEditorOption>();
         }
 
         public void Initialize()
         {
-            AddEditorOption<GroundTerrainEditorOption>();
-            AddEditorOption<BridgeTerrainEditorOption>();
-            AddEditorOption<CarSpawnPointEditorOption>();
-            AddEditorOption<GoalSpawnPointEditorOption>();
-            AddEditorOption<RoadEditorOption>();
-
-            option = editorOptionFactory.Create<ErasingWorkshopEditorOption>();
-            editorOptions.Add(option.EditorOptionData.Id, option);
+            AddEditorOption<TerrainWorkshopEditorOption>();
+            // AddEditorOption<CarSpawnPointEditorOption>();
+            // AddEditorOption<GoalSpawnPointEditorOption>();
+            // AddEditorOption<RoadEditorOption>();
+            erasingOption = AddEditorOption<ErasingWorkshopEditorOption>();
 
             selectedEditorOption = editorOptions.First().Value;
-
-            editorOptionsControllerUI.Init(editorOptions.Values.Select(option => option.EditorOptionData));
             editorOptionsControllerUI.EditorOptionSelected += OnOptionSelected;
-            
-            colorButton.ColorChanged += OnColorChanged;
 
             var defaultOptionId = editorOptions.First().Key;
             editorOptionsControllerUI.SelectOption(defaultOptionId);
@@ -67,20 +60,18 @@ namespace LevelEditing.Editing.Core
         public void Dispose()
         {
             editorOptionsControllerUI.EditorOptionSelected -= OnOptionSelected;
-            colorButton.ColorChanged -= OnColorChanged;
         }
 
-        private void OnColorChanged(TeamColor color)
-        {
-            editorOptionsControllerUI.SetColor(color);
-        }
-
-        private void AddEditorOption<T>() where T : BaseEditorOption
+        public T AddEditorOption<T>() where T : BaseEditorOption
         {
             var editorOption = editorOptionFactory.Create<T>();
-            var id = editorOption.EditorOptionData.Id;
+            editorOptions.Add(editorOption.Id, editorOption);
+            return editorOption;
+        }
 
-            editorOptions.Add(id, editorOption);
+        public EditorOptionUI AddEditorOptionUI(string id)
+        {
+            return editorOptionsControllerUI.InstantiateEditorOptionUI(id);
         }
 
         private void SelectOption(string id)
@@ -119,7 +110,7 @@ namespace LevelEditing.Editing.Core
         private void OnTileAltDown(Vector2Int tilePos)
         {
             cachedEditorOption = selectedEditorOption;
-            SelectOption(option.EditorOptionData.Id);
+            SelectOption(erasingOption.Id);
 
             selectedEditorOption.OnAltTileDown(tilePos);
         }
@@ -131,7 +122,7 @@ namespace LevelEditing.Editing.Core
 
         private void OnTileAltUp(Vector2Int tilePos)
         {
-            SelectOption(cachedEditorOption.EditorOptionData.Id);
+            SelectOption(cachedEditorOption.Id);
             selectedEditorOption.OnAltTileUp(tilePos);
         }
 

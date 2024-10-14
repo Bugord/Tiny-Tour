@@ -1297,7 +1297,7 @@ namespace Zenject
             if (concreteType.DerivesFrom<ScriptableObject>())
             {
                 Assert.That(typeInfo.InjectConstructor.Parameters.Length == 0,
-                    "Found constructor parameters on ScriptableObject type '{0}'.  This is not allowed.  Use an [Inject] method or fields instead.");
+                    "Found constructor parameters on ScriptableObject type '{0}'.  This is not allowed.  Use an [Inject] method or fields instead.", concreteType);
 
                 if (!IsValidating || allowDuringValidation)
                 {

@@ -16,6 +16,8 @@ namespace Core.UI
 
         [SerializeField]
         private ButtonSprites buttonSprites;
+        
+        [SerializeField]
         private Image image;
 
         private ButtonState state;
@@ -26,11 +28,6 @@ namespace Core.UI
                 buttonSprites = value;
                 UpdateSprites();
             }
-        }
-
-        protected virtual void Awake()
-        {
-            image = GetComponent<Image>();
         }
 
         public void OnPointerClick(PointerEventData eventData)

@@ -1,7 +1,9 @@
 ﻿using System;
+using Core;
+using Core.UI;
 using UnityEngine;
 
-namespace Core.UI.Controlls.Playing
+namespace Game.Main.UI.Controls.Playing
 {
     [RequireComponent(typeof(Button))]
     public class ColorButton : MonoBehaviour

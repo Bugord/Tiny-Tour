@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1978d525d5c54e6bb629292fc56e245a, type: 3}
+  m_Name: data_editor_terrain
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: editor_terrain
+  <DefaultIcon>k__BackingField: {fileID: 6763972461284626041, guid: 32a15a2120e4ca646b47d3c472c949e2, type: 3}
+  <AlternativeTerrains>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: -5773244093850934461, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+    - Key: 2
+      Value: {fileID: -909708595, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}

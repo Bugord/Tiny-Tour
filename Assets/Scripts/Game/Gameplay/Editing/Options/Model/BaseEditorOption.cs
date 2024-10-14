@@ -1,12 +1,14 @@
-﻿using Gameplay.Editing.Options.Data;
+﻿using Game.Gameplay.Editing.Options.Data;
 using UnityEngine;
 
 namespace Game.Gameplay.Editing.Options.Model
 {
     public class BaseEditorOption
     {
-        public EditorOptionData EditorOptionData;
-
+        public string Id => EditorOptionData.Id;
+        
+        protected EditorOptionData EditorOptionData;
+        
         public virtual void OnTileDown(Vector2Int position)
         {
         }

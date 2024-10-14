@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Editors.Options.Core;
+using Common;
 using Common.UI;
 using Core.Navigation;
+using Game.Common.Editors.Options.Core;
 using Game.Gameplay.Editing.Options.Model;
-using Gameplay.Editing.Options;
-using Gameplay.UI;
-using UI;
 using UI.Screens;
 using UnityEngine;
 using Zenject;
 
-namespace Common
+namespace Game.Gameplay.Editing
 {
     public class InGameEditor : IInitializable
     {
@@ -39,7 +36,6 @@ namespace Common
 
             selectedEditorOption = editorOptions.First().Value;
             
-            editorOptionsControllerUI.Init(editorOptions.Values.Select(option => option.EditorOptionData));
             editorOptionsControllerUI.EditorOptionSelected += OnOptionSelected;
             
             var defaultOptionId = editorOptions.First().Key;
@@ -49,7 +45,7 @@ namespace Common
         private void AddEditorOption<T>() where T : BaseEditorOption
         {
             var editorOption = editorOptionFactory.Create<T>();
-            var id = editorOption.EditorOptionData.Id;
+            var id = editorOption.Id;
             
             editorOptions.Add(id, editorOption);
         }

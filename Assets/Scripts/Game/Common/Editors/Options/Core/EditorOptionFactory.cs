@@ -1,7 +1,7 @@
 ﻿using Game.Gameplay.Editing.Options.Model;
 using Zenject;
 
-namespace Common.Editors.Options.Core
+namespace Game.Common.Editors.Options.Core
 {
     public class EditorOptionFactory : IEditorOptionFactory
     {

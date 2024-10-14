@@ -1,7 +1,8 @@
 ﻿using System;
+using Core;
 using UnityEngine;
 
-namespace Core.UI.Controlls.Playing
+namespace Game.Main.UI.Controls.Playing
 {
     public class OptionColorPicker : MonoBehaviour
     {

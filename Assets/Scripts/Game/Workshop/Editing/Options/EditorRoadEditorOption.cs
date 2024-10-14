@@ -1,7 +1,7 @@
 ﻿using Common.Editors.Terrain;
 using Game.Common.Editors.Road;
+using Game.Gameplay.Editing.Options.Data;
 using Game.Gameplay.Editing.Options.Model;
-using Gameplay.Editing.Options.Data;
 using UnityEngine;
 
 namespace LevelEditor.LevelEditor.Options

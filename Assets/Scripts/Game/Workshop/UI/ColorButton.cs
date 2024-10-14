@@ -16,9 +16,8 @@ namespace Game.Workshop.UI
 
         public TeamColor Color { get; private set; }
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             UpdateSprites();
         }
 

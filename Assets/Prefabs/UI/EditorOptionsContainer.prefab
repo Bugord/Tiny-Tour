@@ -89,5 +89,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a05fb7a668f347e2bc3c76e2b7bf0c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileEditorOptionUIPrefab: {fileID: 831168972602160634, guid: 7d2a2d6cc12e7b24ea640bc59bc399a2, type: 3}
+  tileEditorOptionUIPrefab: {fileID: 5772213282512500010, guid: 7d2a2d6cc12e7b24ea640bc59bc399a2, type: 3}
   toggleGroup: {fileID: 2333626385291446547}

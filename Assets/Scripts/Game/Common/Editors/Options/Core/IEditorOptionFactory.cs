@@ -1,6 +1,6 @@
 ﻿using Game.Gameplay.Editing.Options.Model;
 
-namespace Common.Editors.Options.Core
+namespace Game.Common.Editors.Options.Core
 {
     public interface IEditorOptionFactory
     {
