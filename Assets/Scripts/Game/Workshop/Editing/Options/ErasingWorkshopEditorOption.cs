@@ -38,14 +38,7 @@ namespace LevelEditing.LevelEditor.Options
             EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
 
             SetupUI(levelEditorController);
-        }
-
-        private void SetupUI(ILevelEditorController levelEditorController)
-        {
-            editorOptionUI = levelEditorController.AddEditorOptionUI(Id);
-            editorOptionUI.SetVisuals(EraseEditorOptionData.DefaultIcon,
-                EraseEditorOptionData.ActiveBorderSprite,
-                EraseEditorOptionData.InactiveBorderSprite);
+            SetCustomBorders(EraseEditorOptionData.ActiveBorderSprite, EraseEditorOptionData.InactiveBorderSprite);
         }
 
         public override void OnTileDown(Vector2Int position)

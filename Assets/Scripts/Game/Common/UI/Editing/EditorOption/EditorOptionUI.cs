@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -41,7 +40,7 @@ namespace Game.Common.UI.Editing.EditorOption
         {
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
 
-            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected += ColorSelected;
+            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected += OnColorSelected;
             EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected += OnAlternativeSelected;
         }
 
@@ -49,13 +48,23 @@ namespace Game.Common.UI.Editing.EditorOption
         {
             toggle.onValueChanged.RemoveAllListeners();
 
-            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected -= ColorSelected;
+            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected -= OnColorSelected;
             EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected -= OnAlternativeSelected;
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.button == PointerEventData.InputButton.Right) {
+                if (!toggle.isOn) {
+                    toggle.group.SetAllTogglesOff();
+                    
+                    toggle.isOn = true;
+                    toggle.group.NotifyToggleOn(toggle);
+                }
+
+                if (!EditorOptionsConfigurationUI.IsConfigured) {
+                    return;
+                }
                 if (EditorOptionsConfigurationUI.gameObject.activeSelf) {
                     EditorOptionsConfigurationUI.Close();
                 }
@@ -79,13 +88,13 @@ namespace Game.Common.UI.Editing.EditorOption
         public void SetAlternatives(Dictionary<int, Sprite> alternatives)
         {
             this.alternatives = alternatives;
-            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.SetData(alternatives);
+            EditorOptionsConfigurationUI.SetAlternatives(alternatives);
         }
 
         public void SetVisuals(Sprite icon, Sprite activeBorderSprite = null, Sprite inactiveBorderSprite = null)
         {
             Icon.sprite = icon;
-            
+
             if (activeBorderSprite) {
                 activeBorderImage.sprite = activeBorderSprite;
             }
@@ -105,6 +114,15 @@ namespace Game.Common.UI.Editing.EditorOption
             if (isOn) {
                 ToggledOn?.Invoke(Id);
             }
+            else {
+                EditorOptionsConfigurationUI.Close();
+            }
+        }
+
+        private void OnColorSelected(TeamColor color)
+        {
+            ColorSelected?.Invoke(color);
+            EditorOptionsConfigurationUI.Close();
         }
 
         private void OnAlternativeSelected(int alternativeId)
@@ -113,7 +131,7 @@ namespace Game.Common.UI.Editing.EditorOption
             SetVisuals(icon);
 
             EditorOptionsConfigurationUI.Close();
-            
+
             AlternativeSelected?.Invoke(alternativeId);
         }
     }

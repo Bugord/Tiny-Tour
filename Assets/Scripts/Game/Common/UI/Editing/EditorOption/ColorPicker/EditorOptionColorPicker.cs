@@ -16,15 +16,20 @@ namespace Game.Common.UI.Editing.EditorOption.ColorPicker
         private void OnEnable()
         {
             foreach (var colorPickerToggle in colorPickerToggles) {
-                colorPickerToggle.ColorSelected += ColorSelected;
+                colorPickerToggle.ColorSelected += OnColorSelected;
             }
         }
 
         private void OnDisable()
         {
             foreach (var colorPickerToggle in colorPickerToggles) {
-                colorPickerToggle.ColorSelected -= ColorSelected;
+                colorPickerToggle.ColorSelected -= OnColorSelected;
             }
+        }
+
+        private void OnColorSelected(TeamColor color)
+        {
+            ColorSelected?.Invoke(color);
         }
     }
 }

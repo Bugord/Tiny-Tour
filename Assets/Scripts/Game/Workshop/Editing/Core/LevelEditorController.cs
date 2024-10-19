@@ -45,9 +45,9 @@ namespace Game.Workshop.Editing.Core
         public void Initialize()
         {
             AddEditorOption<TerrainWorkshopEditorOption>();
-            // AddEditorOption<CarSpawnPointEditorOption>();
-            // AddEditorOption<GoalSpawnPointEditorOption>();
-            // AddEditorOption<RoadEditorOption>();
+            AddEditorOption<CarSpawnPointEditorOption>();
+            AddEditorOption<GoalSpawnPointEditorOption>();
+            AddEditorOption<RoadEditorOption>();
             erasingOption = AddEditorOption<ErasingWorkshopEditorOption>();
 
             selectedEditorOption = editorOptions.First().Value;

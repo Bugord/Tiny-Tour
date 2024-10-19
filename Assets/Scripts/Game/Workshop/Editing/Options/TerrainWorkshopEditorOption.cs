@@ -15,10 +15,10 @@ namespace LevelEditor.LevelEditor.Options
     public class TerrainWorkshopEditorOption : BaseEditorOption
     {
         private readonly ITerrainLevelEditor terrainEditor;
-        
+
         private EditorOptionUI editorOptionUI;
         private TerrainType selectedTerrainType;
-        
+
         private TerrainEditorOptionData TerrainEditorOptionData => (TerrainEditorOptionData)EditorOptionData;
 
         protected TerrainWorkshopEditorOption(ILevelEditorController levelEditorController,
@@ -28,24 +28,12 @@ namespace LevelEditor.LevelEditor.Options
             EditorOptionData = editorOptionDataLibrary.TerrainEditorOptionData;
 
             SetupUI(levelEditorController);
+            SetAlternatives(TerrainEditorOptionData.AlternativeTerrains);
         }
 
-        private void SetupUI(ILevelEditorController levelEditorController)
+        protected override void OnAlternativeSelected(int alternativeId)
         {
-            editorOptionUI = levelEditorController.AddEditorOptionUI(TerrainEditorOptionData.Id);
-            editorOptionUI.SetAlternatives(
-                TerrainEditorOptionData.AlternativeTerrains.ToDictionary(
-                    alternative => (int)alternative.Key,
-                    alternative => alternative.Value));
-            
-            editorOptionUI.SetVisuals(TerrainEditorOptionData.DefaultIcon);
-            
-            editorOptionUI.AlternativeSelected += OnAlternativeSelected;
-        }
-
-        private void OnAlternativeSelected(int intType)
-        {
-            selectedTerrainType = (TerrainType)intType;
+            selectedTerrainType = (TerrainType)alternativeId;
         }
 
         public override void OnTileDown(Vector2Int position)

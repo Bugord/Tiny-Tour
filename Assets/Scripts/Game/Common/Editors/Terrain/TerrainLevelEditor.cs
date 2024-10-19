@@ -86,7 +86,7 @@ namespace Common.Editors.Terrain
         public void Reset()
         {
             Clear();
-
+            FillWithWater(new RectInt(waterSize.x / -2, waterSize.y / -2, waterSize.x, waterSize.y));
             foreach (var tileData in cachedTerrainTilesData) {
                 SetTile(tileData);
             }

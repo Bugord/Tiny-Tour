@@ -3,6 +3,7 @@ using Core;
 using Game.Common.Editors.Road;
 using Game.Gameplay.Editing.Options.Data;
 using Game.Gameplay.Editing.Options.Model;
+using Game.Workshop.Editing.Core;
 using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
 using Game.Workshop.UI;
@@ -16,24 +17,33 @@ namespace LevelEditing.LevelEditor.Options
     {
         private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
         private readonly IRoadLevelEditor roadLevelEditor;
-        private readonly ColorButton colorButton;
+
+        private TeamColor selectedColor;
 
         public CarSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor, IColorButtonProvider colorButtonProvider)
+            ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor,
+            ILevelEditorController levelEditorController)
         {
             this.spawnPointLevelEditor = spawnPointLevelEditor;
             this.roadLevelEditor = roadLevelEditor;
-            colorButton = colorButtonProvider.ColorButton;
             EditorOptionData = editorOptionDataLibrary.CarSpawnPointEditorOptionData;
+
+            SetupUI(levelEditorController);
+            EditorOptionUI.EnableColorPicker();
+        }
+
+        protected override void OnColorSelected(TeamColor color)
+        {
+            selectedColor = color;
         }
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (spawnPointLevelEditor.HasSpawnPointWithColor(position, colorButton.Color)) {
+            if (spawnPointLevelEditor.HasSpawnPointWithColor(position, selectedColor)) {
                 spawnPointLevelEditor.RotateSpawnPoint(position);
             }
             else if (roadLevelEditor.HasTile(position)) {
-                spawnPointLevelEditor.SetCarSpawnPoint(position, CarType.Regular, colorButton.Color, Direction.Right);
+                spawnPointLevelEditor.SetCarSpawnPoint(position, CarType.Regular, selectedColor, Direction.Right);
             }
         }
     }

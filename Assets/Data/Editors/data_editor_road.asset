@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: data_editor_road
   m_EditorClassIdentifier: 
   <Id>k__BackingField: editor_road
-  <Icon>k__BackingField: {fileID: -396985243, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}
-  <CustomInactiveBackground>k__BackingField: {fileID: 0}
-  <CustomActiveBackground>k__BackingField: {fileID: 0}
+  <DefaultIcon>k__BackingField: {fileID: 152110945, guid: 2ce1cf2e11d8052459ae23db962b9b36, type: 3}

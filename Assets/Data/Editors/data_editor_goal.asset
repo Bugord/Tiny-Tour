@@ -13,19 +13,4 @@ MonoBehaviour:
   m_Name: data_editor_goal
   m_EditorClassIdentifier: 
   <Id>k__BackingField: editor_goal
-  <Icon>k__BackingField: {fileID: -5137620863328370848, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-  <CustomInactiveBackground>k__BackingField: {fileID: 0}
-  <CustomActiveBackground>k__BackingField: {fileID: 0}
-  <ColoredIcons>k__BackingField:
-    _serializedList:
-    - Key: 0
-      Value: {fileID: -5137620863328370848, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-    - Key: 1
-      Value: {fileID: 431246330, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-    - Key: 2
-      Value: {fileID: -8281884291386934870, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-    - Key: 3
-      Value: {fileID: -2044934323489027274, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-    - Key: 4
-      Value: {fileID: -828061789, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
-  <AlternativeOptions>k__BackingField: []
+  <DefaultIcon>k__BackingField: {fileID: -5137620863328370848, guid: 2c2e566562e04e74c8edf30628c8698b, type: 3}
