@@ -6,6 +6,6 @@ namespace Game.Common.Editors.Options.Core
 {
     public interface IEditorOptionUIFactory
     {
-        EditorOptionUI Create(Transform rootTransform, ToggleGroup toggleGroup, string id);
+        EditorOptionUI Create(Transform rootTransform, ToggleGroup toggleGroup);
     }
 }

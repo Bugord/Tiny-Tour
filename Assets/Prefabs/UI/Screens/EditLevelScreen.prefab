@@ -284,7 +284,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <EditorControllerUI>k__BackingField: {fileID: 1165119545566127133}
   <EditorOptionsControllerUI>k__BackingField: {fileID: 810610647307375695}
-  <ColorButton>k__BackingField: {fileID: 0}
 --- !u!1 &8877917335743277199
 GameObject:
   m_ObjectHideFlags: 0

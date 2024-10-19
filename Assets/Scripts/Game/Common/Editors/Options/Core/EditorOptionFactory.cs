@@ -1,4 +1,5 @@
-﻿using Game.Gameplay.Editing.Options.Model;
+﻿using Game.Common.UI.Editing.EditorOption;
+using Game.Gameplay.Editing.Options.Model;
 using Zenject;
 
 namespace Game.Common.Editors.Options.Core
@@ -12,14 +13,9 @@ namespace Game.Common.Editors.Options.Core
             this.diContainer = diContainer;
         }
 
-        public T Create<T>() where T : BaseEditorOption
+        public T Create<T>(EditorOptionUI optionUI) where T : BaseEditorOption
         {
-            return diContainer.Instantiate<T>();
-        }
-
-        public T Create<T>(string id) where T : BaseEditorOption
-        {
-            throw new System.NotImplementedException();
+            return diContainer.Instantiate<T>(new[] { optionUI });
         }
     }
 }

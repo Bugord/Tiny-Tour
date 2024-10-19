@@ -133,8 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95b3dc52c23440f4b06bdf952618debd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <EditorOptionColorPicker>k__BackingField: {fileID: 5831715624888168513}
-  <EditorOptionAlternativePicker>k__BackingField: {fileID: 3308983621104794336}
+  editorOptionColorPicker: {fileID: 5831715624888168513}
+  editorOptionAlternativePicker: {fileID: 3308983621104794336}
 --- !u!114 &6225999510106606586
 MonoBehaviour:
   m_ObjectHideFlags: 0

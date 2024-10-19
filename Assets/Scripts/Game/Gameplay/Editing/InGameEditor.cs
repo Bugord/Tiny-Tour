@@ -1,11 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Common;
-using Core.Navigation;
-using Game.Common.Editors.Options.Core;
-using Game.Common.UI;
+﻿using Common;
+using Game.Common.EditorOptions;
 using Game.Gameplay.Editing.Options.Model;
-using UI.Screens;
 using UnityEngine;
 using Zenject;
 
@@ -14,45 +9,22 @@ namespace Game.Gameplay.Editing
     public class InGameEditor : IInitializable
     {
         private readonly ITilemapInput tilemapInput;
-        private readonly IEditorOptionFactory editorOptionFactory;
-        private readonly Dictionary<string, BaseEditorOption> editorOptions;
-        private readonly EditorOptionsControllerUI editorOptionsControllerUI;
+        private readonly IEditorOptionsController editorOptionsController;
 
-        private BaseEditorOption selectedEditorOption;
+        private BaseEditorOption cachedEditorOption;
 
-        public InGameEditor(ITilemapInput tilemapInput, IEditorOptionFactory editorOptionFactory, INavigationService navigationService)
+        public InGameEditor(ITilemapInput tilemapInput, IEditorOptionsController editorOptionsController)
         {
             this.tilemapInput = tilemapInput;
-            this.editorOptionFactory = editorOptionFactory;
-            editorOptionsControllerUI = navigationService.GetScreen<PlayLevelScreen>().EditorOptionsControllerUI;
-
-            editorOptions = new Dictionary<string, BaseEditorOption>();
+            this.editorOptionsController = editorOptionsController;
         }
 
         public void Initialize()
         {
-            AddEditorOption<RoadEditorOption>();
-            AddEditorOption<ErasingEditorOption>();
+            editorOptionsController.AddOption<RoadEditorOption>();
+            editorOptionsController.AddOption<ErasingEditorOption>();
 
-            selectedEditorOption = editorOptions.First().Value;
-            
-            editorOptionsControllerUI.EditorOptionSelected += OnOptionSelected;
-            
-            var defaultOptionId = editorOptions.First().Key;
-            editorOptionsControllerUI.SelectOption(defaultOptionId);
-        }
-
-        private void AddEditorOption<T>() where T : BaseEditorOption
-        {
-            var editorOption = editorOptionFactory.Create<T>();
-            var id = editorOption.Id;
-            
-            editorOptions.Add(id, editorOption);
-        }
-
-        private void OnOptionSelected(string id)
-        {
-            selectedEditorOption = editorOptions[id];
+            editorOptionsController.SelectOption<RoadEditorOption>();
         }
 
         public void EnableEditing()
@@ -77,34 +49,40 @@ namespace Game.Gameplay.Editing
             tilemapInput.TileAltPressUp -= OnTileAltUp;
         }
 
-        private void OnTileAltUp(Vector2Int tilePos)
-        {
-            selectedEditorOption.OnAltTileUp(tilePos);
-        }
-
         private void OnTileAltDown(Vector2Int tilePos)
         {
-            selectedEditorOption.OnAltTileDown(tilePos);
+            cachedEditorOption = editorOptionsController.SelectedOption;
+            editorOptionsController.SelectOption<ErasingEditorOption>();
+
+            editorOptionsController.SelectedOption.OnAltTileDown(tilePos);
+        }
+
+        private void OnTileAltUp(Vector2Int tilePos)
+        {
+            editorOptionsController.SelectedOption.OnAltTileUp(tilePos);
+
+            editorOptionsController.SelectOption(cachedEditorOption);
+            cachedEditorOption = null;
         }
 
         private void OnTileAltDragged(Vector2Int tilePos)
         {
-            selectedEditorOption.OnAltTileDrag(tilePos);
+            editorOptionsController.SelectedOption.OnAltTileDrag(tilePos);
         }
 
         private void OnTileUp(Vector2Int tilePos)
         {
-            selectedEditorOption.OnTileUp(tilePos);
+            editorOptionsController.SelectedOption.OnTileUp(tilePos);
         }
 
         private void OnTileDown(Vector2Int tilePos)
         {
-            selectedEditorOption.OnTileDown(tilePos);
+            editorOptionsController.SelectedOption.OnTileDown(tilePos);
         }
 
         private void OnTileDragged(Vector2Int tilePos)
         {
-            selectedEditorOption.OnTileDrag(tilePos);
+            editorOptionsController.SelectedOption.OnTileDrag(tilePos);
         }
     }
 }

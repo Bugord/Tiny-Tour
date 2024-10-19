@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiProviderConfig: {fileID: 11400000, guid: f42f6f165bf4182429cb98611e203da2, type: 2}
   navigationConfig: {fileID: 11400000, guid: fd0fb1a7f796e6142ba63954927fc630, type: 2}
+  editorOptionUIPrefab: {fileID: 5772213282512500010, guid: 7d2a2d6cc12e7b24ea640bc59bc399a2, type: 3}

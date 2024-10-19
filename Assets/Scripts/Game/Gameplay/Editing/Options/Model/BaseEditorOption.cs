@@ -1,41 +1,63 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Core;
 using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
-using Game.Workshop.Editing.Core;
 using UnityEngine;
 
 namespace Game.Gameplay.Editing.Options.Model
 {
-    public class BaseEditorOption
+    public abstract class BaseEditorOption
     {
-        public string Id => EditorOptionData.Id;
+        public event Action<BaseEditorOption> Selected;
         
-        protected EditorOptionData EditorOptionData;
-        protected EditorOptionUI EditorOptionUI;
+        protected readonly EditorOptionsConfiguration EditorOptionsConfiguration;
+        protected readonly EditorOptionUI EditorOptionUI;
 
-        protected void SetupUI(ILevelEditorController levelEditorController)
+        private bool isSelected;
+        
+        protected BaseEditorOption(EditorOptionUI editorOptionUI, EditorOptionData editorOptionData)
         {
-            EditorOptionUI = levelEditorController.AddEditorOptionUI(EditorOptionData.Id);
-            EditorOptionUI.SetVisuals(EditorOptionData.DefaultIcon);
+            EditorOptionUI = editorOptionUI;
+            EditorOptionUI.SetIcon(editorOptionData.DefaultIcon);
+            
+            EditorOptionsConfiguration = new EditorOptionsConfiguration(editorOptionUI.EditorOptionsConfigurationUI);
 
-            EditorOptionUI.AlternativeSelected += OnAlternativeSelected;
-            EditorOptionUI.ColorSelected += OnColorSelected;
+            editorOptionUI.LeftClicked += OnLeftClicked;
+            editorOptionUI.RightClicked += OnRightClicked;
+            
+            EditorOptionsConfiguration.ColorSelected += OnColorSelected;
+            EditorOptionsConfiguration.AlternativeSelected += OnAlternativeSelected;
         }
 
-        protected void SetCustomBorders(Sprite activeBorderSprite, Sprite inactiveBorderSprite)
+        public void OnSelected()
         {
-            EditorOptionUI.SetVisuals(EditorOptionData.DefaultIcon, activeBorderSprite, inactiveBorderSprite);
+            isSelected = true;
+            
+            EditorOptionUI.SetToggled(true);
         }
 
-        protected void SetAlternatives<T>(Dictionary<T, Sprite> alternatives) where T : Enum
+        public void OnDeselected()
         {
-            EditorOptionUI.SetAlternatives(
-                alternatives.ToDictionary(
-                    alternative => (int)(object)alternative.Key,
-                    alternative => alternative.Value));
+            isSelected = false;
+            
+            EditorOptionUI.SetToggled(false);
+            EditorOptionsConfiguration.Close();
+        }
+
+        private void OnRightClicked()
+        {
+            if (!isSelected) {
+                Selected?.Invoke(this);
+            }
+            
+            EditorOptionsConfiguration.Toggle();
+        }
+
+        private void OnLeftClicked()
+        {
+            if (!isSelected) {
+                Selected?.Invoke(this);
+            }
         }
 
         protected virtual void OnAlternativeSelected(int alternativeId)

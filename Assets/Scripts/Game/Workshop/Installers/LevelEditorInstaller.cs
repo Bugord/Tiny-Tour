@@ -1,10 +1,9 @@
 ﻿using Common.Road;
+using Game.Common.EditorOptions;
 using Game.Workshop.Editing.Core;
 using Game.Workshop.Level.Core;
 using LevelEditing.EditorState.Core;
 using LevelEditor;
-using LevelEditor.ColorVariants;
-using LevelEditor.Level.Core;
 using UnityEngine;
 using Zenject;
 
@@ -22,11 +21,11 @@ namespace Game.Workshop.Installers
 
             Container.BindInterfacesTo<WorkshopService>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelEditorController>().AsSingle();
-
-            Container.BindInterfacesTo<ColorButtonProvider>().AsSingle();
-
+            
             //todo: move to common installer
             Container.BindInterfacesTo<RoadService>().AsSingle();
+
+            Container.BindInterfacesTo<WorkshopEditorOptionsControllerUIProvider>().AsCached();
         }
     }
 }

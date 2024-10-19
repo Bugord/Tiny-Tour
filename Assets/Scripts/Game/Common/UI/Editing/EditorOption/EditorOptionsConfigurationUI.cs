@@ -1,36 +1,43 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Core;
 using Game.Common.UI.Editing.EditorOption.AlternativePicker;
 using Game.Common.UI.Editing.EditorOption.ColorPicker;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Game.Common.UI.Editing.EditorOption
 {
     public class EditorOptionsConfigurationUI : MonoBehaviour
     {
-        [field: SerializeField]
-        public EditorOptionColorPicker EditorOptionColorPicker { get; private set; }
+        public event Action<TeamColor> ColorSelected;
+        public event Action<int> AlternativeSelected;
 
-        [field: SerializeField]
-        public EditorOptionAlternativePicker EditorOptionAlternativePicker { get; private set; }
+        [SerializeField]
+        private EditorOptionSettingsColorPickerUI editorOptionColorPicker;
 
-        public bool IsConfigured { get; private set; }
+        [SerializeField]
+        private EditorOptionSettingsAlternativePickerUI editorOptionAlternativePicker;
 
-        public void OnDeselect()
+        private void OnEnable()
         {
-            // gameObject.SetActive(false);
+            editorOptionColorPicker.ColorSelected += OnColorSelected;
+            editorOptionAlternativePicker.AlternativeSelected += OnAlternativeSelected;
+        }
+
+        private void OnDisable()
+        {
+            editorOptionColorPicker.ColorSelected -= OnColorSelected;
+            editorOptionAlternativePicker.AlternativeSelected -= OnAlternativeSelected;
         }
 
         public void EnableColorPicker()
         {
-            EditorOptionColorPicker.gameObject.SetActive(true);
-            IsConfigured = true;
+            editorOptionColorPicker.gameObject.SetActive(true);
         }
 
         public void SetAlternatives(Dictionary<int, Sprite> alternatives)
         {
-            EditorOptionAlternativePicker.SetData(alternatives);
-            IsConfigured = true;
+            editorOptionAlternativePicker.SetData(alternatives);
         }
 
         public void Open()
@@ -41,6 +48,16 @@ namespace Game.Common.UI.Editing.EditorOption
         public void Close()
         {
             gameObject.SetActive(false);
+        }
+
+        private void OnColorSelected(TeamColor color)
+        {
+            ColorSelected?.Invoke(color);
+        }
+
+        private void OnAlternativeSelected(int alternativeIndex)
+        {
+            AlternativeSelected?.Invoke(alternativeIndex);
         }
     }
 }

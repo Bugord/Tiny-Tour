@@ -21,11 +21,10 @@ namespace Game.Common.Editors.Options.Core
             this.editorOptionUIPrefab = editorOptionUIPrefab;
         }
 
-        public EditorOptionUI Create(Transform rootTransform, ToggleGroup toggleGroup, string id)
+        public EditorOptionUI Create(Transform rootTransform, ToggleGroup toggleGroup)
         {
             var editorOptionUI = diContainer.InstantiatePrefabForComponent<EditorOptionUI>(editorOptionUIPrefab, rootTransform);
-            editorOptionUI.Init(id, toggleGroup);
-            editorOptionUI.transform.localScale = Vector3.one;
+            editorOptionUI.SetToggleGroup(toggleGroup);
             return editorOptionUI;
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
 {
-    public class EditorOptionAlternativePicker : MonoBehaviour
+    public class EditorOptionSettingsAlternativePickerUI : MonoBehaviour
     {
         public event Action<int> AlternativeSelected;
 

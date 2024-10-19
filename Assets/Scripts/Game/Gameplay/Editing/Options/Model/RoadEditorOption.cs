@@ -1,6 +1,7 @@
 ﻿using Common.Editors.Terrain;
 using Core.LevelEditing;
 using Game.Common.Editors.Road;
+using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
 using Game.Workshop.Editing.Core;
 using UnityEngine;
@@ -14,14 +15,12 @@ namespace Game.Gameplay.Editing.Options.Model
 
         private Vector2Int? previousRoadPosition;
 
-        public RoadEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
-            ITerrainLevelEditor terrainLevelEditor, ILevelEditorController levelEditorController)
+        public RoadEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
+            IRoadLevelEditor roadLevelEditor, ITerrainLevelEditor terrainLevelEditor)
+            : base(editorOptionUI, editorOptionDataLibrary.RoadEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
-            EditorOptionData = editorOptionDataLibrary.RoadEditorOptionData;
-            
-            SetupUI(levelEditorController);
         }
 
         public override void OnTileDown(Vector2Int position)
@@ -36,7 +35,7 @@ namespace Game.Gameplay.Editing.Options.Model
         {
             AddRoadPath(position);
         }
-        
+
         public override void OnAltTileDown(Vector2Int position)
         {
             if (roadLevelEditor.HasTile(position)) {

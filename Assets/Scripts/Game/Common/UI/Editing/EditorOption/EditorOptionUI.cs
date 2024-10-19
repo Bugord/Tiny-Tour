@@ -10,9 +10,8 @@ namespace Game.Common.UI.Editing.EditorOption
     [RequireComponent(typeof(Toggle))]
     public class EditorOptionUI : MonoBehaviour, IPointerClickHandler
     {
-        public event Action<string> ToggledOn;
-        public event Action<TeamColor> ColorSelected;
-        public event Action<int> AlternativeSelected;
+        public event Action LeftClicked;
+        public event Action RightClicked;
 
         [field: SerializeField]
         public EditorOptionsConfigurationUI EditorOptionsConfigurationUI { get; private set; }
@@ -25,114 +24,44 @@ namespace Game.Common.UI.Editing.EditorOption
 
         private Toggle toggle;
         protected Image Icon;
-
-        private Dictionary<int, Sprite> alternatives;
-
-        public string Id { get; protected set; }
-
+        
         private void Awake()
         {
             toggle = GetComponent<Toggle>();
             Icon = toggle.image;
         }
 
-        private void OnEnable()
+        public void SetIcon(Sprite icon)
         {
-            toggle.onValueChanged.AddListener(OnToggleValueChanged);
-
-            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected += OnColorSelected;
-            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected += OnAlternativeSelected;
+            Icon.sprite = icon;
         }
 
-        private void OnDisable()
+        public void SetBorders(Sprite activeBorderSprite, Sprite inactiveBorderSprite)
         {
-            toggle.onValueChanged.RemoveAllListeners();
+            activeBorderImage.sprite = activeBorderSprite;
+            inactiveBorderImage.sprite = inactiveBorderSprite;
+        }
 
-            EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected -= OnColorSelected;
-            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected -= OnAlternativeSelected;
+        public void SetToggled(bool isOn)
+        {
+            toggle.isOn = isOn;
+        }
+
+        public void SetToggleGroup(ToggleGroup toggleGroup)
+        {
+            toggle.group = toggleGroup;
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (eventData.button == PointerEventData.InputButton.Right) {
-                if (!toggle.isOn) {
-                    toggle.group.SetAllTogglesOff();
-                    
-                    toggle.isOn = true;
-                    toggle.group.NotifyToggleOn(toggle);
-                }
-
-                if (!EditorOptionsConfigurationUI.IsConfigured) {
-                    return;
-                }
-                if (EditorOptionsConfigurationUI.gameObject.activeSelf) {
-                    EditorOptionsConfigurationUI.Close();
-                }
-                else {
-                    EditorOptionsConfigurationUI.Open();
-                }
+            switch (eventData.button) {
+                case PointerEventData.InputButton.Left:
+                    LeftClicked?.Invoke();
+                    break;
+                case PointerEventData.InputButton.Right:
+                    RightClicked?.Invoke();
+                    break;
             }
-        }
-
-        public void Init(string id, ToggleGroup toggleGroup)
-        {
-            Id = id;
-            toggle.group = toggleGroup;
-        }
-
-        public void EnableColorPicker()
-        {
-            EditorOptionsConfigurationUI.EnableColorPicker();
-        }
-
-        public void SetAlternatives(Dictionary<int, Sprite> alternatives)
-        {
-            this.alternatives = alternatives;
-            EditorOptionsConfigurationUI.SetAlternatives(alternatives);
-        }
-
-        public void SetVisuals(Sprite icon, Sprite activeBorderSprite = null, Sprite inactiveBorderSprite = null)
-        {
-            Icon.sprite = icon;
-
-            if (activeBorderSprite) {
-                activeBorderImage.sprite = activeBorderSprite;
-            }
-
-            if (inactiveBorderSprite) {
-                inactiveBorderImage.sprite = inactiveBorderSprite;
-            }
-        }
-
-        public void Toggle()
-        {
-            toggle.isOn = true;
-        }
-
-        private void OnToggleValueChanged(bool isOn)
-        {
-            if (isOn) {
-                ToggledOn?.Invoke(Id);
-            }
-            else {
-                EditorOptionsConfigurationUI.Close();
-            }
-        }
-
-        private void OnColorSelected(TeamColor color)
-        {
-            ColorSelected?.Invoke(color);
-            EditorOptionsConfigurationUI.Close();
-        }
-
-        private void OnAlternativeSelected(int alternativeId)
-        {
-            var icon = alternatives[alternativeId];
-            SetVisuals(icon);
-
-            EditorOptionsConfigurationUI.Close();
-
-            AlternativeSelected?.Invoke(alternativeId);
         }
     }
 }

@@ -5,6 +5,5 @@ namespace Game.Workshop.Editing.Core
 {
     public interface ILevelEditorController
     {
-        EditorOptionUI AddEditorOptionUI(string id);
     }
 }

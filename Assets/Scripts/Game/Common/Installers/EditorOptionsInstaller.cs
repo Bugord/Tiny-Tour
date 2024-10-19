@@ -1,5 +1,5 @@
-﻿using Game.Common.Editors.Options.Core;
-using Game.Common.UI.Editing.EditorOption;
+﻿using Game.Common.EditorOptions;
+using Game.Common.Editors.Options.Core;
 using Game.Gameplay.Editing.Options.Data;
 using UnityEngine;
 using Zenject;
@@ -12,13 +12,10 @@ namespace Game.Common.Installers
         [SerializeField]
         private EditorOptionDataLibrary editorOptionDataLibrary;    
         
-        [SerializeField]
-        private EditorOptionUI editorOptionUIPrefab;
-        
         public override void InstallBindings()
         {
+            Container.BindInterfacesTo<EditorOptionsController>().AsSingle();
             Container.BindInterfacesTo<EditorOptionFactory>().AsTransient();
-            Container.BindInterfacesTo<EditorOptionUIFactory>().AsTransient().WithArguments(editorOptionUIPrefab);
             Container.Bind<EditorOptionDataLibrary>().FromInstance(editorOptionDataLibrary);
         }
     }

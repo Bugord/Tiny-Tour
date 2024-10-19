@@ -1,16 +1,13 @@
-﻿using Cars;
-using Core;
+﻿using Core;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
+using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
 using Game.Gameplay.Editing.Options.Model;
 using Game.Workshop.Editing.Core;
-using Game.Workshop.UI;
-using LevelEditing.UI;
-using LevelEditor.ColorVariants;
 using UnityEngine;
 
-namespace LevelEditing.LevelEditor.Options
+namespace Game.Workshop.Editing.Options
 {
     public class GoalSpawnPointEditorOption : BaseEditorOption
     {
@@ -19,16 +16,14 @@ namespace LevelEditing.LevelEditor.Options
 
         private TeamColor selectedColor;
 
-        public GoalSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            IGoalLevelEditor goalLevelEditor, IRoadLevelEditor roadLevelEditor,
-            ILevelEditorController levelEditorController)
+        public GoalSpawnPointEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
+            IGoalLevelEditor goalLevelEditor, IRoadLevelEditor roadLevelEditor)
+            : base(editorOptionUI, editorOptionDataLibrary.GoalPointEditorOptionData)
         {
             this.goalLevelEditor = goalLevelEditor;
             this.roadLevelEditor = roadLevelEditor;
-            EditorOptionData = editorOptionDataLibrary.GoalPointEditorOptionData;
 
-            SetupUI(levelEditorController);
-            EditorOptionUI.EnableColorPicker();
+            EditorOptionsConfiguration.EnableColorPicker();
         }
 
         protected override void OnColorSelected(TeamColor color)

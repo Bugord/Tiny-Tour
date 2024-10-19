@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
@@ -8,10 +7,9 @@ using Game.Gameplay.Editing.Options.Data;
 using Game.Gameplay.Editing.Options.Model;
 using Game.Workshop.Editing.Core;
 using Game.Workshop.Editing.Editors;
-using Game.Workshop.LevelEditor.Editors;
 using UnityEngine;
 
-namespace LevelEditing.LevelEditor.Options
+namespace Game.Workshop.Editing.Options
 {
     public class ErasingWorkshopEditorOption : BaseEditorOption
     {
@@ -23,22 +21,18 @@ namespace LevelEditing.LevelEditor.Options
         private EraseType eraseType;
         private EditorOptionUI editorOptionUI;
 
-        private EraseEditorOptionData EraseEditorOptionData => (EraseEditorOptionData)EditorOptionData;
-
-        public ErasingWorkshopEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            IRoadLevelEditor roadLevelEditor,
-            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor,
-            ISpawnPointLevelEditor spawnPointLevelEditor,
-            ILevelEditorController levelEditorController)
+        public ErasingWorkshopEditorOption(EditorOptionUI editorOptionUI, ISpawnPointLevelEditor spawnPointLevelEditor,
+            EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
+            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor)
+            : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
             this.goalLevelEditor = goalLevelEditor;
             this.spawnPointLevelEditor = spawnPointLevelEditor;
-            EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
 
-            SetupUI(levelEditorController);
-            SetCustomBorders(EraseEditorOptionData.ActiveBorderSprite, EraseEditorOptionData.InactiveBorderSprite);
+            EditorOptionUI.SetBorders(editorOptionDataLibrary.EraseEditorOptionData.ActiveBorderSprite,
+                editorOptionDataLibrary.EraseEditorOptionData.InactiveBorderSprite);
         }
 
         public override void OnTileDown(Vector2Int position)

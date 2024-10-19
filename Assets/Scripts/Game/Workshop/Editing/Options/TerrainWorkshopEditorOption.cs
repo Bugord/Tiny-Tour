@@ -1,16 +1,12 @@
-﻿using System.Linq;
-using Common.Editors.Terrain;
-using Core.Navigation;
+﻿using Common.Editors.Terrain;
 using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
 using Game.Gameplay.Editing.Options.Model;
-using Game.Main.UI.Controls.Playing;
 using Game.Workshop.Editing.Core;
 using Tiles.Ground;
-using UI.Screens;
 using UnityEngine;
 
-namespace LevelEditor.LevelEditor.Options
+namespace Game.Workshop.Editing.Options
 {
     public class TerrainWorkshopEditorOption : BaseEditorOption
     {
@@ -19,16 +15,14 @@ namespace LevelEditor.LevelEditor.Options
         private EditorOptionUI editorOptionUI;
         private TerrainType selectedTerrainType;
 
-        private TerrainEditorOptionData TerrainEditorOptionData => (TerrainEditorOptionData)EditorOptionData;
-
-        protected TerrainWorkshopEditorOption(ILevelEditorController levelEditorController,
-            EditorOptionDataLibrary editorOptionDataLibrary, ITerrainLevelEditor terrainEditor)
+        public TerrainWorkshopEditorOption(EditorOptionUI editorOptionUI, ITerrainLevelEditor terrainEditor,
+            EditorOptionDataLibrary editorOptionDataLibrary)
+            : base(editorOptionUI, editorOptionDataLibrary.TerrainEditorOptionData)
         {
             this.terrainEditor = terrainEditor;
-            EditorOptionData = editorOptionDataLibrary.TerrainEditorOptionData;
 
-            SetupUI(levelEditorController);
-            SetAlternatives(TerrainEditorOptionData.AlternativeTerrains);
+            EditorOptionsConfiguration.SetAlternatives(editorOptionDataLibrary.TerrainEditorOptionData
+                .AlternativeTerrains);
         }
 
         protected override void OnAlternativeSelected(int alternativeId)

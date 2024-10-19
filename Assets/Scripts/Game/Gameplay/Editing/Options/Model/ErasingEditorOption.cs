@@ -1,4 +1,5 @@
 ﻿using Game.Common.Editors.Road;
+using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
 using UnityEngine;
 
@@ -8,10 +9,11 @@ namespace Game.Gameplay.Editing.Options.Model
     {
         private readonly IRoadLevelEditor roadLevelEditor;
 
-        public ErasingEditorOption(EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor)
+        public ErasingEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
+            IRoadLevelEditor roadLevelEditor) 
+            : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
-            EditorOptionData = editorOptionDataLibrary.EraseEditorOptionData;
         }
 
         public override void OnTileDown(Vector2Int position)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Game.Common.UI.Editing.EditorOption.ColorPicker
 {
     [RequireComponent(typeof(ToggleGroup))]
-    public class EditorOptionColorPicker : MonoBehaviour
+    public class EditorOptionSettingsColorPickerUI : MonoBehaviour
     {
         public event Action<TeamColor> ColorSelected;
 
