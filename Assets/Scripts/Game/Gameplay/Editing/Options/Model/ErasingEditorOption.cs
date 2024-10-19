@@ -10,10 +10,13 @@ namespace Game.Gameplay.Editing.Options.Model
         private readonly IRoadLevelEditor roadLevelEditor;
 
         public ErasingEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IRoadLevelEditor roadLevelEditor) 
+            IRoadLevelEditor roadLevelEditor)
             : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
+
+            editorOptionUI.SetBorders(editorOptionDataLibrary.EraseEditorOptionData.ActiveBorderSprite,
+                editorOptionDataLibrary.EraseEditorOptionData.InactiveBorderSprite);
         }
 
         public override void OnTileDown(Vector2Int position)

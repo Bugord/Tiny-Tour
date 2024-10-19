@@ -2,6 +2,7 @@
 using Common.Editors;
 using Common.Editors.Obstacles;
 using Common.Editors.Terrain;
+using Game.Common.EditorOptions;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
 using Game.Gameplay.Editing.Editors;
@@ -21,6 +22,7 @@ namespace Gameplay
             Container.Bind<IRoadLevelEditor>().To<PlayRoadLevelLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
             Container.Bind<IGoalLevelEditor>().To<GoalLevelEditor>().AsSingle();
+            Container.BindInterfacesTo<GameplayEditorOptionsControllerUIProvider>().AsCached();
         }
     }
 }
