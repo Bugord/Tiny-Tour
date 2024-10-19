@@ -1,5 +1,5 @@
 ﻿using System;
-using Common.UI;
+using Game.Common.UI;
 using UnityEngine;
 
 namespace LevelEditing.UI

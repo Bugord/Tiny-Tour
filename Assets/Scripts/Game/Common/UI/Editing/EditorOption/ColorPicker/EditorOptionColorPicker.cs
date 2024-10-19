@@ -1,10 +1,9 @@
 ﻿using System;
 using Core;
-using Game.Common.UI.Editing.EditorOption.ColorPicker;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Game.Common.UI.Editing.EditorOption
+namespace Game.Common.UI.Editing.EditorOption.ColorPicker
 {
     [RequireComponent(typeof(ToggleGroup))]
     public class EditorOptionColorPicker : MonoBehaviour

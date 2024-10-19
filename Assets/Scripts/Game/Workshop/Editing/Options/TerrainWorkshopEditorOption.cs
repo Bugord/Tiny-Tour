@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Common.Editors.Terrain;
-using Common.UI;
 using Core.Navigation;
 using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
@@ -38,6 +37,8 @@ namespace LevelEditor.LevelEditor.Options
                 TerrainEditorOptionData.AlternativeTerrains.ToDictionary(
                     alternative => (int)alternative.Key,
                     alternative => alternative.Value));
+            
+            editorOptionUI.SetVisuals(TerrainEditorOptionData.DefaultIcon);
             
             editorOptionUI.AlternativeSelected += OnAlternativeSelected;
         }

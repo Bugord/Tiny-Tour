@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: data_editor_erase
   m_EditorClassIdentifier: 
   <Id>k__BackingField: editor_erase
-  <DefaultIcon>k__BackingField: {fileID: 0}
+  <DefaultIcon>k__BackingField: {fileID: 8809741975131273797, guid: 50e41474d05497d48a67be2abf1b483e, type: 3}
   <ActiveBorderSprite>k__BackingField: {fileID: 2058487054210382521, guid: 4365cacd50253874982c8264b898516a, type: 3}
   <InactiveBorderSprite>k__BackingField: {fileID: -4656476390833605959, guid: 4365cacd50253874982c8264b898516a, type: 3}

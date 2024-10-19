@@ -1,6 +1,6 @@
 ﻿using System;
-using Common.UI;
 using Core.Navigation;
+using Game.Common.UI;
 using Gameplay.UI;
 using UnityEngine;
 

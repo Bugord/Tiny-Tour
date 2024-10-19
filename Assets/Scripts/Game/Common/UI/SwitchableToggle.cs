@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Common.UI
+namespace Game.Common.UI
 {
     [RequireComponent(typeof(Toggle))]
     public class SwitchableToggle : MonoBehaviour

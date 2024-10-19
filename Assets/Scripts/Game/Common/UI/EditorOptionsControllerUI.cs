@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Core;
 using Core.Logging;
-using Core.Navigation;
-using Game.Common.Editors.Options.Core;
 using Game.Common.UI.Editing.EditorOption;
-using Game.Main.UI.Controls.Playing;
-using LevelEditing.UI;
-using UI.Screens;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using ColorButton = Game.Workshop.UI.ColorButton;
 
-namespace Common.UI
+namespace Game.Common.UI
 {
     public class EditorOptionsControllerUI : MonoBehaviour
     {
@@ -29,7 +23,6 @@ namespace Common.UI
         private ILogger<EditorOptionsControllerUI> logger;
 
         private List<EditorOptionUI> tileEditorOptions;
-        private ColorButton colorButton;
 
         [Inject]
         private void Construct(ILogger<EditorOptionsControllerUI> logger)
@@ -41,26 +34,13 @@ namespace Common.UI
         public EditorOptionUI InstantiateEditorOptionUI(string id)
         {
             var editorOptionUI = Instantiate(tileEditorOptionUIPrefab, transform);
-            editorOptionUI.SetId(id);
-            editorOptionUI.SetToggleGroup(toggleGroup);
+            editorOptionUI.Init(id, toggleGroup);
             tileEditorOptions.Add(editorOptionUI);
 
             editorOptionUI.ToggledOn += OnEditorOptionToggledOn;
 
             return editorOptionUI;
         }
-
-        // public void Init(IEnumerable<EditorOptionData> editorOptionsData)
-        // {
-        //     tileEditorOptions = new List<TileEditorOptionUI>();
-        //     foreach (var editorOptionData in editorOptionsData) {
-        //         var editorOptionUI = Instantiate(tileEditorOptionUIPrefab, transform);
-        //         editorOptionUI.Setup(toggleGroup, editorOptionData);
-        //         tileEditorOptions.Add(editorOptionUI);
-        //     }
-        //
-        //     LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)transform);
-        // }
 
         public void SelectOption(string id)
         {
@@ -72,13 +52,6 @@ namespace Common.UI
 
             editorOption.Toggle();
         }
-
-        // public void SetColor(TeamColor color)
-        // {
-        //     foreach (var tileEditorOption in tileEditorOptions) {
-        //         tileEditorOption.UpdateColor(color);
-        //     }
-        // }
 
         private void OnDestroy()
         {

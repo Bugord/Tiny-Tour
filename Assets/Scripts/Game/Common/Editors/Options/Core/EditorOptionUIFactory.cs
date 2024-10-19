@@ -24,8 +24,7 @@ namespace Game.Common.Editors.Options.Core
         public EditorOptionUI Create(Transform rootTransform, ToggleGroup toggleGroup, string id)
         {
             var editorOptionUI = diContainer.InstantiatePrefabForComponent<EditorOptionUI>(editorOptionUIPrefab, rootTransform);
-            editorOptionUI.SetId(id);
-            editorOptionUI.SetToggleGroup(toggleGroup);
+            editorOptionUI.Init(id, toggleGroup);
             editorOptionUI.transform.localScale = Vector3.one;
             return editorOptionUI;
         }

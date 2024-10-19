@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -26,6 +27,8 @@ namespace Game.Common.UI.Editing.EditorOption
         private Toggle toggle;
         protected Image Icon;
 
+        private Dictionary<int, Sprite> alternatives;
+
         public string Id { get; protected set; }
 
         private void Awake()
@@ -39,7 +42,7 @@ namespace Game.Common.UI.Editing.EditorOption
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
 
             EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected += ColorSelected;
-            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected += AlternativeSelected;
+            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected += OnAlternativeSelected;
         }
 
         private void OnDisable()
@@ -47,25 +50,35 @@ namespace Game.Common.UI.Editing.EditorOption
             toggle.onValueChanged.RemoveAllListeners();
 
             EditorOptionsConfigurationUI.EditorOptionColorPicker.ColorSelected -= ColorSelected;
-            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected -= AlternativeSelected;
+            EditorOptionsConfigurationUI.EditorOptionAlternativePicker.AlternativeSelected -= OnAlternativeSelected;
         }
 
-        public void SetId(string id)
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (eventData.button == PointerEventData.InputButton.Right) {
+                if (EditorOptionsConfigurationUI.gameObject.activeSelf) {
+                    EditorOptionsConfigurationUI.Close();
+                }
+                else {
+                    EditorOptionsConfigurationUI.Open();
+                }
+            }
+        }
+
+        public void Init(string id, ToggleGroup toggleGroup)
         {
             Id = id;
-        }
-
-        public void SetToggleGroup(ToggleGroup toggleGroup)
-        {
             toggle.group = toggleGroup;
         }
 
         public void EnableColorPicker()
         {
+            EditorOptionsConfigurationUI.EnableColorPicker();
         }
 
         public void SetAlternatives(Dictionary<int, Sprite> alternatives)
         {
+            this.alternatives = alternatives;
             EditorOptionsConfigurationUI.EditorOptionAlternativePicker.SetData(alternatives);
         }
 
@@ -94,11 +107,14 @@ namespace Game.Common.UI.Editing.EditorOption
             }
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        private void OnAlternativeSelected(int alternativeId)
         {
-            if (eventData.button == PointerEventData.InputButton.Right) {
-                EditorOptionsConfigurationUI.gameObject.SetActive(!EditorOptionsConfigurationUI.gameObject.activeSelf);
-            }
+            var icon = alternatives[alternativeId];
+            SetVisuals(icon);
+
+            EditorOptionsConfigurationUI.Close();
+            
+            AlternativeSelected?.Invoke(alternativeId);
         }
     }
 }

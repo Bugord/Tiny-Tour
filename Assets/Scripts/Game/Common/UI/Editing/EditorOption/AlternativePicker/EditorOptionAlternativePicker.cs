@@ -18,7 +18,7 @@ namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
             foreach (var alternativeData in alternativesData) {
                 var editorOptionAlternative = Instantiate(editorOptionAlternativePrefab, transform);
                 editorOptionAlternative.SetData(alternativeData.Key, alternativeData.Value);
-                editorOptionAlternative.OptionSelected += AlternativeSelected;
+                editorOptionAlternative.OptionSelected += OnAlternativeSelected;
 
                 editorOptionAlternatives.Add(editorOptionAlternative);
             }
@@ -27,8 +27,13 @@ namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
         private void OnDestroy()
         {
             foreach (var editorOptionAlternative in editorOptionAlternatives) {
-                editorOptionAlternative.OptionSelected -= AlternativeSelected;
+                editorOptionAlternative.OptionSelected -= OnAlternativeSelected;
             }
+        }
+
+        private void OnAlternativeSelected(int selectedAlternative)
+        {
+            AlternativeSelected?.Invoke(selectedAlternative);
         }
     }
 }
