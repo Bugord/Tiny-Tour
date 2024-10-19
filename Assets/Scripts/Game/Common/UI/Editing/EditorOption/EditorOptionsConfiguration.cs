@@ -68,11 +68,15 @@ namespace Game.Common.UI.Editing.EditorOption
 
         private void OnColorSelected(TeamColor color)
         {
+            SelectedColor = color;
+            
             ColorSelected?.Invoke(color);
         }
 
         private void OnAlternativeSelected(int alternativeIndex)
         {
+            SelectedAlternativeIndex = alternativeIndex;
+            
             AlternativeSelected?.Invoke(alternativeIndex);
         }
     }
