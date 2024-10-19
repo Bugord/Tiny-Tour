@@ -15,9 +15,9 @@ namespace Game.Gameplay.Editing.Options.Data
         public TerrainEditorOptionData TerrainEditorOptionData { get; private set; }   
         
         [field: SerializeField]
-        public EditorOptionData CarSpawnPointEditorOptionData { get; private set; }        
+        public CarSpawnPointEditorOptionData CarSpawnPointEditorOptionData { get; private set; }        
         
         [field: SerializeField]
-        public EditorOptionData GoalPointEditorOptionData { get; private set; }
+        public GoalPointEditorOptionData GoalPointEditorOptionData { get; private set; }
     }
 }

@@ -15,5 +15,5 @@ MonoBehaviour:
   <RoadEditorOptionData>k__BackingField: {fileID: 11400000, guid: 592aee5ad0c82914c90fc8ea679b4dcb, type: 2}
   <EraseEditorOptionData>k__BackingField: {fileID: 11400000, guid: 5b4396773fc302e47a98150dce71df00, type: 2}
   <TerrainEditorOptionData>k__BackingField: {fileID: 11400000, guid: fb241c0fe29eae74bae513fbb6b52670, type: 2}
-  <CarSpawnPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: 1ec34e07eda82e94cbd5fe53b7aa2046, type: 2}
-  <GoalPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: 4c7a0e0e861f67949aebb2cdaa0e7ad3, type: 2}
+  <CarSpawnPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: f6f028201bfb64e489b853007f5834e8, type: 2}
+  <GoalPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: fcf8f23224f1ee04aaac249a38d8ca9c, type: 2}

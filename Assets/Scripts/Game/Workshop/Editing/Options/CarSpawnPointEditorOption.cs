@@ -13,6 +13,7 @@ namespace Game.Workshop.Editing.Options
     {
         private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
         private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly CarSpawnPointEditorOptionData carSpawnPointEditorOptionData;
         
         public CarSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
             ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor,
@@ -21,8 +22,15 @@ namespace Game.Workshop.Editing.Options
         {
             this.spawnPointLevelEditor = spawnPointLevelEditor;
             this.roadLevelEditor = roadLevelEditor;
+            carSpawnPointEditorOptionData = editorOptionDataLibrary.CarSpawnPointEditorOptionData;
 
             EditorOptionsConfiguration.EnableColorPicker();
+        }
+
+        protected override void OnColorSelected(TeamColor color)
+        {
+            var sprite = carSpawnPointEditorOptionData.ColoredCarSpawnData[color];
+            EditorOptionUI.SetIcon(sprite);
         }
 
         public override void OnTileDown(Vector2Int position)

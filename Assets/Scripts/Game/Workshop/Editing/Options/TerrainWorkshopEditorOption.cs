@@ -11,33 +11,32 @@ namespace Game.Workshop.Editing.Options
     public class TerrainWorkshopEditorOption : BaseEditorOption
     {
         private readonly ITerrainLevelEditor terrainEditor;
-
-        private EditorOptionUI editorOptionUI;
-        private TerrainType selectedTerrainType;
+        private readonly TerrainEditorOptionData terrainEditorOptionData;
 
         public TerrainWorkshopEditorOption(EditorOptionUI editorOptionUI, ITerrainLevelEditor terrainEditor,
             EditorOptionDataLibrary editorOptionDataLibrary)
             : base(editorOptionUI, editorOptionDataLibrary.TerrainEditorOptionData)
         {
             this.terrainEditor = terrainEditor;
+            terrainEditorOptionData = editorOptionDataLibrary.TerrainEditorOptionData;
 
-            EditorOptionsConfiguration.SetAlternatives(editorOptionDataLibrary.TerrainEditorOptionData
-                .AlternativeTerrains);
+            EditorOptionsConfiguration.SetAlternatives(editorOptionDataLibrary.TerrainEditorOptionData.AlternativeTerrains);
         }
 
         protected override void OnAlternativeSelected(int alternativeId)
         {
-            selectedTerrainType = (TerrainType)alternativeId;
+            var sprite = terrainEditorOptionData.AlternativeTerrains[(TerrainType)alternativeId];
+            EditorOptionUI.SetIcon(sprite);
         }
 
         public override void OnTileDown(Vector2Int position)
         {
-            terrainEditor.SetTerrainTile(position, selectedTerrainType);
+            terrainEditor.SetTerrainTile(position, (TerrainType)EditorOptionsConfiguration.SelectedAlternativeIndex);
         }
 
         public override void OnTileDrag(Vector2Int position)
         {
-            terrainEditor.SetTerrainTile(position, selectedTerrainType);
+            terrainEditor.SetTerrainTile(position, (TerrainType)EditorOptionsConfiguration.SelectedAlternativeIndex);
         }
 
         public override void OnAltTileDown(Vector2Int position)

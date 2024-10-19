@@ -13,28 +13,29 @@ namespace Game.Workshop.Editing.Options
     {
         private readonly IGoalLevelEditor goalLevelEditor;
         private readonly IRoadLevelEditor roadLevelEditor;
-
-        private TeamColor selectedColor;
-
+        private readonly GoalPointEditorOptionData goalPointEditorOptionData;
+        
         public GoalSpawnPointEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
             IGoalLevelEditor goalLevelEditor, IRoadLevelEditor roadLevelEditor)
             : base(editorOptionUI, editorOptionDataLibrary.GoalPointEditorOptionData)
         {
             this.goalLevelEditor = goalLevelEditor;
             this.roadLevelEditor = roadLevelEditor;
+            goalPointEditorOptionData = editorOptionDataLibrary.GoalPointEditorOptionData;
 
             EditorOptionsConfiguration.EnableColorPicker();
         }
 
         protected override void OnColorSelected(TeamColor color)
         {
-            selectedColor = color;
+            var sprite = goalPointEditorOptionData.ColoredGoalPointsIcons[color];
+            EditorOptionUI.SetIcon(sprite);
         }
 
         public override void OnTileDown(Vector2Int position)
         {
             if (roadLevelEditor.HasTile(position)) {
-                goalLevelEditor.SetTile(position, selectedColor);
+                goalLevelEditor.SetTile(position, EditorOptionsConfiguration.SelectedColor);
             }
         }
     }

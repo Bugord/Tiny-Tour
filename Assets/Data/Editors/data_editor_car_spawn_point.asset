@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19646d0eeff54398aa1cfbe725ed779c, type: 3}
+  m_Name: data_editor_car_spawn_point
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: editor_car_spawn_point
+  <DefaultIcon>k__BackingField: {fileID: -506111486317298069, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+  <ColoredCarSpawnData>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: -506111486317298069, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+    - Key: 1
+      Value: {fileID: -638658746198588664, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+    - Key: 2
+      Value: {fileID: 6450630716488719279, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+    - Key: 3
+      Value: {fileID: 913817829763026442, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+    - Key: 4
+      Value: {fileID: 5466010309098566575, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
