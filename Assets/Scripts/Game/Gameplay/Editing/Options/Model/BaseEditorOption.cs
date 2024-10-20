@@ -58,6 +58,9 @@ namespace Game.Gameplay.Editing.Options.Model
             if (!isSelected) {
                 Selected?.Invoke(this);
             }
+            else {
+                EditorOptionsConfiguration.Toggle();
+            }
         }
 
         protected virtual void OnAlternativeSelected(int alternativeId)

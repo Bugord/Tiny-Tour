@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
@@ -16,11 +18,14 @@ namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
         public void SetData(Dictionary<int, Sprite> alternativesData)
         {
             foreach (var alternativeData in alternativesData) {
-                var editorOptionAlternative = Instantiate(editorOptionAlternativePrefab, transform);
-                editorOptionAlternative.SetData(alternativeData.Key, alternativeData.Value);
-                editorOptionAlternative.OptionSelected += OnAlternativeSelected;
+                var existingElement = editorOptionAlternatives.Find(element => element.Id == alternativeData.Key);
+                if (!existingElement) {
+                    existingElement = Instantiate(editorOptionAlternativePrefab, transform);
+                    existingElement.OptionSelected += OnAlternativeSelected;
+                    editorOptionAlternatives.Add(existingElement);
+                }
 
-                editorOptionAlternatives.Add(editorOptionAlternative);
+                existingElement.SetData(alternativeData.Key, alternativeData.Value);
             }
         }
 

@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Common;
 using Core;
-using Cysharp.Threading.Tasks;
 using Level.Data;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Networking;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Level
 {
@@ -93,7 +92,7 @@ namespace Level
 
             levelsData.Add(levelData);
         }
-        
+
         public void SaveLevel(LevelData levelData)
         {
             var existingLevel = levelsData.FirstOrDefault(data => data.levelName == levelData.levelName);
@@ -104,8 +103,10 @@ namespace Level
                 SaveNewLevel(levelData);
             }
 
+#if UNITY_EDITOR
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
+#endif
         }
 
         public LevelData CreateNewLevel(string levelName)

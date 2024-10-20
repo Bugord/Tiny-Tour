@@ -11,12 +11,12 @@ namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
 
         [SerializeField]
         private Button button;
-        
-        private int id;
+
+        public int Id { get; private set; }
 
         public void SetData(int id, Sprite sprite)
         {
-            this.id = id;
+            Id = id;
             button.ButtonSprites = new ButtonSprites {
                 releasedSprite = sprite
             };
@@ -34,7 +34,7 @@ namespace Game.Common.UI.Editing.EditorOption.AlternativePicker
 
         private void OnButtonClickedLeft()
         {
-            OptionSelected?.Invoke(id);
+            OptionSelected?.Invoke(Id);
         }
     }
 }

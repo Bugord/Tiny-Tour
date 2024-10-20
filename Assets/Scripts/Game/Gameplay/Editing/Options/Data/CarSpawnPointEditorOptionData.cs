@@ -1,4 +1,6 @@
-﻿using AYellowpaper.SerializedCollections;
+﻿using System;
+using AYellowpaper.SerializedCollections;
+using Cars;
 using Core;
 using Tiles.Ground;
 using UnityEngine;
@@ -9,6 +11,13 @@ namespace Game.Gameplay.Editing.Options.Data
     public class CarSpawnPointEditorOptionData : EditorOptionData
     {
         [field: SerializeField]
-        public SerializedDictionary<TeamColor, Sprite> ColoredCarSpawnData { get; private set; }
+        public SerializedDictionary<CarType, CarVariants> ColoredCarSpawnData { get; private set; }
+        
+        [Serializable]
+        public class CarVariants
+        {
+            [field: SerializeField]
+            public SerializedDictionary<TeamColor, Sprite> ColoredCarVariants { get; private set; }
+        }
     }
 }

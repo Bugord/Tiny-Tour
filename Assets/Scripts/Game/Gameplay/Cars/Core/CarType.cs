@@ -2,6 +2,8 @@
 {
     public enum CarType
     {
-        Regular
+        Regular,
+        Pickup,
+        CoveredPickup,
     }
 }

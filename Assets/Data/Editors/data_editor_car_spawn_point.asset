@@ -17,12 +17,44 @@ MonoBehaviour:
   <ColoredCarSpawnData>k__BackingField:
     _serializedList:
     - Key: 0
-      Value: {fileID: -506111486317298069, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value:
+        <ColoredCarVariants>k__BackingField:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: -506111486317298069, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 1
+            Value: {fileID: -638658746198588664, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 2
+            Value: {fileID: 6450630716488719279, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 3
+            Value: {fileID: 913817829763026442, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 4
+            Value: {fileID: 5466010309098566575, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
     - Key: 1
-      Value: {fileID: -638658746198588664, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value:
+        <ColoredCarVariants>k__BackingField:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 954873369, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 1
+            Value: {fileID: 1172227214, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 2
+            Value: {fileID: -1307380030, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 3
+            Value: {fileID: 1655545849, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 4
+            Value: {fileID: -1522830202, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
     - Key: 2
-      Value: {fileID: 6450630716488719279, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-    - Key: 3
-      Value: {fileID: 913817829763026442, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
-    - Key: 4
-      Value: {fileID: 5466010309098566575, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+      Value:
+        <ColoredCarVariants>k__BackingField:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 5184170218511643343, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 1
+            Value: {fileID: 4827121729922020282, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 2
+            Value: {fileID: 2877973207223162585, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 3
+            Value: {fileID: 1139082019118081344, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
+          - Key: 4
+            Value: {fileID: -1231688054, guid: b85145e87b2b9f544830041733bfc8ce, type: 3}
