@@ -66,6 +66,7 @@ namespace Editor.CarGeneration
 
             if (shouldSaveToLibrary) {
                 tileLibraryData.SetCarSpawnPointsData(carSpawnPointsData);
+                EditorUtility.SetDirty(tileLibraryData);
             }
 
             AssetDatabase.SaveAssets();

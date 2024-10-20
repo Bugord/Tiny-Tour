@@ -29,10 +29,12 @@ namespace Game.Common.Level.Data
             this.levelName = levelName;
             obstaclesData = Array.Empty<ObstacleTileData>();
             terrainTilesData = Array.Empty<TerrainTileData>();
+            carSpawnData = Array.Empty<CarSpawnData>();
+            obstaclesData = Array.Empty<ObstacleTileData>();
             logisticData = new LogisticData {
                 roadTileData = Array.Empty<RoadTileData>(),
                 goalsData = Array.Empty<GoalData>(),
-                intermediatePointsData = Array.Empty<IntermediatePointData>()
+                intermediatePointsData = Array.Empty<IntermediatePointData>(),
             };
         }
 

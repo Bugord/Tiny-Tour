@@ -176,7 +176,247 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 4953cc766addc2345ad34363691f56f7, type: 2}
     - Key: 4
       Value: {fileID: 11400000, guid: 597d11bf5610cd74d9f4d40c8a9e41aa, type: 2}
-  carSpawnPointTiles: []
+  carSpawnPointTiles:
+  - CarType: 0
+    Color: 0
+    Direction: 0
+    Tile: {fileID: 11400000, guid: c377453a0d0d3e44991da6b1fad66f75, type: 2}
+  - CarType: 0
+    Color: 0
+    Direction: 1
+    Tile: {fileID: 11400000, guid: a4480582f8f33684d86a386fe2846227, type: 2}
+  - CarType: 0
+    Color: 0
+    Direction: 2
+    Tile: {fileID: 11400000, guid: a98793962cbb05747b1a87bc1ae56ea0, type: 2}
+  - CarType: 0
+    Color: 0
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 555829ae725d8c54aa06c86512f62fcf, type: 2}
+  - CarType: 0
+    Color: 1
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 9c416764c3f21dd4c8cb64128771b010, type: 2}
+  - CarType: 0
+    Color: 1
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 8c7d8ac8dcc5c884e8ef9d39580aac6f, type: 2}
+  - CarType: 0
+    Color: 1
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 53204810b8a71e94d918538fa904132b, type: 2}
+  - CarType: 0
+    Color: 1
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 2609818937e173b43bf86fc62843ca45, type: 2}
+  - CarType: 0
+    Color: 2
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 5bdcc52c935d5d9428913042e4ba32d1, type: 2}
+  - CarType: 0
+    Color: 2
+    Direction: 1
+    Tile: {fileID: 11400000, guid: b45853aca0a37d440b4b6e36ca18f422, type: 2}
+  - CarType: 0
+    Color: 2
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 116406fd54bd1c94da07f041d84ea4bf, type: 2}
+  - CarType: 0
+    Color: 2
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 7a3748ee1f787aa4eaaf06df5e0722d6, type: 2}
+  - CarType: 0
+    Color: 3
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 7ada964eb214bd44f9cffbbc49d39eaa, type: 2}
+  - CarType: 0
+    Color: 3
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 9a4bfc197deb9684e843fb03a5a1ea5c, type: 2}
+  - CarType: 0
+    Color: 3
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 7386aca2f6dbcd1439e7a857b5f25051, type: 2}
+  - CarType: 0
+    Color: 3
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 39c5f4f5b38aa2c4e8d052f7be92cf37, type: 2}
+  - CarType: 0
+    Color: 4
+    Direction: 0
+    Tile: {fileID: 11400000, guid: e9ad5dc15b37f7b438f306efb9611c18, type: 2}
+  - CarType: 0
+    Color: 4
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 747983360caf52242b05ce389bf5f6ff, type: 2}
+  - CarType: 0
+    Color: 4
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 66eddcea131814b47ab5021039fa5d56, type: 2}
+  - CarType: 0
+    Color: 4
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 418341e37dfbaa446985bf1cf548b254, type: 2}
+  - CarType: 1
+    Color: 0
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 83757f91ffe8b84408cdc74452bf27d8, type: 2}
+  - CarType: 1
+    Color: 0
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 714735457ac5562409f085ff867c3d8c, type: 2}
+  - CarType: 1
+    Color: 0
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 765bb9a931db1594a953601612c1ace5, type: 2}
+  - CarType: 1
+    Color: 0
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 54d2243c918e74748accddbd6a46aa6b, type: 2}
+  - CarType: 1
+    Color: 1
+    Direction: 0
+    Tile: {fileID: 11400000, guid: b94929d9e7b716e4f88e9a27763c8eb9, type: 2}
+  - CarType: 1
+    Color: 1
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 16da4b298186f1047b0035c586d7cff9, type: 2}
+  - CarType: 1
+    Color: 1
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 09728125eda4ece4389bb4d2bdc1ad96, type: 2}
+  - CarType: 1
+    Color: 1
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 7e7418cc2e337c340b2cdf2036af988d, type: 2}
+  - CarType: 1
+    Color: 2
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 34b3f664b758df6409167a09e423bb84, type: 2}
+  - CarType: 1
+    Color: 2
+    Direction: 1
+    Tile: {fileID: 11400000, guid: afdf7f111af05404cabbc735f3e63391, type: 2}
+  - CarType: 1
+    Color: 2
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 6c3429cf71507854da22c0b8aed024f8, type: 2}
+  - CarType: 1
+    Color: 2
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 430240133aca2184fa0408e52c89c7b7, type: 2}
+  - CarType: 1
+    Color: 3
+    Direction: 0
+    Tile: {fileID: 11400000, guid: d4ae0d9d7bf97a14191bc6aee0129d78, type: 2}
+  - CarType: 1
+    Color: 3
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 1f19ecb7524101246814c38008b1024f, type: 2}
+  - CarType: 1
+    Color: 3
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 7f6530030e94f7c4d93cb845bd153272, type: 2}
+  - CarType: 1
+    Color: 3
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 64384d88dfccfe4488098f8095335eaa, type: 2}
+  - CarType: 1
+    Color: 4
+    Direction: 0
+    Tile: {fileID: 11400000, guid: fa2207a3dd6ee4247a8c5ff13f659ee7, type: 2}
+  - CarType: 1
+    Color: 4
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 867b9258285270f40a2208e1340be047, type: 2}
+  - CarType: 1
+    Color: 4
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 88a02c0e71de09343917c6bbdf7e11e5, type: 2}
+  - CarType: 1
+    Color: 4
+    Direction: 3
+    Tile: {fileID: 11400000, guid: e8ded27939df6124fa9b1f21494a35c0, type: 2}
+  - CarType: 2
+    Color: 0
+    Direction: 0
+    Tile: {fileID: 11400000, guid: c938c57fe66ce9949bd0702081d9ed9f, type: 2}
+  - CarType: 2
+    Color: 0
+    Direction: 1
+    Tile: {fileID: 11400000, guid: d3f83a278f6f64d419e7bab183fe3b3b, type: 2}
+  - CarType: 2
+    Color: 0
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 2d9ab27e3d404b44a8cd51f6b444a18f, type: 2}
+  - CarType: 2
+    Color: 0
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 9aea7979d3e2bdb48882f077b815dcfb, type: 2}
+  - CarType: 2
+    Color: 1
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 8292036680d8bd74fa46204783cbaeac, type: 2}
+  - CarType: 2
+    Color: 1
+    Direction: 1
+    Tile: {fileID: 11400000, guid: c4a807663ebff5946af275c8d36ee0f2, type: 2}
+  - CarType: 2
+    Color: 1
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 166d41cf525e37e468b507d8420eac29, type: 2}
+  - CarType: 2
+    Color: 1
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 60957fa64c66c83418006f62c8661796, type: 2}
+  - CarType: 2
+    Color: 2
+    Direction: 0
+    Tile: {fileID: 11400000, guid: 2bdb9051c13af6247a6f3b30979bf390, type: 2}
+  - CarType: 2
+    Color: 2
+    Direction: 1
+    Tile: {fileID: 11400000, guid: ce9535f5ee5a635499667f34e87c655d, type: 2}
+  - CarType: 2
+    Color: 2
+    Direction: 2
+    Tile: {fileID: 11400000, guid: fa461e3ad8fa8db4d92e2c91029ec809, type: 2}
+  - CarType: 2
+    Color: 2
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 5b5995b2b5116d04ca18c29bf139e857, type: 2}
+  - CarType: 2
+    Color: 3
+    Direction: 0
+    Tile: {fileID: 11400000, guid: e0215ef3dcd0c1347b95af7a88d49937, type: 2}
+  - CarType: 2
+    Color: 3
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 002afc4208ae15243a34d36524893651, type: 2}
+  - CarType: 2
+    Color: 3
+    Direction: 2
+    Tile: {fileID: 11400000, guid: 8e704036311e27b48b32d170e0b61ac5, type: 2}
+  - CarType: 2
+    Color: 3
+    Direction: 3
+    Tile: {fileID: 11400000, guid: a157bc9fa7f35da4eade836bfcc4cd3f, type: 2}
+  - CarType: 2
+    Color: 4
+    Direction: 0
+    Tile: {fileID: 11400000, guid: d9e5671746bb6da4ca9bc603181bbc44, type: 2}
+  - CarType: 2
+    Color: 4
+    Direction: 1
+    Tile: {fileID: 11400000, guid: 2d26a1975f404ef46aa6d7f19576785a, type: 2}
+  - CarType: 2
+    Color: 4
+    Direction: 2
+    Tile: {fileID: 11400000, guid: b3e0f584bd56f814eb9436e159ce81e5, type: 2}
+  - CarType: 2
+    Color: 4
+    Direction: 3
+    Tile: {fileID: 11400000, guid: 18df5bcba13d8ab408d3818cdf7b20f8, type: 2}
   goalTiles:
     _serializedList:
     - Key: 0
