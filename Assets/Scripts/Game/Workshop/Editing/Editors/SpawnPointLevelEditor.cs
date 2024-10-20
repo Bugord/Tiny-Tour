@@ -73,10 +73,10 @@ namespace Game.Workshop.LevelEditor.Editors
             }
         }
 
-        public bool HasSpawnPointWithColor(Vector2Int position, TeamColor color)
+        public bool HasSpawnPoint(Vector2Int position, CarType carType, TeamColor color)
         {
             if (carsSpawnData.TryGetValue(position, out var carSpawnData)) {
-                return carSpawnData.teamColor == color;
+                return carSpawnData.carType == carType && carSpawnData.teamColor == color;
             }
 
             return false;
@@ -143,7 +143,7 @@ namespace Game.Workshop.LevelEditor.Editors
 
         private void SetTilemapTile(CarSpawnData carSpawnData)
         {
-            var tile = tileLibrary.GetSpawnPointTile(CarType.Regular, carSpawnData.teamColor, carSpawnData.direction);
+            var tile = tileLibrary.GetSpawnPointTile(carSpawnData.carType, carSpawnData.teamColor, carSpawnData.direction);
             logisticTilemap.SetTile(GetTilePosition(carSpawnData.position), tile);
         }
     }

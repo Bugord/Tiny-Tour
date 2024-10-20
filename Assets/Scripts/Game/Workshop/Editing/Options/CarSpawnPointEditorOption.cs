@@ -45,7 +45,7 @@ namespace Game.Workshop.Editing.Options
             var selectedColor = EditorOptionsConfiguration.SelectedColor;
             var mappedAlternatives = carSpawnPointEditorOptionData.ColoredCarSpawnData
                 .ToDictionary(data => data.Key, data => data.Value.ColoredCarVariants[selectedColor]);
-            
+
             EditorOptionsConfiguration.SetAlternatives(mappedAlternatives);
         }
 
@@ -60,12 +60,14 @@ namespace Game.Workshop.Editing.Options
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (spawnPointLevelEditor.HasSpawnPointWithColor(position, EditorOptionsConfiguration.SelectedColor)) {
+            var color = EditorOptionsConfiguration.SelectedColor;
+            var carType = (CarType)EditorOptionsConfiguration.SelectedAlternativeIndex;
+
+            if (spawnPointLevelEditor.HasSpawnPoint(position, carType, color)) {
                 spawnPointLevelEditor.RotateSpawnPoint(position);
             }
             else if (roadLevelEditor.HasTile(position)) {
-                spawnPointLevelEditor.SetCarSpawnPoint(position, CarType.Regular,
-                    EditorOptionsConfiguration.SelectedColor, Direction.Right);
+                spawnPointLevelEditor.SetCarSpawnPoint(position, carType, color, Direction.Right);
             }
         }
     }

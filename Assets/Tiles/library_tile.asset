@@ -79,64 +79,68 @@ MonoBehaviour:
     _serializedList:
     - Key: 0
       Value:
-        directionTiles:
+        coloredVariants:
           _serializedList:
           - Key: 0
-            Value: {fileID: 11400000, guid: 1fc681885951f144581878416565565e, type: 2}
+            Value:
+              directionTiles:
+                _serializedList:
+                - Key: 0
+                  Value: {fileID: 11400000, guid: 1fc681885951f144581878416565565e, type: 2}
+                - Key: 1
+                  Value: {fileID: 11400000, guid: e5b04047decc10042b8e58190ddef769, type: 2}
+                - Key: 2
+                  Value: {fileID: 11400000, guid: 71a65e230a553664a8222ab108885559, type: 2}
+                - Key: 3
+                  Value: {fileID: 11400000, guid: 4d1ba3b6a1abe024ea72b9605bf9fdeb, type: 2}
           - Key: 1
-            Value: {fileID: 11400000, guid: e5b04047decc10042b8e58190ddef769, type: 2}
+            Value:
+              directionTiles:
+                _serializedList:
+                - Key: 0
+                  Value: {fileID: 11400000, guid: 9dfb85cbac7f72340959fd5269b37e88, type: 2}
+                - Key: 1
+                  Value: {fileID: 11400000, guid: f6774dad5a6e7bd4aa7c3627448907db, type: 2}
+                - Key: 2
+                  Value: {fileID: 11400000, guid: 8e552b6b0b6104f498a1f5d6bf3798b5, type: 2}
+                - Key: 3
+                  Value: {fileID: 11400000, guid: e3ff7dadb53ff314fa60d514d9954f39, type: 2}
           - Key: 2
-            Value: {fileID: 11400000, guid: 71a65e230a553664a8222ab108885559, type: 2}
+            Value:
+              directionTiles:
+                _serializedList:
+                - Key: 0
+                  Value: {fileID: 11400000, guid: fb90e54d5b931b04489bbe18de3e022d, type: 2}
+                - Key: 1
+                  Value: {fileID: 11400000, guid: ed3420ce6f4cd324eb66945d5327bf09, type: 2}
+                - Key: 2
+                  Value: {fileID: 11400000, guid: 6a8bf442823af4349bcd275907d57053, type: 2}
+                - Key: 3
+                  Value: {fileID: 11400000, guid: 2ae885e839029cc4ab96a454e8145a83, type: 2}
           - Key: 3
-            Value: {fileID: 11400000, guid: 4d1ba3b6a1abe024ea72b9605bf9fdeb, type: 2}
-    - Key: 1
-      Value:
-        directionTiles:
-          _serializedList:
-          - Key: 0
-            Value: {fileID: 11400000, guid: 9dfb85cbac7f72340959fd5269b37e88, type: 2}
-          - Key: 1
-            Value: {fileID: 11400000, guid: f6774dad5a6e7bd4aa7c3627448907db, type: 2}
-          - Key: 2
-            Value: {fileID: 11400000, guid: 8e552b6b0b6104f498a1f5d6bf3798b5, type: 2}
-          - Key: 3
-            Value: {fileID: 11400000, guid: e3ff7dadb53ff314fa60d514d9954f39, type: 2}
-    - Key: 2
-      Value:
-        directionTiles:
-          _serializedList:
-          - Key: 0
-            Value: {fileID: 11400000, guid: fb90e54d5b931b04489bbe18de3e022d, type: 2}
-          - Key: 1
-            Value: {fileID: 11400000, guid: ed3420ce6f4cd324eb66945d5327bf09, type: 2}
-          - Key: 2
-            Value: {fileID: 11400000, guid: 6a8bf442823af4349bcd275907d57053, type: 2}
-          - Key: 3
-            Value: {fileID: 11400000, guid: 2ae885e839029cc4ab96a454e8145a83, type: 2}
-    - Key: 3
-      Value:
-        directionTiles:
-          _serializedList:
-          - Key: 0
-            Value: {fileID: 11400000, guid: c82ce84c0924ec348b8435cd298d2a03, type: 2}
-          - Key: 1
-            Value: {fileID: 11400000, guid: 60f1fd45f049c92458f4556bd936a35d, type: 2}
-          - Key: 2
-            Value: {fileID: 11400000, guid: a9eac3ce37cfaf14881c8a72c8a5b8d1, type: 2}
-          - Key: 3
-            Value: {fileID: 11400000, guid: d98e45b0fe40cfe4f9a3e79fdc31adaf, type: 2}
-    - Key: 4
-      Value:
-        directionTiles:
-          _serializedList:
-          - Key: 0
-            Value: {fileID: 11400000, guid: 107cb72e7d671d44eaf1e217efca2277, type: 2}
-          - Key: 1
-            Value: {fileID: 11400000, guid: e417fba716e69f84c94dd25a644a6534, type: 2}
-          - Key: 2
-            Value: {fileID: 11400000, guid: 4806efa5fa23cf64089911383b590f6f, type: 2}
-          - Key: 3
-            Value: {fileID: 11400000, guid: 5732f77b13634684ba2e951a4c5ef28f, type: 2}
+            Value:
+              directionTiles:
+                _serializedList:
+                - Key: 0
+                  Value: {fileID: 11400000, guid: c82ce84c0924ec348b8435cd298d2a03, type: 2}
+                - Key: 1
+                  Value: {fileID: 11400000, guid: 60f1fd45f049c92458f4556bd936a35d, type: 2}
+                - Key: 2
+                  Value: {fileID: 11400000, guid: a9eac3ce37cfaf14881c8a72c8a5b8d1, type: 2}
+                - Key: 3
+                  Value: {fileID: 11400000, guid: d98e45b0fe40cfe4f9a3e79fdc31adaf, type: 2}
+          - Key: 4
+            Value:
+              directionTiles:
+                _serializedList:
+                - Key: 0
+                  Value: {fileID: 11400000, guid: 107cb72e7d671d44eaf1e217efca2277, type: 2}
+                - Key: 1
+                  Value: {fileID: 11400000, guid: e417fba716e69f84c94dd25a644a6534, type: 2}
+                - Key: 2
+                  Value: {fileID: 11400000, guid: 4806efa5fa23cf64089911383b590f6f, type: 2}
+                - Key: 3
+                  Value: {fileID: 11400000, guid: 5732f77b13634684ba2e951a4c5ef28f, type: 2}
   goalTiles:
     _serializedList:
     - Key: 0

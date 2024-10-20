@@ -1,5 +1,4 @@
-﻿using AYellowpaper.SerializedCollections;
-using Core;
+﻿using Game.Common.Cars.Data;
 using UnityEngine;
 
 namespace Cars
@@ -8,7 +7,7 @@ namespace Cars
     public class CarData : ScriptableObject
     {
         public CarType carType;
-        public SerializedDictionary<TeamColor, CarVisualData> visualsData;
+        public CarColorData colorData;
         public float speed;
     }
 }

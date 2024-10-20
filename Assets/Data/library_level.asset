@@ -250,7 +250,7 @@ MonoBehaviour:
     obstaclesData: []
     carSpawnData:
     - position: {x: -5, y: 2}
-      carType: 0
+      carType: 2
       teamColor: 4
       direction: 3
     - position: {x: -5, y: -4}

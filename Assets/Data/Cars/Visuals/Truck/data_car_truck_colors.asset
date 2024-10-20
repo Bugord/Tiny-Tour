@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d08de2207ba4b1ead6ab79b0035d462, type: 3}
+  m_Name: data_car_truck_colors
+  m_EditorClassIdentifier: 
+  ColorData:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 11400000, guid: 528b72382cb55724097f45f6aa20ea3a, type: 2}
+    - Key: 1
+      Value: {fileID: 11400000, guid: 7ab59d96fa2be7749870853b12e7deb3, type: 2}
+    - Key: 2
+      Value: {fileID: 11400000, guid: f8112b11cad8e2e4ab93579fa83687e5, type: 2}
+    - Key: 3
+      Value: {fileID: 11400000, guid: 2f27ee797e5cc19448b4eccfb75c0813, type: 2}
+    - Key: 4
+      Value: {fileID: 11400000, guid: 371051ca8eedf6b429cec703d2437d93, type: 2}

@@ -95,7 +95,7 @@ namespace Cars
 
         private void UpdateSprite(Direction direction = Direction.Down)
         {
-            spriteRenderer.sprite = carData.visualsData[TeamColor].directionSprites[direction];
+            spriteRenderer.sprite = carData.colorData.ColorData[TeamColor].DirectionData[direction];
         }
 
         private void Finish()

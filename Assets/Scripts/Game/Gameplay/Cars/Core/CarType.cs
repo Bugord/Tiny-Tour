@@ -4,6 +4,6 @@
     {
         Regular,
         Pickup,
-        CoveredPickup,
+        Truck,
     }
 }

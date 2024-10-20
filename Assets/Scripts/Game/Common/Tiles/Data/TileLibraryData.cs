@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Cars;
 using Core;
+using Game.Common.Tiles.Data;
 using Level;
 using Tiles.Ground;
 using Tiles.Logistic;
@@ -36,9 +37,9 @@ namespace Tiles
 
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> intermediatePointTiles;
-
+        
         [SerializeField]
-        private SerializedDictionary<TeamColor, CarDirectionTiles> carSpawnPointTile;
+        private List<CarSpawnPointData> carSpawnPointTiles;
 
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> goalTiles;
@@ -46,6 +47,11 @@ namespace Tiles
         private Dictionary<TeamColor, BaseLogisticTile> spawnPointTiles;
 
         private Dictionary<ConnectionDirection, RoadTile> roadTiles;
+
+        public void SetCarSpawnPointsData(List<CarSpawnPointData> carSpawnPointsData)
+        {
+            carSpawnPointTiles = carSpawnPointsData;
+        }
 
         public RoadTile GetRoadTile(ConnectionDirection connectionDirection)
         {
@@ -69,9 +75,9 @@ namespace Tiles
             return intermediatePointTiles[teamColor];
         }
 
-        public Tile GetSpawnPointTile(CarType carType, TeamColor teamColor, Direction direction)
+        public Tile GetSpawnPointTile(CarType carType, TeamColor color, Direction direction)
         {
-            return carSpawnPointTile[teamColor].directionTiles[direction];
+            return carSpawnPointTiles.Find(data => data.CarType == carType && data.Color == color && data.Direction == direction).Tile;
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)
@@ -99,13 +105,6 @@ namespace Tiles
         public Tile[] GetObstacleTiles()
         {
             return obstacleTiles.ToArray();
-        }
-        
-        [Serializable]
-        public class CarDirectionTiles
-        {
-            [SerializedDictionary]
-            public SerializedDictionary<Direction, Tile> directionTiles;
         }
     }
 }
