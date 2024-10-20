@@ -1,6 +1,6 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using Level.Data;
+using Game.Common.Level.Data;
 using Zenject;
 
 namespace Level

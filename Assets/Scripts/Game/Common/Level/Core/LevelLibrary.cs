@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Core;
-using Level.Data;
+using Game.Common.Level.Data;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;

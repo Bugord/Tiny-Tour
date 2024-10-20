@@ -1,5 +1,6 @@
 ﻿using AYellowpaper.SerializedCollections;
 using Cars;
+using Game.Common.Cars.Core;
 using UnityEngine;
 
 namespace Game.Common.Cars.Data

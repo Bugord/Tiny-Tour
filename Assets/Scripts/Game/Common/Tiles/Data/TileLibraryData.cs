@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
 using Cars;
 using Core;
+using Game.Common.Cars.Core;
+using Game.Common.Obstacles;
 using Game.Common.Tiles.Data;
 using Level;
 using Tiles.Ground;
@@ -33,11 +35,11 @@ namespace Tiles
         private TargetTile targetTile;
 
         [SerializeField]
-        private List<Tile> obstacleTiles;
+        private SerializedDictionary<ObstacleType, ObstacleTileVisualData> obstacleTiles;
 
         [SerializeField]
         private SerializedDictionary<TeamColor, Tile> intermediatePointTiles;
-        
+
         [SerializeField]
         private List<CarSpawnPointData> carSpawnPointTiles;
 
@@ -77,7 +79,8 @@ namespace Tiles
 
         public Tile GetSpawnPointTile(CarType carType, TeamColor color, Direction direction)
         {
-            return carSpawnPointTiles.Find(data => data.CarType == carType && data.Color == color && data.Direction == direction).Tile;
+            return carSpawnPointTiles
+                .Find(data => data.CarType == carType && data.Color == color && data.Direction == direction).Tile;
         }
 
         private void ConfigureRoadObjects(RoadTile roadTile)
@@ -92,9 +95,12 @@ namespace Tiles
             }
         }
 
-        public Tile GetObstacleTile(int id)
+        public Tile GetObstacleTile(TeamColor color, ObstacleType obstacleType)
         {
-            return obstacleTiles[id];
+            var obstacleTileVisualData = obstacleTiles[obstacleType];
+            return obstacleTileVisualData.obstacleTiles.ContainsKey(color)
+                ? obstacleTileVisualData.obstacleTiles[color]
+                : obstacleTileVisualData.defaultTile;
         }
 
         public TileBase GetGoalTile(TeamColor teamColor)
@@ -102,9 +108,11 @@ namespace Tiles
             return goalTiles[teamColor];
         }
 
-        public Tile[] GetObstacleTiles()
+        [Serializable]
+        public struct ObstacleTileVisualData
         {
-            return obstacleTiles.ToArray();
+            public Tile defaultTile;
+            public SerializedDictionary<TeamColor, Tile> obstacleTiles;
         }
     }
 }

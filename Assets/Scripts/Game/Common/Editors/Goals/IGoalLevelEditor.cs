@@ -1,6 +1,6 @@
 ﻿using Core;
 using Core.LevelEditing;
-using Level.Data;
+using Game.Common.Level.Data;
 using UnityEngine;
 
 namespace Game.Common.Editors.Goals

@@ -1,6 +1,6 @@
 ﻿using System;
 using Core.Navigation;
-using Level.Data;
+using Game.Common.Level.Data;
 using UnityEngine;
 
 namespace UI.Screens

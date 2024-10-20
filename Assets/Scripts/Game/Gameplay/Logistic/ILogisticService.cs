@@ -1,6 +1,5 @@
 ﻿using Common.Editors;
 using Core;
-using Level.Data;
 using UnityEngine;
 
 namespace Gameplay.Logistic

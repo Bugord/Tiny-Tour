@@ -1,7 +1,7 @@
 ﻿using System;
-using Game.Common.Level.Data;
+using Level;
 
-namespace Level.Data
+namespace Game.Common.Level.Data
 {
     [Serializable]
     public class LevelData

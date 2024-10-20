@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Level.Data;
+using Game.Common.Level.Data;
 
 namespace Level
 {

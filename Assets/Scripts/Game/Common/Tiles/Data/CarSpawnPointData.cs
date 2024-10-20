@@ -1,6 +1,7 @@
 ﻿using System;
 using Cars;
 using Core;
+using Game.Common.Cars.Core;
 using UnityEngine.Tilemaps;
 
 namespace Game.Common.Tiles.Data

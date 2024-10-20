@@ -26,6 +26,7 @@ namespace Game.Workshop.Editing.Core
             editorOptionsController.AddOption<CarSpawnPointEditorOption>();
             editorOptionsController.AddOption<GoalSpawnPointEditorOption>();
             editorOptionsController.AddOption<RoadEditorOption>();
+            editorOptionsController.AddOption<ObstacleEditorOption>();
             editorOptionsController.AddOption<ErasingWorkshopEditorOption>();
 
             editorOptionsController.SelectOption<TerrainWorkshopEditorOption>();

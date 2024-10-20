@@ -17,3 +17,4 @@ MonoBehaviour:
   <TerrainEditorOptionData>k__BackingField: {fileID: 11400000, guid: fb241c0fe29eae74bae513fbb6b52670, type: 2}
   <CarSpawnPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: f6f028201bfb64e489b853007f5834e8, type: 2}
   <GoalPointEditorOptionData>k__BackingField: {fileID: 11400000, guid: fcf8f23224f1ee04aaac249a38d8ca9c, type: 2}
+  <ObstacleEditorOptionData>k__BackingField: {fileID: 11400000, guid: e41da4aae8e30fd43a6e0ad9ad2b45af, type: 2}

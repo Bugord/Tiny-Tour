@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Level.Data;
+using Game.Common.Level.Data;
 using UnityEngine;
 
 namespace UI

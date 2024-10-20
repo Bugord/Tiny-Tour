@@ -1,9 +1,9 @@
 ﻿using Common.Editors;
 using Common.Editors.Obstacles;
 using Common.Level.Core;
+using Game.Common.Level.Data;
 using Gameplay.Cars;
 using Gameplay.Logistic;
-using Level.Data;
 using UnityEngine;
 
 namespace Gameplay
@@ -33,7 +33,7 @@ namespace Gameplay
             
             terrainService.LoadTerrain(levelData.terrainTilesData);
             roadService.LoadRoad(levelData.logisticData.roadTileData);
-            obstaclesEditor.LoadObstacles(levelData.obstaclesData);
+            obstaclesEditor.Load(levelData.obstaclesData);
             logisticService.LoadLogistic(levelData.logisticData);
             carsService.SpawnCars(levelData.carSpawnData);
         }

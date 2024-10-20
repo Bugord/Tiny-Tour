@@ -1,4 +1,5 @@
 ﻿using System;
+using Common.Editors.Obstacles;
 using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
@@ -15,6 +16,7 @@ namespace Game.Workshop.Editing.Options
     {
         private readonly ITerrainLevelEditor terrainLevelEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
+        private readonly IObstaclesEditor obstaclesEditor;
         private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
         private readonly IRoadLevelEditor roadLevelEditor;
 
@@ -23,12 +25,13 @@ namespace Game.Workshop.Editing.Options
 
         public ErasingWorkshopEditorOption(EditorOptionUI editorOptionUI, ISpawnPointLevelEditor spawnPointLevelEditor,
             EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
-            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor)
+            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
             this.goalLevelEditor = goalLevelEditor;
+            this.obstaclesEditor = obstaclesEditor;
             this.spawnPointLevelEditor = spawnPointLevelEditor;
 
             EditorOptionUI.SetBorders(editorOptionDataLibrary.EraseEditorOptionData.ActiveBorderSprite,
@@ -59,7 +62,7 @@ namespace Game.Workshop.Editing.Options
 
         private void SelectEraseType(Vector2Int position)
         {
-            eraseType = EraseType.None;
+            eraseType = EraseType.Terrain;
 
             if (goalLevelEditor.HasTile(position)) {
                 eraseType = EraseType.Goal;
@@ -74,6 +77,11 @@ namespace Game.Workshop.Editing.Options
             if (roadLevelEditor.HasTile(position)) {
                 eraseType = EraseType.Road;
                 return;
+            }  
+            
+            if (obstaclesEditor.HasTile(position)) {
+                eraseType = EraseType.Obstacles;
+                return;
             }
 
             if (terrainLevelEditor.HasTile(position)) {
@@ -86,6 +94,9 @@ namespace Game.Workshop.Editing.Options
             switch (eraseType) {
                 case EraseType.Goal:
                     goalLevelEditor.EraseTile(position);
+                    break;       
+                case EraseType.Obstacles:
+                    obstaclesEditor.EraseTile(position);
                     break;
                 case EraseType.SpawnPoint:
                     spawnPointLevelEditor.EraseTile(position);
@@ -99,6 +110,7 @@ namespace Game.Workshop.Editing.Options
                     terrainLevelEditor.EraseTile(position);
                     roadLevelEditor.EraseTile(position);
                     spawnPointLevelEditor.EraseTile(position);
+                    obstaclesEditor.EraseTile(position);
                     break;
                 case EraseType.None:
                     terrainLevelEditor.EraseTile(position);
@@ -114,6 +126,7 @@ namespace Game.Workshop.Editing.Options
             Terrain,
             Road,
             SpawnPoint,
+            Obstacles,
             Goal
         }
     }

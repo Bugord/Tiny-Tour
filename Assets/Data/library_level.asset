@@ -247,7 +247,22 @@ MonoBehaviour:
       intermediatePointsData:
       - pos: {x: 0, y: 0, z: 0}
         teamColor: 4
-    obstaclesData: []
+    obstaclesData:
+    - position: {x: -3, y: -1}
+      color: 0
+      obstacleType: 10
+    - position: {x: -3, y: -2}
+      color: 0
+      obstacleType: 10
+    - position: {x: 0, y: 3}
+      color: 2
+      obstacleType: 2
+    - position: {x: -1, y: 3}
+      color: 2
+      obstacleType: 2
+    - position: {x: -1, y: 0}
+      color: 2
+      obstacleType: 3
     carSpawnData:
     - position: {x: -5, y: 2}
       carType: 2

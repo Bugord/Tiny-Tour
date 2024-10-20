@@ -2,6 +2,7 @@
 using Cars;
 using Core;
 using Core.LevelEditing;
+using Game.Common.Cars.Core;
 
 namespace Game.Common.Level.Data
 {

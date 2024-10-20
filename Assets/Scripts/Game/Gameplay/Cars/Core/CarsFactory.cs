@@ -1,5 +1,6 @@
 ﻿using Cars;
 using Core;
+using Game.Common.Cars.Core;
 using Unity.Mathematics;
 using UnityEngine;
 using Zenject;

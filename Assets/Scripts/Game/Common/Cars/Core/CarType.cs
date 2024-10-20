@@ -1,4 +1,4 @@
-﻿namespace Cars
+﻿namespace Game.Common.Cars.Core
 {
     public enum CarType
     {

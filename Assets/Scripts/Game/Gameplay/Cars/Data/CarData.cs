@@ -1,4 +1,5 @@
-﻿using Game.Common.Cars.Data;
+﻿using Game.Common.Cars.Core;
+using Game.Common.Cars.Data;
 using UnityEngine;
 
 namespace Cars

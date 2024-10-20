@@ -38,13 +38,8 @@ namespace Common.Editors.Terrain
 
         public void SetTile(TerrainTileData tileData)
         {
-            var newTerrainTileData = new TerrainTileData {
-                position = tileData.position,
-                terrainType = tileData.terrainType
-            };
-
-            terrainTilesData[newTerrainTileData.position] = newTerrainTileData;
-            SetTilemapTile(newTerrainTileData);
+            terrainTilesData[tileData.position] = tileData;
+            SetTilemapTile(tileData);
         }
 
         public void EraseTile(Vector2Int position)
@@ -68,7 +63,7 @@ namespace Common.Editors.Terrain
             cachedTerrainTilesData = tilesData;
 
             foreach (var tileData in tilesData) {
-                SetTile(tileData);
+                SetTerrainTile(tileData.position, tileData.terrainType);
             }
         }
 
@@ -88,7 +83,7 @@ namespace Common.Editors.Terrain
             Clear();
             FillWithWater(new RectInt(waterSize.x / -2, waterSize.y / -2, waterSize.x, waterSize.y));
             foreach (var tileData in cachedTerrainTilesData) {
-                SetTile(tileData);
+                SetTerrainTile(tileData.position, tileData.terrainType);
             }
         }
 

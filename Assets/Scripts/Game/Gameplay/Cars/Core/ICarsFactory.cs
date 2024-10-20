@@ -1,5 +1,6 @@
 ﻿using Cars;
 using Core;
+using Game.Common.Cars.Core;
 using UnityEngine;
 
 namespace Gameplay.Cars

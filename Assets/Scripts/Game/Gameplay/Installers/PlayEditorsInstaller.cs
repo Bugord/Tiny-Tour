@@ -17,11 +17,10 @@ namespace Gameplay
         public override void InstallBindings()
         {
             Container.Bind<ITerrainService>().To<TerrainService>().AsSingle();
-            Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
-            
             Container.Bind<IRoadLevelEditor>().To<PlayRoadLevelLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
             Container.Bind<IGoalLevelEditor>().To<GoalLevelEditor>().AsSingle();
+            Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
             Container.BindInterfacesTo<GameplayEditorOptionsControllerUIProvider>().AsCached();
         }
     }

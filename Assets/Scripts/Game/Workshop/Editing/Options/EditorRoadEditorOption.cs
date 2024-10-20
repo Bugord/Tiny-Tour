@@ -1,4 +1,5 @@
-﻿using Common.Editors.Terrain;
+﻿using Common.Editors.Obstacles;
+using Common.Editors.Terrain;
 using Game.Common.Editors.Road;
 using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
@@ -11,15 +12,17 @@ namespace Game.Workshop.Editing.Options
     {
         private readonly IRoadLevelEditor roadLevelEditor;
         private readonly ITerrainLevelEditor terrainLevelEditor;
+        private readonly IObstaclesEditor obstaclesEditor;
 
         private Vector2Int? previousRoadPosition;
 
         public EditorRoadEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IRoadLevelEditor roadLevelEditor, ITerrainLevelEditor terrainLevelEditor)
+            IRoadLevelEditor roadLevelEditor, ITerrainLevelEditor terrainLevelEditor, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.RoadEditorOptionData)
         {
             this.roadLevelEditor = roadLevelEditor;
             this.terrainLevelEditor = terrainLevelEditor;
+            this.obstaclesEditor = obstaclesEditor;
         }
 
         public override void OnTileDown(Vector2Int position)
@@ -79,6 +82,7 @@ namespace Game.Workshop.Editing.Options
         private bool CanBePlaced(Vector2Int position)
         {
             var canBePlaced = terrainLevelEditor.HasSolidTile(position);
+            canBePlaced = canBePlaced && !obstaclesEditor.HasTile(position);
             return canBePlaced;
         }
     }

@@ -2,9 +2,8 @@
 using Core;
 using Core.LevelEditing;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Level.Data
+namespace Game.Common.Level.Data
 {
     [Serializable]
     public class GoalData : BaseTileData

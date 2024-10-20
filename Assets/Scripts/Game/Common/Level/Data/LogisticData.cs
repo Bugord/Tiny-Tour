@@ -1,7 +1,7 @@
 ﻿using System;
-using UnityEngine.Serialization;
+using Level;
 
-namespace Level.Data
+namespace Game.Common.Level.Data
 {
     [Serializable]
     public class LogisticData

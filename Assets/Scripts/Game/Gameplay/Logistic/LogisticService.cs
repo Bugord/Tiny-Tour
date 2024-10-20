@@ -6,7 +6,7 @@ using Core;
 using Core.Logging;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
-using Level.Data;
+using Game.Common.Level.Data;
 using Pathfinding;
 using UnityEngine;
 

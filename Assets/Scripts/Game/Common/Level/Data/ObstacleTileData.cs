@@ -1,14 +1,14 @@
 ﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
+using Core;
+using Core.LevelEditing;
+using Game.Common.Obstacles;
 
-namespace Level.Data
+namespace Game.Common.Level.Data
 {
     [Serializable]
-    public class ObstacleTileData
+    public class ObstacleTileData : BaseTileData
     {
-        [FormerlySerializedAs("pos")]
-        public Vector3Int position;
-        public int id;
+        public TeamColor color;
+        public ObstacleType obstacleType;
     }
 }

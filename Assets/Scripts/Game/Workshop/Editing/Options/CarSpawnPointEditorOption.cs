@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Cars;
+using Common.Editors.Obstacles;
 using Core;
+using Game.Common.Cars.Core;
 using Game.Common.Editors.Road;
 using Game.Common.UI.Editing.EditorOption;
 using Game.Gameplay.Editing.Options.Data;
@@ -14,15 +16,17 @@ namespace Game.Workshop.Editing.Options
     {
         private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
         private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly IObstaclesEditor obstaclesEditor;
         private readonly CarSpawnPointEditorOptionData carSpawnPointEditorOptionData;
 
         public CarSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
             ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor,
-            EditorOptionUI editorOptionUI)
+            EditorOptionUI editorOptionUI, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.CarSpawnPointEditorOptionData)
         {
             this.spawnPointLevelEditor = spawnPointLevelEditor;
             this.roadLevelEditor = roadLevelEditor;
+            this.obstaclesEditor = obstaclesEditor;
             carSpawnPointEditorOptionData = editorOptionDataLibrary.CarSpawnPointEditorOptionData;
 
             EditorOptionsConfiguration.EnableColorPicker();
@@ -65,10 +69,20 @@ namespace Game.Workshop.Editing.Options
 
             if (spawnPointLevelEditor.HasSpawnPoint(position, carType, color)) {
                 spawnPointLevelEditor.RotateSpawnPoint(position);
+                return;
             }
-            else if (roadLevelEditor.HasTile(position)) {
+            
+            if (CanBePlaced(position)) {
                 spawnPointLevelEditor.SetCarSpawnPoint(position, carType, color, Direction.Right);
             }
+        }
+        
+        private bool CanBePlaced(Vector2Int position)
+        {
+            var canBePlaced = roadLevelEditor.HasTile(position);
+            canBePlaced = canBePlaced && !obstaclesEditor.HasTile(position);
+
+            return canBePlaced;
         }
     }
 }

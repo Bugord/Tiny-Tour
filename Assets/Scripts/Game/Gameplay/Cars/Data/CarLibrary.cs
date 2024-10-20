@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Core;
+using Game.Common.Cars.Core;
 using UnityEngine;
 
 namespace Cars

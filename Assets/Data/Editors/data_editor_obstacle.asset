@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7facd47c032f43c6ae9927a62cd94c62, type: 3}
+  m_Name: data_editor_obstacle
+  m_EditorClassIdentifier: 
+  <Id>k__BackingField: editor_obstacle
+  <DefaultIcon>k__BackingField: {fileID: -6825893594525092589, guid: ae79ac77ad7a5044d8d04920f01119e2, type: 3}
+  <ObstacleSprites>k__BackingField:
+    _serializedList:
+    - Key: 0
+      Value:
+        defaultSprite: {fileID: -2178080148620187017, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: -2178080148620187017, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: -328639519, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: 518103566, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -2066016281, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: 1711856274, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 1
+      Value:
+        defaultSprite: {fileID: -8542881615306832592, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: -8542881615306832592, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: -1030813451, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: 1184550579, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -1693660654, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: 1388079599, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 2
+      Value:
+        defaultSprite: {fileID: -2769486311829863449, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: -2769486311829863449, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: -1286127588, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: -468760585, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -1700061424, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: 1592695239, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 3
+      Value:
+        defaultSprite: {fileID: 7385920264173892023, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 7385920264173892023, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: 1104655161, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: -2078872841, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: 1599065050, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: -1838836378, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 4
+      Value:
+        defaultSprite: {fileID: 7976477750197300219, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 7976477750197300219, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: 439702031, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: 1686563472, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -2007135006, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: 1497158312, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 5
+      Value:
+        defaultSprite: {fileID: -5232391399495286017, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: -5232391399495286017, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: 2138274165, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: -518430227, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -486876425, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: 430416433, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 6
+      Value:
+        defaultSprite: {fileID: 128358932, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 128358932, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: 331582746, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: -396987227, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: -1989135643, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: -1929668698, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 7
+      Value:
+        defaultSprite: {fileID: 34514881, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 34514881, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 1
+            Value: {fileID: 1308418222, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 2
+            Value: {fileID: 929008257, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 3
+            Value: {fileID: 1805316835, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+          - Key: 4
+            Value: {fileID: -1283582335, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+    - Key: 8
+      Value:
+        defaultSprite: {fileID: 932817003, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList: []
+    - Key: 9
+      Value:
+        defaultSprite: {fileID: -874512932, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList: []
+    - Key: 10
+      Value:
+        defaultSprite: {fileID: -738732846, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList: []
+    - Key: 11
+      Value:
+        defaultSprite: {fileID: 596857076, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList: []
+    - Key: 12
+      Value:
+        defaultSprite: {fileID: -481705395, guid: 3f86554a155a9a44a8f26fe053f91ab1, type: 3}
+        coloredObstacleVariants:
+          _serializedList: []

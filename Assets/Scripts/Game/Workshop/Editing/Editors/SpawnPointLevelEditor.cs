@@ -3,6 +3,7 @@ using System.Linq;
 using Cars;
 using Common.Tilemaps;
 using Core;
+using Game.Common.Cars.Core;
 using Game.Common.Level.Data;
 using Game.Workshop.Editing.Editors;
 using Level;

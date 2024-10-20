@@ -1,4 +1,6 @@
-﻿using Common.Editors.Terrain;
+﻿using Common.Editors;
+using Common.Editors.Obstacles;
+using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Workshop.Editing.Editors;
 using Game.Workshop.LevelEditor.Editors;
@@ -14,6 +16,7 @@ namespace Game.Workshop.Installers
         {
             Container.BindInterfacesTo<WorkshopRoadLevelLevelEditor>().AsSingle();
             Container.Bind<ITerrainLevelEditor>().To<TerrainLevelEditor>().AsSingle();
+            Container.Bind<IObstaclesEditor>().To<ObstaclesEditor>().AsSingle();
             Container.Bind<ISpawnPointLevelEditor>().To<SpawnPointLevelEditor>().AsSingle();
             Container.Bind<IGoalLevelEditor>().To<GoalLevelEditor>().AsSingle();
         }

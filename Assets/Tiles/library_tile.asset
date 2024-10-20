@@ -18,51 +18,152 @@ MonoBehaviour:
   roadTile: {fileID: 11400000, guid: 2350f9bfa4ea9874ba8b562d0a2a3115, type: 2}
   targetTile: {fileID: 11400000, guid: 7d0aba59cc882f748b02342ca4ef92f3, type: 2}
   obstacleTiles:
-  - {fileID: 11400000, guid: 93a0c271e31d12d43b0bc02f94d67c03, type: 2}
-  - {fileID: 11400000, guid: 9817437229cc86f429cb2deca85912d0, type: 2}
-  - {fileID: 11400000, guid: 10258ef87d6ddac48a4556b114d6e19a, type: 2}
-  - {fileID: 11400000, guid: 97c77d8af41acda42a9fe66d1657d5ef, type: 2}
-  - {fileID: 11400000, guid: aec023cc9fdab5a459c18ba25f168b0a, type: 2}
-  - {fileID: 11400000, guid: 3325eb03728c7394a8532f5416df64ef, type: 2}
-  - {fileID: 11400000, guid: e49f453df9494ba44a8d5a302e954a26, type: 2}
-  - {fileID: 11400000, guid: cf91e660fbe771742b76ebf06bb4228d, type: 2}
-  - {fileID: 11400000, guid: 3b8998b4920e23543b6c314fb5c796ba, type: 2}
-  - {fileID: 11400000, guid: 45f11c1db32224542aa05f35cf4f57b8, type: 2}
-  - {fileID: 11400000, guid: 25eaf89fcfdf54149ac30d8f4a6fed77, type: 2}
-  - {fileID: 11400000, guid: cd7eb3a5b72c3bb4f972dc3a12f6330e, type: 2}
-  - {fileID: 11400000, guid: 6e0a95866066a794290b2928bb1deeac, type: 2}
-  - {fileID: 11400000, guid: 427c6428c9e55db469f5ec605bb2cfeb, type: 2}
-  - {fileID: 11400000, guid: eac58ada89e01b84491abc81133a32fa, type: 2}
-  - {fileID: 11400000, guid: a9078c5fde51f474fb9d41d44e49b423, type: 2}
-  - {fileID: 11400000, guid: 39170cd2eb3bfa940a56372e659cca6c, type: 2}
-  - {fileID: 11400000, guid: cc0751cb249983e4fb67448eb20cadd0, type: 2}
-  - {fileID: 11400000, guid: ef9c186fb258dec4b887101763d815c9, type: 2}
-  - {fileID: 11400000, guid: 8879f310c4c5a404d809d63eb19de149, type: 2}
-  - {fileID: 11400000, guid: 7854c2e0701e5f541b606adf4ad7eda0, type: 2}
-  - {fileID: 11400000, guid: f17a746656444b345946e60d123f4c8d, type: 2}
-  - {fileID: 11400000, guid: e92faf985e17c324196bb4adcb31e463, type: 2}
-  - {fileID: 11400000, guid: baff824b44ee5b0478cd0d5c5fd97931, type: 2}
-  - {fileID: 11400000, guid: c5e7ee7c3f1efe2479567f0e6deab17d, type: 2}
-  - {fileID: 11400000, guid: 5c8cdce1996aa1347894717271f239f6, type: 2}
-  - {fileID: 11400000, guid: 2565490dfe6b3c847954521b89567960, type: 2}
-  - {fileID: 11400000, guid: 757f1721e6fc4e347846b2c47ae58b68, type: 2}
-  - {fileID: 11400000, guid: f3a8817cd880b4149b04856291c9d021, type: 2}
-  - {fileID: 11400000, guid: b7c1bb5901ebd314d8aabca59e7d6e6d, type: 2}
-  - {fileID: 11400000, guid: 80105fbaaa03d8447b1e4ef05fe4f22d, type: 2}
-  - {fileID: 11400000, guid: 15de6883ac6e5bd4e83873894adf24b5, type: 2}
-  - {fileID: 11400000, guid: fe769694c9327304f8791802a1ec58b4, type: 2}
-  - {fileID: 11400000, guid: 9f7e664caa5e6514198658128823d571, type: 2}
-  - {fileID: 11400000, guid: 4e16f0caabcfb7746921148cc49d1c2f, type: 2}
-  - {fileID: 11400000, guid: 0b3036d4e92de2e42b3104c6e60e84d2, type: 2}
-  - {fileID: 11400000, guid: 5f3274746c6644f41b4e1b197b67c827, type: 2}
-  - {fileID: 11400000, guid: 3226b9ebab888f04b864c00f76dd04b6, type: 2}
-  - {fileID: 11400000, guid: b79c67b6284b6e94b9c0efa45a145804, type: 2}
-  - {fileID: 11400000, guid: b1e0f7ee1797252428a58a4618fad25a, type: 2}
-  - {fileID: 11400000, guid: 94c6303f398c5584cb0f3217882e570b, type: 2}
-  - {fileID: 11400000, guid: 0387249fbf60fc64b9e77aeacc99f963, type: 2}
-  - {fileID: 11400000, guid: bc3c891de0af2274492e903cf5121ada, type: 2}
-  - {fileID: 11400000, guid: 6c076377f15f7124f873d323f0a7bcb4, type: 2}
-  - {fileID: 11400000, guid: 14567b4334272e7449da934a716f72a3, type: 2}
+    _serializedList:
+    - Key: 0
+      Value:
+        defaultTile: {fileID: 11400000, guid: 93a0c271e31d12d43b0bc02f94d67c03, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 93a0c271e31d12d43b0bc02f94d67c03, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: c5e7ee7c3f1efe2479567f0e6deab17d, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 3b8998b4920e23543b6c314fb5c796ba, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: 39170cd2eb3bfa940a56372e659cca6c, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: fe769694c9327304f8791802a1ec58b4, type: 2}
+    - Key: 1
+      Value:
+        defaultTile: {fileID: 11400000, guid: 9817437229cc86f429cb2deca85912d0, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 9817437229cc86f429cb2deca85912d0, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 5c8cdce1996aa1347894717271f239f6, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 45f11c1db32224542aa05f35cf4f57b8, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: cc0751cb249983e4fb67448eb20cadd0, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: 9f7e664caa5e6514198658128823d571, type: 2}
+    - Key: 2
+      Value:
+        defaultTile: {fileID: 11400000, guid: 10258ef87d6ddac48a4556b114d6e19a, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 10258ef87d6ddac48a4556b114d6e19a, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 2565490dfe6b3c847954521b89567960, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 25eaf89fcfdf54149ac30d8f4a6fed77, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: ef9c186fb258dec4b887101763d815c9, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: 4e16f0caabcfb7746921148cc49d1c2f, type: 2}
+    - Key: 3
+      Value:
+        defaultTile: {fileID: 11400000, guid: 97c77d8af41acda42a9fe66d1657d5ef, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 97c77d8af41acda42a9fe66d1657d5ef, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 757f1721e6fc4e347846b2c47ae58b68, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: cd7eb3a5b72c3bb4f972dc3a12f6330e, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: 8879f310c4c5a404d809d63eb19de149, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: 0b3036d4e92de2e42b3104c6e60e84d2, type: 2}
+    - Key: 4
+      Value:
+        defaultTile: {fileID: 11400000, guid: aec023cc9fdab5a459c18ba25f168b0a, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: aec023cc9fdab5a459c18ba25f168b0a, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: f3a8817cd880b4149b04856291c9d021, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 6e0a95866066a794290b2928bb1deeac, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: 7854c2e0701e5f541b606adf4ad7eda0, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: 5f3274746c6644f41b4e1b197b67c827, type: 2}
+    - Key: 5
+      Value:
+        defaultTile: {fileID: 11400000, guid: 3325eb03728c7394a8532f5416df64ef, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: 3325eb03728c7394a8532f5416df64ef, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: b7c1bb5901ebd314d8aabca59e7d6e6d, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: 427c6428c9e55db469f5ec605bb2cfeb, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: f17a746656444b345946e60d123f4c8d, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: 3226b9ebab888f04b864c00f76dd04b6, type: 2}
+    - Key: 6
+      Value:
+        defaultTile: {fileID: 11400000, guid: e49f453df9494ba44a8d5a302e954a26, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: e49f453df9494ba44a8d5a302e954a26, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 80105fbaaa03d8447b1e4ef05fe4f22d, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: eac58ada89e01b84491abc81133a32fa, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: e92faf985e17c324196bb4adcb31e463, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: b79c67b6284b6e94b9c0efa45a145804, type: 2}
+    - Key: 7
+      Value:
+        defaultTile: {fileID: 11400000, guid: cf91e660fbe771742b76ebf06bb4228d, type: 2}
+        obstacleTiles:
+          _serializedList:
+          - Key: 0
+            Value: {fileID: 11400000, guid: cf91e660fbe771742b76ebf06bb4228d, type: 2}
+          - Key: 1
+            Value: {fileID: 11400000, guid: 15de6883ac6e5bd4e83873894adf24b5, type: 2}
+          - Key: 2
+            Value: {fileID: 11400000, guid: a9078c5fde51f474fb9d41d44e49b423, type: 2}
+          - Key: 3
+            Value: {fileID: 11400000, guid: baff824b44ee5b0478cd0d5c5fd97931, type: 2}
+          - Key: 4
+            Value: {fileID: 11400000, guid: b1e0f7ee1797252428a58a4618fad25a, type: 2}
+    - Key: 8
+      Value:
+        defaultTile: {fileID: 11400000, guid: 94c6303f398c5584cb0f3217882e570b, type: 2}
+        obstacleTiles:
+          _serializedList: []
+    - Key: 9
+      Value:
+        defaultTile: {fileID: 11400000, guid: bc3c891de0af2274492e903cf5121ada, type: 2}
+        obstacleTiles:
+          _serializedList: []
+    - Key: 10
+      Value:
+        defaultTile: {fileID: 11400000, guid: 14567b4334272e7449da934a716f72a3, type: 2}
+        obstacleTiles:
+          _serializedList: []
+    - Key: 11
+      Value:
+        defaultTile: {fileID: 11400000, guid: 6c076377f15f7124f873d323f0a7bcb4, type: 2}
+        obstacleTiles:
+          _serializedList: []
+    - Key: 12
+      Value:
+        defaultTile: {fileID: 11400000, guid: 0387249fbf60fc64b9e77aeacc99f963, type: 2}
+        obstacleTiles:
+          _serializedList: []
   intermediatePointTiles:
     _serializedList:
     - Key: 0
@@ -75,72 +176,7 @@ MonoBehaviour:
       Value: {fileID: 11400000, guid: 4953cc766addc2345ad34363691f56f7, type: 2}
     - Key: 4
       Value: {fileID: 11400000, guid: 597d11bf5610cd74d9f4d40c8a9e41aa, type: 2}
-  carSpawnPointTile:
-    _serializedList:
-    - Key: 0
-      Value:
-        coloredVariants:
-          _serializedList:
-          - Key: 0
-            Value:
-              directionTiles:
-                _serializedList:
-                - Key: 0
-                  Value: {fileID: 11400000, guid: 1fc681885951f144581878416565565e, type: 2}
-                - Key: 1
-                  Value: {fileID: 11400000, guid: e5b04047decc10042b8e58190ddef769, type: 2}
-                - Key: 2
-                  Value: {fileID: 11400000, guid: 71a65e230a553664a8222ab108885559, type: 2}
-                - Key: 3
-                  Value: {fileID: 11400000, guid: 4d1ba3b6a1abe024ea72b9605bf9fdeb, type: 2}
-          - Key: 1
-            Value:
-              directionTiles:
-                _serializedList:
-                - Key: 0
-                  Value: {fileID: 11400000, guid: 9dfb85cbac7f72340959fd5269b37e88, type: 2}
-                - Key: 1
-                  Value: {fileID: 11400000, guid: f6774dad5a6e7bd4aa7c3627448907db, type: 2}
-                - Key: 2
-                  Value: {fileID: 11400000, guid: 8e552b6b0b6104f498a1f5d6bf3798b5, type: 2}
-                - Key: 3
-                  Value: {fileID: 11400000, guid: e3ff7dadb53ff314fa60d514d9954f39, type: 2}
-          - Key: 2
-            Value:
-              directionTiles:
-                _serializedList:
-                - Key: 0
-                  Value: {fileID: 11400000, guid: fb90e54d5b931b04489bbe18de3e022d, type: 2}
-                - Key: 1
-                  Value: {fileID: 11400000, guid: ed3420ce6f4cd324eb66945d5327bf09, type: 2}
-                - Key: 2
-                  Value: {fileID: 11400000, guid: 6a8bf442823af4349bcd275907d57053, type: 2}
-                - Key: 3
-                  Value: {fileID: 11400000, guid: 2ae885e839029cc4ab96a454e8145a83, type: 2}
-          - Key: 3
-            Value:
-              directionTiles:
-                _serializedList:
-                - Key: 0
-                  Value: {fileID: 11400000, guid: c82ce84c0924ec348b8435cd298d2a03, type: 2}
-                - Key: 1
-                  Value: {fileID: 11400000, guid: 60f1fd45f049c92458f4556bd936a35d, type: 2}
-                - Key: 2
-                  Value: {fileID: 11400000, guid: a9eac3ce37cfaf14881c8a72c8a5b8d1, type: 2}
-                - Key: 3
-                  Value: {fileID: 11400000, guid: d98e45b0fe40cfe4f9a3e79fdc31adaf, type: 2}
-          - Key: 4
-            Value:
-              directionTiles:
-                _serializedList:
-                - Key: 0
-                  Value: {fileID: 11400000, guid: 107cb72e7d671d44eaf1e217efca2277, type: 2}
-                - Key: 1
-                  Value: {fileID: 11400000, guid: e417fba716e69f84c94dd25a644a6534, type: 2}
-                - Key: 2
-                  Value: {fileID: 11400000, guid: 4806efa5fa23cf64089911383b590f6f, type: 2}
-                - Key: 3
-                  Value: {fileID: 11400000, guid: 5732f77b13634684ba2e951a4c5ef28f, type: 2}
+  carSpawnPointTiles: []
   goalTiles:
     _serializedList:
     - Key: 0

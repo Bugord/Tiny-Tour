@@ -2,8 +2,8 @@
 using System.Linq;
 using Common.Tilemaps;
 using Core;
+using Game.Common.Level.Data;
 using Level;
-using Level.Data;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
