@@ -7,5 +7,6 @@ namespace Game.Main.Session.Core
     {
         void StartSession(LevelData levelData);
         GameSession CurrentSession { get; }
+        void EndSession();
     }
 }

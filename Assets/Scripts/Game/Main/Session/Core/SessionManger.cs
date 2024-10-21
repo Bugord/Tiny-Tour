@@ -11,5 +11,10 @@ namespace Game.Main.Session.Core
         {
             CurrentSession = new GameSession(levelData);
         }
+
+        public void EndSession()
+        {
+            CurrentSession = null;
+        }
     }
 }

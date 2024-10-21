@@ -1,6 +1,7 @@
 ﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
+using Game.Main.Session.Core;
 using Game.Project.GameState.Systems;
 using UI.Screens;
 using UnityEngine;
@@ -11,12 +12,14 @@ namespace Game.Project.GameState.States
     public class EditLevelState : BaseGameState
     {
         private readonly INavigationService navigationService;
+        private readonly ISessionManger sessionManger;
         private EditLevelScreen editLevelScreen;
 
-        public EditLevelState(GameStateMachine gameStateMachine, INavigationService navigationService)
+        public EditLevelState(GameStateMachine gameStateMachine, INavigationService navigationService, ISessionManger sessionManger)
             : base(gameStateMachine)
         {
             this.navigationService = navigationService;
+            this.sessionManger = sessionManger;
         }
 
         public override void OnEnter()
@@ -29,6 +32,8 @@ namespace Game.Project.GameState.States
         public override void OnExit()
         {
             editLevelScreen.BackPressed -= ReturnToMainMenu;
+            
+            sessionManger.EndSession();
             navigationService.PopScreen(editLevelScreen);
             SceneManager.UnloadSceneAsync(SceneNames.EditorSceneName);
         }
