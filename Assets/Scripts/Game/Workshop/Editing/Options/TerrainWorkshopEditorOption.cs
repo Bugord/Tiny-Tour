@@ -10,10 +10,10 @@ namespace Game.Workshop.Editing.Options
 {
     public class TerrainWorkshopEditorOption : BaseEditorOption
     {
-        private readonly ITerrainLevelEditor terrainEditor;
+        private readonly ITerrainEditor terrainEditor;
         private readonly TerrainEditorOptionData terrainEditorOptionData;
 
-        public TerrainWorkshopEditorOption(EditorOptionUI editorOptionUI, ITerrainLevelEditor terrainEditor,
+        public TerrainWorkshopEditorOption(EditorOptionUI editorOptionUI, ITerrainEditor terrainEditor,
             EditorOptionDataLibrary editorOptionDataLibrary)
             : base(editorOptionUI, editorOptionDataLibrary.TerrainEditorOptionData)
         {

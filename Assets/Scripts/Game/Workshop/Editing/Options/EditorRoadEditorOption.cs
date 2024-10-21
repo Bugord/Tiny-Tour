@@ -10,25 +10,25 @@ namespace Game.Workshop.Editing.Options
 {
     public class EditorRoadEditorOption : BaseEditorOption
     {
-        private readonly IRoadLevelEditor roadLevelEditor;
-        private readonly ITerrainLevelEditor terrainLevelEditor;
+        private readonly IRoadEditor roadEditor;
+        private readonly ITerrainEditor terrainEditor;
         private readonly IObstaclesEditor obstaclesEditor;
 
         private Vector2Int? previousRoadPosition;
 
         public EditorRoadEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IRoadLevelEditor roadLevelEditor, ITerrainLevelEditor terrainLevelEditor, IObstaclesEditor obstaclesEditor)
+            IRoadEditor roadEditor, ITerrainEditor terrainEditor, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.RoadEditorOptionData)
         {
-            this.roadLevelEditor = roadLevelEditor;
-            this.terrainLevelEditor = terrainLevelEditor;
+            this.roadEditor = roadEditor;
+            this.terrainEditor = terrainEditor;
             this.obstaclesEditor = obstaclesEditor;
         }
 
         public override void OnTileDown(Vector2Int position)
         {
             if (CanBePlaced(position)) {
-                roadLevelEditor.SetRoadTile(position);
+                roadEditor.SetRoadTile(position);
                 previousRoadPosition = position;
             }
         }
@@ -40,15 +40,15 @@ namespace Game.Workshop.Editing.Options
 
         public override void OnAltTileDown(Vector2Int position)
         {
-            if (roadLevelEditor.HasTile(position)) {
-                roadLevelEditor.EraseTile(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
         public override void OnAltTileDrag(Vector2Int position)
         {
-            if (roadLevelEditor.HasTile(position)) {
-                roadLevelEditor.EraseTile(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
@@ -68,12 +68,12 @@ namespace Game.Workshop.Editing.Options
                 return;
             }
 
-            if (!roadLevelEditor.HasTile(selectedPosition)) {
-                roadLevelEditor.SetRoadTile(selectedPosition);
+            if (!roadEditor.HasTile(selectedPosition)) {
+                roadEditor.SetRoadTile(selectedPosition);
             }
 
             if (previousRoadPosition.HasValue) {
-                roadLevelEditor.ConnectRoads(previousRoadPosition.Value, selectedPosition);
+                roadEditor.ConnectRoads(previousRoadPosition.Value, selectedPosition);
             }
 
             previousRoadPosition = selectedPosition;
@@ -81,7 +81,7 @@ namespace Game.Workshop.Editing.Options
 
         private bool CanBePlaced(Vector2Int position)
         {
-            var canBePlaced = terrainLevelEditor.HasSolidTile(position);
+            var canBePlaced = terrainEditor.HasSolidTile(position);
             canBePlaced = canBePlaced && !obstaclesEditor.HasTile(position);
             return canBePlaced;
         }

@@ -3,7 +3,7 @@ using Gameplay.Cars;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Game.Gameplay.Installers
 {
     public class CarsInstaller : MonoInstaller
     {

@@ -1,7 +1,7 @@
 ﻿using Core.Navigation;
 using Game.Workshop.Editing.Core;
+using Game.Workshop.WorkshopState.Core;
 using Gameplay.UI;
-using LevelEditing.EditorState.Core;
 using LevelEditing.UI;
 using LevelEditor.Level.Core;
 using UI.Screens;
@@ -10,14 +10,14 @@ namespace LevelEditing.EditorState.States
 {
     public class EditingLevelEditorState : BaseEditorState
     {
-        private readonly LevelEditorController levelEditorController;
+        private readonly WorkshopLevelEditorController workshopLevelEditorController;
         private readonly IWorkshopService workshopService;
         private readonly EditorControllerUI editorControllerUI;
         private readonly EditLevelScreen editLevelScreen;
 
-        public EditingLevelEditorState(EditorStateMachine editorStateMachine, LevelEditorController levelEditorController, INavigationService navigationService, IWorkshopService workshopService) : base(editorStateMachine)
+        public EditingLevelEditorState(WorkshopStateMachine workshopStateMachine, WorkshopLevelEditorController workshopLevelEditorController, INavigationService navigationService, IWorkshopService workshopService) : base(workshopStateMachine)
         {
-            this.levelEditorController = levelEditorController;
+            this.workshopLevelEditorController = workshopLevelEditorController;
             this.workshopService = workshopService;
             editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
             editorControllerUI = editLevelScreen.EditorControllerUI;
@@ -27,14 +27,14 @@ namespace LevelEditing.EditorState.States
         {
             editorControllerUI.ResetPressed += OnResetPressed;
             editLevelScreen.SavePressed += OnSavePressed;
-            levelEditorController.EnableEditing();
+            workshopLevelEditorController.EnableEditing();
         }
 
         public override void OnExit()
         {
             editorControllerUI.ResetPressed -= OnResetPressed;
             editLevelScreen.SavePressed -= OnSavePressed;
-            levelEditorController.DisableEditing();
+            workshopLevelEditorController.DisableEditing();
         }
 
         private void OnResetPressed()

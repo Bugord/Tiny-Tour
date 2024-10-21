@@ -7,13 +7,13 @@ namespace Game.Gameplay.Editing.Options.Model
 {
     public class ErasingEditorOption : BaseEditorOption
     {
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly IRoadEditor roadEditor;
 
         public ErasingEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IRoadLevelEditor roadLevelEditor)
+            IRoadEditor roadEditor)
             : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
-            this.roadLevelEditor = roadLevelEditor;
+            this.roadEditor = roadEditor;
 
             editorOptionUI.SetBorders(editorOptionDataLibrary.EraseEditorOptionData.ActiveBorderSprite,
                 editorOptionDataLibrary.EraseEditorOptionData.InactiveBorderSprite);
@@ -21,15 +21,15 @@ namespace Game.Gameplay.Editing.Options.Model
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (roadLevelEditor.HasTile(position)) {
-                roadLevelEditor.EraseTile(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
 
         public override void OnTileDrag(Vector2Int position)
         {
-            if (roadLevelEditor.HasTile(position)) {
-                roadLevelEditor.EraseTile(position);
+            if (roadEditor.HasTile(position)) {
+                roadEditor.EraseTile(position);
             }
         }
     }

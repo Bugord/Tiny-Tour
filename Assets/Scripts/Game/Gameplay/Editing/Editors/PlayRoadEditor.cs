@@ -7,9 +7,9 @@ using Utility;
 
 namespace Game.Gameplay.Editing.Editors
 {
-    public class PlayRoadLevelLevelEditor : BaseRoadLevelLevelEditor
+    public class PlayRoadEditor : BaseRoadEditor
     {
-        public PlayRoadLevelLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary) : base(tilemapsProvider, tileLibrary)
+        public PlayRoadEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary) : base(tilemapsProvider, tileLibrary)
         {
         }
 

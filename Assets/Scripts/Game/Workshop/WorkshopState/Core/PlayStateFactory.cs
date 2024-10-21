@@ -1,20 +1,20 @@
 ﻿using LevelEditing.EditorState.States;
 using Zenject;
 
-namespace LevelEditing.EditorState.Core
+namespace Game.Workshop.WorkshopState.Core
 {
-    public class EditorStateFactory : IEditorStateFactory
+    public class WorkshopStateFactory : IWorkshopStateFactory
     {
         private readonly DiContainer diContainer;
 
-        public EditorStateFactory(DiContainer diContainer)
+        public WorkshopStateFactory(DiContainer diContainer)
         {
             this.diContainer = diContainer;
         }
 
-        public T Create<T>(EditorStateMachine editorStateMachine) where T : BaseEditorState
+        public T Create<T>(WorkshopStateMachine workshopStateMachine) where T : BaseEditorState
         {
-            return diContainer.Instantiate<T>(new[] { editorStateMachine });
+            return diContainer.Instantiate<T>(new[] { workshopStateMachine });
         }
     }
 }

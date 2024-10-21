@@ -16,7 +16,7 @@ namespace Gameplay.Logistic
     {
         private readonly ILogger<LogisticService> logger;
         private readonly IGoalLevelEditor goalLevelEditor;
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly IRoadEditor roadEditor;
         private readonly IPathfindingService pathfindingService;
         private readonly ITilemapPositionConverter tilemapPositionConverter;
         private readonly Dictionary<TeamColor, Vector2Int> goals;

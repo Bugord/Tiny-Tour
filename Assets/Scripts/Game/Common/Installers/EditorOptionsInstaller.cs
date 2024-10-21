@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Game.Common.Installers
 {
-    [CreateAssetMenu(fileName = "installer_common_editor_options", menuName = "Installers/Common/Editor Options")]
+    [CreateAssetMenu(fileName = "installer_editor_option_controller", menuName = "Installers/Common/Editor Option Controller")]
     public class EditorOptionsInstaller : ScriptableObjectInstaller
     {
         [SerializeField]

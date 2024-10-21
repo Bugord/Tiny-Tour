@@ -1,6 +1,6 @@
 ﻿using Common.Level.Core;
+using Game.Workshop.WorkshopState.Core;
 using Level;
-using LevelEditing.EditorState.Core;
 using LevelEditor.Level.Core;
 
 namespace LevelEditing.EditorState.States
@@ -9,7 +9,7 @@ namespace LevelEditing.EditorState.States
     {
         private readonly IWorkshopService workshopService;
 
-        public LoadEditorState(EditorStateMachine editorStateMachine, IWorkshopService workshopService) : base(editorStateMachine)
+        public LoadEditorState(WorkshopStateMachine workshopStateMachine, IWorkshopService workshopService) : base(workshopStateMachine)
         {
             this.workshopService = workshopService;
         }
@@ -17,7 +17,7 @@ namespace LevelEditing.EditorState.States
         public override void OnEnter()
         {
             workshopService.LoadCurrentLevel();
-            EditorStateMachine.ChangeState<EditingLevelEditorState>();
+            WorkshopStateMachine.ChangeState<EditingLevelEditorState>();
         }
     }
 }

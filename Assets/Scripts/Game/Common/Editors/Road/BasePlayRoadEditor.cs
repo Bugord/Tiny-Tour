@@ -9,7 +9,7 @@ using Utility;
 
 namespace Game.Common.Editors.Road
 {
-    public abstract class BaseRoadLevelLevelEditor : IRoadLevelEditor
+    public abstract class BaseRoadEditor : IRoadEditor
     {
         private readonly ITileLibrary tileLibrary;
         private readonly Tilemap roadTilemap;
@@ -19,7 +19,7 @@ namespace Game.Common.Editors.Road
 
         public Vector2Int RoadMapSize => (Vector2Int)roadTilemap.size;
 
-        protected BaseRoadLevelLevelEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
+        protected BaseRoadEditor(ITilemapsProvider tilemapsProvider, ITileLibrary tileLibrary)
         {
             this.tileLibrary = tileLibrary;
             roadTilemap = tilemapsProvider.RoadTilemap;

@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers:
   - {fileID: 11400000, guid: 387b04c62f3a1744f9151ced039159d1, type: 2}
+  - {fileID: 11400000, guid: ab16e07c105b5db4ab4dbeaa7063f2b2, type: 2}
   _monoInstallers: []
   _installerPrefabs: []
   _autoRun: 1
@@ -165,7 +166,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _parentNewObjectsUnderSceneContext: 0
-  _contractNames: []
+  _contractNames:
+  - MainScene
   _parentContractNames: []
 --- !u!4 &216614155
 Transform:

@@ -1,14 +1,14 @@
-﻿using LevelEditing.EditorState.Core;
+﻿using Game.Workshop.WorkshopState.Core;
 
 namespace LevelEditing.EditorState.States
 {
     public abstract class BaseEditorState
     {
-        protected EditorStateMachine EditorStateMachine;
+        protected WorkshopStateMachine WorkshopStateMachine;
         
-        protected BaseEditorState(EditorStateMachine editorStateMachine)
+        protected BaseEditorState(WorkshopStateMachine workshopStateMachine)
         {
-            EditorStateMachine = editorStateMachine;
+            WorkshopStateMachine = workshopStateMachine;
         }
         
         public virtual void OnEnter()

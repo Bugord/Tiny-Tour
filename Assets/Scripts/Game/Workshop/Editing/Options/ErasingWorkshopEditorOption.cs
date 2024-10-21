@@ -14,25 +14,25 @@ namespace Game.Workshop.Editing.Options
 {
     public class ErasingWorkshopEditorOption : BaseEditorOption
     {
-        private readonly ITerrainLevelEditor terrainLevelEditor;
+        private readonly ITerrainEditor terrainEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
         private readonly IObstaclesEditor obstaclesEditor;
-        private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly ISpawnPointEditor spawnPointEditor;
+        private readonly IRoadEditor roadEditor;
 
         private EraseType eraseType;
         private EditorOptionUI editorOptionUI;
 
-        public ErasingWorkshopEditorOption(EditorOptionUI editorOptionUI, ISpawnPointLevelEditor spawnPointLevelEditor,
-            EditorOptionDataLibrary editorOptionDataLibrary, IRoadLevelEditor roadLevelEditor,
-            ITerrainLevelEditor terrainLevelEditor, IGoalLevelEditor goalLevelEditor, IObstaclesEditor obstaclesEditor)
+        public ErasingWorkshopEditorOption(EditorOptionUI editorOptionUI, ISpawnPointEditor spawnPointEditor,
+            EditorOptionDataLibrary editorOptionDataLibrary, IRoadEditor roadEditor,
+            ITerrainEditor terrainEditor, IGoalLevelEditor goalLevelEditor, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.EraseEditorOptionData)
         {
-            this.roadLevelEditor = roadLevelEditor;
-            this.terrainLevelEditor = terrainLevelEditor;
+            this.roadEditor = roadEditor;
+            this.terrainEditor = terrainEditor;
             this.goalLevelEditor = goalLevelEditor;
             this.obstaclesEditor = obstaclesEditor;
-            this.spawnPointLevelEditor = spawnPointLevelEditor;
+            this.spawnPointEditor = spawnPointEditor;
 
             EditorOptionUI.SetBorders(editorOptionDataLibrary.EraseEditorOptionData.ActiveBorderSprite,
                 editorOptionDataLibrary.EraseEditorOptionData.InactiveBorderSprite);
@@ -69,12 +69,12 @@ namespace Game.Workshop.Editing.Options
                 return;
             }
 
-            if (spawnPointLevelEditor.HasTile(position)) {
+            if (spawnPointEditor.HasTile(position)) {
                 eraseType = EraseType.SpawnPoint;
                 return;
             }
 
-            if (roadLevelEditor.HasTile(position)) {
+            if (roadEditor.HasTile(position)) {
                 eraseType = EraseType.Road;
                 return;
             }  
@@ -84,7 +84,7 @@ namespace Game.Workshop.Editing.Options
                 return;
             }
 
-            if (terrainLevelEditor.HasTile(position)) {
+            if (terrainEditor.HasTile(position)) {
                 eraseType = EraseType.Terrain;
             }
         }
@@ -99,21 +99,21 @@ namespace Game.Workshop.Editing.Options
                     obstaclesEditor.EraseTile(position);
                     break;
                 case EraseType.SpawnPoint:
-                    spawnPointLevelEditor.EraseTile(position);
+                    spawnPointEditor.EraseTile(position);
                     break;
                 case EraseType.Road:
-                    roadLevelEditor.EraseTile(position);
-                    spawnPointLevelEditor.EraseTile(position);
+                    roadEditor.EraseTile(position);
+                    spawnPointEditor.EraseTile(position);
                     break;
                 case EraseType.Terrain:
                     goalLevelEditor.EraseTile(position);
-                    terrainLevelEditor.EraseTile(position);
-                    roadLevelEditor.EraseTile(position);
-                    spawnPointLevelEditor.EraseTile(position);
+                    terrainEditor.EraseTile(position);
+                    roadEditor.EraseTile(position);
+                    spawnPointEditor.EraseTile(position);
                     obstaclesEditor.EraseTile(position);
                     break;
                 case EraseType.None:
-                    terrainLevelEditor.EraseTile(position);
+                    terrainEditor.EraseTile(position);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

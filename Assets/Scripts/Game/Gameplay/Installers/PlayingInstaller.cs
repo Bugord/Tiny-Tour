@@ -1,19 +1,18 @@
-﻿using Common;
-using Common.Editors.Terrain;
-using Common.Level.Core;
+﻿using Common.Level.Core;
 using Common.Road;
 using Game.Gameplay.Editing;
+using Game.Gameplay.Level;
+using Gameplay;
 using Gameplay.Logistic;
 using Gameplay.Pathfinding;
 using Gameplay.Playing;
 using Gameplay.PlayState;
 using Gameplay.PlayState.Core;
 using Gameplay.Utility;
-using Pathfinding;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay
+namespace Game.Gameplay.Installers
 {
     [CreateAssetMenu(fileName = "installer_playing", menuName = "Installers/Playing")]
     public class PlayingInstaller : ScriptableObjectInstaller
@@ -25,9 +24,9 @@ namespace Gameplay
             
             Container.Bind<PlayStateMachine>().AsSingle();
             Container.BindInterfacesTo<PlayStateFactory>().AsTransient();
-            Container.Bind<ILevelService>().To<LevelService>().AsSingle();
+            Container.Bind<ILevelService>().To<PlayLevelService>().AsSingle();
 
-            Container.BindInterfacesAndSelfTo<InGameEditor>().AsSingle();
+            Container.BindInterfacesAndSelfTo<PlayEditorController>().AsSingle();
             
             Container.BindInterfacesTo<RoadTilemapGridConverter>().AsSingle();
             

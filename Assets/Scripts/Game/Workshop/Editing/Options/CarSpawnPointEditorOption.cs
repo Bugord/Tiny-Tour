@@ -14,18 +14,18 @@ namespace Game.Workshop.Editing.Options
 {
     public class CarSpawnPointEditorOption : BaseEditorOption
     {
-        private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly ISpawnPointEditor spawnPointEditor;
+        private readonly IRoadEditor roadEditor;
         private readonly IObstaclesEditor obstaclesEditor;
         private readonly CarSpawnPointEditorOptionData carSpawnPointEditorOptionData;
 
         public CarSpawnPointEditorOption(EditorOptionDataLibrary editorOptionDataLibrary,
-            ISpawnPointLevelEditor spawnPointLevelEditor, IRoadLevelEditor roadLevelEditor,
+            ISpawnPointEditor spawnPointEditor, IRoadEditor roadEditor,
             EditorOptionUI editorOptionUI, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.CarSpawnPointEditorOptionData)
         {
-            this.spawnPointLevelEditor = spawnPointLevelEditor;
-            this.roadLevelEditor = roadLevelEditor;
+            this.spawnPointEditor = spawnPointEditor;
+            this.roadEditor = roadEditor;
             this.obstaclesEditor = obstaclesEditor;
             carSpawnPointEditorOptionData = editorOptionDataLibrary.CarSpawnPointEditorOptionData;
 
@@ -67,19 +67,19 @@ namespace Game.Workshop.Editing.Options
             var color = EditorOptionsConfiguration.SelectedColor;
             var carType = (CarType)EditorOptionsConfiguration.SelectedAlternativeIndex;
 
-            if (spawnPointLevelEditor.HasSpawnPoint(position, carType, color)) {
-                spawnPointLevelEditor.RotateSpawnPoint(position);
+            if (spawnPointEditor.HasSpawnPoint(position, carType, color)) {
+                spawnPointEditor.RotateSpawnPoint(position);
                 return;
             }
             
             if (CanBePlaced(position)) {
-                spawnPointLevelEditor.SetCarSpawnPoint(position, carType, color, Direction.Right);
+                spawnPointEditor.SetCarSpawnPoint(position, carType, color, Direction.Right);
             }
         }
         
         private bool CanBePlaced(Vector2Int position)
         {
-            var canBePlaced = roadLevelEditor.HasTile(position);
+            var canBePlaced = roadEditor.HasTile(position);
             canBePlaced = canBePlaced && !obstaclesEditor.HasTile(position);
 
             return canBePlaced;

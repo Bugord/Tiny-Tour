@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Core;
+using UnityEngine;
 using Zenject;
 
-namespace Core.Installers
+namespace Game.Main.Installers
 {
-    [CreateAssetMenu(fileName = "installer_application_entry_point", menuName = "Installers/Application Entry Point")]
+    [CreateAssetMenu(fileName = "installer_application_entry_point", menuName = "Installers/Main/Application Entry Point")]
     public class ApplicationEntryPointInstaller : ScriptableObjectInstaller
     {
         public override void InstallBindings()

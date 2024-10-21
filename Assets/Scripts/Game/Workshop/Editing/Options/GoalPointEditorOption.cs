@@ -13,16 +13,16 @@ namespace Game.Workshop.Editing.Options
     public class GoalSpawnPointEditorOption : BaseEditorOption
     {
         private readonly IGoalLevelEditor goalLevelEditor;
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly IRoadEditor roadEditor;
         private readonly IObstaclesEditor obstaclesEditor;
         private readonly GoalPointEditorOptionData goalPointEditorOptionData;
         
         public GoalSpawnPointEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IGoalLevelEditor goalLevelEditor, IRoadLevelEditor roadLevelEditor, IObstaclesEditor obstaclesEditor)
+            IGoalLevelEditor goalLevelEditor, IRoadEditor roadEditor, IObstaclesEditor obstaclesEditor)
             : base(editorOptionUI, editorOptionDataLibrary.GoalPointEditorOptionData)
         {
             this.goalLevelEditor = goalLevelEditor;
-            this.roadLevelEditor = roadLevelEditor;
+            this.roadEditor = roadEditor;
             this.obstaclesEditor = obstaclesEditor;
             goalPointEditorOptionData = editorOptionDataLibrary.GoalPointEditorOptionData;
 
@@ -44,7 +44,7 @@ namespace Game.Workshop.Editing.Options
 
         private bool CanBePlaced(Vector2Int position)
         {
-            var canBePlaced = roadLevelEditor.HasTile(position);
+            var canBePlaced = roadEditor.HasTile(position);
             canBePlaced = canBePlaced && !obstaclesEditor.HasTile(position);
 
             return canBePlaced;

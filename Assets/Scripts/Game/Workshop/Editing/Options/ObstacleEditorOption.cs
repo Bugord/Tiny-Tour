@@ -15,14 +15,14 @@ namespace Game.Workshop.Editing.Options
     public class ObstacleEditorOption : BaseEditorOption
     {
         private readonly IObstaclesEditor obstaclesEditor;
-        private readonly ITerrainLevelEditor terrainLevelEditor;
+        private readonly ITerrainEditor terrainEditor;
         private readonly ObstacleEditorOptionData obstacleEditorOptionData;
 
         public ObstacleEditorOption(EditorOptionUI editorOptionUI, EditorOptionDataLibrary editorOptionDataLibrary,
-            IObstaclesEditor obstaclesEditor, ITerrainLevelEditor terrainLevelEditor) : base(editorOptionUI, editorOptionDataLibrary.ObstacleEditorOptionData)
+            IObstaclesEditor obstaclesEditor, ITerrainEditor terrainEditor) : base(editorOptionUI, editorOptionDataLibrary.ObstacleEditorOptionData)
         {
             this.obstaclesEditor = obstaclesEditor;
-            this.terrainLevelEditor = terrainLevelEditor;
+            this.terrainEditor = terrainEditor;
             obstacleEditorOptionData = editorOptionDataLibrary.ObstacleEditorOptionData;
             
             EditorOptionsConfiguration.EnableColorPicker();
@@ -82,7 +82,7 @@ namespace Game.Workshop.Editing.Options
 
         private void SetObstacle(Vector2Int position)
         {
-            if (!terrainLevelEditor.HasSolidTile(position)) {
+            if (!terrainEditor.HasSolidTile(position)) {
                 return;
             }
             

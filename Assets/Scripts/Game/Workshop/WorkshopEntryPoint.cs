@@ -1,4 +1,4 @@
-﻿using LevelEditing.EditorState.Core;
+﻿using Game.Workshop.WorkshopState.Core;
 using LevelEditing.EditorState.States;
 using Zenject;
 
@@ -6,16 +6,16 @@ namespace LevelEditor
 {
     public class WorkshopEntryPoint : IInitializable
     {
-        private readonly EditorStateMachine editorStateMachine;
+        private readonly WorkshopStateMachine workshopStateMachine;
 
-        public WorkshopEntryPoint(EditorStateMachine editorStateMachine)
+        public WorkshopEntryPoint(WorkshopStateMachine workshopStateMachine)
         {
-            this.editorStateMachine = editorStateMachine;
+            this.workshopStateMachine = workshopStateMachine;
         }
         
         public void Initialize()
         {
-            editorStateMachine.ChangeState<LoadEditorState>();
+            workshopStateMachine.ChangeState<LoadEditorState>();
         }
     }
 }

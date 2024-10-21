@@ -1,4 +1,6 @@
-﻿namespace Common.Level.Core
+﻿using Common.Level.Core;
+
+namespace Game.Gameplay.Level
 {
     public interface ILevelService : ILevelLoader
     {

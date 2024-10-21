@@ -11,22 +11,22 @@ namespace Game.Workshop.Level.Core
 {
     public class WorkshopService : IWorkshopService
     {
-        private readonly ITerrainLevelEditor terrainLevelEditor;
-        private readonly IRoadLevelEditor roadLevelEditor;
+        private readonly ITerrainEditor terrainEditor;
+        private readonly IRoadEditor roadEditor;
         private readonly IObstaclesEditor obstaclesEditor;
-        private readonly ISpawnPointLevelEditor spawnPointLevelEditor;
+        private readonly ISpawnPointEditor spawnPointEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
         private readonly LevelManager levelManager;
 
         private LevelData currentLevelData;
 
-        public WorkshopService(ITerrainLevelEditor terrainLevelEditor, IRoadLevelEditor roadLevelEditor, IObstaclesEditor obstaclesEditor,
-            ISpawnPointLevelEditor spawnPointLevelEditor, IGoalLevelEditor goalLevelEditor, LevelManager levelManager)
+        public WorkshopService(ITerrainEditor terrainEditor, IRoadEditor roadEditor, IObstaclesEditor obstaclesEditor,
+            ISpawnPointEditor spawnPointEditor, IGoalLevelEditor goalLevelEditor, LevelManager levelManager)
         {
-            this.terrainLevelEditor = terrainLevelEditor;
-            this.roadLevelEditor = roadLevelEditor;
+            this.terrainEditor = terrainEditor;
+            this.roadEditor = roadEditor;
             this.obstaclesEditor = obstaclesEditor;
-            this.spawnPointLevelEditor = spawnPointLevelEditor;
+            this.spawnPointEditor = spawnPointEditor;
             this.goalLevelEditor = goalLevelEditor;
             this.levelManager = levelManager;
         }
@@ -41,18 +41,18 @@ namespace Game.Workshop.Level.Core
         {
             currentLevelData = levelData;
             
-            terrainLevelEditor.Load(levelData.terrainTilesData);
-            roadLevelEditor.Load(levelData.logisticData.roadTileData);
+            terrainEditor.Load(levelData.terrainTilesData);
+            roadEditor.Load(levelData.logisticData.roadTileData);
             obstaclesEditor.Load(levelData.obstaclesData);
-            spawnPointLevelEditor.Load(levelData.carSpawnData);
+            spawnPointEditor.Load(levelData.carSpawnData);
             goalLevelEditor.Load(levelData.logisticData.goalsData);
         }
 
         public void SaveLevel()
         {
-            currentLevelData.terrainTilesData = terrainLevelEditor.GetTilesData();
-            currentLevelData.logisticData.roadTileData = roadLevelEditor.GetTilesData();
-            currentLevelData.carSpawnData = spawnPointLevelEditor.GetTilesData();
+            currentLevelData.terrainTilesData = terrainEditor.GetTilesData();
+            currentLevelData.logisticData.roadTileData = roadEditor.GetTilesData();
+            currentLevelData.carSpawnData = spawnPointEditor.GetTilesData();
             currentLevelData.obstaclesData = obstaclesEditor.GetTilesData();
             currentLevelData.logisticData.goalsData = goalLevelEditor.GetTilesData();
             
@@ -62,10 +62,10 @@ namespace Game.Workshop.Level.Core
 
         public void ResetLevel()
         {
-            roadLevelEditor.Reset();
-            terrainLevelEditor.Reset();
+            roadEditor.Reset();
+            terrainEditor.Reset();
             obstaclesEditor.Reset();
-            spawnPointLevelEditor.Reset();
+            spawnPointEditor.Reset();
             goalLevelEditor.Reset();
         }
     }
