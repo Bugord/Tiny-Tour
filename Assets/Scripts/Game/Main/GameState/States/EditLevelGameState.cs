@@ -1,12 +1,12 @@
-﻿using Application.GameState.Systems;
+﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
-using States;
+using Game.Project.GameState.Systems;
 using UI.Screens;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core.GameState.States
+namespace Game.Project.GameState.States
 {
     public class EditLevelState : BaseGameState
     {

@@ -1,5 +1,5 @@
+using Game.Gameplay.PlayState.States;
 using Gameplay.PlayState.Core;
-using Gameplay.PlayState.States;
 
 namespace Gameplay.PlayState
 {

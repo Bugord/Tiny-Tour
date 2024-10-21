@@ -5,11 +5,11 @@ namespace Game.Main.Session.Core
 {
     public class SessionManger : ISessionManger
     {
-        public GameSession GameSession { get; private set; }
+        public GameSession CurrentSession { get; private set; }
 
         public void StartSession(LevelData levelData)
         {
-            GameSession = new GameSession(levelData);
+            CurrentSession = new GameSession(levelData);
         }
     }
 }

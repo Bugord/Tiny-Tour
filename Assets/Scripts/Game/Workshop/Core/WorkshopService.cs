@@ -3,6 +3,7 @@ using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
 using Game.Common.Level.Data;
+using Game.Main.Session.Core;
 using Game.Workshop.Editing.Editors;
 using Level;
 using LevelEditor.Level.Core;
@@ -16,24 +17,26 @@ namespace Game.Workshop.Level.Core
         private readonly IObstaclesEditor obstaclesEditor;
         private readonly ISpawnPointEditor spawnPointEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
+        private readonly ISessionManger sessionManger;
         private readonly LevelManager levelManager;
 
         private LevelData currentLevelData;
 
         public WorkshopService(ITerrainEditor terrainEditor, IRoadEditor roadEditor, IObstaclesEditor obstaclesEditor,
-            ISpawnPointEditor spawnPointEditor, IGoalLevelEditor goalLevelEditor, LevelManager levelManager)
+            ISpawnPointEditor spawnPointEditor, IGoalLevelEditor goalLevelEditor, ISessionManger sessionManger, LevelManager levelManager)
         {
             this.terrainEditor = terrainEditor;
             this.roadEditor = roadEditor;
             this.obstaclesEditor = obstaclesEditor;
             this.spawnPointEditor = spawnPointEditor;
             this.goalLevelEditor = goalLevelEditor;
+            this.sessionManger = sessionManger;
             this.levelManager = levelManager;
         }
 
         public void LoadCurrentLevel()
         {
-            var levelData = levelManager.GetSelectedLevel();
+            var levelData = sessionManger.CurrentSession.LevelData;
             LoadLevel(levelData);
         }
 

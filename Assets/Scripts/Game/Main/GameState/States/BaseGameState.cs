@@ -1,7 +1,6 @@
-﻿using Application.GameState.Systems;
-using Core.GameState;
+﻿using Game.Project.GameState.Systems;
 
-namespace States
+namespace Game.Project.GameState.States
 {
     public abstract class BaseGameState
     {

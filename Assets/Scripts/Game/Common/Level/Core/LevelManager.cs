@@ -8,7 +8,6 @@ namespace Level
     public class LevelManager : IInitializable
     {
         private readonly ILevelProvider levelProvider;
-        private LevelData selectedLevelData;
 
         public void Initialize()
         {
@@ -25,19 +24,9 @@ namespace Level
             return levelProvider.GetLevels();
         }
 
-        public void SelectLevel(int levelIndex)
+        public LevelData GetLevelByIndex(int levelIndex)
         {
-            selectedLevelData = levelProvider.GetLevels()[levelIndex];
-        }
-
-        public void SelectLevel(LevelData levelData)
-        {
-            selectedLevelData = levelData;
-        }
-
-        public LevelData GetSelectedLevel()
-        {
-            return selectedLevelData;
+            return levelProvider.GetLevels()[levelIndex];
         }
 
         public void SaveLevel(LevelData levelData)
@@ -51,34 +40,34 @@ namespace Level
             return levelProvider.CreateNewLevel(levelName);
         }
 
-        public LevelData GetNextLevel()
-        {
-            var levels = levelProvider.GetLevels();
-            var currentIndex = Array.IndexOf(levels, selectedLevelData);
-            if (currentIndex == -1) {
-                return null;
-            }
-
-            if (currentIndex == levels.Length - 1) {
-                currentIndex = -1;
-            }
-
-            return levelProvider.GetLevelByIndex(currentIndex + 1);
-        }
-
-        public LevelData GetPreviousLevel()
-        {
-            var levels = levelProvider.GetLevels();
-            var currentIndex = Array.IndexOf(levels, selectedLevelData);
-            if (currentIndex == -1) {
-                return null;
-            }
-
-            if (currentIndex == 0) {
-                currentIndex = levels.Length;
-            }
-
-            return levelProvider.GetLevelByIndex(currentIndex - 1);
-        }
+        // public LevelData GetNextLevel()
+        // {
+        //     var levels = levelProvider.GetLevels();
+        //     var currentIndex = Array.IndexOf(levels, selectedLevelData);
+        //     if (currentIndex == -1) {
+        //         return null;
+        //     }
+        //
+        //     if (currentIndex == levels.Length - 1) {
+        //         currentIndex = -1;
+        //     }
+        //
+        //     return levelProvider.GetLevelByIndex(currentIndex + 1);
+        // }
+        //
+        // public LevelData GetPreviousLevel()
+        // {
+        //     var levels = levelProvider.GetLevels();
+        //     var currentIndex = Array.IndexOf(levels, selectedLevelData);
+        //     if (currentIndex == -1) {
+        //         return null;
+        //     }
+        //
+        //     if (currentIndex == 0) {
+        //         currentIndex = levels.Length;
+        //     }
+        //
+        //     return levelProvider.GetLevelByIndex(currentIndex - 1);
+        // }
     }
 }

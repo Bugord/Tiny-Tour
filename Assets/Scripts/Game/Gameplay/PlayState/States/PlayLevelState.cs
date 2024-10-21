@@ -1,14 +1,11 @@
-﻿using Common.Level.Core;
-using Core.Navigation;
+﻿using Core.Navigation;
 using Game.Gameplay.Level;
-using Gameplay.Cars;
-using Gameplay.Logistic;
 using Gameplay.Playing;
 using Gameplay.PlayState.Core;
 using Gameplay.UI;
 using UI.Screens;
 
-namespace Gameplay.PlayState.States
+namespace Game.Gameplay.PlayState.States
 {
     public class PlayLevelState : BasePlayState
     {

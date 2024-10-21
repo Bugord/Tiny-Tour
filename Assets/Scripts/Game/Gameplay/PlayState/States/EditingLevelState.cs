@@ -1,13 +1,11 @@
-﻿using Common;
-using Common.Level.Core;
-using Core.Navigation;
+﻿using Core.Navigation;
 using Game.Gameplay.Editing;
 using Game.Gameplay.Level;
 using Gameplay.PlayState.Core;
 using Gameplay.UI;
 using UI.Screens;
 
-namespace Gameplay.PlayState.States
+namespace Game.Gameplay.PlayState.States
 {
     public class EditingLevelState : BasePlayState
     {

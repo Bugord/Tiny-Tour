@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Gameplay.PlayState.States;
+using Game.Gameplay.PlayState.States;
 using UnityEngine;
 
 namespace Gameplay.PlayState.Core

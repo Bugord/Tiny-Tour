@@ -1,10 +1,8 @@
-﻿using Application.GameState.Systems;
-using Core.Navigation;
-using States;
-using UI;
+﻿using Core.Navigation;
+using Game.Project.GameState.Systems;
 using UI.Screens;
 
-namespace Core.GameState.States
+namespace Game.Project.GameState.States
 {
     public class MainMenuState : BaseGameState
     {

@@ -1,20 +1,18 @@
-﻿using Common.Level.Core;
-using Game.Gameplay.Level;
+﻿using Game.Gameplay.Level;
+using Game.Main.Session.Core;
 using Gameplay.PlayState.Core;
-using Level;
-using UnityEngine;
 
-namespace Gameplay.PlayState.States
+namespace Game.Gameplay.PlayState.States
 {
     public class LoadLevelState : BasePlayState
     {
-        private readonly LevelManager levelManager;
+        private readonly ISessionManger sessionManger;
         private readonly ILevelService levelService;
 
-        public LoadLevelState(PlayStateMachine playStateMachine, LevelManager levelManager, ILevelService levelService)
+        public LoadLevelState(PlayStateMachine playStateMachine, ISessionManger sessionManger, ILevelService levelService)
             : base(playStateMachine)
         {
-            this.levelManager = levelManager;
+            this.sessionManger = sessionManger;
             this.levelService = levelService;
         }
 
@@ -26,7 +24,7 @@ namespace Gameplay.PlayState.States
 
         private void LoadLevel()
         {
-            var level = levelManager.GetSelectedLevel();
+            var level = sessionManger.CurrentSession.LevelData;
             levelService.LoadLevel(level);
         }
     }

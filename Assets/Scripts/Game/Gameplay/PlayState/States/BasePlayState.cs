@@ -1,6 +1,6 @@
 ﻿using Gameplay.PlayState.Core;
 
-namespace Gameplay.PlayState.States
+namespace Game.Gameplay.PlayState.States
 {
     public abstract class BasePlayState
     {

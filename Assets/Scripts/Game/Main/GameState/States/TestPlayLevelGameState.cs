@@ -1,7 +1,6 @@
-﻿using Application.GameState.Systems;
-using States;
+﻿using Game.Project.GameState.Systems;
 
-namespace Core.GameState.States
+namespace Game.Project.GameState.States
 {
     public class TestPlayLevelState : BaseGameState
     {

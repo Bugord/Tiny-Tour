@@ -1,5 +1,6 @@
 ﻿using Application.GameState.Systems;
-using Core.GameState.States;
+using Game.Project.GameState.States;
+using Game.Project.GameState.Systems;
 using Zenject;
 
 namespace Core

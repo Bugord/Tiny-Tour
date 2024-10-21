@@ -1,24 +1,26 @@
-﻿using Application.GameState.Systems;
-using Core.Navigation;
+﻿using Core.Navigation;
+using Game.Main.Session.Core;
+using Game.Project.GameState.Systems;
 using Level;
-using States;
-using UI;
 using UI.Screens;
 using UnityEngine;
 
-namespace Core.GameState.States
+namespace Game.Project.GameState.States
 {
     public class SelectLevelToEditState : BaseGameState
     {
         private readonly INavigationService navigationService;
         private readonly LevelManager levelManager;
+        private readonly ISessionManger sessionManger;
 
         private EditLevelSelectScreen editLevelSelectSelectScreen;
         
-        public SelectLevelToEditState(GameStateMachine gameStateMachine, INavigationService navigationService, LevelManager levelManager) : base(gameStateMachine)
+        public SelectLevelToEditState(GameStateMachine gameStateMachine, INavigationService navigationService,
+            LevelManager levelManager, ISessionManger sessionManger) : base(gameStateMachine)
         {
             this.navigationService = navigationService;
             this.levelManager = levelManager;
+            this.sessionManger = sessionManger;
         }
 
         public override void OnEnter()
@@ -42,7 +44,8 @@ namespace Core.GameState.States
 
         private void OnLevelSelected(int levelIndex)
         {
-            levelManager.SelectLevel(levelIndex);
+            var levelData = levelManager.GetLevelByIndex(levelIndex);
+            sessionManger.StartSession(levelData);
             GameStateMachine.ChangeState<EditLevelState>();
         }
 
@@ -53,8 +56,8 @@ namespace Core.GameState.States
 
         private void OnCreateNewPressed()
         {
-            var newLevel = levelManager.CreateNewLevel("New Level " + Random.Range(0, 1000));
-            levelManager.SelectLevel(newLevel);
+            var newLevelData = levelManager.CreateNewLevel("New Level " + Random.Range(0, 1000));
+            sessionManger.StartSession(newLevelData);
             
             GameStateMachine.ChangeState<EditLevelState>();
         }

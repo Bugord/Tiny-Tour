@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using Application.GameState.Systems;
+﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
-using Level;
-using States;
-using UI;
+using Game.Project.GameState.Systems;
 using UI.Screens;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Core.GameState.States
+namespace Game.Project.GameState.States
 {
     public class PlayLevelState : BaseGameState
     {
