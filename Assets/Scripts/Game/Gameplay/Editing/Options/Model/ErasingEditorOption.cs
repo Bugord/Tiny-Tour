@@ -21,12 +21,25 @@ namespace Game.Gameplay.Editing.Options.Model
 
         public override void OnTileDown(Vector2Int position)
         {
-            if (roadEditor.HasTile(position)) {
-                roadEditor.EraseTile(position);
-            }
+            EraseTile(position);
         }
 
         public override void OnTileDrag(Vector2Int position)
+        {
+            EraseTile(position);
+        }
+
+        public override void OnAltTileDown(Vector2Int position)
+        {
+            EraseTile(position);
+        }
+
+        public override void OnAltTileDrag(Vector2Int position)
+        {
+            EraseTile(position);
+        }
+
+        private void EraseTile(Vector2Int position)
         {
             if (roadEditor.HasTile(position)) {
                 roadEditor.EraseTile(position);

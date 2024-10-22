@@ -3,12 +3,16 @@ using Game.Common.EditorController;
 using Game.Common.EditorOptions;
 using Game.Gameplay.Editing.Options.Model;
 using Game.Workshop.Editing.Options;
+using UnityEngine;
 
 namespace Game.Workshop.Editing.Core
 {
     public class WorkshopLevelEditorController : BaseLevelEditorController
     {
-        public WorkshopLevelEditorController(ITilemapInput tilemapInput, IEditorOptionsController editorOptionsController) : base(tilemapInput, editorOptionsController)
+        private BaseEditorOption cachedEditorOption;
+
+        public WorkshopLevelEditorController(ITilemapInput tilemapInput,
+            IEditorOptionsController editorOptionsController) : base(tilemapInput, editorOptionsController)
         {
         }
 
@@ -22,6 +26,22 @@ namespace Game.Workshop.Editing.Core
             EditorOptionsController.AddOption<ErasingWorkshopEditorOption>();
 
             EditorOptionsController.SelectOption<TerrainWorkshopEditorOption>();
+        }
+
+        protected override void OnTileAltDown(Vector2Int tilePos)
+        {
+            cachedEditorOption = EditorOptionsController.SelectedOption;
+            EditorOptionsController.SelectOption<ErasingWorkshopEditorOption>();
+
+            base.OnTileAltDown(tilePos);
+        }
+
+        protected override void OnTileAltUp(Vector2Int tilePos)
+        {
+            base.OnTileAltUp(tilePos);
+
+            EditorOptionsController.SelectOption(cachedEditorOption);
+            cachedEditorOption = null;
         }
     }
 }
