@@ -5,7 +5,7 @@ using Level;
 using UI.Screens;
 using UnityEngine;
 
-namespace Game.Project.GameState.States
+namespace Game.Main.GameState.States
 {
     public class SelectLevelToEditState : BaseGameState
     {

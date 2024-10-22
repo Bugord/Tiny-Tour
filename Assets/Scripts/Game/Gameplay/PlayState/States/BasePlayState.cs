@@ -1,4 +1,4 @@
-﻿using Gameplay.PlayState.Core;
+﻿using Game.Gameplay.PlayState.Core;
 
 namespace Game.Gameplay.PlayState.States
 {

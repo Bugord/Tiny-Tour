@@ -1,4 +1,4 @@
-﻿using LevelEditing.EditorState.States;
+﻿using Game.Workshop.WorkshopState.States;
 using Zenject;
 
 namespace Game.Workshop.WorkshopState.Core

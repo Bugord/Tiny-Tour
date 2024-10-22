@@ -1,4 +1,5 @@
-﻿using Common.Editors.Obstacles;
+﻿using System;
+using Common.Editors.Obstacles;
 using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
@@ -6,9 +7,8 @@ using Game.Common.Level.Data;
 using Game.Main.Session.Core;
 using Game.Workshop.Editing.Editors;
 using Level;
-using LevelEditor.Level.Core;
 
-namespace Game.Workshop.Level.Core
+namespace Game.Workshop.Core
 {
     public class WorkshopService : IWorkshopService
     {
@@ -51,16 +51,26 @@ namespace Game.Workshop.Level.Core
             goalLevelEditor.Load(levelData.logisticData.goalsData);
         }
 
+        public LevelData GetLevelData()
+        {
+            return new LevelData {
+                levelName = currentLevelData.levelName,
+                terrainTilesData = terrainEditor.GetTilesData(),
+                logisticData = new LogisticData {
+                    roadTileData = roadEditor.GetTilesData(),
+                    goalsData = goalLevelEditor.GetTilesData(),
+                    intermediatePointsData = Array.Empty<IntermediatePointData>()
+                },
+                carSpawnData = spawnPointEditor.GetTilesData(),
+                obstaclesData = obstaclesEditor.GetTilesData(),
+            };
+        }
+
         public void SaveLevel()
         {
-            currentLevelData.terrainTilesData = terrainEditor.GetTilesData();
-            currentLevelData.logisticData.roadTileData = roadEditor.GetTilesData();
-            currentLevelData.carSpawnData = spawnPointEditor.GetTilesData();
-            currentLevelData.obstaclesData = obstaclesEditor.GetTilesData();
-            currentLevelData.logisticData.goalsData = goalLevelEditor.GetTilesData();
-            
-            levelManager.SaveLevel(currentLevelData);
-            LoadLevel(currentLevelData);
+            var levelData = GetLevelData();
+            levelManager.SaveLevel(levelData);
+            LoadLevel(levelData);
         }
 
         public void ResetLevel()

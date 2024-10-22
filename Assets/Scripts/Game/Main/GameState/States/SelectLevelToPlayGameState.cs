@@ -4,7 +4,7 @@ using Game.Project.GameState.Systems;
 using Level;
 using UI.Screens;
 
-namespace Game.Project.GameState.States
+namespace Game.Main.GameState.States
 {
     public class SelectLevelToPlayState : BaseGameState
     {

@@ -7,7 +7,7 @@ using UI.Screens;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Game.Project.GameState.States
+namespace Game.Main.GameState.States
 {
     public class PlayLevelState : BaseGameState
     {

@@ -2,7 +2,7 @@
 using Game.Project.GameState.Systems;
 using UI.Screens;
 
-namespace Game.Project.GameState.States
+namespace Game.Main.GameState.States
 {
     public class MainMenuState : BaseGameState
     {

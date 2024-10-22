@@ -1,6 +1,6 @@
 ﻿using Common.Road;
+using Game.Workshop.Core;
 using Game.Workshop.Editing.Core;
-using Game.Workshop.Level.Core;
 using Game.Workshop.WorkshopState.Core;
 using LevelEditor;
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace Game.Workshop.Installers
         {
             Container.BindInterfacesAndSelfTo<WorkshopEntryPoint>().AsSingle().NonLazy();
             
-            Container.Bind<WorkshopStateMachine>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WorkshopStateMachine>().AsSingle();
             Container.BindInterfacesTo<WorkshopStateFactory>().AsTransient();
 
             Container.BindInterfacesTo<WorkshopService>().AsSingle();

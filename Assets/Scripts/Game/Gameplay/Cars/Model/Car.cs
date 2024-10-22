@@ -45,12 +45,17 @@ namespace Cars
             }
         }
 
+        private void OnDestroy()
+        {
+            pathTween.Kill();
+        }
+
         public void PlayPath(Vector2[] waypoints)
         {
             if (!waypoints.Any()) {
                 return;
             }
-            
+
             worldWaypoints = waypoints.Select(waypoint => (Vector3)waypoint).ToArray();
             transform.position = worldWaypoints[0];
 

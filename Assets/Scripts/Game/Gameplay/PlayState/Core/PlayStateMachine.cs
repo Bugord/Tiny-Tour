@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Game.Gameplay.PlayState.States;
 using UnityEngine;
 
-namespace Gameplay.PlayState.Core
+namespace Game.Gameplay.PlayState.Core
 {
     public class PlayStateMachine
     {

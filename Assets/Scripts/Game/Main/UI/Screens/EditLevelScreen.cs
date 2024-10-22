@@ -13,13 +13,11 @@ namespace UI.Screens
         public event Action BackPressed;
         public event Action SavePressed;
         public event Action PlayPressed;
+        public event Action ResetPressed;
         public event Action<float> CameraScaleChanged;
 
         [field: SerializeField]
-        public EditorControllerUI EditorControllerUI { get; private set; }
-        
-        [field: SerializeField]
-        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }        
+        public EditorOptionsControllerUI EditorOptionsControllerUI { get; private set; }
 
         public void OnBackButtonPressed()
         {
@@ -34,6 +32,11 @@ namespace UI.Screens
         public void OnPlayButtonPressed()
         {
             PlayPressed?.Invoke();
+        }
+
+        public void OnResetButtonPressed()
+        {
+            ResetPressed?.Invoke();
         }
 
         public void OnCameraScaleSliderValueChanged(Slider slider)

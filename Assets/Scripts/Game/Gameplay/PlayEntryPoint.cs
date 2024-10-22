@@ -1,5 +1,5 @@
-﻿using Game.Gameplay.PlayState.States;
-using Gameplay.PlayState.Core;
+﻿using Game.Gameplay.PlayState.Core;
+using Game.Gameplay.PlayState.States;
 using Zenject;
 
 namespace Gameplay

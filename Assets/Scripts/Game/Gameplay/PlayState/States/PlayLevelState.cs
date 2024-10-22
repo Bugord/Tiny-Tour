@@ -1,7 +1,7 @@
 ﻿using Core.Navigation;
 using Game.Gameplay.Level;
+using Game.Gameplay.PlayState.Core;
 using Gameplay.Playing;
-using Gameplay.PlayState.Core;
 using Gameplay.UI;
 using UI.Screens;
 

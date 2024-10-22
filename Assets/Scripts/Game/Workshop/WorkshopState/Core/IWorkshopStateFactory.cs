@@ -1,4 +1,4 @@
-using LevelEditing.EditorState.States;
+using Game.Workshop.WorkshopState.States;
 
 namespace Game.Workshop.WorkshopState.Core
 {

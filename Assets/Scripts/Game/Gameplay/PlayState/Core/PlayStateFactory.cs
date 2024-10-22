@@ -1,8 +1,7 @@
 ﻿using Game.Gameplay.PlayState.States;
-using Gameplay.PlayState.Core;
 using Zenject;
 
-namespace Gameplay.PlayState
+namespace Game.Gameplay.PlayState.Core
 {
     public class PlayStateFactory : IPlayStateFactory
     {

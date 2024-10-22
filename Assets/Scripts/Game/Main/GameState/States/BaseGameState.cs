@@ -1,6 +1,6 @@
 ﻿using Game.Project.GameState.Systems;
 
-namespace Game.Project.GameState.States
+namespace Game.Main.GameState.States
 {
     public abstract class BaseGameState
     {

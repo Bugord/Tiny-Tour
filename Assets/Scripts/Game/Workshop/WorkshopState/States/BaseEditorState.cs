@@ -1,6 +1,6 @@
 ﻿using Game.Workshop.WorkshopState.Core;
 
-namespace LevelEditing.EditorState.States
+namespace Game.Workshop.WorkshopState.States
 {
     public abstract class BaseEditorState
     {

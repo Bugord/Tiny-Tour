@@ -20,6 +20,9 @@ namespace Core.UI
         [SerializeField]
         private Image image;
 
+        [SerializeField]
+        private UnityEvent unityClickedLeft;
+        
         private ButtonState state;
 
         public ButtonSprites ButtonSprites {
@@ -58,6 +61,7 @@ namespace Core.UI
         protected virtual void OnLeftMouseClicked()
         {
             ClickedLeft?.Invoke();
+            unityClickedLeft?.Invoke();
         }
 
         protected virtual void OnRightMouseClicked()

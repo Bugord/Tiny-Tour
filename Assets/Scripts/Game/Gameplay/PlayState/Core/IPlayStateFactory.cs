@@ -1,7 +1,6 @@
 using Game.Gameplay.PlayState.States;
-using Gameplay.PlayState.Core;
 
-namespace Gameplay.PlayState
+namespace Game.Gameplay.PlayState.Core
 {
     public interface IPlayStateFactory
     {

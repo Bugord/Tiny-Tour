@@ -1,8 +1,9 @@
-﻿using LevelEditing.EditorState.States;
+﻿using System;
+using Game.Workshop.WorkshopState.States;
 
 namespace Game.Workshop.WorkshopState.Core
 {
-    public class WorkshopStateMachine
+    public class WorkshopStateMachine : IDisposable
     {
         private readonly IWorkshopStateFactory workshopStateFactory;
 
@@ -20,6 +21,11 @@ namespace Game.Workshop.WorkshopState.Core
             var newState = workshopStateFactory.Create<T>(this);
             currentState = newState;
             currentState?.OnEnter();
+        }
+
+        public void Dispose()
+        {
+            currentState?.OnExit();
         }
     }
 }

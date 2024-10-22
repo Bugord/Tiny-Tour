@@ -1,5 +1,5 @@
 ﻿using Application.GameState.Systems;
-using Game.Project.GameState.States;
+using Game.Main.GameState.States;
 using Game.Project.GameState.Systems;
 using Zenject;
 

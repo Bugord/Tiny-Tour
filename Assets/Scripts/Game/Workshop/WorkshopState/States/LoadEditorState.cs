@@ -1,9 +1,7 @@
-﻿using Common.Level.Core;
+﻿using Game.Workshop.Core;
 using Game.Workshop.WorkshopState.Core;
-using Level;
-using LevelEditor.Level.Core;
 
-namespace LevelEditing.EditorState.States
+namespace Game.Workshop.WorkshopState.States
 {
     public class LoadEditorState : BaseEditorState
     {
