@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 8539677888990868572}
   - component: {fileID: 6431514774857555871}
   m_Layer: 5
-  m_Name: EditLevelSelectScreen
+  m_Name: screen_select_level_to_edit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

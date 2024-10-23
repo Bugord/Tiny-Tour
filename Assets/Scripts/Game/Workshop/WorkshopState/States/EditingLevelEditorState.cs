@@ -1,46 +1,48 @@
-﻿using Core.Navigation;
+﻿using Game.Main.UI.Screens;
 using Game.Workshop.Core;
 using Game.Workshop.Editing.Core;
+using Game.Workshop.UI;
 using Game.Workshop.WorkshopState.Core;
-using UI.Screens;
 
 namespace Game.Workshop.WorkshopState.States
 {
     public class EditingLevelEditorState : BaseEditorState
     {
         private readonly WorkshopLevelEditorController workshopLevelEditorController;
-        private readonly IWorkshopService workshopService;
-        private readonly EditLevelScreen editLevelScreen;
+        private readonly IWorkshopUIProvider workshopUIProvider;
+        private readonly IWorkshopEditorService workshopEditorService;
 
-        public EditingLevelEditorState(WorkshopStateMachine workshopStateMachine, WorkshopLevelEditorController workshopLevelEditorController, INavigationService navigationService, IWorkshopService workshopService) : base(workshopStateMachine)
+        public EditingLevelEditorState(WorkshopStateMachine workshopStateMachine,
+            WorkshopLevelEditorController workshopLevelEditorController, IWorkshopUIProvider workshopUIProvider,
+            IWorkshopEditorService workshopEditorService) : base(workshopStateMachine)
         {
             this.workshopLevelEditorController = workshopLevelEditorController;
-            this.workshopService = workshopService;
-            editLevelScreen = navigationService.GetScreen<EditLevelScreen>();
+            this.workshopUIProvider = workshopUIProvider;
+            this.workshopEditorService = workshopEditorService;
         }
 
         public override void OnEnter()
         {
-            editLevelScreen.ResetPressed += OnResetPressed;
-            editLevelScreen.SavePressed += OnSavePressed;
+            workshopUIProvider.EditLevelScreen.ResetPressed += OnResetPressed;
+            workshopUIProvider.EditLevelScreen.SavePressed += OnSavePressed;
             workshopLevelEditorController.EnableEditing();
         }
 
         public override void OnExit()
         {
-            editLevelScreen.ResetPressed -= OnResetPressed;
-            editLevelScreen.SavePressed -= OnSavePressed;
+            workshopUIProvider.EditLevelScreen.ResetPressed -= OnResetPressed;
+            workshopUIProvider.EditLevelScreen.SavePressed -= OnSavePressed;
             workshopLevelEditorController.DisableEditing();
         }
 
         private void OnResetPressed()
         {
-            workshopService.ResetLevel();
+            workshopEditorService.ResetLevel();
         }
 
         private void OnSavePressed()
         {
-            workshopService.SaveLevel();
+            workshopEditorService.SaveLevel();
         }
     }
 }

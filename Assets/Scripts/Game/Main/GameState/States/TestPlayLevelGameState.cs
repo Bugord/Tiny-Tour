@@ -1,55 +1,34 @@
-﻿using Core;
-using Core.Navigation;
-using Cysharp.Threading.Tasks;
-using Game.Main.Session.Core;
+﻿using Cysharp.Threading.Tasks;
+using Game.Main.Workshop;
 using Game.Project.GameState.Systems;
-using UI.Screens;
-using UnityEngine;
-using UnityEngine.Assertions.Must;
-using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 namespace Game.Main.GameState.States
 {
     public class TestWorkshopTestLevelState : BaseGameState
     {
-        private readonly INavigationService navigationService;
-        private readonly ISessionManger sessionManger;
+        private readonly IWorkshopService workshopService;
 
-        private PlayLevelScreen playLevelScreen;
-
-        public TestWorkshopTestLevelState(GameStateMachine gameStateMachine, INavigationService navigationService, ISessionManger sessionManger)
+        public TestWorkshopTestLevelState(GameStateMachine gameStateMachine, IWorkshopService workshopService)
             : base(gameStateMachine)
         {
-            this.navigationService = navigationService;
-            this.sessionManger = sessionManger;
+            this.workshopService = workshopService;
         }
 
         public override void OnEnter()
         {
-            playLevelScreen = navigationService.PushScreen<PlayLevelScreen>();
-            playLevelScreen.BackPressed += ReturnToMainMenu;
-            LoadEditor().Forget();
+            workshopService.LoadLevelTest().Forget();
+            workshopService.TestLevelEnded += OnTestLevelEnded;
         }
 
         public override void OnExit()
         {
-            playLevelScreen.BackPressed -= ReturnToMainMenu;
-
-            navigationService.PopScreen(playLevelScreen);
-            SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
+            workshopService.TestLevelEnded -= OnTestLevelEnded;
         }
 
-        private async UniTask LoadEditor()
+        private void OnTestLevelEnded()
         {
-            await SceneManager.LoadSceneAsync(SceneNames.PlaySceneName, LoadSceneMode.Additive);
-        }
-
-        private void ReturnToMainMenu()
-        {
-            var levelData = sessionManger.CurrentSession.LevelData;
-            sessionManger.EndSession();
-            sessionManger.StartSession(levelData);
-            
+            workshopService.UnloadLevelTest();
             GameStateMachine.ChangeState<EditLevelState>();
         }
     }

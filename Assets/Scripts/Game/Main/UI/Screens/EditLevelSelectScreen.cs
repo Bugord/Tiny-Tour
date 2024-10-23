@@ -1,9 +1,10 @@
 ﻿using System;
 using Core.Navigation;
 using Game.Common.Level.Data;
+using UI;
 using UnityEngine;
 
-namespace UI.Screens
+namespace Game.Main.UI.Screens
 {
     public class EditLevelSelectScreen : BaseScreen
     {

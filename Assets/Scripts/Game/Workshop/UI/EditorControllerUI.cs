@@ -2,7 +2,7 @@
 using Game.Common.UI;
 using UnityEngine;
 
-namespace LevelEditing.UI
+namespace Game.Workshop.UI
 {
     public class EditorControllerUI : MonoBehaviour
     {

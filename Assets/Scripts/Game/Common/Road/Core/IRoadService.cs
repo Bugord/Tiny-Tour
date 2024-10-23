@@ -6,5 +6,6 @@ namespace Common.Editors
     {
         public void Reset();
         RoadTileData[] SaveRoad();
+        void Clear();
     }
 }

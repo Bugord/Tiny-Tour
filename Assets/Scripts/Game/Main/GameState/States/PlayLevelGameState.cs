@@ -1,47 +1,53 @@
 ﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
+using Game.Gameplay.Core;
 using Game.Main.Session.Core;
+using Game.Main.UI.Screens;
 using Game.Project.GameState.Systems;
-using UI.Screens;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Game.Main.GameState.States
 {
-    public class PlayLevelState : BaseGameState
+    public class PlayLevelGameState : BaseGameState
     {
-        private readonly INavigationService navigationService;
+        private readonly SceneContextRegistry sceneContextRegistry;
         private readonly ISessionManger sessionManger;
 
-        private PlayLevelScreen playLevelScreen;
+        private IPlayService playService;
 
-        public PlayLevelState(GameStateMachine gameStateMachine, INavigationService navigationService, ISessionManger sessionManger)
-            : base(gameStateMachine)
+        public PlayLevelGameState(GameStateMachine gameStateMachine, SceneContextRegistry sceneContextRegistry,
+            ISessionManger sessionManger) : base(gameStateMachine)
         {
-            this.navigationService = navigationService;
+            this.sceneContextRegistry = sceneContextRegistry;
             this.sessionManger = sessionManger;
         }
 
         public override void OnEnter()
         {
-            playLevelScreen = navigationService.PushScreen<PlayLevelScreen>();
-            playLevelScreen.BackPressed += ReturnToMainMenu;
             LoadEditor().Forget();
         }
 
         public override void OnExit()
         {
-            playLevelScreen.BackPressed -= ReturnToMainMenu;
-            
-            sessionManger.EndSession();
-            navigationService.PopScreen(playLevelScreen);
+            playService.PlayingEnded -= ReturnToMainMenu;
             SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
         }
 
         private async UniTask LoadEditor()
         {
             await SceneManager.LoadSceneAsync(SceneNames.PlaySceneName, LoadSceneMode.Additive);
+            await UniTask.WaitForEndOfFrame();
+
+            var playSceneContainer = sceneContextRegistry.GetSceneContextForScene(SceneNames.PlaySceneName).Container;
+
+            var levelData = sessionManger.CurrentSession.LevelData;
+            playService = playSceneContainer.Resolve<IPlayService>();
+            playService.PlayLevel(levelData);
+
+            playService.PlayingEnded += ReturnToMainMenu;
         }
 
         private void ReturnToMainMenu()

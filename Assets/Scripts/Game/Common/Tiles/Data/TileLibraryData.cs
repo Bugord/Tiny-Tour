@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using AYellowpaper.SerializedCollections;
-using Cars;
 using Core;
 using Game.Common.Cars.Core;
 using Game.Common.Obstacles;

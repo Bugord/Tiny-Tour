@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Core;
 using DG.Tweening;
 using DG.Tweening.Plugins.Core.PathCore;
+using Game.Gameplay.Cars.Data;
 using UnityEngine;
 using Utility;
 using Random = UnityEngine.Random;
 
-namespace Cars
+namespace Game.Gameplay.Cars.Model
 {
     public class Car : MonoBehaviour
     {

@@ -1,12 +1,10 @@
 ﻿using System;
 using Core.Navigation;
 using Game.Common.UI;
-using Game.Workshop.UI;
-using LevelEditing.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI.Screens
+namespace Game.Main.UI.Screens
 {
     public class EditLevelScreen : BaseScreen
     {

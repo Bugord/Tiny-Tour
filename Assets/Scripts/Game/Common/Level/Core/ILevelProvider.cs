@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
-using Game.Common.Level.Data;
+﻿using Game.Common.Level.Data;
 
-namespace Level
+namespace Game.Common.Level.Core
 {
     public interface ILevelProvider
     {

@@ -1,8 +1,9 @@
 ﻿using Core.Navigation;
+using Game.Common.Level.Core;
 using Game.Main.Session.Core;
+using Game.Main.UI.Screens;
 using Game.Project.GameState.Systems;
 using Level;
-using UI.Screens;
 
 namespace Game.Main.GameState.States
 {
@@ -44,7 +45,7 @@ namespace Game.Main.GameState.States
             var levelData = levelManager.GetLevelByIndex(levelIndex);
             sessionManger.StartSession(levelData);
             
-            GameStateMachine.ChangeState<PlayLevelState>();
+            GameStateMachine.ChangeState<PlayLevelGameState>();
         }
 
         private void OnBackPressed()

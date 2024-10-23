@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Core;
 using Game.Common.Cars.Core;
 using UnityEngine;
 
-namespace Cars
+namespace Game.Gameplay.Cars.Data
 {
     [CreateAssetMenu]
     public class CarLibrary : ScriptableObject

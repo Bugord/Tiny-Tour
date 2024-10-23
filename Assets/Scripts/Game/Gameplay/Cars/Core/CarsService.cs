@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
-using Cars;
 using Common.Tilemaps;
-using Core;
 using Core.Logging;
 using Game.Common.Level.Data;
+using Game.Gameplay.Cars.Data;
+using Game.Gameplay.Cars.Model;
+using UnityEngine;
 
-namespace Gameplay.Cars
+namespace Game.Gameplay.Cars.Core
 {
     public class CarsService : ICarsService
     {
@@ -53,6 +54,16 @@ namespace Gameplay.Cars
                 car.SetPosition(tilemapPositionConverter.CellToWorld(carSpawnData.position));
                 car.SetDirection(carSpawnData.direction);
             }
+        }
+
+        public void Clear()
+        {
+            foreach (var car in cars) {
+                Object.Destroy(car.gameObject);
+            }
+            
+            carsSpawnData.Clear();
+            cars.Clear();
         }
     }
 }

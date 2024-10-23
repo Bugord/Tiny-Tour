@@ -1,14 +1,14 @@
 ﻿using System;
-using Cars;
 using Common.Tilemaps;
-using Gameplay.Cars;
-using Gameplay.Logistic;
+using Game.Gameplay.Cars.Core;
+using Game.Gameplay.Logistic;
 
-namespace Gameplay.Playing
+namespace Game.Gameplay.Playing
 {
-    public class PlayingService : IPlayingService
+    public class PlayRunningService : IPlayRunningService
     {
-        public event Action PlayEnded;
+        public event Action LevelFailed;
+        public event Action LevelPassed;
 
         private readonly ICarsService carsService;
         private readonly ILogisticService logisticService;
@@ -19,7 +19,7 @@ namespace Gameplay.Playing
 
         public bool IsPlaying { get; private set; }
 
-        public PlayingService(ICarsService carsService, ILogisticService logisticService,
+        public PlayRunningService(ICarsService carsService, ILogisticService logisticService,
             ITilemapPositionConverter tilemapPositionConverter)
         {
             this.carsService = carsService;
@@ -40,7 +40,7 @@ namespace Gameplay.Playing
                 car.Finished += OnCarFinished;
                 car.PlayPath(carPath);
             }
-            
+
             IsPlaying = true;
         }
 
@@ -62,7 +62,7 @@ namespace Gameplay.Playing
 
         private void OnCarCrashed()
         {
-            // PlayEnded?.Invoke();
+            LevelFailed?.Invoke();
         }
 
         private void OnCarFinished()
@@ -70,7 +70,8 @@ namespace Gameplay.Playing
             finishedCarsCount++;
 
             if (finishedCarsCount == carsCount) {
-                PlayEnded?.Invoke();
+                LevelPassed?.Invoke();
+                // PlayEnded?.Invoke();
             }
         }
     }

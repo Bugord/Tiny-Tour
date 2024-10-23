@@ -1,7 +1,7 @@
 ﻿using AYellowpaper.SerializedCollections;
-using Cars;
 using Core;
 using Game.Common.Cars.Core;
+using Game.Gameplay.Cars.Data;
 using UnityEngine;
 
 namespace Tiles.Logistic

@@ -1,9 +1,7 @@
-﻿using Core.Navigation;
-using Game.Gameplay.Editing;
+﻿using Game.Gameplay.Editing;
 using Game.Gameplay.Level;
 using Game.Gameplay.PlayState.Core;
-using Gameplay.UI;
-using UI.Screens;
+using Game.Gameplay.UI;
 
 namespace Game.Gameplay.PlayState.States
 {
@@ -13,11 +11,11 @@ namespace Game.Gameplay.PlayState.States
         private readonly ILevelService levelService;
         private readonly PlayControllerUI playControllerUI;
 
-        public EditingLevelState(PlayStateMachine playStateMachine, PlayEditorController playEditorController, INavigationService navigationService, ILevelService levelService) : base(playStateMachine)
+        public EditingLevelState(PlayStateMachine playStateMachine, PlayEditorController playEditorController, IPlayUIProvider playUIProvider, ILevelService levelService) : base(playStateMachine)
         {
             this.playEditorController = playEditorController;
             this.levelService = levelService;
-            playControllerUI = navigationService.GetScreen<PlayLevelScreen>().PlayControllerUI;
+            playControllerUI = playUIProvider.PlayLevelScreen.PlayControllerUI;
         }
 
         public override void OnEnter()

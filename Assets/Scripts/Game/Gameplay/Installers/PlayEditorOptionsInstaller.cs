@@ -1,6 +1,7 @@
 ﻿using Game.Common.EditorOptions;
 using Game.Common.Installers;
 using Game.Gameplay.Editing.Editors;
+using Game.Gameplay.UI;
 using UnityEngine;
 
 namespace Game.Gameplay.Installers
@@ -13,7 +14,6 @@ namespace Game.Gameplay.Installers
             base.InstallBindings();
             
             Container.BindInterfacesTo<PlayRoadEditor>().AsCached();
-            Container.BindInterfacesTo<GameplayEditorOptionsControllerUIProvider>().AsCached();
         }
     }
 }

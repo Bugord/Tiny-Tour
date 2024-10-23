@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 6431514774857555871, guid: 2c016181edd552a469f4b2f6f6d6128c, type: 3}
   - {fileID: 7598429494459624125, guid: 265ba5769b5bb594bb07289a3d35715d, type: 3}
   - {fileID: 3579667362766856535, guid: 09d7e4a042042444d9447d45010139d0, type: 3}
+  popupPrefabs:
+  - {fileID: 1262080143454991611, guid: 2ca95afdf16cfb7489c10dca7d97617c, type: 3}

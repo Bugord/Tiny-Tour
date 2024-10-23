@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UI.Screens;
 using UnityEngine;
 
 namespace Core.Navigation

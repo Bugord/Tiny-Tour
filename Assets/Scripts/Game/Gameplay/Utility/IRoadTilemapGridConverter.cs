@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay.Utility
+namespace Game.Gameplay.Utility
 {
     public interface IRoadTilemapGridConverter
     {

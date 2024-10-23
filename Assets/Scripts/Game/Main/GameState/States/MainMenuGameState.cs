@@ -1,6 +1,6 @@
 ﻿using Core.Navigation;
+using Game.Main.UI.Screens;
 using Game.Project.GameState.Systems;
-using UI.Screens;
 
 namespace Game.Main.GameState.States
 {

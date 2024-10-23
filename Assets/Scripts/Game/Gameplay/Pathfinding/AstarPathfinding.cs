@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Core;
-using Tiles;
 using UnityEngine;
 
-namespace Pathfinding
+namespace Game.Gameplay.Pathfinding
 {
     public class AstarPathfinding
     {

@@ -1,13 +1,12 @@
-﻿using Common.Level.Core;
-using Common.Road;
+﻿using Common.Road;
+using Game.Gameplay.Core;
 using Game.Gameplay.Editing;
 using Game.Gameplay.Level;
+using Game.Gameplay.Logistic;
+using Game.Gameplay.Pathfinding;
+using Game.Gameplay.Playing;
 using Game.Gameplay.PlayState.Core;
-using Gameplay;
-using Gameplay.Logistic;
-using Gameplay.Pathfinding;
-using Gameplay.Playing;
-using Gameplay.Utility;
+using Game.Gameplay.Utility;
 using UnityEngine;
 using Zenject;
 
@@ -28,11 +27,13 @@ namespace Game.Gameplay.Installers
             Container.BindInterfacesAndSelfTo<PlayEditorController>().AsSingle();
             
             Container.BindInterfacesTo<RoadTilemapGridConverter>().AsSingle();
+
+            Container.BindInterfacesTo<PlayService>().AsSingle();
             
             Container.BindInterfacesTo<PathfindingService>().AsSingle();
             Container.BindInterfacesTo<LogisticService>().AsSingle();
             Container.BindInterfacesTo<RoadService>().AsSingle();
-            Container.BindInterfacesTo<PlayingService>().AsSingle();
+            Container.BindInterfacesTo<PlayRunningService>().AsSingle();
         }
     }
 }

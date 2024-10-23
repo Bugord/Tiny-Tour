@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Cars;
 using Core;
 using Game.Common.Cars.Core;
 using Game.Common.Cars.Data;

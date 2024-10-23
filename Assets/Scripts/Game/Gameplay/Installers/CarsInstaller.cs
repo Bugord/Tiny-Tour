@@ -1,5 +1,6 @@
-﻿using Cars;
-using Gameplay.Cars;
+﻿using Game.Gameplay.Cars.Core;
+using Game.Gameplay.Cars.Data;
+using Game.Gameplay.Cars.Model;
 using UnityEngine;
 using Zenject;
 

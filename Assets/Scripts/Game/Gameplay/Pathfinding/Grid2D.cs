@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Core;
-using Tiles;
 using UnityEngine;
 using Utility;
 
-namespace Pathfinding
+namespace Game.Gameplay.Pathfinding
 {
     public class Grid2D
     {

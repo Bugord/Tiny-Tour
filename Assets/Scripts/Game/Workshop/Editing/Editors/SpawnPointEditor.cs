@@ -1,17 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Cars;
 using Common.Tilemaps;
 using Core;
 using Game.Common.Cars.Core;
 using Game.Common.Level.Data;
-using Game.Workshop.Editing.Editors;
 using Level;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Utility;
 
-namespace Game.Workshop.LevelEditor.Editors
+namespace Game.Workshop.Editing.Editors
 {
     public class SpawnPointEditor : ISpawnPointEditor
     {

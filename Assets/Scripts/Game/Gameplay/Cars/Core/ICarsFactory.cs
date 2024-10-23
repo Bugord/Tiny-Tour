@@ -1,9 +1,9 @@
-﻿using Cars;
-using Core;
+﻿using Core;
 using Game.Common.Cars.Core;
+using Game.Gameplay.Cars.Model;
 using UnityEngine;
 
-namespace Gameplay.Cars
+namespace Game.Gameplay.Cars.Core
 {
     public interface ICarsFactory
     {

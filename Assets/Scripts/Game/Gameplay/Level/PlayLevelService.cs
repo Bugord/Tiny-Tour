@@ -2,8 +2,8 @@
 using Common.Editors.Obstacles;
 using Common.Editors.Terrain;
 using Game.Common.Level.Data;
-using Gameplay.Cars;
-using Gameplay.Logistic;
+using Game.Gameplay.Cars.Core;
+using Game.Gameplay.Logistic;
 
 namespace Game.Gameplay.Level
 {
@@ -31,6 +31,15 @@ namespace Game.Gameplay.Level
             obstaclesEditor.Load(levelData.obstaclesData);
             logisticService.LoadLogistic(levelData.logisticData);
             carsService.SpawnCars(levelData.carSpawnData);
+        }
+
+        public void ClearLevel()
+        {
+            terrainService.Clear();
+            roadService.Clear();
+            obstaclesEditor.Clear();
+            logisticService.Clear();
+            carsService.Clear();
         }
 
         public void ResetLevel()

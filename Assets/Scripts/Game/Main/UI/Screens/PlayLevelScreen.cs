@@ -1,10 +1,10 @@
 ﻿using System;
 using Core.Navigation;
 using Game.Common.UI;
-using Gameplay.UI;
+using Game.Gameplay.UI;
 using UnityEngine;
 
-namespace UI.Screens
+namespace Game.Main.UI.Screens
 {
     public class PlayLevelScreen : BaseScreen
     {

@@ -33,6 +33,11 @@ namespace Common.Road
             return roadEditor.GetTilesData();
         }
 
+        public void Clear()
+        {
+            roadEditor.Clear();
+        }
+
         public void Reset()
         {
             roadEditor.Reset();

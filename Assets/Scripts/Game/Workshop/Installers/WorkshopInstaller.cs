@@ -2,7 +2,6 @@
 using Game.Workshop.Core;
 using Game.Workshop.Editing.Core;
 using Game.Workshop.WorkshopState.Core;
-using LevelEditor;
 using UnityEngine;
 using Zenject;
 
@@ -18,7 +17,7 @@ namespace Game.Workshop.Installers
             Container.BindInterfacesAndSelfTo<WorkshopStateMachine>().AsSingle();
             Container.BindInterfacesTo<WorkshopStateFactory>().AsTransient();
 
-            Container.BindInterfacesTo<WorkshopService>().AsSingle();
+            Container.BindInterfacesTo<WorkshopEditorService>().AsSingle();
             Container.BindInterfacesAndSelfTo<WorkshopLevelEditorController>().AsSingle();
         }
     }

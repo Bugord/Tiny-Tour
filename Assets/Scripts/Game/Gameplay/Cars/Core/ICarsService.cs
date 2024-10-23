@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
-using Cars;
 using Game.Common.Level.Data;
+using Game.Gameplay.Cars.Model;
 
-namespace Gameplay.Cars
+namespace Game.Gameplay.Cars.Core
 {
     public interface ICarsService
     {
         IReadOnlyCollection<Car> Cars { get; }
         void SpawnCars(CarSpawnData[] carsSpawnData);
         void ResetCars();
+        void Clear();
     }
 }

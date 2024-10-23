@@ -2,11 +2,12 @@
 using Core;
 using UnityEngine;
 
-namespace Gameplay.Logistic
+namespace Game.Gameplay.Logistic
 {
     public interface ILogisticService : ILogisticLoader
     {
         void AddGoal(Vector2Int position, TeamColor teamColor);
         Vector2[] GetPathForCar(Vector2 carPos, TeamColor carTeamColor);
+        void Clear();
     }
 }

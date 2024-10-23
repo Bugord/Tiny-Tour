@@ -1,7 +1,6 @@
-﻿using Game.Common.EditorOptions;
-using Game.Common.Installers;
+﻿using Game.Common.Installers;
 using Game.Workshop.Editing.Editors;
-using Game.Workshop.LevelEditor.Editors;
+using Game.Workshop.UI;
 using UnityEngine;
 
 namespace Game.Workshop.Installers
@@ -15,7 +14,6 @@ namespace Game.Workshop.Installers
             
             Container.BindInterfacesTo<WorkshopRoadEditor>().AsSingle();
             Container.BindInterfacesTo<SpawnPointEditor>().AsSingle();
-            Container.BindInterfacesTo<WorkshopEditorOptionsControllerUIProvider>().AsCached();
         }
     }
 }

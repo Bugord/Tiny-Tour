@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Cars;
 using Common.Editors.Obstacles;
 using Core;
 using Game.Common.Cars.Core;

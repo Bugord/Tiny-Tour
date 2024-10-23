@@ -1,9 +1,9 @@
 ﻿using System;
-using Cysharp.Threading.Tasks;
+using System.Linq;
 using Game.Common.Level.Data;
 using Zenject;
 
-namespace Level
+namespace Game.Common.Level.Core
 {
     public class LevelManager : IInitializable
     {
@@ -40,20 +40,23 @@ namespace Level
             return levelProvider.CreateNewLevel(levelName);
         }
 
-        // public LevelData GetNextLevel()
-        // {
-        //     var levels = levelProvider.GetLevels();
-        //     var currentIndex = Array.IndexOf(levels, selectedLevelData);
-        //     if (currentIndex == -1) {
-        //         return null;
-        //     }
-        //
-        //     if (currentIndex == levels.Length - 1) {
-        //         currentIndex = -1;
-        //     }
-        //
-        //     return levelProvider.GetLevelByIndex(currentIndex + 1);
-        // }
+        public LevelData GetNextLevel(LevelData levelData)
+        {
+            var levels = levelProvider.GetLevels();
+            var level = levels.FirstOrDefault(data => data.levelName == levelData.levelName);
+
+            if (level == null) {
+                return null;
+            }
+            
+            var currentIndex = Array.IndexOf(levels, level);
+            
+            if (currentIndex == levels.Length - 1) {
+                return null;
+            }
+        
+            return levels[currentIndex + 1];
+        }
         //
         // public LevelData GetPreviousLevel()
         // {

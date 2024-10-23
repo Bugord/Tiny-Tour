@@ -1,4 +1,4 @@
-﻿using Common.Level.Core;
+﻿using Game.Common.Level.Core;
 
 namespace Game.Gameplay.Level
 {

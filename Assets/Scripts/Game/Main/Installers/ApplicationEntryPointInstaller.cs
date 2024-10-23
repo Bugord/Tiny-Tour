@@ -1,4 +1,5 @@
 ﻿using Core;
+using Game.Main.Workshop;
 using UnityEngine;
 using Zenject;
 
@@ -11,6 +12,8 @@ namespace Game.Main.Installers
         {
             Container.BindInterfacesAndSelfTo<ApplicationEntryPoint>().AsSingle();
             Container.BindInitializableExecutionOrder<ApplicationEntryPoint>(20);
+
+            Container.BindInterfacesTo<WorkshopService>().AsCached();
         }
     }
 }

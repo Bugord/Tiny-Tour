@@ -1,5 +1,4 @@
 ﻿using System;
-using Cars;
 using Core;
 using Core.LevelEditing;
 using Game.Common.Cars.Core;

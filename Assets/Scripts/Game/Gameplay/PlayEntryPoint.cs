@@ -2,7 +2,7 @@
 using Game.Gameplay.PlayState.States;
 using Zenject;
 
-namespace Gameplay
+namespace Game.Gameplay
 {
     public class PlayEntryPoint : IInitializable 
     {

@@ -4,12 +4,10 @@ using System.IO;
 using System.Linq;
 using Core;
 using Game.Common.Level.Data;
-using UnityEngine;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
+using UnityEngine;
 
-namespace Level
+namespace Game.Common.Level.Core
 {
     [CreateAssetMenu]
     public class LevelLibrary : ScriptableObject, ILevelProvider

@@ -3,52 +3,75 @@ using Common.Editors.Obstacles;
 using Common.Editors.Terrain;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
+using Game.Common.Level.Core;
 using Game.Common.Level.Data;
 using Game.Main.Session.Core;
+using Game.Main.UI.Screens;
 using Game.Workshop.Editing.Editors;
+using Game.Workshop.UI;
 using Level;
+using Zenject;
 
 namespace Game.Workshop.Core
 {
-    public class WorkshopService : IWorkshopService
+    public class WorkshopEditorService : IWorkshopEditorService, IInitializable, IDisposable
     {
+        public event Action<LevelData> TestLeveStarted;
+        public event Action LevelEditingEnded;
+
         private readonly ITerrainEditor terrainEditor;
         private readonly IRoadEditor roadEditor;
         private readonly IObstaclesEditor obstaclesEditor;
+        private readonly IWorkshopUIProvider workshopUIProvider;
         private readonly ISpawnPointEditor spawnPointEditor;
         private readonly IGoalLevelEditor goalLevelEditor;
-        private readonly ISessionManger sessionManger;
         private readonly LevelManager levelManager;
 
         private LevelData currentLevelData;
 
-        public WorkshopService(ITerrainEditor terrainEditor, IRoadEditor roadEditor, IObstaclesEditor obstaclesEditor,
-            ISpawnPointEditor spawnPointEditor, IGoalLevelEditor goalLevelEditor, ISessionManger sessionManger, LevelManager levelManager)
+        public WorkshopEditorService(ITerrainEditor terrainEditor, IRoadEditor roadEditor,
+            IObstaclesEditor obstaclesEditor, IWorkshopUIProvider workshopUIProvider,
+            ISpawnPointEditor spawnPointEditor, IGoalLevelEditor goalLevelEditor, LevelManager levelManager)
         {
             this.terrainEditor = terrainEditor;
             this.roadEditor = roadEditor;
             this.obstaclesEditor = obstaclesEditor;
+            this.workshopUIProvider = workshopUIProvider;
             this.spawnPointEditor = spawnPointEditor;
             this.goalLevelEditor = goalLevelEditor;
-            this.sessionManger = sessionManger;
             this.levelManager = levelManager;
         }
 
-        public void LoadCurrentLevel()
+        public void Initialize()
         {
-            var levelData = sessionManger.CurrentSession.LevelData;
-            LoadLevel(levelData);
+            workshopUIProvider.EditLevelScreen.BackPressed += OnBackPressed;
+            workshopUIProvider.EditLevelScreen.PlayPressed += OnPlayPressed;
         }
 
-        public void LoadLevel(LevelData levelData)
+        public void Dispose()
+        {
+            workshopUIProvider.EditLevelScreen.BackPressed -= OnBackPressed;
+            workshopUIProvider.EditLevelScreen.PlayPressed -= OnPlayPressed;
+        }
+
+        public void EditLevel(LevelData levelData)
         {
             currentLevelData = levelData;
-            
+
             terrainEditor.Load(levelData.terrainTilesData);
             roadEditor.Load(levelData.logisticData.roadTileData);
             obstaclesEditor.Load(levelData.obstaclesData);
             spawnPointEditor.Load(levelData.carSpawnData);
             goalLevelEditor.Load(levelData.logisticData.goalsData);
+        }
+
+        public void ClearLevel()
+        {
+            roadEditor.Clear();
+            terrainEditor.Clear();
+            obstaclesEditor.Clear();
+            spawnPointEditor.Clear();
+            goalLevelEditor.Clear();
         }
 
         public LevelData GetLevelData()
@@ -70,7 +93,6 @@ namespace Game.Workshop.Core
         {
             var levelData = GetLevelData();
             levelManager.SaveLevel(levelData);
-            LoadLevel(levelData);
         }
 
         public void ResetLevel()
@@ -80,6 +102,16 @@ namespace Game.Workshop.Core
             obstaclesEditor.Reset();
             spawnPointEditor.Reset();
             goalLevelEditor.Reset();
+        }
+
+        private void OnPlayPressed()
+        {
+            TestLeveStarted?.Invoke(GetLevelData());
+        }
+
+        private void OnBackPressed()
+        {
+            LevelEditingEnded?.Invoke();
         }
     }
 }

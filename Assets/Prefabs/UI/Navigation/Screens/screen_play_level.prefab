@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 8741250916656022800}
   - component: {fileID: 7598429494459624125}
   m_Layer: 5
-  m_Name: PlayLevelScreen
+  m_Name: screen_play_level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

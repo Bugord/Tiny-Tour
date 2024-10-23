@@ -7,10 +7,10 @@ using Core.Logging;
 using Game.Common.Editors.Goals;
 using Game.Common.Editors.Road;
 using Game.Common.Level.Data;
-using Pathfinding;
+using Game.Gameplay.Pathfinding;
 using UnityEngine;
 
-namespace Gameplay.Logistic
+namespace Game.Gameplay.Logistic
 {
     public class LogisticService : ILogisticService
     {
@@ -72,6 +72,12 @@ namespace Gameplay.Logistic
             var worldPath = path.Select(point => tilemapPositionConverter.CellToWorld(point)).ToArray();
             
             return worldPath;
+        }
+
+        public void Clear()
+        {
+            goalLevelEditor.Clear();
+            goals.Clear();
         }
     }
 }

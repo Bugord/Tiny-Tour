@@ -1,11 +1,12 @@
-﻿using Cars;
-using Core;
+﻿using Core;
 using Game.Common.Cars.Core;
+using Game.Gameplay.Cars.Data;
+using Game.Gameplay.Cars.Model;
 using Unity.Mathematics;
 using UnityEngine;
 using Zenject;
 
-namespace Gameplay.Cars
+namespace Game.Gameplay.Cars.Core
 {
     public class CarsFactory : ICarsFactory
     {

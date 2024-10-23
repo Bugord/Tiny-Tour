@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace Gameplay.Playing
+namespace Game.Gameplay.Playing
 {
-    public interface IPlayingService
+    public interface IPlayRunningService
     {
+        event Action LevelFailed;
+        event Action LevelPassed;
         void Play();
         void ResetPlay();
-        event Action PlayEnded;
         void CancelPlay();
         bool IsPlaying { get; }
     }

@@ -1,71 +1,59 @@
 ﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
+using Game.Common.Level.Data;
+using Game.Gameplay.Core;
 using Game.Main.Session.Core;
+using Game.Main.UI.Screens;
+using Game.Main.Workshop;
 using Game.Project.GameState.Systems;
 using Game.Workshop.Core;
-using UI.Screens;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Game.Main.GameState.States
 {
     public class EditLevelState : BaseGameState
     {
+        private readonly IWorkshopService workshopService;
         private readonly INavigationService navigationService;
-        private readonly ISessionManger sessionManger;
         private readonly SceneContextRegistry sceneContextRegistry;
         private EditLevelScreen editLevelScreen;
 
-        public EditLevelState(GameStateMachine gameStateMachine, INavigationService navigationService,
-            ISessionManger sessionManger, SceneContextRegistry sceneContextRegistry)
+        private IWorkshopEditorService workshopEditorService;
+        private IPlayService playService;
+
+        private LevelData editingLevelData;
+        
+        public EditLevelState(GameStateMachine gameStateMachine, IWorkshopService workshopService)
             : base(gameStateMachine)
         {
-            this.navigationService = navigationService;
-            this.sessionManger = sessionManger;
-            this.sceneContextRegistry = sceneContextRegistry;
+            this.workshopService = workshopService;
         }
 
         public override void OnEnter()
         {
-            editLevelScreen = navigationService.PushScreen<EditLevelScreen>();
-            editLevelScreen.BackPressed += ReturnToMainMenu;
-            editLevelScreen.PlayPressed += OnPlayPressed;
-            LoadEditor().Forget();
+            workshopService.TestLevelStarted += OnTestLevelStarted;
+            workshopService.LevelEditingEnded += OnLevelEditingEnded;
+            
+            workshopService.LoadWorkshop().Forget();
         }
 
         public override void OnExit()
         {
-            editLevelScreen.BackPressed -= ReturnToMainMenu;
-            editLevelScreen.PlayPressed -= OnPlayPressed;
-
-            navigationService.PopScreen(editLevelScreen);
-            SceneManager.UnloadSceneAsync(SceneNames.EditorSceneName);
+            workshopService.UnloadWorkshop();
+            workshopService.TestLevelStarted -= OnTestLevelStarted;
+            workshopService.LevelEditingEnded -= OnLevelEditingEnded;
         }
 
-        private void ReturnToMainMenu()
+        private void OnTestLevelStarted()
         {
-            sessionManger.EndSession();
-            GameStateMachine.ChangeState<SelectLevelToEditState>();
-        }
-
-        private void OnPlayPressed()
-        {
-            var editSceneContext = sceneContextRegistry.GetSceneContextForScene(SceneNames.EditorSceneName);
-            var workshopService = editSceneContext.Container.Resolve<IWorkshopService>();
-
-            var levelData = workshopService.GetLevelData();
-
-            sessionManger.EndSession();
-            sessionManger.StartSession(levelData);
-
             GameStateMachine.ChangeState<TestWorkshopTestLevelState>();
         }
 
-        private async UniTask LoadEditor()
+        private void OnLevelEditingEnded()
         {
-            await SceneManager.LoadSceneAsync(SceneNames.EditorSceneName, LoadSceneMode.Additive);
+            workshopService.Clear();
+            GameStateMachine.ChangeState<SelectLevelToEditState>();
         }
     }
 }

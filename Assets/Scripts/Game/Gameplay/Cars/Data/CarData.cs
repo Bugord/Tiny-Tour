@@ -2,7 +2,7 @@
 using Game.Common.Cars.Data;
 using UnityEngine;
 
-namespace Cars
+namespace Game.Gameplay.Cars.Data
 {
     [CreateAssetMenu]
     public class CarData : ScriptableObject

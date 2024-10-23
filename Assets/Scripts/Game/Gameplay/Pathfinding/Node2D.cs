@@ -1,7 +1,6 @@
 ﻿using Core;
-using Tiles;
 
-namespace Pathfinding
+namespace Game.Gameplay.Pathfinding
 {
     public class Node2D
     {

@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using Game.Common.Editors.Road;
-using Gameplay.Utility;
-using Pathfinding;
+using Game.Gameplay.Utility;
 using UnityEngine;
 
-namespace Gameplay.Pathfinding
+namespace Game.Gameplay.Pathfinding
 {
     public class PathfindingService : IPathfindingService
     {

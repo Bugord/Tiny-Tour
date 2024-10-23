@@ -3,7 +3,7 @@ using System.Linq;
 using Common.Tilemaps;
 using UnityEngine;
 
-namespace Gameplay.Utility
+namespace Game.Gameplay.Utility
 {
     public class RoadTilemapGridConverter : IRoadTilemapGridConverter
     {

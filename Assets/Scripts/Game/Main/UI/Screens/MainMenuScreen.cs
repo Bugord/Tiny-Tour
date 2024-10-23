@@ -1,7 +1,7 @@
 ﻿using System;
 using Core.Navigation;
 
-namespace UI.Screens
+namespace Game.Main.UI.Screens
 {
     public class MainMenuScreen : BaseScreen
     {

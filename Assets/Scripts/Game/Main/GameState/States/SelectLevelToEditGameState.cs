@@ -1,8 +1,10 @@
 ﻿using Core.Navigation;
+using Game.Common.Level.Core;
 using Game.Main.Session.Core;
+using Game.Main.UI.Screens;
+using Game.Main.Workshop;
 using Game.Project.GameState.Systems;
 using Level;
-using UI.Screens;
 using UnityEngine;
 
 namespace Game.Main.GameState.States
@@ -11,16 +13,16 @@ namespace Game.Main.GameState.States
     {
         private readonly INavigationService navigationService;
         private readonly LevelManager levelManager;
-        private readonly ISessionManger sessionManger;
+        private readonly IWorkshopService workshopService;
 
         private EditLevelSelectScreen editLevelSelectSelectScreen;
         
         public SelectLevelToEditState(GameStateMachine gameStateMachine, INavigationService navigationService,
-            LevelManager levelManager, ISessionManger sessionManger) : base(gameStateMachine)
+            LevelManager levelManager, IWorkshopService workshopService) : base(gameStateMachine)
         {
             this.navigationService = navigationService;
             this.levelManager = levelManager;
-            this.sessionManger = sessionManger;
+            this.workshopService = workshopService;
         }
 
         public override void OnEnter()
@@ -45,7 +47,7 @@ namespace Game.Main.GameState.States
         private void OnLevelSelected(int levelIndex)
         {
             var levelData = levelManager.GetLevelByIndex(levelIndex);
-            sessionManger.StartSession(levelData);
+            workshopService.SetLevelData(levelData);
             GameStateMachine.ChangeState<EditLevelState>();
         }
 
@@ -57,7 +59,7 @@ namespace Game.Main.GameState.States
         private void OnCreateNewPressed()
         {
             var newLevelData = levelManager.CreateNewLevel("New Level " + Random.Range(0, 1000));
-            sessionManger.StartSession(newLevelData);
+            workshopService.SetLevelData(newLevelData);
             
             GameStateMachine.ChangeState<EditLevelState>();
         }
