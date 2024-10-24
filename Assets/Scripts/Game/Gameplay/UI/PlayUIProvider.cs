@@ -7,7 +7,7 @@ namespace Game.Gameplay.UI
     public class PlayUIProvider : IPlayUIProvider, IDisposable
     {
         private readonly INavigationService navigationService;
-        public PlayLevelScreen PlayLevelScreen { get; private set; }
+        public PlayLevelScreen PlayLevelScreen { get; }
 
         public PlayUIProvider(INavigationService navigationService)
         {

@@ -43,7 +43,7 @@ namespace Tiles
         private List<CarSpawnPointData> carSpawnPointTiles;
 
         [SerializeField]
-        private SerializedDictionary<TeamColor, Tile> goalTiles;
+        private SerializedDictionary<TeamColor, TileBase> goalTiles;
 
         private Dictionary<TeamColor, BaseLogisticTile> spawnPointTiles;
 

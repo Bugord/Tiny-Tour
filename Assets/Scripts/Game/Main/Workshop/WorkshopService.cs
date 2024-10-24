@@ -1,10 +1,8 @@
 ﻿using System;
 using Core;
-using Core.Navigation;
 using Cysharp.Threading.Tasks;
 using Game.Common.Level.Data;
 using Game.Gameplay.Core;
-using Game.Main.UI.Screens;
 using Game.Workshop.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,21 +17,15 @@ namespace Game.Main.Workshop
         public event Action LevelEditingEnded;
 
         private readonly SceneContextRegistry sceneContextRegistry;
-
-        private readonly INavigationService navigationService;
-
+        
         private IWorkshopEditorService workshopEditorService;
-
         private IPlayService playService;
-
-        private PlayLevelScreen playLevelScreen;
-
+        
         public LevelData EditedLevelData { get; private set; }
 
-        public WorkshopService(SceneContextRegistry sceneContextRegistry, INavigationService navigationService)
+        public WorkshopService(SceneContextRegistry sceneContextRegistry)
         {
             this.sceneContextRegistry = sceneContextRegistry;
-            this.navigationService = navigationService;
         }
 
         public void SetLevelData(LevelData levelData)
@@ -73,8 +65,6 @@ namespace Game.Main.Workshop
 
         public async UniTask LoadLevelTest()
         {
-            playLevelScreen = navigationService.PushScreen<PlayLevelScreen>();
-
             await SceneManager.LoadSceneAsync(SceneNames.PlaySceneName, LoadSceneMode.Additive);
             await UniTask.WaitForEndOfFrame();
 
