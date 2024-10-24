@@ -9,6 +9,6 @@ namespace Game.Gameplay.Playing
         void Play();
         void ResetPlay();
         void CancelPlay();
-        bool IsPlaying { get; }
+        bool IsRunning { get; }
     }
 }

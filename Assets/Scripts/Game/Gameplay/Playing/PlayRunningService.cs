@@ -2,6 +2,7 @@
 using Common.Tilemaps;
 using Game.Gameplay.Cars.Core;
 using Game.Gameplay.Logistic;
+using Game.Gameplay.UI;
 
 namespace Game.Gameplay.Playing
 {
@@ -17,7 +18,7 @@ namespace Game.Gameplay.Playing
         private int carsCount;
         private int finishedCarsCount;
 
-        public bool IsPlaying { get; private set; }
+        public bool IsRunning { get; private set; }
 
         public PlayRunningService(ICarsService carsService, ILogisticService logisticService,
             ITilemapPositionConverter tilemapPositionConverter)
@@ -41,7 +42,7 @@ namespace Game.Gameplay.Playing
                 car.PlayPath(carPath);
             }
 
-            IsPlaying = true;
+            IsRunning = true;
         }
 
         public void ResetPlay()
@@ -52,7 +53,7 @@ namespace Game.Gameplay.Playing
             }
 
             carsService.ResetCars();
-            IsPlaying = false;
+            IsRunning = false;
         }
 
         public void CancelPlay()

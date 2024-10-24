@@ -1,8 +1,12 @@
 ﻿using Core;
 using Core.Navigation;
 using Cysharp.Threading.Tasks;
+using Game.Common.Level.Core;
 using Game.Gameplay.Core;
+using Game.Gameplay.PlayState.Core;
+using Game.Gameplay.PlayState.States;
 using Game.Main.Session.Core;
+using Game.Main.UI.Popups;
 using Game.Main.UI.Screens;
 using Game.Project.GameState.Systems;
 using UnityEngine;
@@ -15,14 +19,18 @@ namespace Game.Main.GameState.States
     {
         private readonly SceneContextRegistry sceneContextRegistry;
         private readonly ISessionManger sessionManger;
+        private readonly INavigationService navigationService;
+        private readonly LevelManager levelManager;
 
         private IPlayService playService;
 
         public PlayLevelGameState(GameStateMachine gameStateMachine, SceneContextRegistry sceneContextRegistry,
-            ISessionManger sessionManger) : base(gameStateMachine)
+            ISessionManger sessionManger, INavigationService navigationService, LevelManager levelManager) : base(gameStateMachine)
         {
             this.sceneContextRegistry = sceneContextRegistry;
             this.sessionManger = sessionManger;
+            this.navigationService = navigationService;
+            this.levelManager = levelManager;
         }
 
         public override void OnEnter()
@@ -32,7 +40,7 @@ namespace Game.Main.GameState.States
 
         public override void OnExit()
         {
-            playService.PlayingEnded -= ReturnToMainMenu;
+            playService.PlayingExitCalled -= ReturnToMainMenu;
             SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
         }
 
@@ -47,7 +55,34 @@ namespace Game.Main.GameState.States
             playService = playSceneContainer.Resolve<IPlayService>();
             playService.PlayLevel(levelData);
 
-            playService.PlayingEnded += ReturnToMainMenu;
+            playService.PlayingExitCalled += ReturnToMainMenu;
+            playService.LevelPassed += OnPlayingPassed;
+        }
+
+        private void OnPlayingPassed()
+        {
+            ShowLevelPassedPopup().Forget();
+        }
+
+        private async UniTask ShowLevelPassedPopup()
+        {
+            var levelPassedPopup = navigationService.PushPopup<LevelPassedPopup>();
+            await levelPassedPopup.Task;
+
+            navigationService.ClosePopup(levelPassedPopup);
+            playService.ClearLevel();
+            
+            var finishedLevelData = sessionManger.CurrentSession.LevelData;
+            sessionManger.EndSession();
+
+            var nextLevelData = levelManager.GetNextLevel(finishedLevelData);
+            if (nextLevelData == null) {
+                playService.RestartLevel();
+                return;
+            }
+
+            sessionManger.StartSession(nextLevelData);
+            playService.PlayLevel(nextLevelData);
         }
 
         private void ReturnToMainMenu()

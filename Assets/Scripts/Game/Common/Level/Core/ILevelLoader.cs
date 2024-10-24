@@ -5,6 +5,5 @@ namespace Game.Common.Level.Core
     public interface ILevelLoader
     {
         void LoadLevel(LevelData levelData);
-        void ClearLevel();
     }
 }

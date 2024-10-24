@@ -21,6 +21,7 @@ namespace Game.Gameplay.PlayState.States
         public override void OnEnter()
         {
             playEditorController.EnableEditing();
+            playControllerUI.TogglePlaySilently(false);
             playControllerUI.PlayToggledOn += OnPlayToggledOn;
             playControllerUI.ResetPressed += OnResetPressed;
         }

@@ -1,14 +1,15 @@
 ﻿using System;
 using Game.Common.Level.Data;
-using Game.Main.Session.Models;
 
 namespace Game.Gameplay.Core
 {
     public interface IPlayService
     {
+        event Action PlayingExitCalled;
+        event Action LevelPassed;
         void PlayLevel(LevelData levelData);
-        void EndPlaying();
-        event Action PlayingStarted;
-        event Action PlayingEnded;
+        void RestartLevel();
+        void ClearLevel();
+        void OnLevelPassed();
     }
 }

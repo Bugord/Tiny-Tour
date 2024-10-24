@@ -25,7 +25,7 @@ namespace Game.Main.Workshop
         private IWorkshopEditorService workshopEditorService;
 
         private IPlayService playService;
-        
+
         private PlayLevelScreen playLevelScreen;
 
         public LevelData EditedLevelData { get; private set; }
@@ -74,20 +74,23 @@ namespace Game.Main.Workshop
         public async UniTask LoadLevelTest()
         {
             playLevelScreen = navigationService.PushScreen<PlayLevelScreen>();
-            
+
             await SceneManager.LoadSceneAsync(SceneNames.PlaySceneName, LoadSceneMode.Additive);
             await UniTask.WaitForEndOfFrame();
-            
+
             var playSceneContext = sceneContextRegistry.GetSceneContextForScene(SceneNames.PlaySceneName);
             playService = playSceneContext.Container.Resolve<IPlayService>();
             playService.PlayLevel(EditedLevelData);
-            
-            playService.PlayingEnded += OnPlayingEnded;
+
+            playService.PlayingExitCalled += OnPlayingExitCalled;
+            playService.LevelPassed += OnLevelPassed;
         }
 
         public void UnloadLevelTest()
         {
-            playService.PlayingEnded -= OnPlayingEnded;
+            playService.PlayingExitCalled -= OnPlayingExitCalled;
+            playService.LevelPassed -= OnLevelPassed;
+
             SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
             navigationService.PopScreen(playLevelScreen);
         }
@@ -97,9 +100,15 @@ namespace Game.Main.Workshop
             EditedLevelData = null;
         }
 
-        private void OnPlayingEnded()
+        private void OnPlayingExitCalled()
         {
             TestLevelEnded?.Invoke();
+        }
+
+        private async void OnLevelPassed()
+        {
+            await UniTask.Delay(1000);
+            playService.RestartLevel();
         }
     }
 }
