@@ -93,6 +93,7 @@ namespace Game.Workshop.Core
         {
             var levelData = GetLevelData();
             levelManager.SaveLevel(levelData);
+            EditLevel(levelData);
         }
 
         public void ResetLevel()

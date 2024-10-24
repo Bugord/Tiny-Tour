@@ -487,3 +487,123 @@ MonoBehaviour:
       carType: 0
       teamColor: 2
       direction: 0
+  - levelName: New Level 580
+    terrainTilesData:
+    - position: {x: -3, y: 3}
+      terrainType: 0
+    - position: {x: -2, y: 3}
+      terrainType: 0
+    - position: {x: 4, y: 2}
+      terrainType: 2
+    - position: {x: 0, y: 3}
+      terrainType: 0
+    - position: {x: 1, y: 3}
+      terrainType: 0
+    - position: {x: 2, y: 3}
+      terrainType: 0
+    - position: {x: 2, y: 2}
+      terrainType: 0
+    - position: {x: -2, y: -4}
+      terrainType: 2
+    - position: {x: 2, y: 0}
+      terrainType: 0
+    - position: {x: 2, y: -1}
+      terrainType: 0
+    - position: {x: 1, y: -1}
+      terrainType: 0
+    - position: {x: -4, y: 0}
+      terrainType: 2
+    - position: {x: -1, y: 0}
+      terrainType: 0
+    - position: {x: -2, y: 1}
+      terrainType: 0
+    - position: {x: -3, y: 2}
+      terrainType: 0
+    - position: {x: -3, y: 1}
+      terrainType: 0
+    - position: {x: -2, y: 0}
+      terrainType: 0
+    - position: {x: -2, y: -1}
+      terrainType: 0
+    - position: {x: -1, y: -1}
+      terrainType: 0
+    - position: {x: -3, y: -1}
+      terrainType: 0
+    - position: {x: -3, y: 0}
+      terrainType: 0
+    - position: {x: -1, y: 1}
+      terrainType: 0
+    - position: {x: -2, y: 4}
+      terrainType: 2
+    - position: {x: 1, y: 1}
+      terrainType: 0
+    - position: {x: -2, y: 2}
+      terrainType: 0
+    - position: {x: -2, y: 5}
+      terrainType: 2
+    - position: {x: 1, y: 2}
+      terrainType: 0
+    - position: {x: 2, y: 1}
+      terrainType: 0
+    - position: {x: 1, y: 0}
+      terrainType: 0
+    - position: {x: 5, y: 2}
+      terrainType: 2
+    - position: {x: -2, y: -3}
+      terrainType: 2
+    - position: {x: 2, y: -2}
+      terrainType: 0
+    - position: {x: 0, y: 0}
+      terrainType: 2
+    - position: {x: 3, y: 1}
+      terrainType: 0
+    - position: {x: 3, y: 2}
+      terrainType: 0
+    - position: {x: -2, y: -2}
+      terrainType: 0
+    - position: {x: -5, y: 0}
+      terrainType: 2
+    logisticData:
+      roadTileData:
+      - position: {x: -5, y: 0}
+        connectionDirection: 4
+      - position: {x: -4, y: 0}
+        connectionDirection: 12
+      - position: {x: 4, y: 2}
+        connectionDirection: 4
+      - position: {x: -3, y: 0}
+        connectionDirection: 9
+      - position: {x: 5, y: 2}
+        connectionDirection: 8
+      - position: {x: -2, y: 5}
+        connectionDirection: 2
+      - position: {x: -2, y: 4}
+        connectionDirection: 3
+      - position: {x: -2, y: 3}
+        connectionDirection: 3
+      - position: {x: -2, y: 2}
+        connectionDirection: 3
+      - position: {x: -2, y: 1}
+        connectionDirection: 9
+      - position: {x: -3, y: 1}
+        connectionDirection: 6
+      - position: {x: -2, y: -3}
+        connectionDirection: 2
+      - position: {x: -2, y: -4}
+        connectionDirection: 1
+      goalsData:
+      - position: {x: 5, y: 2}
+        teamColor: 1
+      intermediatePointsData: []
+    obstaclesData:
+    - position: {x: -3, y: 3}
+      color: 0
+      obstacleType: 7
+    - position: {x: -3, y: 2}
+      color: 0
+      obstacleType: 3
+    carSpawnData:
+    - position: {x: -2, y: -4}
+      carType: 0
+      teamColor: 1
+      direction: 0

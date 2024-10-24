@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Navigation;
+using UnityEngine;
 
 namespace Game.Navigation.Systems
 {
@@ -65,6 +66,7 @@ namespace Game.Navigation.Systems
 
         public void PopScreen(BaseScreen screen)
         {
+            Debug.Log($"Popping screen {screen.GetType()}");
             var isLast = screensLinkedList.Last() == screen;
 
             screensLinkedList.Remove(screen);
