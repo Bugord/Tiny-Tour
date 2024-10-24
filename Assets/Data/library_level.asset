@@ -244,9 +244,7 @@ MonoBehaviour:
         teamColor: 4
       - position: {x: 4, y: 1}
         teamColor: 3
-      intermediatePointsData:
-      - pos: {x: 0, y: 0, z: 0}
-        teamColor: 4
+      intermediatePointsData: []
     obstaclesData:
     - position: {x: -3, y: -1}
       color: 0
@@ -255,14 +253,14 @@ MonoBehaviour:
       color: 0
       obstacleType: 10
     - position: {x: 0, y: 3}
-      color: 2
-      obstacleType: 2
+      color: 0
+      obstacleType: 8
     - position: {x: -1, y: 3}
-      color: 2
-      obstacleType: 2
+      color: 0
+      obstacleType: 8
     - position: {x: -1, y: 0}
-      color: 2
-      obstacleType: 3
+      color: 0
+      obstacleType: 9
     carSpawnData:
     - position: {x: -5, y: 2}
       carType: 2

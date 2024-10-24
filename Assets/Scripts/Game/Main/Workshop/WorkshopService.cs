@@ -92,7 +92,6 @@ namespace Game.Main.Workshop
             playService.LevelPassed -= OnLevelPassed;
 
             SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
-            navigationService.PopScreen(playLevelScreen);
         }
 
         public void Clear()

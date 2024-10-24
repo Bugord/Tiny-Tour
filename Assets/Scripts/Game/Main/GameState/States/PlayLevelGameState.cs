@@ -40,7 +40,7 @@ namespace Game.Main.GameState.States
 
         public override void OnExit()
         {
-            playService.PlayingExitCalled -= ReturnToMainMenu;
+            playService.PlayingExitCalled -= ReturnToSelectLevelToPlay;
             SceneManager.UnloadSceneAsync(SceneNames.PlaySceneName);
         }
 
@@ -55,7 +55,7 @@ namespace Game.Main.GameState.States
             playService = playSceneContainer.Resolve<IPlayService>();
             playService.PlayLevel(levelData);
 
-            playService.PlayingExitCalled += ReturnToMainMenu;
+            playService.PlayingExitCalled += ReturnToSelectLevelToPlay;
             playService.LevelPassed += OnPlayingPassed;
         }
 
@@ -77,7 +77,7 @@ namespace Game.Main.GameState.States
 
             var nextLevelData = levelManager.GetNextLevel(finishedLevelData);
             if (nextLevelData == null) {
-                playService.RestartLevel();
+                ReturnToSelectLevelToPlay();
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace Game.Main.GameState.States
             playService.PlayLevel(nextLevelData);
         }
 
-        private void ReturnToMainMenu()
+        private void ReturnToSelectLevelToPlay()
         {
             GameStateMachine.ChangeState<SelectLevelToPlayState>();
         }
